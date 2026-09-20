@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="MANGEDORA APPLE — Laboratório fotográfico local. Cofre de mídia 100% offline no seu navegador.">
+<meta property="og:title" content="MANGEDORA APPLE">
+<meta property="og:description" content="Laboratório fotográfico local, 100% offline.">
+<meta property="og:type" content="website">
+<title>MANGEDORA APPLE • Cofre de Mídia Local</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d4af37' stroke-width='2'><circle cx='12' cy='12' r='10'/><path d='M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#0e0c09;--bg-2:#14110d;--panel:#1a1712;--panel-2:#221e18;--panel-3:#2a251d;
+  --border:#332d23;--border-hi:#4a4132;
+  --text:#ece6d7;--text-dim:#a89f8c;--text-faint:#6e6757;
+  --gold:#d4af37;--gold-dim:#a8862a;
+  --ok:#8bb36a;--warn:#d99b4a;--danger:#c9544a;
+  --font-serif:'Playfair Display',Georgia,serif;
+  --font-mono:'JetBrains Mono','Courier New',monospace;
+  --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+}
+
+html,body{min-height:100vh}
+body{
+  background:var(--bg);
+  background-image:
+    radial-gradient(circle at 20% 0%,rgba(212,175,55,.06),transparent 45%),
+    radial-gradient(circle at 80% 100%,rgba(212,175,55,.04),transparent 45%);
+  color:var(--text);font-family:var(--font-sans);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,select{font-family:inherit}
+img,video{display:block;max-width:100%}
+
+/* ============ HEADER ============ */
+.site-header{
+  border-bottom:1px solid var(--border);
+  background:linear-gradient(180deg,var(--bg-2),var(--bg));
+  position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);
+}
+.header-container{
+  max-width:1400px;margin:0 auto;padding:1rem 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+}
+.brand-wrapper{display:flex;align-items:center;gap:.9rem}
+.brand-stamp{
+  width:44px;height:44px;border-radius:50%;
+  border:1px solid var(--gold-dim);
+  background:radial-gradient(circle,rgba(212,175,55,.15),transparent 70%);
+  display:grid;place-items:center;color:var(--gold);flex-shrink:0;
+}
+.brand-text h1{font-family:var(--font-serif);font-size:1.35rem;font-weight:700;letter-spacing:.05em}
+.brand-text h1 span{color:var(--gold);font-style:italic}
+.brand-subtitle{font-size:.72rem;color:var(--text-dim);font-family:var(--font-mono);letter-spacing:.08em;text-transform:uppercase}
+.header-actions{display:flex;gap:.6rem;flex-wrap:wrap}
+
+/* ============ BUTTONS ============ */
+.btn{
+  display:inline-flex;align-items:center;gap:.45rem;
+  padding:.55rem .95rem;border-radius:6px;
+  font-size:.82rem;font-weight:600;letter-spacing:.03em;
+  transition:all .18s ease;border:1px solid transparent;white-space:nowrap;
+}
+.btn-primary{
+  background:linear-gradient(180deg,var(--gold),var(--gold-dim));
+  color:#1a1408;border-color:var(--gold-dim);
+  box-shadow:0 2px 8px rgba(212,175,55,.15);
+}
+.btn-primary:hover{filter:brightness(1.08)}
+.btn-primary:active{transform:translateY(1px)}
+.btn-secondary{background:var(--panel-2);color:var(--text);border-color:var(--border-hi)}
+.btn-secondary:hover{background:var(--panel-3);border-color:var(--gold-dim)}
+.btn-icon{padding:.5rem;width:34px;height:34px;justify-content:center}
+.btn-danger{background:linear-gradient(180deg,#c9544a,#963a32);color:#fff;border-color:#7a2a22}
+.btn-danger:hover{filter:brightness(1.08)}
+.btn-vintage-leather{
+  background:linear-gradient(180deg,#6b3a22,#4a2414);
+  color:#f0dfc5;border-color:#7a4a2e;
+}
+.btn-vintage-leather:hover{filter:brightness(1.1)}
+
+/* ============ TELEMETRY ============ */
+.hero-telemetry{max-width:1400px;margin:0 auto;padding:1.2rem 1.5rem 0}
+.telemetry-card{
+  background:linear-gradient(180deg,var(--panel),var(--bg-2));
+  border:1px solid var(--border);border-radius:12px;
+  padding:1.2rem 1.4rem;display:flex;gap:2rem;flex-wrap:wrap;
+  justify-content:space-between;align-items:center;
+  box-shadow:0 4px 24px rgba(0,0,0,.3);
+}
+.storage-info-wrap{flex:1;min-width:300px}
+.storage-title-row{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;margin-bottom:.8rem}
+.storage-title-row h2{font-family:var(--font-serif);font-size:1.05rem;font-weight:600}
+.storage-title-row h2 span{color:var(--gold)}
+.storage-badge{
+  font-family:var(--font-mono);font-size:.68rem;
+  padding:.2rem .55rem;border-radius:3px;
+  background:rgba(212,175,55,.15);color:var(--gold);
+  letter-spacing:.05em;border:1px solid rgba(212,175,55,.3);
+}
+.storage-progress-rail{
+  height:10px;border-radius:5px;background:var(--bg);
+  border:1px solid var(--border);overflow:hidden;
+}
+.storage-progress-bar{
+  height:100%;width:0%;
+  background:linear-gradient(90deg,var(--gold-dim),var(--gold));
+  transition:width .5s ease;border-radius:4px;
+}
+.storage-stats-row{display:flex;gap:.6rem;margin-top:.8rem;flex-wrap:wrap}
+.storage-stat-pill{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-family:var(--font-mono);font-size:.72rem;color:var(--text-dim);
+  background:var(--panel-2);padding:.3rem .7rem;border-radius:20px;border:1px solid var(--border);
+}
+.indicator-dot{width:7px;height:7px;border-radius:50%}
+.dot-photos{background:var(--gold)}
+.dot-videos{background:#7a9bc9}
+.dot-free{background:var(--ok)}
+.storage-controls-box{display:flex;flex-direction:column;gap:.7rem;align-items:flex-end}
+.quota-selector-wrap{display:flex;align-items:center;gap:.5rem}
+.quota-selector-wrap label{font-size:.75rem;color:var(--text-dim);font-family:var(--font-mono)}
+.quota-select{
+  background:var(--panel-2);color:var(--text);
+  border:1px solid var(--border-hi);border-radius:5px;
+  padding:.35rem .6rem;font-size:.78rem;cursor:pointer;outline:none;
+}
+.quota-select:focus{border-color:var(--gold-dim)}
+
+/* ============ MAIN ============ */
+.main-content{
+  max-width:1400px;margin:0 auto;padding:1.5rem;
+  display:flex;flex-direction:column;gap:1.5rem;
+}
+
+/* ============ DROPZONE ============ */
+.vintage-dropzone{
+  border:2px dashed var(--border-hi);border-radius:14px;
+  padding:2.5rem 1.5rem;
+  background:linear-gradient(180deg,rgba(212,175,55,.03),transparent 60%),var(--panel);
+  transition:all .22s ease;text-align:center;cursor:pointer;
+}
+.vintage-dropzone:hover{border-color:var(--gold-dim);background-color:var(--panel-2)}
+.vintage-dropzone:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.vintage-dropzone.dragover{
+  border-color:var(--gold);
+  background:radial-gradient(circle,rgba(212,175,55,.1),transparent 70%),var(--panel-2);
+  transform:scale(1.005);
+}
+.dropzone-inner{max-width:540px;margin:0 auto}
+.dropzone-icon-plate{
+  width:64px;height:64px;margin:0 auto 1rem;border-radius:50%;
+  background:radial-gradient(circle,rgba(212,175,55,.2),transparent 70%);
+  border:1px solid var(--gold-dim);display:grid;place-items:center;color:var(--gold);
+}
+.dropzone-inner h3{font-family:var(--font-serif);font-size:1.15rem;font-weight:600;margin-bottom:.4rem}
+.dropzone-inner p{color:var(--text-dim);font-size:.88rem;margin-bottom:1rem}
+.dropzone-badges{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap}
+.mini-badge{
+  font-family:var(--font-mono);font-size:.65rem;
+  padding:.25rem .6rem;border-radius:3px;
+  background:var(--panel-2);border:1px solid var(--border);
+  color:var(--text-faint);letter-spacing:.04em;
+}
+
+/* ============ GALLERY ============ */
+.gallery-toolbar{
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  margin-bottom:1.2rem;padding-bottom:1rem;border-bottom:1px solid var(--border);
+}
+.filter-group{.display:flex;gap:.4rem83;flex-wrap:wrapl}
+.filter-btn{
+  padding:.45-.rem .85rem;border-radius:066px;font-size:.8.rem;font-weight:500;
+  color:var(--text-dim);background:transparent;border:1px solid transparent;
+  transition:all .15s;
+}
+.filter-btn:hover{color:var(--text);background:var(--panel)}
+.filter-btn.active{
+  color:var(--gold);background:rgba(212,175,55,.08);
+  border-color:rgba(212,175,55,.35);
+}
+.search-sort-group{display:flex;gap:.6rem}
+.search-box{
+  display:flex;align-items:center;gap:.4rem;
+  background:var(--panel);border:1px solid var(--border-hi);
+  border-radius:6px;padding:.4rem .7rem;min-width:220px;
+}
+.search-box:focus-within{border-color:var(--gold-dim)}
+.search-icon{color:var(--text-faint);flex-shrink:0}
+.search-input{background:none;border:none;outline:none;color:var(--text);font-size:.83rem;width:100%}
+.search-input::placeholder{color:var(--text-faint)}
+
+.media-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:1rem;
+}
+.media-card{
+  background:var(--panel);border:1px solid var(--border);border-radius:10px;
+  overflow:hidden;cursor:pointer;transition:all .2s ease;position:relative;
+}
+.media-card:hover{
+  border-color:var(--gold-dim);transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(0,0,0,.4),0 0 0 1px rgba(212,175,55,.1);
+}
+.media-thumb{
+  aspect-ratio:1;background:var(--bg);
+  display:grid;place-items:center;overflow:hidden;position:relative;
+}
+.media-thumb img{width:100%;height:100%;object-fit:cover}
+.media-thumb-placeholder{color:var(--text-faint);font-size:2rem}
+.media-badge-type{
+  position:absolute;top:.5rem;left:.5rem;
+  font-family:var(--font-mono);font-size:.6rem;
+  padding:.2rem .45rem;border-radius:3px;letter-spacing:.05em;
+  background:rgba(0,0,0,.65);color:var(--gold);
+  backdrop-filter:blur(4px);border:1px solid rgba(212,175,55,.3);
+}
+.media-badge-type.video{color:#7a9bc9;border-color:rgba(122,155,201,.3)}
+.media-badge-hd{
+  position:absolute;top:.5rem;right:.5rem;
+  font-family:var(--font-mono);font-size:.6rem;
+  padding:.2rem .45rem;border-radius:3px;
+  background:var(--gold);color:#1a1408;font-weight:700;
+}
+.media-meta{padding:.7rem .8rem}
+.media-name{
+  font-size:.78rem;font-weight:500;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  margin-bottom:.25rem;
+}
+.media-info{
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--font-mono);font-size:.68rem;color:var(--text-faint);
+}
+.media-delete{
+  position:absolute;bottom:.6rem;right:.6rem;
+  width:26px;height:26px;background:rgba(0,0,0,.7);
+  border-radius:50%;display:grid;place-items:center;
+  opacity:0;transition:opacity .15s;color:var(--danger);
+}
+.media-card:hover .media-delete{opacity:1}
+.media-delete:hover{background:var(--danger);color:#fff}
+.empty-state{
+  grid-column:1/-1;text-align:center;padding:3rem 1rem;color:var(--text-faint);
+}
+.empty-state h4{font-family:var(--font-serif);font-size:1.1rem;color:var(--text-dim);margin-bottom:.5rem}
+
+/* ============ MODALS ============ */
+.modal-backdrop{
+  position:fixed;inset:0;background:rgba(0,0,0,.85);
+  backdrop-filter:blur(8px);z-index:100;display:none;
+  align-items:center;justify-content:center;padding:1rem;
+  animation:fadeIn .2s ease;
+}
+.modal-backdrop.open{display:flex}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+.darkroom-modal{
+  background:linear-gradient(180deg,var(--panel),var(--bg-2));
+  border:1px solid var(--border-hi);border-radius:14px;
+  width:100%;max-width:1200px;max-height:94vh;
+  display:flex;flex-direction:column;overflow:hidden;
+  box-shadow:0 20px 80px rgba(0,0,0,.6);
+}
+.darkroom-header{
+  padding:.9rem 1.2rem;border-bottom:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  background:var(--bg-2);
+}
+.darkroom-title-box{display:flex;align-items:center;gap:.7rem;min-width:0}
+.darkroom-title-box h3{
+  font-family:var(--font-serif);font-size:1.05rem;font-weight:600;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.darkroom-body{display:grid;grid-template-columns:1fr 340px;flex:1;overflow:hidden;min-height:0}
+.darkroom-viewport{
+  background:repeating-conic-gradient(#0a0806 0% 25%,#100d09 0% 50%) 50% / 24px 24px;
+  padding:1rem;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;overflow:auto;
+  position:relative;min-height:0;
+}
+.viewport-canvas-container{
+  position:relative;display:flex;align-items:center;justify-content:center;
+  max-width:100%;max-height:100%;
+}
+.viewport-canvas{
+  max-width:100%;max-height:68vh;border-radius:4px;
+  box-shadow:0 8px 40px rgba(0,0,0,.6);object-fit:contain;
+}
+.viewport-media{
+  max-width:100%;max-height:68vh;border-radius:4px;
+  box-shadow:0 8px 40px rgba(0,0,0,.6);
+}
+.compare-toggle-bar{
+  position:absolute;bottom:.7rem;left:50%;transform:translateX(-50%);
+  display:flex;gap:.3rem;background:rgba(0,0,0,.75);
+  backdrop-filter:blur(8px);padding:.3rem;border-radius:8px;
+  border:1px solid var(--border-hi);
+}
+.compare-btn{
+  padding:.35rem .7rem;font-size:.72rem;font-weight:600;
+  color:var(--text-dim);border-radius:5px;transition:all .15s;
+  font-family:var(--font-mono);
+}
+.compare-btn.active{background:var(--gold);color:#1a1408}
+.compare-btn:hover:not(.active){color:var(--text);background:rgba(255,255,255,.05)}
+
+.darkroom-controls{
+  border-left:1px solid var(--border);background:var(--panel);
+  overflow-y:auto;padding:1rem;
+  display:flex;flex-direction:column;gap:1.2rem;
+}
+.controls-section{display:flex;flex-direction:column;gap:.7rem}
+.controls-heading{
+  display:flex;align-items:center;gap:.5rem;
+  font-family:var(--font-mono);font-size:.72rem;color:var(--gold);
+  letter-spacing:.08em;text-transform:uppercase;
+  padding-bottom:.5rem;border-bottom:1px solid var(--border);
+}
+.preset-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.preset-btn{
+  padding:.6rem .7rem;border-radius:6px;
+  border:1px solid var(--border-hi);background:var(--panel-2);
+  text-align:left;transition:all .15s;color:var(--text);
+}
+.preset-btn:hover{border-color:var(--gold-dim);background:var(--panel-3)}
+.preset-btn.active{
+  border-color:var(--gold);background:rgba(212,175,55,.1);
+  box-shadow:0 0 0 1px var(--gold);
+}
+.preset-btn strong{display:block;font-size:.78rem;margin-bottom:.1rem}
+.preset-btn span{display:block;font-size:.66rem;color:var(--text-faint)}
+.preset-btn.active span{color:var(--text-dim)}
+
+.slider-group{margin-bottom:.6rem}
+.slider-label-row{
+  display:flex;justify-content:space-between;font-size:.75rem;
+  margin-bottom:.3rem;color:var(--text-dim);
+}
+.slider-label-row span:last-child{
+  font-family:var(--font-mono);color:var(--gold);font-size:.72rem;
+}
+.vintage-slider{
+  width:100%;height:4px;-webkit-appearance:none;appearance:none;
+  background:var(--border-hi);border-radius:2px;outline:none;cursor:pointer;
+}
+.vintage-slider::-webkit-slider-thumb{
+  -webkit-appearance:none;width:14px;height:14px;border-radius:50%;
+  background:var(--gold);border:2px solid var(--bg);
+  box-shadow:0 0 0 1px var(--gold-dim);cursor:pointer;
+}
+.vintage-slider::-moz-range-thumb{
+  width:14px;height:14px;border-radius:50%;
+  background:var(--gold);border:2px solid var(--bg);cursor:pointer;
+}
+
+.darkroom-footer{
+  padding:.9rem 1.2rem;border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  background:var(--bg-2);
+}
+.darkroom-footer > div{display:flex;gap:.6rem;flex-wrap:wrap}
+
+/* ============ SETTINGS ============ */
+.settings-modal{
+  background:linear-gradient(180deg,var(--panel),var(--bg-2));
+  border:1px solid var(--border-hi);border-radius:12px;
+  width:100%;max-width:480px;padding:1.4rem;
+  box-shadow:0 20px 60px rgba(0,0,0,.6);
+}
+.settings-header{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:1.3rem;padding-bottom:.8rem;border-bottom:1px solid var(--border);
+}
+.settings-header h3{font-family:var(--font-serif);font-size:1.15rem}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;font-size:.78rem;color:var(--text-dim);margin-bottom:.35rem}
+.form-input,.form-select{
+  width:100%;background:var(--bg);border:1px solid var(--border-hi);
+  border-radius:5px;padding:.55rem .7rem;color:var(--text);
+  font-size:.85rem;outline:none;transition:border-color .15s;
+}
+.form-input:focus,.form-select:focus{border-color:var(--gold-dim)}
+.form-hint{display:block;font-size:.7rem;color:var(--text-faint);margin-top:.3rem;font-family:var(--font-mono)}
+
+/* ============ TOASTS ============ */
+.toast-container{
+  position:fixed;bottom:1.5rem;right:1.5rem;
+  display:flex;flex-direction:column;gap:.5rem;z-index:200;max-width:340px;
+}
+.toast{
+  padding:.75rem 1rem;border-radius:8px;
+  background:var(--panel-2);border:1px solid var(--border-hi);
+  border-left:3px solid var(--gold);font-size:.83rem;color:var(--text);
+  box-shadow:0 8px 24px rgba(0,0,0,.5);
+  transform:translateX(120%);transition:transform .3s ease;
+}
+.toast.show{transform:translateX(0)}
+.toast-success{border-left-color:var(--ok)}
+.toast-error{border-left-color:var(--danger)}
+.toast-warn{border-left-color:var(--warn)}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:900px){
+  .darkroom-body{grid-template-columns:1fr}
+  .darkroom-controls{border-left:none;border-top:1px solid var(--border);max-height:42vh}
+  .viewport-canvas,.viewport-media{max-height:38vh}
+}
+@media (max-width:640px){
+  .header-container{padding:.8rem 1rem}
+  .brand-text h1{font-size:1.1rem}
+  .main-content{padding:1rem}
+  .telemetry-card{padding:1rem}
+  .media-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.7rem}
+  .toast-container{left:1rem;right:1rem;max-width:none}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-container">
+    <div class="brand-wrapper">
+      <div class="brand-stamp" title="MANGEDORA APPLE">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M14.31 8l5.74 9.94"></path>
+          <path d="M9.69 8h11.48"></path>
+          <path d="M7.38 12l5.74-9.94"></path>
+          <path d="M9.69 16L3.95 6.06"></path>
+          <path d="M14.31 16H2.83"></path>
+          <path d="M16.62 12l-5.74 9.94"></path>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <h1>MANGEDORA <span>APPLE</span></h1>
+        <div class="brand-subtitle">Laboratório Fotográfico Local</div>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button id="settingsBtn" class="btn btn-secondary" type="button" aria-label="Abrir configurações">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 206a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+        Configurações
+      </button>
+
+      <button id="uploadBtn" class="btn btn-primary" type="button" aria-label="Selecionar arquivos">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+        Adicionar Mídia
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero-telemetry">
+  <div class="telemetry-card">
+    <div class="storage-info-wrap">
+      <div class="storage-title-row">
+        <h2>Capacidade Local: <span id="storageUsedText">0 B</span> de <span id="storageQuotaText">100 GB</span></h2>
+        <span id="storagePercentText" class="storage-badge">0.0%</span>
+        <span class="storage-badge">NAVEGADOR LOCAL</span>
+      </div>
+      <div class="storage-progress-rail" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Uso de armazenamento">
+        <div id="storageProgressBar" class="storage-progress-bar"></div>
+      </div>
+      <div class="storage-stats-row">
+        <div class="storage-stat-pill">
+          <span class="indicator-dot dot-photos"></span>
+          <span id="photoSizeStat">0 fotos (0 B)</span>
+        </div>
+        <div class="storage-stat-pill">
+          <span class="indicator-dot dot-videos"></span>
+          <span id="videoSizeStat">0 vídeos (0 B)</span>
+        </div>
+        <div class="storage-stat-pill">
+          <span class="indicator-dot dot-free"></span>
+          <span id="freeSpaceStat">Espaço livre calculando...</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="storage-controls-box">
+      <div class="quota-selector-wrap">
+        <label for="quotaSelect">Cota:</label>
+        <select id="quotaSelect" class="quota-select">
+          <option value="1">1 GB</option>
+          <option value="5">5 GB</option>
+          <option value="10">10 GB</option>
+          <option value="32">32 GB</option>
+          <option value="100" selected>100 GB</option>
+          <option value="500">500 GB</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="main-content">
+
+  <section class="upload-section">
+    <div id="dropzone" class="vintage-dropzone" role="button" tabindex="0" aria-label="Área de upload de mídia">
+      <input type="file" id="fileInput" multiple accept="image/*,video/*" hidden>
+      <div class="dropzone-inner">
+        <div class="dropzone-icon-plate">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+            <circle cx="12" cy="13" r="4"></circle>
+          </svg>
+        </div>
+        <h3>Arraste suas fotos e vídeos para o MANGEDORA APPLE</h3>
+        <p>Ou clique aqui para selecionar arquivos do seu computador ou celular.</p>
+        <div class="dropzone-badges">
+          <span class="mini-badge">FOTOS: JPG, PNG, WEBP</span>
+          <span class="mini-badge">VÍDEOS: MP4, MOV, WEBM</span>
+          <span class="mini-badge">100% LOCAL • SEM NUVEM</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-section">
+    <div class="gallery-toolbar">
+      <div class="filter-group" role="tablist" aria-label="Filtros de mídia">
+        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true" type="button">Todos</button>
+        <button class="filter-btn" data-filter="photo" role="tab" aria-selected="false" type="button">Fotografias</button>
+        <button class="filter-btn" data-filter="video" role="tab" aria-selected="false" type="button">Vídeos</button>
+        <button class="filter-btn" data-filter="enhanced" role="tab" aria-selected="false" type="button">★ HD Realçadas</button>
+      </div>
+
+      <div class="search-sort-group">
+        <div class="search-box">
+          <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="searchInput" class="search-input" placeholder="Buscar no cofre..." aria-label="Buscar mídia">
+        </div>
+      </div>
+    </div>
+
+    <div id="mediaGrid" class="media-grid"></div>
+  </section>
+
+</main>
+
+<!-- ============ DARKROOM MODAL ============ -->
+<div id="darkroomModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="darkroomTitle">
+  <div class="darkroom-modal">
+    <div class="darkroom-header">
+      <div class="darkroom-title-box">
+        <h3 id="darkroomTitle">Laboratório Fotográfico</h3>
+      </div>
+      <button id="closeDarkroomBtn" class="btn btn-secondary btn-icon" type="button" title="Fechar" aria-label="Fechar">✕</button>
+    </div>
+
+    <div class="darkroom-body">
+      <div class="darkroom-viewport">
+        <div id="viewportPhotoContainer" class="viewport-canvas-container">
+          <canvas id="darkroomCanvas" class="viewport-canvas"></canvas>
+          <img id="originalPreviewImg" class="viewport-media" style="display:none" alt="Original">
+          <div id="compareToggleBar" class="compare-toggle-bar">
+            <button id="btnViewOriginal" class="compare-btn" type="button">Original</button>
+            <button id="btnViewEnhanced" class="compare-btn active" type="button">★ Versão HD</button>
+          </div>
+        </div>
+
+        <div id="viewportVideoContainer" class="viewport-canvas-container" style="display:none;width:100%">
+          <video id="viewportVideoPlayer" class="viewport-media" controls autoplay playsinline style="max-height:65vh;width:100%"></video>
+        </div>
+      </div>
+
+      <div id="photoControlsSection" class="darkroom-controls">
+        <div class="controls-section">
+          <div class="controls-heading">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <span>Melhorias Inteligentes</span>
+          </div>
+          <div class="preset-grid">
+            <button id="preset-hd" class="preset-btn" data-preset="hd" type="button">
+              <strong>★ Restauração HD</strong><span>Nitidez & Auto-Níveis</span>
+            </button>
+            <button id="preset-warmth" class="preset-btn" data-preset="warmth" type="button">
+              <strong>Leica Warmth</strong><span>Calor analógico suave</span>
+            </button>
+            <button id="preset-clarity" class="preset-btn" data-preset="clarity" type="button">
+              <strong>Clareza Dinâmica</strong><span>Micro-contraste & Cores</span>
+            </button>
+            <button id="preset-bw" class="preset-btn" data-preset="bw" type="button">
+              <strong>Silver Gelatin</strong><span>Preto & Branco Fine-Art</span>
+            </button>
+            <button id="preset-kodachrome" class="preset-btn" data-preset="kodachrome" type="button">
+              <strong>Kodachrome 64</strong><span>Emulsão vintage 1970</span>
+            </button>
+            <button id="preset-original" class="preset-btn active" data-preset="original" type="button">
+              <strong>Original Puro</strong><span>Sem filtros aplicados</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="controls-section">
+          <div class="controls-heading">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line>
+              <line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line>
+            </svg>
+            <span>Ajustes Manuais</span>
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-label-row"><span>Nitidez & Detalhes</span><span id="valSharpness">0</span></div>
+            <input type="range" id="sliderSharpness" class="vintage-slider" min="0" max="100" value="0">
+          </div>
+          <div class="slider-group">
+            <div class="slider-label-row"><span>Contraste</span><span id="valContrast">0</span></div>
+            <input type="range" id="sliderContrast" class="vintage-slider" min="-50" max="80" value="0">
+          </div>
+          <div class="slider-group">
+            <div class="slider-label-row"><span>Brilho</span><span id="valBrightness">0</span></div>
+            <input type="range" id="sliderBrightness" class="vintage-slider" min="-50" max="50" value="0">
+          </div>
+          <div class="slider-group">
+            <div class="slider-label-row"><span>Saturação</span><span id="valSaturation">0</span></div>
+            <input type="range" id="sliderSaturation" class="vintage-slider" min="-100" max="100" value="0">
+          </div>
+          <div class="slider-group">
+            <div class="slider-label-row"><span>Calor / Temperatura</span><span id="valWarmth">0</span></div>
+            <input type="range" id="sliderWarmth" class="vintage-slider" min="-50" max="50" value="0">
+          </div>
+          <div class="slider-group">
+            <div class="slider-label-row"><span>Grão Analógico</span><span id="valGrain">0</span></div>
+            <input type="range" id="sliderGrain" class="vintage-slider" min="0" max="100" value="0">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="darkroom-footer">
+      <button id="btnDownloadOriginal" class="btn btn-secondary" type="button">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 :10"></polyline>
+          <line x1=" null12" y1="15" x2="12,
+" y2="3"></line>
+         </svg>
+        Baixar Original
+      </button current>
+
+      <div>
+        <button idParams="btnSaveEnhancedCloud" class="btn btn-vintage-leather" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+            <polyline points="17 21 17 13 7 13 7 21"></polyline>
+            <polyline points="7 3 7 8 15 8"></polyline>
+          </svg>
+          Salvar Cópia HD
+        </button>
+
+        <button id="btnDownloadEnhanced" class="btn btn-primary" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Baixar HD Melhorada
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SETTINGS MODAL ============ -->
+<div id="settingsModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+  <div class="settings-modal">
+    <div class="settings-header">
+      <h3 id="settingsTitle">Configurações</h3>
+      <button id="closeSettingsBtn" class="btn btn-secondary btn-icon" type="button" title="Fechar" aria-label="Fechar">✕</button>
+    </div>
+
+    <div class="form-group">
+      <label for="inputQuota">Cota de armazenamento (GB)</label>
+      <input type="number" id="inputQuota" class="form-input" value="100" min="1" max="100000">
+      <span class="form-hint">Apenas referência visual para a barra de uso. As mídias ficam salvas no IndexedDB do navegador.</span>
+    </div>
+
+    <div class="form-group">
+      <label>Como funciona</label>
+      <span class="form-hint">Tudo roda 100% no seu navegador. Nenhum dado sai do dispositivo. Se limpar os dados do site, as mídias são apagadas.</span>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;gap:1rem;margin-top:1.2rem;flex-wrap:wrap">
+      <button id="resetAllBtn" class="btn btn-danger" type="button">Apagar tudo</button>
+      <button id="saveSettingsBtn" class="btn btn-primary" type="button">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="false"></div>
+
+<script>
+(function(){
+'use strict';
+
+const DB_NAME = 'mangedora-apple';
+const DB_VERSION = 1;
+const STORE = 'media';
+const QUOTA_KEY = 'mangedora-quota-gb';
+const DEFAULT_QUOTA_GB = 100;
+
+const PRESETS = {
+  original:   { sharpness:0,  contrast:0,  brightness:0,  saturation:0,    warmth:0,  grain:0  },
+  hd:         { sharpness:55, contrast:18, brightness:6,  saturation:12,   warmth:3,  grain:0  },
+  warmth:     { sharpness:15, contrast:8,  brightness:4,  saturation:6,    warmth:22, grain:8  },
+  clarity:    { sharpness:40, contrast:30, brightness:0,  saturation:25,   warmth:0,  grain:0  },
+  bw:         { sharpness:25, contrast:25, brightness:2,  saturation:-100, warmth:0,  grain:12 },
+  kodachrome: { sharpness:20, contrast:22, brightness:-2, saturation:35,   warmth:15, grain:18 }
+};
+
+const state = {
+  items: [],
+  filter: 'all',
+  search: '',
+  currentItem: Object.assign({}, PRESETS.original),
+  currentPreset: 'original',
+  sourceImage: null,
+  viewMode: 'enhanced',
+  quotaGB: DEFAULT_QUOTA_GB
+};
+const urlCache = new Map();
+
+const $ = id => document.getElementById(id);
+const els = {
+  storageUsedText: $('storageUsedText'),
+  storageQuotaText: $('storageQuotaText'),
+  storagePercentText: $('storagePercentText'),
+  storageProgressBar: $('storageProgressBar'),
+  storageProgressRail: document.querySelector('.storage-progress-rail'),
+  photoSizeStat: $('photoSizeStat'),
+  videoSizeStat: $('videoSizeStat'),
+  freeSpaceStat: $('freeSpaceStat'),
+  quotaSelect: $('quotaSelect'),
+  settingsBtn: $('settingsBtn'),
+  uploadBtn: $('uploadBtn'),
+  dropzone: $('dropzone'),
+  fileInput: $('fileInput'),
+  mediaGrid: $('mediaGrid'),
+  searchInput: $('searchInput'),
+  darkroomModal: $('darkroomModal'),
+  darkroomTitle: $('darkroomTitle'),
+  closeDarkroomBtn: $('closeDarkroomBtn'),
+  darkroomCanvas: $('darkroomCanvas'),
+  originalPreviewImg: $('originalPreviewImg'),
+  viewportPhotoContainer: $('viewportPhotoContainer'),
+  viewportVideoContainer: $('viewportVideoContainer'),
+  viewportVideoPlayer: $('viewportVideoPlayer'),
+  btnViewOriginal: $('btnViewOriginal'),
+  btnViewEnhanced: $('btnViewEnhanced'),
+  photoControlsSection: $('photoControlsSection'),
+  sliders: {
+    sharpness: $('sliderSharpness'),
+    contrast: $('sliderContrast'),
+    brightness: $('sliderBrightness'),
+    saturation: $('sliderSaturation'),
+    warmth: $('sliderWarmth'),
+    grain: $('sliderGrain')
+  },
+  vals: {
+    sharpness: $('valSharpness'),
+    contrast: $('valContrast'),
+    brightness: $('valBrightness'),
+    saturation: $('valSaturation'),
+    warmth: $('valWarmth'),
+    grain: $('valGrain')
+  },
+  presets: {
+    original: $('preset-original'),
+    hd: $('preset-hd'),
+    warmth: $('preset-warmth'),
+    clarity: $('preset-clarity'),
+    bw: $('preset-bw'),
+    kodachrome: $('preset-kodachrome')
+  },
+  settingsModal: $('settingsModal'),
+  closeSettingsBtn: $('closeSettingsBtn'),
+  inputQuota: $('inputQuota'),
+  saveSettingsBtn: $('saveSettingsBtn'),
+  resetAllBtn: $('resetAllBtn'),
+  btnDownloadOriginal: $('btnDownloadOriginal'),
+  btnDownloadEnhanced: $('btnDownloadEnhanced'),
+  btnSaveEnhancedCloud: $('btnSaveEnhancedCloud'),
+  toastContainer: $('toastContainer')
+};
+
+const clamp = v => v < 0 ? 0 : v > 255 ? 255 : v;
+const uid = () => (crypto && crypto.randomUUID)
+  ? crypto.randomUUID()
+  : 'id-' + Date.now() + '-' + Math.random().toString(36).slice(2);
+
+function formatBytes(bytes){
+  if(!bytes || bytes < 1) return '0 B';
+  const units = ['B','KB','MB','GB','TB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(1024));
+  const val = bytes / Math.pow(1024, i);
+  return val.toFixed(val >= 100 ? 0 : val >= 10 ? 1 : 2) + ' ' + units[i];
+}
+
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, c => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  }[c]));
+}
+
+function toast(msg, type){
+  type = type || 'info';
+  const el = document.createElement('div');
+  el.className = 'toast toast-' + type;
+  el.textContent = msg;
+  els.toastContainer.appendChild(el);
+  requestAnimationFrame(() => el.classList.add('show'));
+  setTimeout(() => {
+    el.classList.remove('show');
+    setTimeout(() => el.remove(), 350);
+  }, 3200);
+}
+
+function downloadBlob(blob, filename){
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1500);
+}
+
+function loadImage(url){
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(new Error('Imagem não carregou'));
+    img.src = url;
+  });
+}
+
+let dbPromise = null;
+function getDB(){
+  if(!dbPromise){
+    dbPromise = new Promise((resolve, reject) => {
+      const req = indexedDB.open(DB_NAME, DB_VERSION);
+      req.onupgradeneeded = () => {
+        const db = req.result;
+        if(!db.objectStoreNames.contains(STORE)){
+          const store = db.createObjectStore(STORE, { keyPath: 'id' });
+          store.createIndex('type', 'type', { unique: false });
+          store.createIndex('createdAt', 'createdAt', { unique: false });
+        }
+      };
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error);
+    });
+  }
+  return dbPromise;
+}
+
+function idbPut(rec){
+  return getDB().then(db => new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE, 'readwrite');
+    tx.objectStore(STORE).put(rec);
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  }));
+}
+
+function idbGetAll(){
+  return getDB().then(db => new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE, 'readonly');
+    const req = tx.objectStore(STORE).getAll();
+    req.onsuccess = () => resolve(req.result || []);
+    req.onerror = () => reject(req.error);
+  }));
+}
+
+function idbDelete(id){
+  return getDB().then(db => new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE, 'readwrite');
+    tx.objectStore(STORE).delete(id);
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  }));
+}
+
+function idbClear(){
+  return getDB().then(db => new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE, 'readwrite');
+    tx.objectStore(STORE).clear();
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  }));
+}
+
+function imageToThumbBlob(img, maxSize){
+  maxSize = maxSize || 400;
+  const nw = img.naturalWidth || img.width;
+  const nh = img.naturalHeight || img.height;
+  const ratio = Math.min(1, maxSize / Math.max(nw, nh));
+  const w = Math.max(1, Math.round(nw * ratio));
+  const h = Math.max(1, Math.round(nh * ratio));
+  const canvas = document.createElement('canvas');
+  canvas.width = w;
+  canvas.height = h;
+  canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+  return new Promise(resolve => {
+    canvas.toBlob(b => resolve(b), 'image/jpeg', 0.75);
+  });
+}
+
+async function makePhotoThumb(file){
+  try{
+    const url = URL.createObjectURL(file);
+    try{
+      const img = await loadImage(url);
+      return await imageToThumbBlob(img);
+    } finally {
+      URL.revokeObjectURL(url);
+    }
+  } catch(e){
+    return null;
+  }
+}
+
+function makeVideoThumb(file){
+  return new Promise(resolve => {
+    const url = URL.createObjectURL(file);
+    const video = document.createElement('video');
+    video.muted = true;
+    video.playsInline = true;
+    video.preload = 'metadata';
+    video.src = url;
+
+    let done = false;
+    const finish = (result) => {
+      if(done) return;
+      done = true;
+      clearTimeout(timer);
+      URL.revokeObjectURL(url);
+      video.removeAttribute('src');
+      try { video.load(); } catch(e){}
+      resolve(result);
+    };
+
+    const timer = setTimeout(() => finish(null), 8000);
+
+    video.onloadeddata = () => {
+      try {
+        const t = (video.duration && isFinite(video.duration))
+          ? Math.min(0.5, video.duration / 4)
+          : 0.1;
+        video.currentTime = t;
+      } catch(e){
+        finish(null);
+      }
+    };
+
+    video.onseeked = () => {
+      try{
+        const canvas = document.createElement('canvas');
+        const maxSize = 400;
+        const vw = video.videoWidth || 400;
+        const vh = video.videoHeight || 400;
+        const ratio = Math.min(1, maxSize / Math.max(vw, vh));
+        canvas.width = Math.max(1, Math.round(vw * ratio));
+        canvas.height = Math.max(1, Math.round(vh * ratio));
+        canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+        canvas.toBlob(b => finish(b), 'image/jpeg', 0.75);
+      } catch(e){
+        finish(null);
+      }
+    };
+
+    video.onerror = () => finish(null);
+  });
+}
+
+function applyEnhancement(canvas, srcImage, params){
+  const w = canvas.width;
+  const h = canvas.height;
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
+  ctx.clearRect(0, 0, w, h);
+
+  const brightness = 100 + (params.brightness || 0);
+  const contrast   = 100 + (params.contrast || 0);
+  const saturation = 100 + (params.saturation || 0);
+  ctx.filter = 'brightness(' + brightness + '%) contrast(' + contrast + '%) saturate(' + saturation + '%)';
+  ctx.drawImage(srcImage, 0, 0, w, h);
+  ctx.filter = 'none';
+
+  if(params.warmth) applyWarmth(ctx, w, h, params.warmth);
+  if(params.sharpness > 0) applySharpen(canvas, params.sharpness);
+  if(params.grain > 0) applyGrain(ctx, w, h, params.grain);
+}
+
+function applyWarmth(ctx, w, h, amount){
+  const intensity = Math.min(0.22, Math.abs(amount) / 50 * 0.22);
+  ctx.save();
+  ctx.globalCompositeOperation = 'overlay';
+  ctx.fillStyle = amount > 0
+    ? 'rgba(255,150,50,' + intensity + ')'
+    : 'rgba(50,130,255,' + intensity + ')';
+  ctx.fillRect(0, 0, w, h);
+  ctx.restore();
+}
+
+function applySharpen(canvas, amount){
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
+  const w = canvas.width;
+  const h = canvas.height;
+
+  const blurred = document.createElement('canvas');
+  blurred.width = w;
+  blurred.height = h;
+  const bctx = blurred.getContext('2d');
+  bctx.filter = 'blur(1.5px)';
+  bctx.drawImage(canvas, 0, 0);
+
+  const orig = ctx.getImageData(0, 0, w, h);
+  const blur = bctx.getImageData(0, 0, w, h);
+  const od = orig.data;
+  const bd = blur.data;
+  const k = (amount / 100) * 1.6;
+
+  for(let i = 0; i < od.length; i += 4){
+    od[i]     = clamp(od[i]     + (od[i]     - bd[i])     * k);
+    od[i + 1] = clamp(od[i + 1] + (od[i + 1] - bd[i + 1]) * k);
+    od[i + 2] = clamp(od[i + 2] + (od[i + 2] - bd[i + 2]) * k);
+  }
+  ctx.putImageData(orig, 0, 0);
+}
+
+function applyGrain(ctx, w, h, amount){
+  const intensity = (amount / 100) * 55;
+  const imgData = ctx.getImageData(0, 0, w, h);
+  const d = imgData.data;
+  for(let i = 0; i < d.length; i += 4){
+    const n = (Math.random() - 0.5) * intensity * 2;
+    d[i]     = clamp(d[i]     + n);
+    d[i + 1] = clamp(d[i + 1] + n);
+    d[i + 2] = clamp(d[i + 2] + n);
+  }
+  ctx.putImageData(imgData, 0, 0);
+}
+
+function updateStorageUI(){
+  const used = state.items.reduce((s, it) => s + (it.size || 0), 0);
+  const photos = state.items.filter(i => i.type === 'photo');
+  const videos = state.items.filter(i => i.type === 'video');
+  const photoSize = photos.reduce((s, i) => s + i.size, 0);
+  const videoSize = videos.reduce((s, i) => s + i.size, 0);
+  const quota = state.quotaGB * 1024 * 1024 * 1024;
+  const pct = quota > 0 ? Math.min(100, (used / quota) * 100) : 0;
+  const free = Math.max(0, quota - used);
+
+  els.storageUsedText.textContent = formatBytes(used);
+  els.storageQuotaText.textContent = state.quotaGB + ' GB';
+  els.storagePercentText.textContent = pct.toFixed(pct < 1 ? 2 : 1) + '%';
+  els.storageProgressBar.style.width = pct + '%';
+  els.storageProgressRail.setAttribute('aria-valuenow', Math.round(pct));
+  els.photoSizeStat.textContent = photos.length + ' foto' + (photos.length === 1 ? '' : 's') + ' (' + formatBytes(photoSize) + ')';
+  els.videoSizeStat.textContent = videos.length + ' vídeo' + (videos.length === 1 ? '' : 's') + ' (' + formatBytes(videoSize) + ')';
+  els.freeSpaceStat.textContent = 'Espaço livre: ' + formatBytes(free);
+}
+
+function thumbURL(item){
+  if(!item.thumb) return null;
+  const key = 'thumb:' + item.id;
+  if(!urlCache.has(key)) urlCache.set(key, URL.createObjectURL(item.thumb));
+  return urlCache.get(key);
+}
+
+function fullURL(item){
+  const key = 'full:' + item.id;
+  if(!urlCache.has(key)) urlCache.set(key, URL.createObjectURL(item.blob));
+  return urlCache.get(key);
+}
+
+function revokeURLs(id){
+  ['thumb:', 'full:'].forEach(prefix => {
+    const k = prefix + id;
+    if(urlCache.has(k)){
+      URL.revokeObjectURL(urlCache.get(k));
+      urlCache.delete(k);
+    }
+  });
+}
+
+function getFilteredItems(){
+  let list = state.items.slice();
+  if(state.filter === 'photo') list = list.filter(i => i.type === 'photo');
+  else if(state.filter === 'video') list = list.filter(i => i.type === 'video');
+  else if(state.filter === 'enhanced') list = list.filter(i => i.enhanced);
+
+  if(state.search.trim()){
+    const q = state.search.toLowerCase();
+    list = list.filter(i => i.name.toLowerCase().indexOf(q) !== -1);
+  }
+  list.sort((a, b) => b.createdAt - a.createdAt);
+  return list;
+}
+
+function renderGallery(){
+  const items = getFilteredItems();
+  const grid = els.mediaGrid;
+
+  if(!items.length){
+    grid.innerHTML =
+      '<div class="empty-state">' +
+        '<h4>' + (state.items.length ? 'Nenhum resultado encontrado' : 'Seu cofre está vazio') + '</h4>' +
+        '<p>' + (state.items.length ? 'Tente outro filtro ou busca.' : 'Adicione fotos e vídeos para começar.') + '</p>' +
+      '</div>';
+    return;
+  }
+
+  const frag = document.createDocumentFragment();
+  for(const item of items){
+    const card = document.createElement('div');
+    card.className = 'media-card';
+    card.dataset.id = item.id;
+
+    const src = thumbURL(item);
+    const typeLabel = item.type === 'video' ? 'VÍDEO' : 'FOTO';
+    const dateStr = new Date(item.createdAt).toLocaleDateString('pt-BR');
+
+    card.innerHTML =
+      '<div class="media-thumb">' +
+        (src
+          ? '<img src="' + src + '" alt="' + escapeHtml(item.name) + '" loading="lazy">'
+          : '<div class="media-thumb-placeholder">' + (item.type === 'video' ? '🎬' : '🖼') + '</div>'
+        ) +
+        '<span class="media-badge-type ' + item.type + '">' + typeLabel + '</span>' +
+        (item.enhanced ? '<span class="media-badge-hd">★ HD</span>' : '') +
+        '<button class="media-delete" data-delete="' + item.id + '" type="button" title="Remover" aria-label="Remover ' + escapeHtml(item.name) + '">' +
+          '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">' +
+            '<polyline points="3 6 5 6 21 6"></polyline>' +
+            '<path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path>' +
+            '<path d="M10 11v6M14 11v6"></path>' +
+            '<path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"></path>' +
+          '</svg>' +
+        '</button>' +
+      '</div>' +
+      '<div class="media-meta">' +
+        '<div class="media-name" title="' + escapeHtml(item.name) + '">' + escapeHtml(item.name) + '</div>' +
+        '<div class="media-info">' +
+          '<span>' + formatBytes(item.size) + '</span>' +
+          '<span>' + dateStr + '</span>' +
+        '</div>' +
+      '</div>';
+
+    card.addEventListener('click', (e) => {
+      if(e.target.closest('.media-delete')) return;
+      openDarkroom(item);
+    });
+
+    frag.appendChild(card);
+  }
+
+  grid.innerHTML = '';
+  grid.appendChild(frag);
+}
+
+async function handleFiles(fileList){
+  const files = Array.prototype.slice.call(fileList);
+  if(!files.length) return;
+
+  let okCount = 0, failCount = 0;
+
+  for(const file of files){
+    const isVideo = file.type.indexOf('video/') === 0;
+    const isImage = file.type.indexOf('image/') === 0;
+    if(!isVideo && !isImage){ failCount++; continue; }
+
+    if(file.size > 500 * 1024 * 1024){
+      toast('"' + file.name + '" é grande (>500MB). Pode falhar.', 'warn');
+    }
+
+    try{
+      let thumb = null;
+      try{
+        thumb = isVideo ? await makeVideoThumb(file) : await makePhotoThumb(file);
+      } catch(e){}
+
+      const item = {
+        id: uid(),
+        name: file.name,
+        type: isVideo ? 'video' : 'photo',
+        mime: file.type,
+        size: file.size,
+        blob: file,
+        thumb: thumb,
+        createdAt: Date.now(),
+        enhanced: false,
+        parentId: null
+      };
+      await idbPut(item);
+      state.items.push(item);
+      okCount++;
+    } catch(e){
+      console.error(e);
+      failCount++;
+    }
+  }
+
+  renderGallery();
+  updateStorageUI();
+
+  if(okCount) toast(okCount + ' arquivo' + (okCount > 1 ? 's' : '') + ' adicionado' + (okCount > 1 ? 's' : '') + ' ao cofre.', 'success');
+  if(failCount) toast(failCount + ' arquivo' + (failCount > 1 ? 's' : '') + ' não pôde' + (failCount > 1 ? 'ram' : '') + ' ser processado' + (failCount > 1 ? 's' : '') + '.', 'error');
+}
+
+let pendingRender = false;
+function scheduleRender(){
+  if(pendingRender) return;
+  pendingRender = true;
+  requestAnimationFrame(() => {
+    pendingRender = false;
+    if(!state.sourceImage) return;
+    try{
+      applyEnhancement(els.darkroomCanvas, state.sourceImage, state.currentParams);
+    } catch(e){
+      console.error(e);
+    }
+  });
+}
+
+function renderEnhancedImmediate(){
+  if(!state.sourceImage) return;
+  const img = state.sourceImage;
+  const maxDim = 1400;
+  const nw = img.naturalWidth || img.width;
+  const nh = img.naturalHeight || img.height;
+  const ratio = Math.min(1, maxDim / Math.max(nw, nh));
+  const w = Math.max(1, Math.round(nw * ratio));
+  const h = Math.max(1, Math.round(nh * ratio));
+  const canvas = els.darkroomCanvas;
+  canvas.width = w;
+  canvas.height = h;
+  try{
+    applyEnhancement(canvas, img, state.currentParams);
+  } catch(e){
+    console.error(e);
+  }
+}
+
+async function openDarkroom(item){
+  state.currentItem = item;
+  state.currentPreset = 'original';
+  state.currentParams = Object.assign({}, PRESETS.original);
+  state.viewMode = 'enhanced';
+
+  syncSlidersFromParams();
+  updatePresetButtons();
+  updateCompareButtons();
+
+  els.darkroomTitle.textContent = item.name;
+
+  if(item.type === 'photo'){
+    els.viewportPhotoContainer.style.display = '';
+    els.viewportVideoContainer.style.display = 'none';
+    els.photoControlsSection.style.display = '';
+
+    els.viewportVideoPlayer.pause();
+    els.viewportVideoPlayer.removeAttribute('src');
+    try { els.viewportVideoPlayer.load(); } catch(e){}
+
+    try{
+      const url = fullURL(item);
+      state.sourceImage = await loadImage(url);
+      els.originalPreviewImg.src = url;
+      els.originalPreviewImg.style.display = 'none';
+      els.darkroomCanvas.style.display = '';
+      renderEnhancedImmediate();
+    } catch(e){
+      console.error(e);
+      toast('Falha ao carregar imagem.', 'error');
+      return;
+    }
+  } else {
+    els.viewportPhotoContainer.style.display = 'none';
+    els.viewportVideoContainer.style.display = '';
+    els.photoControlsSection.style.display = 'none';
+    state.sourceImage = null;
+    els.viewportVideoPlayer.src = fullURL(item);
+    const p = els.viewportVideoPlayer.play();
+    if(p && p.catch) p.catch(() => {});
+  }
+
+  els.darkroomModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDarkroom(){
+  els.darkroomModal.classList.remove('open');
+  document.body.style.overflow = '';
+  try{
+    els.viewportVideoPlayer.pause();
+    els.viewportVideoPlayer.removeAttribute('src');
+    els.viewportVideoPlayer.load();
+  } catch(e){}
+  state.currentItem = null;
+  state.sourceImage = null;
+}
+
+function syncSlidersFromParams(){
+  Object.keys(els.sliders).forEach(key => {
+    const v = state.currentParams[key] || 0;
+    els.sliders[key].value = v;
+    els.vals[key].textContent = v;
+  });
+}
+
+function updatePresetButtons(){
+  Object.keys(els.presets).forEach(key => {
+    els.presets[key].classList.toggle('active', key === state.currentPreset);
+  });
+}
+
+function updateCompareButtons(){
+  els.btnViewOriginal.classList.toggle('active', state.viewMode === 'original');
+  els.btnViewEnhanced.classList.toggle('active', state.viewMode === 'enhanced');
+  if(!state.sourceImage) return;
+  if(state.viewMode === 'original'){
+    els.darkroomCanvas.style.display = 'none';
+    els.originalPreviewImg.style.display = '';
+  } else {
+    els.darkroomCanvas.style.display = '';
+    els.originalPreviewImg.style.display = 'none';
+  }
+}
+
+function generateEnhancedBlob(){
+  return new Promise((resolve, reject) => {
+    if(!state.sourceImage || !state.currentItem){
+      reject(new Error('Nada para exportar'));
+      return;
+    }
+    const img = state.sourceImage;
+    const canvas = document.createElement('canvas');
+    canvas.width = img.naturalWidth || img.width;
+    canvas.height = img.naturalHeight || img.height;
+    try{
+      applyEnhancement(canvas, img, state.currentParams);
+    } catch(e){
+      reject(e);
+      return;
+    }
+    canvas.toBlob(b => {
+      if(b) resolve(b);
+      else reject(new Error('toBlob falhou'));
+    }, 'image/jpeg', 0.92);
+  });
+}
+
+function openSettings(){
+  els.inputQuota.value = state.quotaGB;
+  els.settingsModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSettings(){
+  els.settingsModal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function syncQuotaSelect(value){
+  const str = String(value);
+  const has = Array.prototype.some.call(els.quotaSelect.options, o => o.value === str);
+  if(!has){
+    const opt = document.createElement('option');
+    opt.value = str;
+    opt.textContent = value + ' GB';
+    els.quotaSelect.appendChild(opt);
+  }
+  els.quotaSelect.value = str;
+}
+
+function bindEvents(){
+  els.uploadBtn.addEventListener('click', () => els.fileInput.click());
+  els.settingsBtn.addEventListener('click', openSettings);
+
+  els.dropzone.addEventListener('click', () => els.fileInput.click());
+  els.dropzone.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter' || e.key === ' '){
+      e.preventDefault();
+      els.fileInput.click();
+    }
+  });
+
+  ['dragenter','dragover'].forEach(evt => {
+    els.dropzone.addEventListener(evt, (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      els.dropzone.classList.add('dragover');
+    });
+  });
+  ['dragleave','drop'].forEach(evt => {
+    els.dropzone.addEventListener(evt, (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      els.dropzone.classList.remove('dragover');
+    });
+  });
+  els.dropzone.addEventListener('drop', (e) => {
+    if(e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length){
+      handleFiles(e.dataTransfer.files);
+    }
+  });
+  els.fileInput.addEventListener('change', (e) => {
+    if(e.target.files && e.target.files.length) handleFiles(e.target.files);
+    e.target.value = '';
+  });
+
+  window.addEventListener('dragover', e => e.preventDefault());
+  window.addEventListener('drop', e => e.preventDefault());
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      state.filter = btn.dataset.filter;
+      renderGallery();
+    });
+  });
+
+  els.searchInput.addEventListener('input', (e) => {
+    state.search = e.target.value;
+    renderGallery();
+  });
+
+  els.mediaGrid.addEventListener('click', async (e) => {
+    const btn = e.target.closest('[data-delete]');
+    if(!btn) return;
+    e.stopPropagation();
+    const id = btn.dataset.delete;
+    const item = state.items.find(i => i.id === id);
+    if(!item) return;
+    if(!confirm('Remover "' + item.name + '" do cofre?')) return;
+    try{
+      await idbDelete(id);
+    } catch(err){
+      console.error(err);
+      toast('Falha ao remover.', 'error');
+      return;
+    }
+    revokeURLs(id);
+    state.items = state.items.filter(i => i.id !== id);
+    renderGallery();
+    updateStorageUI();
+    toast('Arquivo removido.', 'info');
+  });
+
+  els.closeDarkroomBtn.addEventListener('click', closeDarkroom);
+  els.darkroomModal.addEventListener('click', (e) => {
+    if(e.target === els.darkroomModal) closeDarkroom();
+  });
+
+  Object.keys(els.presets).forEach(key => {
+    els.presets[key].addEventListener('click', () => {
+      state.currentPreset = key;
+      state.currentParams = Object.assign({}, PRESETS[key]);
+      syncSlidersFromParams();
+      updatePresetButtons();
+      renderEnhancedImmediate();
+    });
+  });
+
+  Object.keys(els.sliders).forEach(key => {
+    els.sliders[key].addEventListener('input', () => {
+      const v = parseInt(els.sliders[key].value, 10) || 0;
+      state.currentParams[key] = v;
+      els.vals[key].textContent = v;
+      state.currentPreset = null;
+      updatePresetButtons();
+      scheduleRender();
+    });
+  });
+
+  els.btnViewOriginal.addEventListener('click', () => {
+    state.viewMode = 'original';
+    updateCompareButtons();
+  });
+  els.btnViewEnhanced.addEventListener('click', () => {
+    state.viewMode = 'enhanced';
+    updateCompareButtons();
+  });
+
+  els.btnDownloadOriginal.addEventListener('click', () => {
+    if(!state.currentItem) return;
+    downloadBlob(state.currentItem.blob, state.currentItem.name);
+  });
+
+  els.btnDownloadEnhanced.addEventListener('click', async () => {
+    if(!state.currentItem || state.currentItem.type !== 'photo'){
+      toast('Selecione uma foto para exportar em HD.', 'warn');
+      return;
+    }
+    try{
+      toast('Renderizando em alta resolução...', 'info');
+      const blob = await generateEnhancedBlob();
+      const base = state.currentItem.name.replace(/\.[^.]+$/, '');
+      downloadBlob(blob, base + '_HD.jpg');
+      toast('Download iniciado!', 'success');
+    } catch(e){
+      console.error(e);
+      toast('Falha ao exportar imagem.', 'error');
+    }
+  });
+
+  els.btnSaveEnhancedCloud.addEventListener('click', async () => {
+    if(!state.currentItem || state.currentItem.type !== 'photo'){
+      toast('Selecione uma foto para salvar cópia HD.', 'warn');
+      return;
+    }
+    try{
+      const blob = await generateEnhancedBlob();
+      const tmpUrl = URL.createObjectURL(blob);
+      let thumb = null;
+      try{
+        const tmpImg = await loadImage(tmpUrl);
+        thumb = await imageToThumbBlob(tmpImg);
+      } finally {
+        URL.revokeObjectURL(tmpUrl);
+      }
+
+      const base = state.currentItem.name.replace(/\.[^.]+$/, '');
+      const newItem = {
+        id: uid(),
+        name: base + '_HD.jpg',
+        type: 'photo',
+        mime: 'image/jpeg',
+        size: blob.size,
+        blob: blob,
+        thumb: thumb,
+        createdAt: Date.now(),
+        enhanced: true,
+        parentId: state.currentItem.id
+      };
+      await idbPut(newItem);
+      state.items.push(newItem);
+      renderGallery();
+      updateStorageUI();
+      toast('Cópia HD salva no cofre!', 'success');
+    } catch(e){
+      console.error(e);
+      toast('Falha ao salvar cópia HD.', 'error');
+    }
+  });
+
+  els.closeSettingsBtn.addEventListener('click', closeSettings);
+  els.settingsModal.addEventListener('click', (e) => {
+    if(e.target === els.settingsModal) closeSettings();
+  });
+
+  els.saveSettingsBtn.addEventListener('click', () => {
+    const v = parseInt(els.inputQuota.value, 10);
+    if(!v || v < 1){
+      toast('Informe um valor válido.', 'error');
+      return;
+    }
+    state.quotaGB = v;
+    try{ localStorage.setItem(QUOTA_KEY, String(v)); } catch(e){}
+    syncQuotaSelect(v);
+    updateStorageUI();
+    closeSettings();
+    toast('Configurações salvas.', 'success');
+  });
+
+  els.resetAllBtn.addEventListener('click', async () => {
+    if(!confirm('Isso apagará TODAS as mídias do cofre. Continuar?')) return;
+    try{
+      await idbClear();
+    } catch(e){
+      console.error(e);
+      toast('Falha ao limpar.', 'error');
+      return;
+    }
+    state.items.forEach(it => revokeURLs(it.id));
+    state.items = [];
+    renderGallery();
+    updateStorageUI();
+    closeSettings();
+    toast('Cofre esvaziado.', 'info');
+  });
+
+  els.quotaSelect.addEventListener('change', (e) => {
+    const v = parseInt(e.target.value, 10) || DEFAULT_QUOTA_GB;
+    state.quotaGB = v;
+    try{ localStorage.setItem(QUOTA_KEY, String(v)); } catch(err){}
+    updateStorageUI();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape'){
+      if(els.darkroomModal.classList.contains('open')) closeDarkroom();
+      else if(els.settingsModal.classList.contains('open')) closeSettings();
+    }
+  });
+}
+
+async function init(){
+  try{
+    const stored = localStorage.getItem(QUOTA_KEY);
+    if(stored){
+      const v = parseInt(stored, 10);
+      if(v > 0) state.quotaGB = v;
+    }
+  } catch(e){}
+  syncQuotaSelect(state.quotaGB);
+
+  try{
+    state.items = await idbGetAll();
+  } catch(e){
+    console.error(e);
+    state.items = [];
+  }
+
+  bindEvents();
+  renderGallery();
+  updateStorageUI();
+}
+
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+
+})();
+</script>
+
+</body>
+</html>
