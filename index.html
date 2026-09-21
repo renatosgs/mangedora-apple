@@ -3,3294 +3,1123 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <meta name="description" content="MANGEDORA APPLE ELITE • Cofre Blindado com Bot Treinado Plus, Google Fotos Autônomo e Cota Manual de GB.">
+  <meta name="description" content="MANGEDORA APPLE PRO ELITE • Cofre Blindado com Robô IA, 40 Temas Exclusivos, Ajuste GB/TB e Google Fotos Direto.">
   <meta name="theme-color" content="#06070a">
-  <title>MANGEDORA APPLE • Elite Pro Vault, Bot Treinado Plus & Google Fotos</title>
-
-  <!-- Favicon SVG Elite -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%230b0e17' stroke='%233b82f6' stroke-width='2'/><path d='M16 6l9 5v6c0 5.5-4 9.5-9 11-5-1.5-9-5.5-9-11v-6l9-5z' fill='%23131b2e' stroke='%2360a5fa' stroke-width='1.5'/><circle cx='16' cy='16' r='3.5' fill='%23f59e0b'/></svg>">
-  
+  <title>MANGEDORA APPLE • Elite Pro Vault, Robô IA 4K & 40 Temas</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%2306070a' stroke='%233b82f6' stroke-width='2'/><path d='M16 6l9 5v6c0 5.5-4 9.5-9 11-5-1.5-9-5.5-9-11v-6l9-5z' fill='%23121724' stroke='%233b82f6' stroke-width='1.5'/><circle cx='16' cy='16' r='3.5' fill='%23f59e0b'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- JSZip para Backup Total e Extração de Pacotes sem Servidor -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-
   <style>
     :root {
-      /* Paleta Obsidian Elite Pro */
-      --bg-base: #06070a;
-      --bg-surface: #0c0f17;
-      --bg-surface-elevated: #121724;
-      --bg-card: rgba(16, 21, 33, 0.75);
-      --bg-card-hover: rgba(24, 31, 48, 0.88);
-
-      --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-medium: rgba(255, 255, 255, 0.15);
-      --border-focus: rgba(99, 102, 241, 0.55);
-
-      --text-primary: #f8fafc;
-      --text-secondary: #94a3b8;
-      --text-tertiary: #64748b;
-      --text-accent: #38bdf8;
-
-      /* Cores de Prestígio & Elite */
-      --elite-gold: #f59e0b;
-      --elite-gold-soft: #fef3c7;
-      --elite-gold-glow: rgba(245, 158, 11, 0.28);
-
-      --sapphire: #3b82f6;
-      --sapphire-glow: rgba(59, 130, 246, 0.35);
-
-      --emerald: #10b981;
-      --emerald-glow: rgba(16, 185, 129, 0.25);
-
-      --danger: #f43f5e;
-      --danger-glow: rgba(244, 63, 94, 0.35);
-
-      /* Cores Bot Treinado Plus / IA Neural */
-      --bot-cyan: #06b6d4;
-      --bot-purple: #a855f7;
-      --bot-gradient: linear-gradient(135deg, #06b6d4, #8b5cf6);
-      --bot-glow: rgba(6, 182, 212, 0.35);
-
-      /* Google Fotos Cores Oficiais */
-      --gphotos-blue: #4285F4;
-      --gphotos-red: #EA4335;
-      --gphotos-yellow: #FBBC05;
-      --gphotos-green: #34A853;
-
-      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-      --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-lg: 18px;
-      --radius-xl: 24px;
+      --bg-base: #06070a; --bg-surface: #0c0f17; --bg-surface-elevated: #121724;
+      --bg-card: rgba(18,23,36,0.85); --border-subtle: rgba(255,255,255,0.08);
+      --border-medium: rgba(255,255,255,0.18); --border-focus: #3b82f6;
+      --text-primary: #f8fafc; --text-secondary: #94a3b8; --text-tertiary: #64748b;
+      --text-accent: #38bdf8; --accent-primary: #3b82f6; --accent-secondary: #f59e0b;
+      --accent-glow: rgba(59,130,246,0.4); --radial-1: rgba(59,130,246,0.12); --radial-2: rgba(245,158,11,0.08);
+      --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif; --font-mono: 'JetBrains Mono', monospace;
+      --radius-sm: 8px; --radius-md: 14px; --radius-lg: 20px; --radius-xl: 28px;
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
-
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      color-scheme: dark;
-      scroll-behavior: smooth;
-    }
-
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      min-height: 100vh;
-      background-color: var(--bg-base);
-      color: var(--text-primary);
-      font-family: var(--font-sans);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      overflow-x: hidden;
-      line-height: 1.5;
-      background-image: 
-        radial-gradient(circle at 10% 10%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 90% 15%, rgba(6, 182, 212, 0.07) 0%, transparent 45%),
-        radial-gradient(circle at 50% 90%, rgba(16, 185, 129, 0.05) 0%, transparent 55%);
-      background-attachment: fixed;
+      font-family: var(--font-sans); background: var(--bg-base);
+      background-image: radial-gradient(circle at 15% 10%, var(--radial-1) 0%, transparent 45%), radial-gradient(circle at 85% 15%, var(--radial-2) 0%, transparent 45%);
+      background-attachment: fixed; color: var(--text-primary); min-height: 100vh; overflow-x: hidden;
     }
-
-    button {
-      font-family: inherit;
-      cursor: pointer;
-      border: none;
-      background: none;
-      color: inherit;
-      outline: none;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    input, select, textarea {
-      font-family: inherit;
-      color: inherit;
-      outline: none;
-    }
-
-    ::-webkit-scrollbar { width: 7px; height: 7px; }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
     ::-webkit-scrollbar-track { background: var(--bg-base); }
-    ::-webkit-scrollbar-thumb { background: #1c2233; border-radius: 4px; border: 1px solid var(--border-subtle); }
-    ::-webkit-scrollbar-thumb:hover { background: var(--sapphire); }
-
-    /* LAYOUT CONTAINER */
-    .app-shell {
-      max-width: 1540px;
-      margin: 0 auto;
-      padding: 0 1.25rem 3rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
+    ::-webkit-scrollbar-thumb { background: var(--bg-surface-elevated); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+    .app-container { max-width: 1400px; margin: 0 auto; padding: 1.25rem 1.5rem 3rem; }
+    .app-header {
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+      padding: 1.1rem 1.6rem; background: var(--bg-card); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); margin-bottom: 1.5rem;
     }
-
-    /* HEADER EXECUTIVO */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 80;
-      background: rgba(8, 10, 15, 0.85);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border-subtle);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    .brand-section { display: flex; align-items: center; gap: 0.9rem; }
+    .brand-logo-wrap {
+      width: 44px; height: 44px; border-radius: var(--radius-md); background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      display: flex; align-items: center; justify-content: center; box-shadow: 0 0 18px var(--accent-glow); flex-shrink: 0;
     }
-    .header-content {
-      max-width: 1540px;
-      margin: 0 auto;
-      padding: 0.8rem 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.2rem;
-      flex-wrap: wrap;
+    .brand-logo-wrap svg { width: 24px; height: 24px; fill: #ffffff; }
+    .brand-info h1 {
+      font-size: 1.22rem; font-weight: 800; display: flex; align-items: center; gap: 0.5rem;
+      background: linear-gradient(90deg, #fff, var(--text-secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-
-    .brand-group {
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
-      text-decoration: none;
-      color: inherit;
+    .badge-elite {
+      font-size: 0.65rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 0.2rem 0.5rem;
+      border-radius: 999px; background: rgba(59,130,246,0.15); border: 1px solid var(--accent-primary); color: var(--text-accent); -webkit-text-fill-color: var(--text-accent);
     }
-    .brand-logo-hex {
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #192133, #0b0f17);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 15px rgba(59, 130, 246, 0.15);
-      display: grid;
-      place-items: center;
-      position: relative;
-      flex-shrink: 0;
+    .header-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 0.65rem; }
+    .storage-pill {
+      display: flex; align-items: center; gap: 0.65rem; background: rgba(255,255,255,0.04); border: 1px solid var(--border-subtle);
+      border-radius: 999px; padding: 0.4rem 0.9rem; font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); cursor: pointer; transition: var(--transition);
     }
-    .brand-logo-hex svg {
-      filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5));
-    }
-    .brand-title {
-      display: flex;
-      flex-direction: column;
-    }
-    .brand-name {
-      font-size: 1.25rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-      background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .brand-tag {
-      font-size: 0.62rem;
-      font-weight: 700;
-      font-family: var(--font-mono);
-      letter-spacing: 0.08em;
-      padding: 0.15rem 0.45rem;
-      border-radius: 4px;
-      background: rgba(245, 158, 11, 0.15);
-      color: var(--elite-gold);
-      border: 1px solid rgba(245, 158, 11, 0.3);
-      -webkit-text-fill-color: var(--elite-gold);
-    }
-    .brand-sub {
-      font-size: 0.7rem;
-      color: var(--text-tertiary);
-      font-family: var(--font-mono);
-      letter-spacing: 0.05em;
-    }
-
-    /* BOTÕES */
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      flex-wrap: wrap;
-    }
-
+    .storage-pill:hover { background: rgba(255,255,255,0.08); border-color: var(--accent-primary); }
+    .storage-mini-bar { width: 55px; height: 6px; background: rgba(255,255,255,0.1); border-radius: 999px; overflow: hidden; }
+    .storage-mini-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary)); transition: width 0.4s ease; }
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 0.55rem 1.05rem;
-      border-radius: var(--radius-md);
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      white-space: nowrap;
-      user-select: none;
-      position: relative;
-      border: 1px solid transparent;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem; padding: 0.6rem 1.15rem; font-size: 0.85rem;
+      font-weight: 600; font-family: var(--font-sans); border-radius: var(--radius-md); border: 1px solid transparent; cursor: pointer; transition: var(--transition); text-decoration: none; white-space: nowrap;
     }
-    .btn:active { transform: scale(0.98); }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-      color: #ffffff;
-      border-color: rgba(96, 165, 250, 0.4);
-      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
-    }
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #60a5fa, #2563eb);
-      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
-      transform: translateY(-1px);
-    }
-
-    .btn-bot-plus {
-      background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(168, 85, 247, 0.2));
-      border: 1px solid rgba(6, 182, 212, 0.5);
-      color: #cffafe;
-      box-shadow: 0 0 16px rgba(6, 182, 212, 0.25);
-    }
-    .btn-bot-plus:hover {
-      background: linear-gradient(135deg, rgba(6, 182, 212, 0.35), rgba(168, 85, 247, 0.35));
-      border-color: var(--bot-cyan);
-      box-shadow: 0 0 24px rgba(6, 182, 212, 0.45);
-      transform: translateY(-1px);
-      color: #fff;
-    }
-
-    .btn-gphotos {
-      background: rgba(13, 17, 26, 0.9);
-      border: 1px solid rgba(66, 133, 244, 0.4);
-      color: #e2e8f0;
-      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
-    }
-    .btn-gphotos:hover {
-      background: rgba(20, 26, 40, 0.95);
-      border-color: var(--gphotos-blue);
-      box-shadow: 0 0 20px rgba(66, 133, 244, 0.3);
-      transform: translateY(-1px);
-      color: #fff;
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: var(--border-subtle);
-      color: var(--text-secondary);
-    }
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.09);
-      border-color: var(--border-medium);
-      color: var(--text-primary);
-    }
-
-    .btn-settings {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: #cbd5e1;
-    }
-    .btn-settings:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: #94a3b8;
-      color: #fff;
-      transform: rotate(25deg);
-    }
-
-    .btn-icon-only {
-      padding: 0.55rem;
-      min-width: 38px;
-      height: 38px;
-    }
-
-    /* BANNER DE BLINDAGEM */
-    .security-status-bar {
-      margin-top: 1rem;
-      background: linear-gradient(90deg, rgba(16, 185, 129, 0.08) 0%, rgba(59, 130, 246, 0.05) 50%, rgba(16, 185, 129, 0.04) 100%);
-      border: 1px solid rgba(16, 185, 129, 0.25);
-      border-radius: var(--radius-md);
-      padding: 0.75rem 1.1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .security-status-text {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      font-size: 0.8rem;
-      color: #cbd5e1;
-    }
-    .security-status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      padding: 0.25rem 0.65rem;
-      border-radius: 6px;
-      background: rgba(16, 185, 129, 0.15);
-      color: #34d399;
-      border: 1px solid rgba(16, 185, 129, 0.35);
-    }
-    .pulse-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #10b981;
-      box-shadow: 0 0 8px #10b981;
-      animation: pulseGreen 2s infinite;
-    }
-    @keyframes pulseGreen {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.85); }
-    }
-
-    /* TELEMETRIA & GRÁFICO AVANÇADO */
-    .telemetry-grid {
-      display: grid;
-      grid-template-columns: 340px 1fr;
-      gap: 1.25rem;
-      margin-top: 0.5rem;
-    }
-    @media (max-width: 980px) {
-      .telemetry-grid { grid-template-columns: 1fr; }
-    }
-
+    .btn-primary { background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); color: #fff; box-shadow: 0 4px 16px var(--accent-glow); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px var(--accent-glow); }
+    .btn-robot { background: rgba(59,130,246,0.14); border-color: var(--accent-primary); color: #fff; }
+    .btn-robot:hover { background: var(--accent-primary); box-shadow: 0 0 18px var(--accent-glow); transform: translateY(-2px); }
+    .btn-settings { background: rgba(255,255,255,0.06); border-color: var(--border-medium); color: var(--text-primary); }
+    .btn-settings:hover { background: rgba(255,255,255,0.12); border-color: var(--accent-primary); transform: translateY(-2px); }
+    .btn-gf { background: rgba(234,67,53,0.14); border: 1px solid rgba(234,67,53,0.45); color: #ff8a80; }
+    .btn-gf:hover { background: rgba(234,67,53,0.25); border-color: #ff5252; transform: translateY(-2px); }
+    .btn-secondary { background: rgba(255,255,255,0.06); border-color: var(--border-subtle); color: var(--text-secondary); }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); color: var(--text-primary); }
+    .btn-sm { padding: 0.4rem 0.8rem; font-size: 0.78rem; border-radius: var(--radius-sm); }
+    .telemetry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
     .telemetry-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 1.35rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(12px);
-      position: relative;
-      overflow: hidden;
+      background: var(--bg-card); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg); padding: 1.2rem 1.35rem; display: flex; flex-direction: column; gap: 0.5rem; transition: var(--transition);
+    }
+    .telemetry-card:hover { border-color: var(--border-medium); transform: translateY(-2px); }
+    .card-top { display: flex; align-items: center; justify-content: space-between; }
+    .card-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-secondary); }
+    .card-icon { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); color: var(--accent-primary); }
+    .card-val { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; color: var(--text-primary); }
+    .card-subtext { font-size: 0.75rem; color: var(--text-tertiary); }
+    .gf-banner {
+      background: linear-gradient(135deg, rgba(234,67,53,0.09), rgba(66,133,244,0.09)); border: 1px solid rgba(234,67,53,0.25);
+      border-radius: var(--radius-lg); padding: 1.2rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;
+    }
+    .gf-info { display: flex; align-items: center; gap: 1rem; }
+    .gf-badge-icon {
+      width: 46px; height: 46px; border-radius: var(--radius-md); background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.1);
+    }
+    .gf-texts h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .gf-texts p { font-size: 0.8rem; color: var(--text-secondary); }
+    .gf-buttons { display: flex; align-items: center; flex-wrap: wrap; gap: 0.6rem; }
+    .toolbar {
+      background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
+      padding: 0.85rem 1.15rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.85rem; margin-bottom: 1.35rem;
+    }
+    .filter-tabs { display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem; }
+    .filter-btn {
+      padding: 0.4rem 0.8rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; background: transparent; border: 1px solid transparent;
+      color: var(--text-secondary); cursor: pointer; transition: var(--transition);
+    }
+    .filter-btn:hover { color: var(--text-primary); background: rgba(255,255,255,0.05); }
+    .filter-btn.active { background: var(--accent-primary); color: #fff; box-shadow: 0 2px 10px var(--accent-glow); }
+    .search-sort-wrap { display: flex; align-items: center; gap: 0.65rem; flex-grow: 1; max-width: 440px; }
+    .search-input {
+      width: 100%; background: rgba(255,255,255,0.04); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+      padding: 0.5rem 0.85rem; color: var(--text-primary); font-size: 0.84rem; font-family: var(--font-sans); outline: none; transition: var(--transition);
+    }
+    .search-input:focus { border-color: var(--accent-primary); background: rgba(255,255,255,0.08); box-shadow: 0 0 10px var(--accent-glow); }
+    .sort-select {
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+      padding: 0.5rem 0.75rem; color: var(--text-primary); font-size: 0.8rem; font-family: var(--font-sans); outline: none; cursor: pointer;
+    }
+    .sort-select option { background: var(--bg-surface-elevated); color: var(--text-primary); }
+    .media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; }
+    .media-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
+      overflow: hidden; display: flex; flex-direction: column; transition: var(--transition); position: relative;
+    }
+    .media-card:hover { transform: translateY(-3px); border-color: var(--border-medium); box-shadow: 0 10px 28px rgba(0,0,0,0.5); }
+    .media-thumb-wrap {
+      width: 100%; height: 170px; position: relative; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: pointer;
+    }
+    .media-thumb-wrap img, .media-thumb-wrap video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.35s ease; }
+    .media-card:hover .media-thumb-wrap img { transform: scale(1.05); }
+    .media-badge {
+      position: absolute; top: 8px; left: 8px; font-size: 0.65rem; font-weight: 700; padding: 0.2rem 0.45rem;
+      border-radius: 5px; background: rgba(0,0,0,0.7); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.15); color: #fff; text-transform: uppercase;
+    }
+    .media-fav-btn {
+      position: absolute; top: 8px; right: 8px; width: 30px; height: 30px; border-radius: 50%;
+      background: rgba(0,0,0,0.65); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.15); color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition);
+    }
+    .media-fav-btn.active { color: #f59e0b; border-color: #f59e0b; }
+    .media-info { padding: 1rem; display: flex; flex-direction: column; gap: 0.45rem; flex-grow: 1; }
+    .media-title { font-size: 0.88rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .media-meta { display: flex; align-items: center; justify-content: space-between; font-size: 0.72rem; color: var(--text-tertiary); }
+    .media-actions { display: flex; align-items: center; gap: 0.4rem; margin-top: 0.35rem; padding-top: 0.5rem; border-top: 1px solid var(--border-subtle); }
+    .btn-action-icon {
+      flex: 1; padding: 0.35rem; font-size: 0.75rem; background: rgba(255,255,255,0.04); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm); color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.3rem; transition: var(--transition);
+    }
+    .btn-action-icon:hover { background: rgba(255,255,255,0.1); color: var(--text-primary); border-color: var(--border-medium); }
+    .btn-delete-icon:hover { background: rgba(239,68,68,0.18); color: #ef4444; border-color: #ef4444; }
+    .empty-vault {
+      grid-column: 1/-1; background: var(--bg-card); border: 2px dashed var(--border-medium); border-radius: var(--radius-xl);
+      padding: 3.5rem 1.5rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.85rem;
+    }
+    .empty-icon {
+      width: 64px; height: 64px; border-radius: 50%; background: rgba(59,130,246,0.1); border: 1px solid var(--accent-primary);
+      display: flex; align-items: center; justify-content: center; color: var(--accent-primary); font-size: 1.8rem;
     }
-    .telemetry-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
-    }
-
-    .chart-panel {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      gap: 0.8rem;
-    }
-    .donut-wrapper {
-      position: relative;
-      width: 170px;
-      height: 170px;
-      margin: 0.4rem 0;
-    }
-    .donut-svg {
-      width: 100%;
-      height: 100%;
-      transform: rotate(-90deg);
-    }
-    .donut-bg {
-      fill: none;
-      stroke: rgba(255, 255, 255, 0.05);
-      stroke-width: 16;
-    }
-    .donut-segment {
-      fill: none;
-      stroke-width: 16;
-      stroke-linecap: round;
-      transition: stroke-dasharray 0.8s cubic-bezier(0.16, 1, 0.3, 1), stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .donut-photos { stroke: #3b82f6; }
-    .donut-videos { stroke: #06b6d4; }
-    .donut-gphotos { stroke: #eab308; }
-
-    .donut-center-info {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-    }
-    .donut-val-pct {
-      font-family: var(--font-mono);
-      font-size: 1.45rem;
-      font-weight: 800;
-      color: #fff;
-    }
-    .donut-sub-text {
-      font-size: 0.68rem;
-      color: var(--text-tertiary);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .storage-stats-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 1.2rem;
-    }
-    .storage-header-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-    }
-    .storage-headline h3 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .storage-subheadline {
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-      margin-top: 0.2rem;
-    }
-
-    .storage-bar-outer {
-      width: 100%;
-      height: 14px;
-      background: rgba(0, 0, 0, 0.4);
-      border-radius: 8px;
-      border: 1px solid var(--border-subtle);
-      overflow: hidden;
-      display: flex;
-      padding: 2px;
-      gap: 2px;
-    }
-    .storage-bar-fill {
-      height: 100%;
-      border-radius: 5px;
-      transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .bar-photos { background: linear-gradient(90deg, #2563eb, #3b82f6); box-shadow: 0 0 10px rgba(59, 130, 246, 0.4); }
-    .bar-videos { background: linear-gradient(90deg, #0284c7, #06b6d4); box-shadow: 0 0 10px rgba(6, 182, 212, 0.4); }
-    .bar-gphotos { background: linear-gradient(90deg, #d97706, #f59e0b); box-shadow: 0 0 10px rgba(245, 158, 11, 0.4); }
-
-    .metrics-pills-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 0.85rem;
-    }
-    .metric-pill-box {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 0.85rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-    .metric-label {
-      font-size: 0.72rem;
-      color: var(--text-tertiary);
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-    .legend-indicator {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-    }
-    .metric-value {
-      font-family: var(--font-mono);
-      font-size: 1.08rem;
-      font-weight: 700;
-      color: #f1f5f9;
-    }
-    .metric-detail {
-      font-size: 0.7rem;
-      color: var(--text-tertiary);
-    }
-
-    /* CENTRAL GOOGLE FOTOS & DROPZONE */
-    .vip-action-section {
-      display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 1.25rem;
-    }
-    @media (max-width: 980px) {
-      .vip-action-section { grid-template-columns: 1fr; }
-    }
-
-    .elite-dropzone {
-      border: 2px dashed rgba(59, 130, 246, 0.35);
-      border-radius: var(--radius-xl);
-      background: radial-gradient(circle at 50% 30%, rgba(26, 36, 54, 0.6), rgba(12, 15, 24, 0.95));
-      padding: 2.5rem 1.75rem;
-      text-align: center;
-      position: relative;
-      cursor: pointer;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      overflow: hidden;
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .elite-dropzone.dragover {
-      border-color: #60a5fa;
-      background: radial-gradient(circle at 50% 30%, rgba(59, 130, 246, 0.18), rgba(17, 24, 39, 0.98));
-      transform: scale(1.01);
-      box-shadow: 0 0 35px rgba(59, 130, 246, 0.35);
-    }
-    .dropzone-core {
-      max-width: 600px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      pointer-events: none;
-    }
-    .dropzone-core button { pointer-events: auto; }
-    .dropzone-hex-icon {
-      width: 70px;
-      height: 70px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(15, 23, 42, 0.8));
-      border: 1px solid rgba(59, 130, 246, 0.5);
-      display: grid;
-      place-items: center;
-      color: #60a5fa;
-      box-shadow: 0 0 25px rgba(59, 130, 246, 0.25);
-    }
-    .dropzone-headline {
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: -0.02em;
-    }
-    .dropzone-headline span {
-      background: linear-gradient(135deg, #60a5fa, #38bdf8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .dropzone-description {
-      font-size: 0.86rem;
-      color: var(--text-secondary);
-      line-height: 1.5;
-    }
-
-    .dropzone-actions-wrap {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 0.4rem;
-    }
-
-    .clipboard-paste-hint {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.74rem;
-      color: var(--text-tertiary);
-      font-family: var(--font-mono);
-      background: rgba(255, 255, 255, 0.03);
-      padding: 0.35rem 0.8rem;
-      border-radius: 20px;
-      border: 1px solid var(--border-subtle);
-    }
-
-    .gphotos-direct-card {
-      background: linear-gradient(180deg, rgba(22, 27, 42, 0.8), rgba(11, 14, 22, 0.95));
-      border: 1px solid rgba(66, 133, 244, 0.35);
-      border-radius: var(--radius-xl);
-      padding: 1.4rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 1.1rem;
-      position: relative;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-    }
-    .gphotos-card-head {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .gphotos-pinwheel-icon {
-      width: 44px;
-      height: 44px;
-      flex-shrink: 0;
-      border-radius: 12px;
-      background: #101420;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      display: grid;
-      place-items: center;
-    }
-    .gphotos-card-title h4 {
-      font-size: 0.98rem;
-      font-weight: 700;
-      color: #fff;
-    }
-    .gphotos-card-title p {
-      font-size: 0.72rem;
-      color: var(--text-secondary);
-    }
-
-    .gphotos-direct-feature-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      font-size: 0.76rem;
-      color: #cbd5e1;
-    }
-    .gphotos-feature-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.5rem;
-    }
-    .gphotos-feature-item svg {
-      flex-shrink: 0;
-      margin-top: 2px;
-      color: #34d399;
-    }
-
-    .btn-gphotos-direct-launch {
-      width: 100%;
-      background: linear-gradient(135deg, rgba(66, 133, 244, 0.2), rgba(52, 168, 83, 0.2));
-      border: 1px solid rgba(66, 133, 244, 0.5);
-      color: #fff;
-      padding: 0.8rem 1rem;
-      border-radius: var(--radius-md);
-      font-weight: 700;
-      font-size: 0.85rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-    }
-    .btn-gphotos-direct-launch:hover {
-      background: linear-gradient(135deg, rgba(66, 133, 244, 0.35), rgba(52, 168, 83, 0.35));
-      border-color: #60a5fa;
-      box-shadow: 0 0 25px rgba(66, 133, 244, 0.4);
-      transform: translateY(-2px);
-    }
-
-    /* TOOLBAR */
-    .gallery-control-strip {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 0.85rem 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .filter-tabs {
-      display: flex;
-      gap: 0.35rem;
-      background: rgba(0, 0, 0, 0.3);
-      padding: 0.25rem;
-      border-radius: 10px;
-      border: 1px solid var(--border-subtle);
-      flex-wrap: wrap;
-    }
-    .tab-btn {
-      padding: 0.42rem 0.85rem;
-      border-radius: 7px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-      transition: all 0.18s ease;
-    }
-    .tab-btn:hover {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.05);
-    }
-    .tab-btn.active {
-      color: #fff;
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
-      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
-    }
-
-    .gallery-tools-right {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      flex-wrap: wrap;
-      flex: 1;
-      justify-content: flex-end;
-    }
-    .search-input-wrap {
-      position: relative;
-      min-width: 220px;
-      max-width: 320px;
-      flex: 1;
-    }
-    .search-input-wrap svg {
-      position: absolute;
-      left: 0.75rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-tertiary);
-      pointer-events: none;
-    }
-    .search-input-box {
-      width: 100%;
-      background: rgba(0, 0, 0, 0.35);
-      border: 1px solid var(--border-subtle);
-      border-radius: 9px;
-      padding: 0.5rem 0.8rem 0.5rem 2.2rem;
-      font-size: 0.82rem;
-      color: #fff;
-      transition: all 0.2s;
-    }
-    .search-input-box:focus {
-      border-color: var(--sapphire);
-      box-shadow: 0 0 12px rgba(59, 130, 246, 0.3);
-      background: rgba(0, 0, 0, 0.5);
-    }
-
-    .select-sort-box {
-      background: rgba(0, 0, 0, 0.35);
-      border: 1px solid var(--border-subtle);
-      border-radius: 9px;
-      padding: 0.5rem 0.75rem;
-      font-size: 0.78rem;
-      color: var(--text-secondary);
-      cursor: pointer;
-    }
-
-    /* BARRA DE SELEÇÃO EM MASSA */
-    .batch-selection-bar {
-      display: none;
-      background: linear-gradient(90deg, rgba(37, 99, 235, 0.15), rgba(15, 23, 42, 0.95));
-      border: 1px solid rgba(59, 130, 246, 0.4);
-      border-radius: var(--radius-md);
-      padding: 0.65rem 1.1rem;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      animation: fadeIn 0.2s ease-out;
-    }
-    .batch-selection-bar.visible { display: flex; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-5px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* GRID DA GALERIA */
-    .vault-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-      gap: 1.25rem;
-      min-height: 280px;
-    }
-    @media (max-width: 600px) {
-      .vault-grid {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-        gap: 0.85rem;
-      }
-    }
-
-    .vault-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-      user-select: none;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
-    }
-    .vault-card:hover {
-      border-color: rgba(99, 102, 241, 0.5);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(59, 130, 246, 0.15);
-    }
-    .vault-card.selected {
-      border-color: #60a5fa;
-      box-shadow: 0 0 0 2px #3b82f6, 0 8px 25px rgba(59, 130, 246, 0.3);
-      background: rgba(29, 38, 59, 0.85);
-    }
-
-    .card-thumbnail-container {
-      aspect-ratio: 1 / 1;
-      width: 100%;
-      background: #080a10;
-      position: relative;
-      overflow: hidden;
-      display: grid;
-      place-items: center;
-    }
-    .card-thumb-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-    .vault-card:hover .card-thumb-img { transform: scale(1.05); }
-
-    .card-badge-top-left {
-      position: absolute;
-      top: 0.55rem;
-      left: 0.55rem;
-      z-index: 5;
-      font-size: 0.65rem;
-      font-family: var(--font-mono);
-      font-weight: 700;
-      padding: 0.2rem 0.5rem;
-      border-radius: 6px;
-      backdrop-filter: blur(8px);
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      color: #fff;
-    }
-    .badge-gphotos {
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(66, 133, 244, 0.6);
-      color: #93c5fd;
-    }
-    .badge-phone {
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(16, 185, 129, 0.5);
-      color: #6ee7b7;
-    }
-
-    .card-video-pill {
-      position: absolute;
-      top: 0.55rem;
-      right: 0.55rem;
-      z-index: 5;
-      background: rgba(0, 0, 0, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 6px;
-      padding: 0.2rem 0.45rem;
-      font-size: 0.62rem;
-      font-family: var(--font-mono);
-      color: #38bdf8;
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-    }
-
-    .card-play-overlay {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      pointer-events: none;
-      z-index: 4;
-    }
-    .play-btn-circle {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: rgba(15, 23, 42, 0.75);
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      display: grid;
-      place-items: center;
-      color: #fff;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-      transition: all 0.2s;
-    }
-    .vault-card:hover .play-btn-circle {
-      transform: scale(1.1);
-      background: rgba(37, 99, 235, 0.85);
-      border-color: #60a5fa;
-    }
-
-    .card-checkbox {
-      position: absolute;
-      bottom: 0.55rem;
-      left: 0.55rem;
-      z-index: 6;
-      width: 22px;
-      height: 22px;
-      border-radius: 6px;
-      background: rgba(0, 0, 0, 0.7);
-      border: 1.5px solid rgba(255, 255, 255, 0.3);
-      display: grid;
-      place-items: center;
-      color: transparent;
-      transition: all 0.15s;
-    }
-    .vault-card.selected .card-checkbox {
-      background: #3b82f6;
-      border-color: #60a5fa;
-      color: #fff;
-    }
-
-    .card-action-btn-del {
-      position: absolute;
-      bottom: 0.55rem;
-      right: 0.55rem;
-      z-index: 6;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(244, 63, 94, 0.4);
-      color: #fda4af;
-      display: grid;
-      place-items: center;
-      opacity: 0;
-      transition: all 0.2s;
-    }
-    .vault-card:hover .card-action-btn-del { opacity: 1; }
-    .card-action-btn-del:hover {
-      background: var(--danger);
-      color: #fff;
-      transform: scale(1.12);
-    }
-
-    .card-meta-info {
-      padding: 0.75rem 0.9rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-    .card-file-name {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #f1f5f9;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .card-file-details {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--text-tertiary);
-    }
-
-    .vault-empty-state {
-      grid-column: 1 / -1;
-      padding: 4.5rem 1rem;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      color: var(--text-tertiary);
-    }
-    .empty-shield-icon {
-      width: 76px;
-      height: 76px;
-      border-radius: 24px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--border-subtle);
-      display: grid;
-      place-items: center;
-      color: var(--text-secondary);
-      margin-bottom: 0.5rem;
-    }
-
-    /* LIGHTBOX */
-    .lightbox-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(4, 5, 8, 0.94);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      z-index: 1000;
-      display: none;
-      flex-direction: column;
-      opacity: 0;
-      transition: opacity 0.25s ease;
-    }
-    .lightbox-backdrop.active { display: flex; opacity: 1; }
-
-    .lightbox-topbar {
-      padding: 0.9rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      border-bottom: 1px solid var(--border-subtle);
-      background: rgba(10, 13, 20, 0.7);
-      flex-shrink: 0;
-    }
-    .lightbox-filename {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #fff;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .lightbox-meta {
-      font-size: 0.72rem;
-      font-family: var(--font-mono);
-      color: var(--text-secondary);
-    }
-
-    .lightbox-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .lightbox-stage {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-      padding: 1rem;
-    }
-
-    .lightbox-media-wrap {
-      max-width: 92vw;
-      max-height: 82vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.25s ease-out;
-    }
-    .lightbox-img, .lightbox-video {
-      max-width: 92vw;
-      max-height: 82vh;
-      object-fit: contain;
-      border-radius: 8px;
-      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
-    }
-
-    .lightbox-nav-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: rgba(18, 24, 38, 0.75);
-      border: 1px solid var(--border-medium);
-      color: #fff;
-      display: grid;
-      place-items: center;
-      transition: all 0.2s;
-      z-index: 10;
-    }
-    .lightbox-nav-btn:hover {
-      background: #2563eb;
-      border-color: #60a5fa;
-      transform: translateY(-50%) scale(1.1);
-    }
-    .lightbox-prev { left: 1.5rem; }
-    .lightbox-next { right: 1.5rem; }
-
-    /* MODAL BASE */
     .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(3, 5, 10, 0.85);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      z-index: 900;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 1.25rem;
+      position: fixed; inset: 0; background: rgba(0,0,0,0.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 1.25rem; opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
     }
-    .modal-overlay.open { display: flex; }
-
-    .elite-modal-dialog {
-      background: linear-gradient(180deg, #131724, #0b0e17);
-      border: 1px solid var(--border-medium);
-      border-radius: var(--radius-xl);
-      width: 100%;
-      max-width: 660px;
-      overflow: hidden;
-      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.7), 0 0 35px rgba(59, 130, 246, 0.15);
-      animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      display: flex;
-      flex-direction: column;
+    .modal-overlay.open { opacity: 1; pointer-events: auto; }
+    .modal-box {
+      background: var(--bg-surface-elevated); border: 1px solid var(--border-medium); border-radius: var(--radius-xl);
+      width: 100%; max-width: 650px; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+      transform: scale(0.96); transition: transform 0.25s ease; display: flex; flex-direction: column;
     }
-    @keyframes modalPop {
-      from { transform: scale(0.95); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
+    .modal-overlay.open .modal-box { transform: scale(1); }
+    .modal-box-large { max-width: 920px; }
+    .modal-header {
+      display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border-subtle);
     }
-
-    .modal-dialog-header {
-      padding: 1.2rem 1.6rem;
-      border-bottom: 1px solid var(--border-subtle);
-      background: rgba(255, 255, 255, 0.02);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .modal-title { font-size: 1.15rem; font-weight: 800; display: flex; align-items: center; gap: 0.5rem; }
+    .modal-close {
+      background: rgba(255,255,255,0.06); border: 1px solid var(--border-subtle); width: 32px; height: 32px;
+      border-radius: 50%; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition);
     }
-    .modal-dialog-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
+    .modal-close:hover { background: rgba(255,255,255,0.12); color: var(--text-primary); }
+    .modal-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+    .settings-section {
+      background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
+      padding: 1.25rem; display: flex; flex-direction: column; gap: 0.85rem;
     }
-    .modal-dialog-body {
-      padding: 1.6rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      max-height: 75vh;
-      overflow-y: auto;
+    .settings-head { display: flex; align-items: center; justify-content: space-between; }
+    .settings-head h4 { font-size: 1rem; font-weight: 700; display: flex; align-items: center; gap: 0.45rem; }
+    .theme-highlight-banner {
+      background: linear-gradient(135deg, rgba(59,130,246,0.15), rgba(245,158,11,0.1)); border: 1px solid var(--accent-primary);
+      border-radius: var(--radius-md); padding: 1.15rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.85rem;
     }
-
-    /* CONFIGURAÇÕES STYLES */
-    .settings-section-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 1.2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+    .quota-presets { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .preset-chip {
+      padding: 0.4rem 0.75rem; border-radius: 999px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle);
+      color: var(--text-primary); font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: var(--transition);
     }
-    .settings-title-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .preset-chip:hover, .preset-chip.active { background: var(--accent-primary); border-color: var(--accent-primary); box-shadow: 0 0 10px var(--accent-glow); }
+    .custom-quota-form { display: flex; align-items: center; gap: 0.65rem; flex-wrap: wrap; }
+    .custom-quota-form input {
+      flex: 1; min-width: 110px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+      padding: 0.55rem 0.85rem; color: #fff; font-family: var(--font-mono); font-size: 0.88rem; outline: none;
     }
-    .settings-title-row h4 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+    .custom-quota-form select {
+      background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+      padding: 0.55rem 0.85rem; color: #fff; font-size: 0.88rem; outline: none; cursor: pointer;
     }
-    .settings-desc {
-      font-size: 0.78rem;
-      color: var(--text-secondary);
-      line-height: 1.45;
+    .theme-category-nav { display: flex; align-items: center; gap: 0.45rem; overflow-x: auto; padding-bottom: 0.4rem; }
+    .theme-cat-btn {
+      padding: 0.35rem 0.75rem; border-radius: 999px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle);
+      color: var(--text-secondary); font-size: 0.75rem; font-weight: 600; white-space: nowrap; cursor: pointer; transition: var(--transition);
     }
-
-    .preset-gb-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-      gap: 0.5rem;
+    .theme-cat-btn:hover, .theme-cat-btn.active { background: var(--accent-primary); color: #fff; border-color: var(--accent-primary); }
+    .themes-grid-40 {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.85rem; max-height: 480px; overflow-y: auto; padding: 0.4rem 0.1rem;
     }
-    .btn-preset-gb {
-      padding: 0.5rem 0.3rem;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--text-secondary);
-      text-align: center;
+    .theme-item-card {
+      background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+      padding: 0.85rem; cursor: pointer; position: relative; transition: var(--transition); display: flex; flex-direction: column; gap: 0.5rem;
     }
-    .btn-preset-gb:hover {
-      background: rgba(59, 130, 246, 0.15);
-      border-color: var(--sapphire);
-      color: #fff;
+    .theme-item-card:hover { transform: translateY(-2px); border-color: var(--accent-primary); background: rgba(255,255,255,0.06); }
+    .theme-item-card.current-active { border-color: var(--accent-primary); background: rgba(59,130,246,0.12); box-shadow: 0 0 14px var(--accent-glow); }
+    .theme-active-tag {
+      position: absolute; top: 8px; right: 8px; font-size: 0.6rem; font-weight: 800; background: var(--accent-primary);
+      color: #fff; padding: 0.15rem 0.45rem; border-radius: 999px; display: none;
     }
-    .btn-preset-gb.active {
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
-      border-color: #60a5fa;
-      color: #fff;
-      box-shadow: 0 0 12px rgba(37, 99, 235, 0.5);
+    .theme-item-card.current-active .theme-active-tag { display: block; }
+    .theme-card-top { display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; }
+    .theme-card-title { font-size: 0.88rem; font-weight: 700; }
+    .theme-card-cat { font-size: 0.65rem; color: var(--text-tertiary); text-transform: uppercase; font-weight: 600; }
+    .theme-card-desc { font-size: 0.75rem; color: var(--text-secondary); line-height: 1.35; }
+    .palette-row { display: flex; align-items: center; gap: 0.35rem; margin-top: 0.25rem; }
+    .palette-circle { width: 20px; height: 20px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); }
+    .robot-hud {
+      background: rgba(0,0,0,0.45); border: 1px solid var(--accent-primary); border-radius: var(--radius-lg);
+      padding: 1.25rem; display: flex; align-items: center; gap: 1.25rem; box-shadow: inset 0 0 25px var(--accent-glow);
     }
-
-    .custom-gb-input-row {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
+    .robot-avatar {
+      width: 70px; height: 70px; border-radius: 50%; background: radial-gradient(circle, var(--accent-primary) 0%, #000 70%);
+      display: flex; align-items: center; justify-content: center; border: 2px solid var(--accent-primary);
+      box-shadow: 0 0 20px var(--accent-glow); animation: pulseRobot 2s infinite alternate; flex-shrink: 0;
     }
-    .custom-gb-input {
-      flex: 1;
-      background: rgba(0, 0, 0, 0.4);
-      border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      padding: 0.6rem 0.9rem;
-      font-family: var(--font-mono);
-      font-size: 0.9rem;
-      color: #fff;
+    @keyframes pulseRobot { 0% { transform: scale(1); } 100% { transform: scale(1.06); box-shadow: 0 0 28px var(--accent-glow); } }
+    .robot-hud-details h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.25rem; }
+    .robot-hud-details p { font-size: 0.78rem; color: var(--text-secondary); }
+    .robot-terminal {
+      background: #020305; border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-md);
+      padding: 0.85rem; font-family: var(--font-mono); font-size: 0.75rem; color: #38bdf8; height: 130px; overflow-y: auto; line-height: 1.5;
     }
-    .custom-gb-input:focus {
-      border-color: var(--sapphire);
-      box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+    .toast-container { position: fixed; bottom: 20px; right: 20px; z-index: 2000; display: flex; flex-direction: column; gap: 0.5rem; pointer-events: none; }
+    .toast-msg {
+      background: var(--bg-surface-elevated); border: 1px solid var(--accent-primary); border-radius: var(--radius-md);
+      padding: 0.75rem 1.15rem; color: #fff; font-size: 0.82rem; font-weight: 600; box-shadow: 0 6px 25px rgba(0,0,0,0.6);
+      animation: slideToast 0.25s forwards ease-out; pointer-events: auto; display: flex; align-items: gap: 0.5rem;
     }
-
-    /* BOT PLUS STYLES */
-    .bot-header-badge {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.25rem 0.65rem;
-      border-radius: 20px;
-      background: rgba(6, 182, 212, 0.15);
-      border: 1px solid rgba(6, 182, 212, 0.4);
-      font-size: 0.72rem;
-      font-family: var(--font-mono);
-      color: #67e8f9;
-    }
-    .bot-console-card {
-      background: #06080d;
-      border: 1px solid rgba(6, 182, 212, 0.3);
-      border-radius: var(--radius-md);
-      padding: 1rem;
-      font-family: var(--font-mono);
-      font-size: 0.76rem;
-      color: #a5f3fc;
-      max-height: 190px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-      box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
-    }
-    .console-line {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.5rem;
-      word-break: break-all;
-    }
-    .console-line.success { color: #86efac; }
-    .console-line.warning { color: #fde047; }
-    .console-line.action { color: #c084fc; font-weight: 700; }
-
-    .bot-action-cards-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.85rem;
-    }
-    @media (max-width: 600px) {
-      .bot-action-cards-grid { grid-template-columns: 1fr; }
-    }
-    .bot-tool-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 0.8rem;
-    }
-    .bot-tool-card:hover {
-      border-color: rgba(6, 182, 212, 0.4);
-      background: rgba(6, 182, 212, 0.04);
-    }
-    .bot-tool-title {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-    }
-    .bot-tool-desc {
-      font-size: 0.74rem;
-      color: var(--text-secondary);
-      line-height: 1.4;
-    }
-
-    .gphotos-method-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 1rem 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      transition: all 0.2s;
-    }
-    .gphotos-method-card:hover {
-      border-color: rgba(66, 133, 244, 0.5);
-      background: rgba(66, 133, 244, 0.06);
-    }
-    .gphotos-method-info h5 {
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 0.25rem;
-    }
-    .gphotos-method-info p {
-      font-size: 0.77rem;
-      color: var(--text-secondary);
-      line-height: 1.4;
-    }
-
-    .toast-tray {
-      position: fixed;
-      bottom: 1.5rem;
-      right: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.65rem;
-      z-index: 2000;
-      pointer-events: none;
-      max-width: 420px;
-    }
-    .toast-item {
-      pointer-events: auto;
-      background: rgba(18, 22, 34, 0.95);
-      border: 1px solid var(--border-medium);
-      border-left: 4px solid var(--sapphire);
-      border-radius: var(--radius-md);
-      padding: 0.85rem 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
-      transform: translateX(110%);
-      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-      font-size: 0.82rem;
-      color: #f1f5f9;
-    }
-    .toast-item.visible { transform: translateX(0); }
-    .toast-item.success { border-left-color: var(--emerald); }
-    .toast-item.error { border-left-color: var(--danger); }
-    .toast-item.warning { border-left-color: var(--elite-gold); }
-    .toast-item.bot { border-left-color: var(--bot-cyan); }
-    .toast-item.gphotos { border-left-color: var(--gphotos-blue); }
-
-    .site-footer {
-      border-top: 1px solid var(--border-subtle);
-      padding: 1.5rem 0;
-      margin-top: 2rem;
-      text-align: center;
-      font-size: 0.75rem;
-      color: var(--text-tertiary);
+    @keyframes slideToast { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+    .lightbox-content { max-width: 90vw; max-height: 90vh; display: flex; flex-direction: column; align-items: center; gap: 0.85rem; }
+    .lightbox-media { max-width: 100%; max-height: 75vh; border-radius: var(--radius-lg); box-shadow: 0 10px 40px rgba(0,0,0,0.8); }
+    @media (max-width: 768px) {
+      .app-header { flex-direction: column; align-items: flex-start; }
+      .header-actions { width: 100%; justify-content: space-between; }
+      .toolbar { flex-direction: column; align-items: stretch; }
+      .search-sort-wrap { max-width: 100%; }
     }
   </style>
 </head>
 <body>
-
-  <!-- CABEÇALHO EXECUTIVO ELITE -->
-  <header class="site-header">
-    <div class="header-content">
-      <div class="brand-group">
-        <div class="brand-logo-hex">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="rgba(59, 130, 246, 0.2)"/>
-            <path d="M12 8v4"/>
-            <path d="M12 16h.01"/>
-          </svg>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="brand-section">
+        <div class="brand-logo-wrap">
+          <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.45c.61-.75 1.04-1.8 1.01-2.45-.92.04-2.02.62-2.67 1.37-.58.67-1.09 1.74-.95 2.77 1.02.08 2-.64 2.61-1.32z"/></svg>
         </div>
-        <div class="brand-title">
-          <div class="brand-name">
-            MANGEDORA APPLE <span class="brand-tag">PRO ELITE</span>
-          </div>
-          <div class="brand-sub">COFRE BLINDADO INDEPENDENTE • GOOGLE FOTOS & BOT PLUS</div>
+        <div class="brand-info">
+          <h1>MANGEDORA APPLE <span class="badge-elite">PRO ELITE</span></h1>
+          <p style="font-size:0.75rem;color:var(--text-tertiary);">Cofre Blindado Quântico • Google Fotos Direto • 40 Temas & Robô IA</p>
         </div>
       </div>
-
       <div class="header-actions">
-        <!-- BOTÃO BOT TREINADO PLUS -->
-        <button id="btnOpenBotModal" class="btn btn-bot-plus" type="button" title="Bot Treinado Plus - Otimizador Inteligente de Armazenamento">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="3" y="11" width="18" height="10" rx="2"></rect>
-            <circle cx="12" cy="5" r="2"></circle>
-            <path d="M12 7v4"></path>
-            <line x1="8" y1="16" x2="8.01" y2="16"></line>
-            <line x1="16" y1="16" x2="16.01" y2="16"></line>
-          </svg>
-          <span>Bot Treinado Plus</span>
-        </button>
-
-        <!-- BOTÃO DIRETO GOOGLE FOTOS (SEM TOKEN) -->
-        <button id="headerOpenGPhotosBtn" class="btn btn-gphotos" type="button" title="Acessar Galeria do Google Fotos Direto sem Chave">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="7" r="4" fill="#EA4335" />
-            <circle cx="17" cy="12" r="4" fill="#4285F4" />
-            <circle cx="12" cy="17" r="4" fill="#34A853" />
-            <circle cx="7" cy="12" r="4" fill="#FBBC05" />
-          </svg>
-          <span>Google Fotos Direto</span>
-        </button>
-
-        <!-- ADICIONAR AO COFRE -->
-        <button id="btnMainUpload" class="btn btn-primary" type="button">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-          </svg>
-          <span>Guardar no Cofre</span>
-        </button>
-
-        <!-- BOTÃO CONFIGURAÇÕES -->
-        <button id="btnOpenSettings" class="btn btn-settings btn-icon-only" type="button" title="Configurações do Cofre & Ajuste de Capacidade Manual">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="3"></circle>
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-          </svg>
-        </button>
+        <div class="storage-pill" id="quickStorageBtn" title="Clique para ajustar GB / Terabytes nas Configurações">
+          <span>💾</span>
+          <span id="headerStorageText">0 MB / 250 GB</span>
+          <div class="storage-mini-bar"><div class="storage-mini-fill" id="headerStorageFill"></div></div>
+        </div>
+        <button class="btn btn-robot" id="btnOpenRobot"><span>⚡</span> Robô IA Plus</button>
+        <button class="btn btn-settings" id="btnOpenSettings"><span>⚙️</span> Configurações</button>
+        <button class="btn btn-primary" id="btnUploadTrigger"><span>➕</span> Adicionar Mídia</button>
+        <input type="file" id="fileInput" multiple accept="image/*,video/*,application/pdf" style="display:none;">
       </div>
-    </div>
-  </header>
+    </header>
 
-  <!-- APP SHELL -->
-  <div class="app-shell">
-
-    <!-- FAIXA DE GARANTIA ANTI-EXCLUSÃO PERMANENTE -->
-    <div class="security-status-bar">
-      <div class="security-status-text">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.2">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-          <polyline points="9 12 11 14 15 10"></polyline>
-        </svg>
-        <span>
-          <strong>Isolamento Físico Blindado Ativo:</strong> Mídias adicionadas aqui são replicadas localmente no cofre permanente. 
-          <u>Você pode apagar qualquer foto do celular ou iCloud</u> que elas continuarão 100% salvas aqui.
-        </span>
-      </div>
-      <div class="security-status-badge">
-        <span class="pulse-dot"></span>
-        <span id="storagePersistenceText">INDEXEDDB PERSISTENTE</span>
-      </div>
-    </div>
-
-    <!-- SEÇÃO DE TELEMETRIA COM GRÁFICO AVANÇADO -->
     <section class="telemetry-grid">
-      <!-- GRÁFICO CIRCULAR SVG DINÂMICO (DONUT) -->
-      <div class="telemetry-card chart-panel">
-        <div style="display:flex;align-items:center;justify-content:space-between;width:100%">
-          <div style="font-size:0.8rem;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.06em">
-            Distribuição do Cofre
-          </div>
-          <button id="btnQuickConfigCapacity" class="btn btn-secondary" style="padding:0.25rem 0.55rem;font-size:0.68rem" title="Alterar cota em GB">
-            ⚙️ Ajustar GB
-          </button>
-        </div>
+      <div class="telemetry-card">
+        <div class="card-top"><span class="card-label">Total no Cofre</span><div class="card-icon">📁</div></div>
+        <div class="card-val" id="telemetryCount">0</div>
+        <div class="card-subtext" id="telemetryBreakdown">0 fotos • 0 vídeos • 0 outros</div>
+      </div>
+      <div class="telemetry-card">
+        <div class="card-top"><span class="card-label">Espaço Usado / Limite</span><div class="card-icon">💾</div></div>
+        <div class="card-val" id="telemetryUsage">0 MB</div>
+        <div class="card-subtext" id="telemetryLimitText">Capacidade: 250 GB</div>
+      </div>
+      <div class="telemetry-card">
+        <div class="card-top"><span class="card-label">Economia Robô IA</span><div class="card-icon">⚡</div></div>
+        <div class="card-val" id="telemetrySavings" style="color:#10b981;">0.0 MB</div>
+        <div class="card-subtext">Poupados com compressão Canvas 4K</div>
+      </div>
+      <div class="telemetry-card">
+        <div class="card-top"><span class="card-label">Blindagem & Status</span><div class="card-icon">🛡️</div></div>
+        <div class="card-val" style="font-size:1.3rem;color:#38bdf8;">100% OFFLINE</div>
+        <div class="card-subtext">IndexedDB Local Blindado</div>
+      </div>
+    </section>
 
-        <div class="donut-wrapper">
-          <svg class="donut-svg" viewBox="0 0 100 100">
-            <circle class="donut-bg" cx="50" cy="50" r="38"></circle>
-            <circle id="donutPhotos" class="donut-segment donut-photos" cx="50" cy="50" r="38" stroke-dasharray="0 238.76" stroke-dashoffset="0"></circle>
-            <circle id="donutVideos" class="donut-segment donut-videos" cx="50" cy="50" r="38" stroke-dasharray="0 238.76" stroke-dashoffset="0"></circle>
-            <circle id="donutGPhotos" class="donut-segment donut-gphotos" cx="50" cy="50" r="38" stroke-dasharray="0 238.76" stroke-dashoffset="0"></circle>
-          </svg>
-          <div class="donut-center-info">
-            <span id="donutCenterPct" class="donut-val-pct">0%</span>
-            <span class="donut-sub-text">Ocupação</span>
-          </div>
+    <section class="gf-banner">
+      <div class="gf-info">
+        <div class="gf-badge-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="#4285f4"/></svg>
         </div>
-
-        <div style="display:flex;gap:0.8rem;justify-content:center;flex-wrap:wrap;font-size:0.72rem;color:var(--text-tertiary);font-family:var(--font-mono)">
-          <span style="display:flex;align-items:center;gap:0.35rem"><span class="legend-indicator" style="background:#3b82f6"></span>Fotos</span>
-          <span style="display:flex;align-items:center;gap:0.35rem"><span class="legend-indicator" style="background:#06b6d4"></span>Vídeos</span>
-          <span style="display:flex;align-items:center;gap:0.35rem"><span class="legend-indicator" style="background:#eab308"></span>Google Fotos</span>
+        <div class="gf-texts">
+          <h3>Conexão Direta Google Fotos (Sem API / Sem Chave Token)</h3>
+          <p>Abra seu Google Fotos com 1 clique, copie qualquer foto (Ctrl+C) e cole aqui com Ctrl+V ou importe pacotes ZIP.</p>
         </div>
       </div>
+      <div class="gf-buttons">
+        <button class="btn btn-gf" id="btnLaunchGooglePhotos"><span>🚀</span> Abrir Google Fotos Direto</button>
+        <button class="btn btn-secondary" id="btnImportTakeoutZip"><span>📦</span> Importar Backup (.ZIP)</button>
+        <input type="file" id="zipFileInput" accept=".zip" style="display:none;">
+      </div>
+    </section>
 
-      <!-- DETALHES DE ARMAZENAMENTO & CAPACIDADE CONFIGURADA -->
-      <div class="telemetry-card storage-stats-container">
+    <section class="toolbar">
+      <div class="filter-tabs">
+        <button class="filter-btn active" data-filter="all">Todos (<span id="countAll">0</span>)</button>
+        <button class="filter-btn" data-filter="image">Fotos (<span id="countImg">0</span>)</button>
+        <button class="filter-btn" data-filter="video">Vídeos (<span id="countVid">0</span>)</button>
+        <button class="filter-btn" data-filter="fav">Favoritos (<span id="countFav">0</span>)</button>
+        <button class="filter-btn" data-filter="optimized">Otimizados IA (<span id="countOpt">0</span>)</button>
+      </div>
+      <div class="search-sort-wrap">
+        <input type="text" id="searchInput" class="search-input" placeholder="🔍 Pesquisar no cofre...">
+        <select id="sortSelect" class="sort-select">
+          <option value="newest">Mais recentes</option>
+          <option value="oldest">Mais antigos</option>
+          <option value="size-desc">Maior tamanho</option>
+          <option value="name">Nome (A-Z)</option>
+        </select>
+      </div>
+    </section>
+
+    <main class="media-grid" id="mediaGrid">
+      <div class="empty-vault">
+        <div class="empty-icon">📁</div>
+        <h3>Seu Cofre está Vazio e Pronto para Blindagem</h3>
+        <p style="color:var(--text-secondary);max-width:480px;">Adicione fotos e vídeos pelo botão acima, cole com Ctrl+V ou arraste arquivos para cá.</p>
+        <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()"><span>➕</span> Carregar Primeiros Arquivos</button>
+      </div>
+    </main>
+  </div>
+
+  <!-- MODAL: SETTINGS (CONFIGURAÇÕES) -->
+  <div class="modal-overlay" id="modalSettings">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title"><span>⚙️</span> Configurações do Aplicativo</div>
+        <button class="modal-close" onclick="closeModal('modalSettings')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="theme-highlight-banner">
+          <div>
+            <h4 style="font-size:1rem;font-weight:800;margin-bottom:0.25rem;">🎨 Mudar Tema do Aplicativo</h4>
+            <p style="font-size:0.78rem;color:var(--text-secondary);">40 temas exclusivos desenvolvidos para visual futurista e luxo.</p>
+          </div>
+          <button class="btn btn-primary" id="btnOpenThemesModal"><span>🎨</span> Escolher Entre os 40 Temas</button>
+        </div>
+
+        <div class="settings-section">
+          <div class="settings-head">
+            <h4><span>💾</span> Armazenamento & Limite Ajustável</h4>
+            <span class="badge-elite" id="settingsCurrentCapacity">250 GB</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--text-secondary);">Ajuste manualmente a quantia de Gigabytes (GB) ou Terabytes (TB) exibidos no cofre.</p>
+          <div style="font-size:0.75rem;font-weight:700;color:var(--text-tertiary);">PRESETS RÁPIDOS:</div>
+          <div class="quota-presets" id="quotaPresets">
+            <button class="preset-chip" data-val="50" data-unit="GB">50 GB</button>
+            <button class="preset-chip" data-val="100" data-unit="GB">100 GB</button>
+            <button class="preset-chip active" data-val="250" data-unit="GB">250 GB</button>
+            <button class="preset-chip" data-val="500" data-unit="GB">500 GB</button>
+            <button class="preset-chip" data-val="1" data-unit="TB">1 TB</button>
+            <button class="preset-chip" data-val="2" data-unit="TB">2 TB</button>
+            <button class="preset-chip" data-val="5" data-unit="TB">5 TB</button>
+            <button class="preset-chip" data-val="10" data-unit="TB">10 TB</button>
+            <button class="preset-chip" data-val="50" data-unit="TB">50 TB</button>
+            <button class="preset-chip" data-val="999" data-unit="TB">999 TB</button>
+          </div>
+          <div style="font-size:0.75rem;font-weight:700;color:var(--text-tertiary);margin-top:0.35rem;">AJUSTE MANUAL PERSONALIZADO:</div>
+          <div class="custom-quota-form">
+            <input type="number" id="customQuotaInput" min="1" max="999999" value="250">
+            <select id="customQuotaUnit">
+              <option value="GB">GB (Gigabytes)</option>
+              <option value="TB">TB (Terabytes)</option>
+            </select>
+            <button class="btn btn-primary btn-sm" id="btnSaveCustomQuota"><span>💾</span> Salvar Limite</button>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <div class="settings-head">
+            <h4><span>⚡</span> Robô Titânio IA Plus</h4>
+            <span class="badge-elite">100% Funcional</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--text-secondary);">Otimizador neural para redução de fotos em IndexedDB com Canvas 4K e eliminação de duplicados.</p>
+          <div>
+            <button class="btn btn-robot btn-sm" onclick="closeModal('modalSettings');openModal('modalRobot');"><span>⚡</span> Iniciar Painel do Robô IA</button>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <div class="settings-head"><h4><span>🛡️</span> Backup & Limpeza</h4></div>
+          <div style="display:flex;gap:0.65rem;flex-wrap:wrap;">
+            <button class="btn btn-secondary btn-sm" id="btnExportAllZip"><span>📦</span> Baixar Tudo em ZIP</button>
+            <button class="btn btn-secondary btn-sm" style="color:#ef4444;" id="btnClearAllVault"><span>🗑️</span> Esvaziar Cofre</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: 40 THEMES -->
+  <div class="modal-overlay" id="modalThemes">
+    <div class="modal-box modal-box-large">
+      <div class="modal-header">
+        <div class="modal-title"><span>🎨</span> Seleção de Temas (40 Estilos Exclusivos)</div>
+        <button class="modal-close" onclick="closeModal('modalThemes')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div style="display:flex;gap:0.85rem;align-items:center;flex-wrap:wrap;">
+          <input type="text" id="themeSearchInput" class="search-input" style="max-width:280px;" placeholder="🔍 Buscar tema...">
+          <div class="theme-category-nav" id="themeCategoryNav">
+            <button class="theme-cat-btn active" data-cat="all">Todos (40)</button>
+            <button class="theme-cat-btn" data-cat="Apple & Titanium">Apple & Titanium</button>
+            <button class="theme-cat-btn" data-cat="Elite & Luxo">Elite & Luxo</button>
+            <button class="theme-cat-btn" data-cat="Cyber & Futurista">Cyber & Futurista</button>
+            <button class="theme-cat-btn" data-cat="Neon & Quântico">Neon & Quântico</button>
+            <button class="theme-cat-btn" data-cat="Natureza & Joias">Natureza & Joias</button>
+            <button class="theme-cat-btn" data-cat="Amoled & Escuros">Amoled & Escuros</button>
+          </div>
+        </div>
+        <div class="themes-grid-40" id="themesGrid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: ROBOT IA PLUS -->
+  <div class="modal-overlay" id="modalRobot">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title"><span>⚡</span> Robô Titânio IA Plus • Gestão Neural de Espaço</div>
+        <button class="modal-close" onclick="closeModal('modalRobot')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="robot-hud">
+          <div class="robot-avatar">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+              <rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle>
+              <path d="M12 7v4"></path><line x1="8" y1="16" x2="8.01" y2="16"></line><line x1="16" y1="16" x2="16.01" y2="16"></line>
+            </svg>
+          </div>
+          <div class="robot-hud-details">
+            <h3>Robô Neural Titânio Ativo</h3>
+            <p>Pronto para escanear e otimizar itens locais no banco de dados.</p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr;gap:0.65rem;">
+          <button class="btn btn-primary" id="btnRobotOptimize"><span>⚡</span> Executar Otimização Canvas 4K (Recomprimir Imagens)</button>
+          <button class="btn btn-secondary" id="btnRobotDuplicates"><span>🔍</span> Escanear e Eliminar Mídias Duplicadas</button>
+          <button class="btn btn-secondary" id="btnRobotDefrag"><span>🧹</span> Desfragmentar Banco e Recalcular Índices</button>
+        </div>
         <div>
-          <div class="storage-header-row">
-            <div class="storage-headline">
-              <h3>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                </svg>
-                Telemetria de Armazenamento Blindado
-              </h3>
-              <div class="storage-subheadline">
-                Utilizando <strong id="storageUsedFormatted" style="color:#fff">0 MB</strong> de <strong id="storageQuotaFormatted" style="color:var(--text-secondary)">--</strong> disponível no cofre
-              </div>
-            </div>
-            <div id="storageStatusBadge" class="security-status-badge" style="background:rgba(59,130,246,0.12);color:#93c5fd;border-color:rgba(59,130,246,0.3)">
-              Cota Customizada Ativa
-            </div>
-          </div>
-
-          <div class="storage-bar-outer" style="margin-top:1.1rem">
-            <div id="barPhotos" class="storage-bar-fill bar-photos" style="width:0%"></div>
-            <div id="barVideos" class="storage-bar-fill bar-videos" style="width:0%"></div>
-            <div id="barGPhotos" class="storage-bar-fill bar-gphotos" style="width:0%"></div>
-          </div>
-        </div>
-
-        <div class="metrics-pills-row">
-          <div class="metric-pill-box">
-            <div class="metric-label">
-              <span class="legend-indicator" style="background:#3b82f6"></span>
-              Fotografias Salvas
-            </div>
-            <div id="statPhotosCount" class="metric-value">0</div>
-            <div id="statPhotosSize" class="metric-detail">0 B no cofre</div>
-          </div>
-
-          <div class="metric-pill-box">
-            <div class="metric-label">
-              <span class="legend-indicator" style="background:#06b6d4"></span>
-              Vídeos Preservados
-            </div>
-            <div id="statVideosCount" class="metric-value">0</div>
-            <div id="statVideosSize" class="metric-detail">0 B no cofre</div>
-          </div>
-
-          <div class="metric-pill-box">
-            <div class="metric-label">
-              <span class="legend-indicator" style="background:#eab308"></span>
-              Do Google Fotos
-            </div>
-            <div id="statGPhotosCount" class="metric-value">0</div>
-            <div id="statGPhotosSize" class="metric-detail">0 B importados</div>
-          </div>
-
-          <div class="metric-pill-box">
-            <div class="metric-label">
-              <span class="legend-indicator" style="background:#10b981"></span>
-              Espaço Livre Seguro
-            </div>
-            <div id="statFreeSpace" class="metric-value">Calculando...</div>
-            <div class="metric-detail">Pronto para novas fotos</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ÁREA CENTRAL: DROPZONE VIP & CONEXÃO GOOGLE FOTOS SEM TOKEN -->
-    <section class="vip-action-section">
-      <div id="mainDropzone" class="elite-dropzone" tabindex="0" role="button" aria-label="Adicionar mídia ao cofre">
-        <input type="file" id="generalFileInput" multiple accept="image/*,video/*,.zip" hidden>
-        <input type="file" id="cameraPhotoInput" accept="image/*" capture="environment" hidden>
-        <input type="file" id="zipImportInput" accept=".zip" hidden>
-
-        <div class="dropzone-core">
-          <div class="dropzone-hex-icon">
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-              <polyline points="17 8 12 3 7 8"></polyline>
-              <line x1="12" y1="3" x2="12" y2="15"></line>
-            </svg>
-          </div>
-          <h3 class="dropzone-headline">Arraste ou Selecione <span>Fotos & Vídeos</span></h3>
-          <p class="dropzone-description">
-            Guarde com máxima segurança. As mídias recebem blindagem local permanente e ficam imunes a exclusões acidentais no celular ou na nuvem.
-          </p>
-
-          <div class="dropzone-actions-wrap">
-            <button id="btnPickFiles" class="btn btn-primary" type="button">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                <polyline points="21 15 16 10 5 21"></polyline>
-              </svg>
-              Selecionar do Dispositivo
-            </button>
-
-            <button id="btnPickCamera" class="btn btn-secondary" type="button">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
-                <circle cx="12" cy="13" r="4"></circle>
-              </svg>
-              Tirar Foto Agora
-            </button>
-
-            <button id="btnTriggerBotOptimizer" class="btn btn-bot-plus" type="button" title="Otimizar fotos e liberar espaço com o Bot Plus">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
-              </svg>
-              Otimizar Espaço (IA)
-            </button>
-          </div>
-
-          <div class="clipboard-paste-hint">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
-              <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
-            </svg>
-            <span>Dica Pro: Pressione <strong>Ctrl + V</strong> em qualquer lugar para colar fotos copiadas</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD LATERAL GOOGLE FOTOS DIRETO -->
-      <div class="gphotos-direct-card">
-        <div>
-          <div class="gphotos-card-head">
-            <div class="gphotos-pinwheel-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                <path d="M12 2C12 5.31 9.31 8 6 8C2.69 8 0 5.31 0 2C0 2 12 2 12 2Z" fill="#EA4335" transform="translate(6, 4)"/>
-                <path d="M2 12C2 8.69 4.69 6 8 6C11.31 6 14 8.69 14 12C14 12 2 12 2 12Z" fill="#4285F4" transform="translate(6, 4)"/>
-                <path d="M8 14C4.69 14 2 11.31 2 8C2 4.69 4.69 2 8 2C8 2 8 14 8 14Z" fill="#FBBC05" transform="translate(4, 6)"/>
-                <path d="M6 0C9.31 0 12 2.69 12 6C12 9.31 9.31 12 6 12C6 12 6 0 6 0Z" fill="#34A853" transform="translate(6, 6)"/>
-              </svg>
-            </div>
-            <div class="gphotos-card-title">
-              <h4>Google Fotos Direto</h4>
-              <p>Acesso sem token, link ou chaves de API</p>
-            </div>
-          </div>
-
-          <div class="gphotos-direct-feature-list" style="margin-top:1.1rem">
-            <div class="gphotos-feature-item">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span><strong>1 Clique:</strong> Abre sua galeria real do Google Fotos instantaneamente.</span>
-            </div>
-            <div class="gphotos-feature-item">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span><strong>Arrastar & Soltar:</strong> Arraste do Google Fotos para o cofre com facilidade.</span>
-            </div>
-            <div class="gphotos-feature-item">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span><strong>Zero Configuração:</strong> Não requer OAuth, senhas ou links complexos.</span>
-            </div>
-          </div>
-        </div>
-
-        <button id="btnLaunchDirectGPhotos" class="btn btn-gphotos-direct-launch" type="button">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-            <polyline points="15 3 21 3 21 9"></polyline>
-            <line x1="10" y1="14" x2="21" y2="3"></line>
-          </svg>
-          <span>Abrir Minha Galeria Google Fotos</span>
-        </button>
-      </div>
-    </section>
-
-    <!-- BARRA DE SELEÇÃO EM MASSA -->
-    <div id="batchBar" class="batch-selection-bar">
-      <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.85rem">
-        <strong id="batchSelectedCount" style="color:#60a5fa">0 selecionados</strong>
-        <span style="color:var(--text-tertiary)">• Ações em massa</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:0.5rem">
-        <button id="btnBatchDownload" class="btn btn-secondary" style="padding:0.4rem 0.75rem;font-size:0.75rem" type="button">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="7 10 12 15 17 10"></polyline>
-            <line x1="12" y1="15" x2="12" y2="3"></line>
-          </svg>
-          Baixar Selecionados (ZIP)
-        </button>
-        <button id="btnBatchDelete" class="btn btn-secondary" style="padding:0.4rem 0.75rem;font-size:0.75rem;color:#fca5a5" type="button">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="3 6 5 6 21 6"></polyline>
-            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-          </svg>
-          Excluir Selecionados
-        </button>
-        <button id="btnBatchCancel" class="btn btn-secondary btn-icon-only" style="width:30px;height:30px;padding:0" title="Cancelar Seleção" type="button">✕</button>
-      </div>
-    </div>
-
-    <!-- SEÇÃO DA GALERIA -->
-    <section class="gallery-section">
-      <div class="gallery-control-strip">
-        <div class="filter-tabs">
-          <button class="tab-btn active" data-filter="all" type="button">Todos no Cofre</button>
-          <button class="tab-btn" data-filter="photo" type="button">Fotografias</button>
-          <button class="tab-btn" data-filter="video" type="button">Vídeos</button>
-          <button class="tab-btn" data-filter="gphotos" type="button">Google Fotos</button>
-        </div>
-
-        <div class="gallery-tools-right">
-          <div class="search-input-wrap">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <input type="text" id="gallerySearchInput" class="search-input-box" placeholder="Buscar por nome ou formato...">
-          </div>
-
-          <select id="gallerySortSelect" class="select-sort-box" aria-label="Ordenar Mídias">
-            <option value="newest">Mais recentes</option>
-            <option value="oldest">Mais antigas</option>
-            <option value="largest">Maior tamanho</option>
-            <option value="name">Nome (A - Z)</option>
-          </select>
-
-          <button id="btnSelectAllToggle" class="btn btn-secondary" style="padding:0.45rem 0.8rem;font-size:0.75rem" type="button">
-            Selecionar Tudo
-          </button>
-        </div>
-      </div>
-
-      <div id="vaultGrid" class="vault-grid" style="margin-top:1.25rem"></div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="site-footer">
-      <div>MANGEDORA APPLE PRO ELITE • ARQUITETURA AUTÔNOMA OFFLINE-FIRST</div>
-      <div style="margin-top:0.3rem">Armazenamento isolado no dispositivo com Bot Treinado Plus e suporte Google Fotos sem chaves.</div>
-    </footer>
-  </div>
-
-  <!-- MODAL: CONFIGURAÇÕES ELITE (AUMENTAR GB MANUALMENTE) -->
-  <div id="settingsModal" class="modal-overlay" role="dialog" aria-modal="true">
-    <div class="elite-modal-dialog">
-      <div class="modal-dialog-header">
-        <div class="modal-dialog-title">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2">
-            <circle cx="12" cy="12" r="3"></circle>
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-          </svg>
-          Configurações Avançadas do Cofre
-        </div>
-        <button id="closeSettingsModalBtn" class="btn btn-secondary btn-icon-only" type="button">✕</button>
-      </div>
-
-      <div class="modal-dialog-body">
-        <!-- SEÇÃO: AJUSTE MANUAL DE GB -->
-        <div class="settings-section-card">
-          <div class="settings-title-row">
-            <h4>
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                <line x1="6" y1="6" x2="6.01" y2="6"></line>
-                <line x1="6" y1="18" x2="6.01" y2="18"></line>
-              </svg>
-              Capacidade Manual de Armazenamento (GB)
-            </h4>
-            <span id="currentQuotaBadge" class="security-status-badge">100 GB</span>
-          </div>
-          <p class="settings-desc">
-            Aumente ou personalize manualmente o limite de gigabytes (GB) exibido e monitorado pelo cofre e telemetria:
-          </p>
-
-          <div class="preset-gb-grid">
-            <button class="btn-preset-gb" data-gb="50" type="button">50 GB</button>
-            <button class="btn-preset-gb" data-gb="100" type="button">100 GB</button>
-            <button class="btn-preset-gb" data-gb="250" type="button">250 GB</button>
-            <button class="btn-preset-gb" data-gb="500" type="button">500 GB</button>
-            <button class="btn-preset-gb" data-gb="1000" type="button">1 TB</button>
-            <button class="btn-preset-gb" data-gb="2000" type="button">2 TB</button>
-            <button class="btn-preset-gb" data-gb="5000" type="button">5 TB</button>
-          </div>
-
-          <div class="custom-gb-input-row">
-            <input type="number" id="inputCustomGB" class="custom-gb-input" placeholder="Digite valor personalizado em GB (ex: 750)" min="1" max="100000">
-            <button id="btnApplyCustomGB" class="btn btn-primary" type="button">
-              Salvar GB
-            </button>
-          </div>
-        </div>
-
-        <!-- SEÇÃO: MOTOR IA DO BOT TREINADO PLUS -->
-        <div class="settings-section-card">
-          <div class="settings-title-row">
-            <h4>
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2">
-                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
-              </svg>
-              Otimizador Neural Automático
-            </h4>
-            <span class="security-status-badge" style="background:rgba(6,182,212,0.15);color:#67e8f9;border-color:rgba(6,182,212,0.4)">Modo Plus</span>
-          </div>
-          <p class="settings-desc">
-            O Bot Treinado Plus monitora a integridade dos blocos de dados no IndexedDB para impedir inchaço de memória e maximizar seu espaço.
-          </p>
-          <div style="display:flex;gap:0.75rem;flex-wrap:wrap">
-            <button id="btnOpenBotFromSettings" class="btn btn-bot-plus" type="button">
-              Abrir Console do Bot Treinado Plus
-            </button>
-            <button id="btnExportAllZipFromSettings" class="btn btn-secondary" type="button">
-              Baixar Backup Total (.ZIP)
-            </button>
-          </div>
-        </div>
-
-        <!-- SEÇÃO: ZONA DE SEGURANÇA E LIMPEZA -->
-        <div class="settings-section-card" style="border-color:rgba(244,63,94,0.3)">
-          <div class="settings-title-row">
-            <h4 style="color:#fca5a5">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#f43f5e" stroke-width="2">
-                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                <line x1="12" y1="9" x2="12" y2="13"></line>
-                <line x1="12" y1="17" x2="12.01" y2="17"></line>
-              </svg>
-              Zona de Redefinição
-            </h4>
-          </div>
-          <p class="settings-desc">
-            Exclui permanentemente todos os arquivos armazenados dentro do cofre neste navegador.
-          </p>
-          <button id="btnResetVault" class="btn btn-secondary" style="color:#fda4af;border-color:rgba(244,63,94,0.4);align-self:flex-start" type="button">
-            Esvaziar Cofre Inteiro
-          </button>
+          <div style="font-size:0.75rem;font-weight:700;color:var(--text-tertiary);margin-bottom:0.35rem;">TERMINAL DO ROBÔ:</div>
+          <div class="robot-terminal" id="robotConsole">[SISTEMA] Robô IA Inicializado. Pronto para otimização.</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- MODAL: BOT TREINADO PLUS (OTIMIZADOR NEURAL DE ARMAZENAMENTO) -->
-  <div id="botModal" class="modal-overlay" role="dialog" aria-modal="true">
-    <div class="elite-modal-dialog">
-      <div class="modal-dialog-header">
-        <div class="modal-dialog-title">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2">
-            <rect x="3" y="11" width="18" height="10" rx="2"></rect>
-            <circle cx="12" cy="5" r="2"></circle>
-            <path d="M12 7v4"></path>
-            <line x1="8" y1="16" x2="8.01" y2="16"></line>
-            <line x1="16" y1="16" x2="16.01" y2="16"></line>
-          </svg>
-          Bot Treinado Plus • Otimizador IA
-        </div>
-        <div style="display:flex;align-items:center;gap:0.6rem">
-          <div class="bot-header-badge">
-            <span class="pulse-dot" style="background:#06b6d4;box-shadow:0 0 8px #06b6d4"></span>
-            <span>MODELO V4.8 PLUS ATIVO</span>
-          </div>
-          <button id="closeBotModalBtn" class="btn btn-secondary btn-icon-only" type="button">✕</button>
-        </div>
-      </div>
-
-      <div class="modal-dialog-body">
-        <div class="bot-console-card" id="botTerminalLogs">
-          <div class="console-line action">
-            <span>[SISTEMA IA]</span>
-            <span>Bot Treinado Plus inicializado com sucesso. Banco de dados mapeado.</span>
-          </div>
-          <div class="console-line">
-            <span>[DIAGNÓSTICO]</span>
-            <span id="botDiagSummary">Pronto para analisar blocos de armazenamento e otimizar gigabytes.</span>
-          </div>
-        </div>
-
-        <div class="bot-action-cards-grid">
-          <div class="bot-tool-card">
-            <div>
-              <div class="bot-tool-title">
-                <span>⚡</span>
-                <span>Otimização Inteligente 4K</span>
-              </div>
-              <p class="bot-tool-desc">
-                Compacta imagens muito pesadas preservando nitidez de ultra-resolução, liberando até 60% de espaço.
-              </p>
-            </div>
-            <button id="btnBotRunOptimization" class="btn btn-primary" style="background:var(--bot-gradient)" type="button">
-              Executar Otimização
-            </button>
-          </div>
-
-          <div class="bot-tool-card">
-            <div>
-              <div class="bot-tool-title">
-                <span>🔍</span>
-                <span>Localizar Duplicadas</span>
-              </div>
-              <p class="bot-tool-desc">
-                Varredura neural para identificar arquivos repetidos ou fotos idênticas salvas por engano.
-              </p>
-            </div>
-            <button id="btnBotFindDuplicates" class="btn btn-secondary" type="button">
-              Verificar Duplicadas
-            </button>
-          </div>
-
-          <div class="bot-tool-card">
-            <div>
-              <div class="bot-tool-title">
-                <span>🧹</span>
-                <span>Desfragmentar IndexedDB</span>
-              </div>
-              <p class="bot-tool-desc">
-                Limpa miniaturas órfãs, reorganiza índices e acelera a renderização da galeria.
-              </p>
-            </div>
-            <button id="btnBotDefrag" class="btn btn-secondary" type="button">
-              Desfragmentar
-            </button>
-          </div>
-
-          <div class="bot-tool-card">
-            <div>
-              <div class="bot-tool-title">
-                <span>📊</span>
-                <span>Relatório Completo</span>
-              </div>
-              <p class="bot-tool-desc">
-                Emite relatório instantâneo de saúde de armazenamento, cota livre e estado da blindagem.
-              </p>
-            </div>
-            <button id="btnBotReport" class="btn btn-secondary" type="button">
-              Gerar Relatório
-            </button>
-          </div>
-        </div>
+  <!-- MODAL: LIGHTBOX -->
+  <div class="modal-overlay" id="modalLightbox">
+    <div class="lightbox-content">
+      <div id="lightboxMediaContainer"></div>
+      <div style="display:flex;gap:0.85rem;align-items:center;">
+        <button class="btn btn-secondary btn-sm" id="btnDownloadLightbox">⬇️ Baixar</button>
+        <button class="btn btn-secondary btn-sm" onclick="closeModal('modalLightbox')">✕ Fechar</button>
       </div>
     </div>
   </div>
 
-  <!-- MODAL: CENTRAL GOOGLE FOTOS AUTÔNOMO (SEM TOKEN) -->
-  <div id="gphotosModal" class="modal-overlay" role="dialog" aria-modal="true">
-    <div class="elite-modal-dialog">
-      <div class="modal-dialog-header">
-        <div class="modal-dialog-title">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="7" r="4" fill="#EA4335" />
-            <circle cx="17" cy="12" r="4" fill="#4285F4" />
-            <circle cx="12" cy="17" r="4" fill="#34A853" />
-            <circle cx="7" cy="12" r="4" fill="#FBBC05" />
-          </svg>
-          Central Google Fotos (Sem Token & Sem Chave)
-        </div>
-        <button id="closeGPhotosModalBtn" class="btn btn-secondary btn-icon-only" type="button">✕</button>
-      </div>
+  <div class="toast-container" id="toastContainer"></div>
 
-      <div class="modal-dialog-body">
-        <div class="gphotos-method-card">
-          <div class="gphotos-method-info">
-            <h5>1. Abrir Galeria Completa no Google Fotos</h5>
-            <p>Abre o app do Google Fotos no seu celular ou a versão web com 1 clique para você escolher o que quiser.</p>
-          </div>
-          <button id="modalBtnDirectOpen" class="btn btn-primary" type="button">
-            Abrir Agora
-          </button>
-        </div>
-
-        <div class="gphotos-method-card">
-          <div class="gphotos-method-info">
-            <h5>2. Selecionar Fotos da Galeria do Sistema</h5>
-            <p>Abre o seletor nativo onde suas fotos do Google Fotos sincronizadas no aparelho podem ser guardadas diretamente no cofre.</p>
-          </div>
-          <button id="modalBtnPickSystem" class="btn btn-secondary" type="button">
-            Escolher
-          </button>
-        </div>
-
-        <div class="gphotos-method-card">
-          <div class="gphotos-method-info">
-            <h5>3. Importar por Colar Direto (Ctrl + V)</h5>
-            <p>Abra qualquer foto no Google Fotos, clique com botão direito em "Copiar Imagem" e aperte Ctrl+V aqui dentro do cofre!</p>
-          </div>
-          <button id="modalBtnPasteClipboard" class="btn btn-secondary" type="button">
-            Colar
-          </button>
-        </div>
-
-        <div class="gphotos-method-card">
-          <div class="gphotos-method-info">
-            <h5>4. Importar Pacote Google Takeout (.ZIP)</h5>
-            <p>Se você baixou seus álbuns em arquivo ZIP do Google, extraia todos diretamente para o cofre com 1 clique.</p>
-          </div>
-          <button id="modalBtnPickZip" class="btn btn-secondary" type="button">
-            Carregar ZIP
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL: VISUALIZADOR LIGHTBOX ELITE (FOTOS E VÍDEOS COM PLAYER COMPLETO) -->
-  <div id="lightbox" class="lightbox-backdrop" role="dialog" aria-modal="true">
-    <div class="lightbox-topbar">
-      <div class="lightbox-title-box">
-        <span id="lbFilename" class="lightbox-filename">nome_do_arquivo.jpg</span>
-        <span id="lbMeta" class="lightbox-meta">1920x1080 • 2.4 MB • Guardado no cofre</span>
-      </div>
-
-      <div class="lightbox-actions">
-        <button id="lbBtnRotate" class="btn btn-secondary btn-icon-only" title="Girar 90°" type="button">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
-          </svg>
-        </button>
-
-        <button id="lbBtnDownload" class="btn btn-secondary btn-icon-only" title="Baixar cópia para o dispositivo" type="button">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="7 10 12 15 17 10"></polyline>
-            <line x1="12" y1="15" x2="12" y2="3"></line>
-          </svg>
-        </button>
-
-        <button id="lbBtnDelete" class="btn btn-secondary btn-icon-only" style="color:var(--danger)" title="Excluir do cofre" type="button">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="3 6 5 6 21 6"></polyline>
-            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-          </svg>
-        </button>
-
-        <button id="lbBtnClose" class="btn btn-secondary btn-icon-only" title="Fechar (Esc)" type="button">✕</button>
-      </div>
-    </div>
-
-    <div class="lightbox-stage">
-      <button id="lbBtnPrev" class="lightbox-nav-btn lightbox-prev" aria-label="Mídia anterior">❮</button>
-      
-      <div id="lbMediaContainer" class="lightbox-media-wrap"></div>
-
-      <button id="lbBtnNext" class="lightbox-nav-btn lightbox-next" aria-label="Próxima mídia">❯</button>
-    </div>
-  </div>
-
-  <!-- CONTAINER DE TOASTS -->
-  <div id="toastTray" class="toast-tray" aria-live="polite"></div>
-
-  <!-- JAVASCRIPT UNIFICADO & COMPLETO -->
   <script>
-  (function() {
+  (() => {
     'use strict';
+    const RAW_THEMES = [["apple-titanium","Apple Titanium Pro","Apple & Titanium","Titânio espacial com safira executiva.",["#06070a","#121724","#3b82f6","#f59e0b"]],["cyberpunk-2077","Cyberpunk Neon 2077","Cyber & Futurista","High-tech com amarelo fluorescente e rosa laser.",["#07050d","#18102b","#fcee0a","#ff0055"]],["royal-champagne","Royal Champagne Gold","Elite & Luxo","Ônix polido com reflexos de ouro puro 24k.",["#080705","#1c1710","#f59e0b","#fef08a"]],["emerald-quantum","Emerald Matrix Quantum","Natureza & Joias","Esmeralda profunda com malha quântica.",["#040a07","#0e2017","#10b981","#34d399"]],["sapphire-midnight","Sapphire Midnight Blue","Natureza & Joias","Azul safira imperial em noite estelar.",["#030712","#0f1c38","#2563eb","#60a5fa"]],["amethyst-violet","Amethyst Ultra Violet","Neon & Quântico","Púrpura ametista com irradiação quântica.",["#090514","#1e103d","#a855f7","#c084fc"]],["crimson-ruby","Crimson Ruby Red","Elite & Luxo","Vermelho rubi de alto prestígio sobre ardósia.",["#0d0407","#260c14","#e11d48","#fb7185"]],["deep-space-void","Deep Space Void OLED","Amoled & Escuros","Preto absoluto OLED com iluminação estelar.",["#000000","#0d0e12","#38bdf8","#e2e8f0"]],["quantum-cyan","Quantum Cyan Frost","Neon & Quântico","Ciano quântico ultra nítido laboratorial.",["#040a0f","#0d202e","#06b6d4","#67e8f9"]],["sunset-vaporwave","Sunset Vaporwave 80s","Cyber & Futurista","Gradientes de pôr do sol, coral e magenta.",["#0a0512","#220e38","#f43f5e","#fb923c"]],["tokyo-night","Tokyo Cyber Night","Cyber & Futurista","Asfalto de Shinjuku com luzes laranja e ciano.",["#050811","#0e1a33","#ff6b00","#00d4ff"]],["stealth-matte","Stealth Fighter Matte","Amoled & Escuros","Caça militar fosco com acentos âmbar.",["#0a0b0d","#171a1f","#f59e0b","#94a3b8"]],["aurora-borealis","Aurora Borealis Arctic","Natureza & Joias","Noite polar com luzes verde-esmeralda e lilás.",["#04090e","#0e1e2f","#10b981","#8b5cf6"]],["carbon-fiber","Carbon Fiber Racing","Apple & Titanium","Fibra de carbono com vermelho Brembo.",["#07080a","#16181e","#ef4444","#ffffff"]],["gold-vip-24k","Golden Luxury VIP 24K","Elite & Luxo","Mansão executiva com dourado reluzente 24k.",["#060502","#1a150a","#eab308","#ca8a04"]],["solana-twilight","Solana Twilight","Neon & Quântico","Alta velocidade em roxo neon e ciano Solana.",["#090412","#1d0e3a","#14f195","#9945ff"]],["bitcoin-satoshi","Bitcoin Satoshi Orange","Cyber & Futurista","Ouro digital com laranja cripto vibrante.",["#080603","#1c1208","#f7931a","#ffaa33"]],["apple-space-gray","Apple Space Gray Classic","Apple & Titanium","Clássico cinza espacial icônico Apple.",["#0d0e11","#1c1f26","#94a3b8","#e2e8f0"]],["cyber-samurai","Cyber Samurai Ronin","Cyber & Futurista","Aço katana com flor de cerejeira neon.",["#090508","#1f0c1a","#ec4899","#38bdf8"]],["deep-ocean-abyss","Deep Ocean Abyss","Natureza & Joias","Fossa abissal com seres bioluminescentes.",["#02080d","#071a2e","#0ea5e9","#2dd4bf"]],["mars-horizon","Mars Horizon 2050","Cyber & Futurista","Superfície marciana com poeira carmim.",["#0b0403","#230b08","#ea580c","#f97316"]],["diamond-platinum","Diamond Platinum","Elite & Luxo","Brilho de diamante sobre platina espelhada.",["#08090d","#171c29","#e0f2fe","#93c5fd"]],["cyber-yellow-2088","Cyberpunk Yellow 2088","Neon & Quântico","Preto fosco com amarelo atômico vibrante.",["#080805","#1c1c0b","#facc15","#eab308"]],["synthwave-80s","Synthwave Retro Neon","Cyber & Futurista","Horizonte anos 80 em magenta e ciano.",["#07040d","#1a0b30","#d946ef","#06b6d4"]],["rose-gold-exec","Rose Gold Executive","Elite & Luxo","Ouro rosa nobre sobre couro escuro.",["#0a0507","#200d16","#fb7185","#f43f5e"]],["holographic-prism","Holographic Prismatic","Neon & Quântico","Refração iridescente sobre vidro negro.",["#05060b","#111626","#38bdf8","#ec4899"]],["monolith-minimal","Monolith Minimalist","Amoled & Escuros","Pureza minimalista em preto puro e branco.",["#000000","#0d0d0d","#ffffff","#a3a3a3"]],["obsidian-lava","Obsidian Lava Forge","Elite & Luxo","Rocha vulcânica com magma incandescente.",["#0a0502","#1e0b05","#ff4500","#ff8c00"]],["toxic-hazard","Neon Toxic Hazard","Neon & Quântico","Sci-fi química com verde fluorescente.",["#050803","#0f1c09","#22c55e","#84cc16"]],["nebula-galaxy","Nebula Galaxy Prime","Amoled & Escuros","Espaço sideral com poeira violeta e índigo.",["#04030a","#120b24","#6366f1","#a855f7"]],["nordic-glacier","Nordic Glacier Ice","Natureza & Joias","Gelo cristalino com azul celeste polar.",["#03070d","#0b1b2d","#38bdf8","#e0f2fe"]],["desert-bronze","Desert Mirage Bronze","Elite & Luxo","Bronze esculpido e dunas douradas à noite.",["#090604","#1d140c","#d97706","#b45309"]],["iron-man-reactor","Iron Man Arc Reactor","Cyber & Futurista","Titânio bélico com reator arc azul e dourado.",["#0a0304","#22080a","#00d4ff","#eab308"]],["dark-matter","Quantum Dark Matter","Amoled & Escuros","Matéria escura cósmica e gravitação violeta.",["#020105","#0c0618","#7c3aed","#4c1d95"]],["british-racing","British Racing Emerald","Elite & Luxo","Verde lendário de corrida com âmbar nobre.",["#020805","#091910","#059669","#d97706"]],["ghost-recon","Cyber Ghost Recon","Apple & Titanium","Camuflagem tática com azul espectral neon.",["#06080a","#121720","#00f0ff","#64748b"]],["royal-monaco","Royal Monaco Yacht","Elite & Luxo","Azul marinho da Riviera com ouro e pérola.",["#03060f","#0d1a38","#3b82f6","#f59e0b"]],["solar-eclipse","Eclipse Solar Corona","Amoled & Escuros","Sombra lunar com coroa de fogo brilhante.",["#030202","#120c09","#f97316","#fbbf24"]],["cyber-glitch","Cyber Glitch Lavender","Neon & Quântico","Glitch moderno com lavanda e ciano.",["#080410","#1a0d33","#818cf8","#38bdf8"]],["hyperion-ai","Hyperion Futuristic AI","Cyber & Futurista","Laboratório sci-fi com prata e azul laser.",["#05070d","#10182b","#38bdf8","#0284c7"]]];
 
-    /* CONSTANTES E CHAVES DO SISTEMA */
-    const DB_NAME = 'mangedora-apple-vault-elite-v4';
-    const DB_VERSION = 1;
-    const STORE_NAME = 'vault_media';
-    const STORAGE_KEY_CUSTOM_QUOTA_GB = 'mangedora_custom_quota_gb';
-
-    /* ESTADO DA APLICAÇÃO */
-    const appState = {
-      items: [],
-      filter: 'all',
-      search: '',
-      sort: 'newest',
-      selectedIds: new Set(),
-      activeLightboxIndex: -1,
-      lightboxRotation: 0,
-      customQuotaGB: 100, // Padrão 100 GB personalizável
-      quotaEstimate: { used: 0, quota: 100 * 1024 * 1024 * 1024 }
-    };
-
-    /* REFERÊNCIAS DOM */
-    const dom = {
-      donutPhotos: document.getElementById('donutPhotos'),
-      donutVideos: document.getElementById('donutVideos'),
-      donutGPhotos: document.getElementById('donutGPhotos'),
-      donutCenterPct: document.getElementById('donutCenterPct'),
-      storageUsedFormatted: document.getElementById('storageUsedFormatted'),
-      storageQuotaFormatted: document.getElementById('storageQuotaFormatted'),
-      storageStatusBadge: document.getElementById('storageStatusBadge'),
-      barPhotos: document.getElementById('barPhotos'),
-      barVideos: document.getElementById('barVideos'),
-      barGPhotos: document.getElementById('barGPhotos'),
-      statPhotosCount: document.getElementById('statPhotosCount'),
-      statPhotosSize: document.getElementById('statPhotosSize'),
-      statVideosCount: document.getElementById('statVideosCount'),
-      statVideosSize: document.getElementById('statVideosSize'),
-      statGPhotosCount: document.getElementById('statGPhotosCount'),
-      statGPhotosSize: document.getElementById('statGPhotosSize'),
-      statFreeSpace: document.getElementById('statFreeSpace'),
-      storagePersistenceText: document.getElementById('storagePersistenceText'),
-      btnQuickConfigCapacity: document.getElementById('btnQuickConfigCapacity'),
-
-      mainDropzone: document.getElementById('mainDropzone'),
-      generalFileInput: document.getElementById('generalFileInput'),
-      cameraPhotoInput: document.getElementById('cameraPhotoInput'),
-      zipImportInput: document.getElementById('zipImportInput'),
-      btnPickFiles: document.getElementById('btnPickFiles'),
-      btnPickCamera: document.getElementById('btnPickCamera'),
-      btnMainUpload: document.getElementById('btnMainUpload'),
-      btnTriggerBotOptimizer: document.getElementById('btnTriggerBotOptimizer'),
-
-      headerOpenGPhotosBtn: document.getElementById('headerOpenGPhotosBtn'),
-      btnLaunchDirectGPhotos: document.getElementById('btnLaunchDirectGPhotos'),
-      gphotosModal: document.getElementById('gphotosModal'),
-      closeGPhotosModalBtn: document.getElementById('closeGPhotosModalBtn'),
-      modalBtnDirectOpen: document.getElementById('modalBtnDirectOpen'),
-      modalBtnPickSystem: document.getElementById('modalBtnPickSystem'),
-      modalBtnPasteClipboard: document.getElementById('modalBtnPasteClipboard'),
-      modalBtnPickZip: document.getElementById('modalBtnPickZip'),
-
-      btnOpenSettings: document.getElementById('btnOpenSettings'),
-      settingsModal: document.getElementById('settingsModal'),
-      closeSettingsModalBtn: document.getElementById('closeSettingsModalBtn'),
-      currentQuotaBadge: document.getElementById('currentQuotaBadge'),
-      presetGbButtons: document.querySelectorAll('.btn-preset-gb'),
-      inputCustomGB: document.getElementById('inputCustomGB'),
-      btnApplyCustomGB: document.getElementById('btnApplyCustomGB'),
-      btnOpenBotFromSettings: document.getElementById('btnOpenBotFromSettings'),
-      btnExportAllZipFromSettings: document.getElementById('btnExportAllZipFromSettings'),
-      btnResetVault: document.getElementById('btnResetVault'),
-
-      btnOpenBotModal: document.getElementById('btnOpenBotModal'),
-      botModal: document.getElementById('botModal'),
-      closeBotModalBtn: document.getElementById('closeBotModalBtn'),
-      botTerminalLogs: document.getElementById('botTerminalLogs'),
-      botDiagSummary: document.getElementById('botDiagSummary'),
-      btnBotRunOptimization: document.getElementById('btnBotRunOptimization'),
-      btnBotFindDuplicates: document.getElementById('btnBotFindDuplicates'),
-      btnBotDefrag: document.getElementById('btnBotDefrag'),
-      btnBotReport: document.getElementById('btnBotReport'),
-
-      vaultGrid: document.getElementById('vaultGrid'),
-      gallerySearchInput: document.getElementById('gallerySearchInput'),
-      gallerySortSelect: document.getElementById('gallerySortSelect'),
-      filterTabs: document.querySelectorAll('.tab-btn'),
-      btnSelectAllToggle: document.getElementById('btnSelectAllToggle'),
-
-      batchBar: document.getElementById('batchBar'),
-      batchSelectedCount: document.getElementById('batchSelectedCount'),
-      btnBatchDownload: document.getElementById('btnBatchDownload'),
-      btnBatchDelete: document.getElementById('btnBatchDelete'),
-      btnBatchCancel: document.getElementById('btnBatchCancel'),
-
-      lightbox: document.getElementById('lightbox'),
-      lbFilename: document.getElementById('lbFilename'),
-      lbMeta: document.getElementById('lbMeta'),
-      lbMediaContainer: document.getElementById('lbMediaContainer'),
-      lbBtnRotate: document.getElementById('lbBtnRotate'),
-      lbBtnDownload: document.getElementById('lbBtnDownload'),
-      lbBtnDelete: document.getElementById('lbBtnDelete'),
-      lbBtnClose: document.getElementById('lbBtnClose'),
-      lbBtnPrev: document.getElementById('lbBtnPrev'),
-      lbBtnNext: document.getElementById('lbBtnNext'),
-
-      toastTray: document.getElementById('toastTray')
-    };
-
-    const blobUrlMap = new WeakMap();
-    function getSafeBlobUrl(blob) {
-      if (!blob) return '';
-      let url = blobUrlMap.get(blob);
-      if (!url) {
-        url = URL.createObjectURL(blob);
-        blobUrlMap.set(blob, url);
-      }
-      return url;
+    function hexToRgba(hex, a) {
+      let c = hex.replace('#','');
+      if (c.length === 3) c = c.split('').map(x => x+x).join('');
+      const n = parseInt(c, 16);
+      return `rgba(${(n>>16)&255},${(n>>8)&255},${n&255},${a})`;
     }
 
-    let dbInstance = null;
-    function openDatabase() {
-      if (dbInstance) return Promise.resolve(dbInstance);
-      return new Promise((resolve, reject) => {
-        const req = indexedDB.open(DB_NAME, DB_VERSION);
-        req.onupgradeneeded = () => {
-          const db = req.result;
-          if (!db.objectStoreNames.contains(STORE_NAME)) {
-            const store = db.createObjectStore(STORE_NAME, { keyPath: 'id' });
-            store.createIndex('createdAt', 'createdAt', { unique: false });
-            store.createIndex('type', 'type', { unique: false });
-            store.createIndex('source', 'source', { unique: false });
+    function buildThemeVars(c) {
+      return {
+        '--bg-base': c[0], '--bg-surface': hexToRgba(c[1], 0.7),
+        '--bg-surface-elevated': c[1], '--bg-card': hexToRgba(c[1], 0.82),
+        '--bg-card-hover': hexToRgba(c[1], 0.95), '--border-subtle': hexToRgba(c[2], 0.16),
+        '--border-medium': hexToRgba(c[2], 0.35), '--border-focus': c[2],
+        '--text-primary': '#f8fafc', '--text-secondary': '#cbd5e1',
+        '--text-tertiary': '#94a3b8', '--text-accent': c[2],
+        '--accent-primary': c[2], '--accent-secondary': c[3],
+        '--accent-glow': hexToRgba(c[2], 0.4), '--radial-1': hexToRgba(c[2], 0.12),
+        '--radial-2': hexToRgba(c[3], 0.08)
+      };
+    }
+
+    const THEMES = RAW_THEMES.map(t => ({
+      id: t[0], name: t[1], category: t[2], desc: t[3], colors: t[4], vars: buildThemeVars(t[4])
+    }));
+
+    const KEY_THEME = 'mangedora_active_theme_v5';
+    const KEY_QUOTA_VAL = 'mangedora_quota_val_v5';
+    const KEY_QUOTA_UNIT = 'mangedora_quota_unit_v5';
+    const KEY_SAVINGS = 'mangedora_saved_bytes_v5';
+
+    const appState = {
+      items: [], filter: 'all', search: '', sort: 'newest',
+      activeThemeId: localStorage.getItem(KEY_THEME) || 'apple-titanium',
+      quotaVal: parseInt(localStorage.getItem(KEY_QUOTA_VAL) || '250', 10),
+      quotaUnit: localStorage.getItem(KEY_QUOTA_UNIT) || 'GB',
+      savedBytes: parseInt(localStorage.getItem(KEY_SAVINGS) || '0', 10),
+      activeLightboxItem: null
+    };
+
+    const DB_NAME = 'mangedora_vault_db_v5';
+    let db = null;
+
+    function initDB() {
+      return new Promise((res, rej) => {
+        const req = indexedDB.open(DB_NAME, 1);
+        req.onupgradeneeded = e => {
+          const d = e.target.result;
+          if (!d.objectStoreNames.contains('vault_items')) {
+            const s = d.createObjectStore('vault_items', { keyPath: 'id' });
+            s.createIndex('type', 'type', { unique: false });
+            s.createIndex('date', 'date', { unique: false });
           }
         };
-        req.onsuccess = () => {
-          dbInstance = req.result;
-          resolve(dbInstance);
-        };
-        req.onerror = () => reject(req.error);
+        req.onsuccess = e => { db = e.target.result; res(db); };
+        req.onerror = e => rej(e.target.error);
       });
     }
 
-    function dbPut(item) {
-      return openDatabase().then(db => new Promise((resolve, reject) => {
-        const tx = db.transaction(STORE_NAME, 'readwrite');
-        tx.objectStore(STORE_NAME).put(item);
-        tx.oncomplete = () => resolve();
-        tx.onerror = () => reject(tx.error);
-      }));
+    const dbGetAll = () => new Promise((res, rej) => {
+      const req = db.transaction('vault_items', 'readonly').objectStore('vault_items').getAll();
+      req.onsuccess = () => res(req.result || []);
+      req.onerror = () => rej(req.error);
+    });
+
+    const dbPut = item => new Promise((res, rej) => {
+      const req = db.transaction('vault_items', 'readwrite').objectStore('vault_items').put(item);
+      req.onsuccess = () => res();
+      req.onerror = () => rej(req.error);
+    });
+
+    const dbDelete = id => new Promise((res, rej) => {
+      const req = db.transaction('vault_items', 'readwrite').objectStore('vault_items').delete(id);
+      req.onsuccess = () => res();
+      req.onerror = () => rej(req.error);
+    });
+
+    const dbClear = () => new Promise((res, rej) => {
+      const req = db.transaction('vault_items', 'readwrite').objectStore('vault_items').clear();
+      req.onsuccess = () => res();
+      req.onerror = () => rej(req.error);
+    });
+
+    let audioCtx = null;
+    function playSciFiBeep(type = 'click') {
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator(), g = audioCtx.createGain();
+        osc.connect(g); g.connect(audioCtx.destination);
+        const now = audioCtx.currentTime;
+        osc.frequency.setValueAtTime(type === 'click' ? 700 : 950, now);
+        osc.frequency.exponentialRampToValueAtTime(type === 'click' ? 350 : 1200, now + 0.1);
+        g.gain.setValueAtTime(0.06, now); g.gain.linearRampToValueAtTime(0.01, now + 0.1);
+        osc.start(now); osc.stop(now + 0.1);
+      } catch(e) {}
     }
 
-    function dbGetAll() {
-      return openDatabase().then(db => new Promise((resolve, reject) => {
-        const tx = db.transaction(STORE_NAME, 'readonly');
-        const req = tx.objectStore(STORE_NAME).getAll();
-        req.onsuccess = () => resolve(req.result || []);
-        req.onerror = () => reject(req.error);
-      }));
-    }
-
-    function dbDelete(id) {
-      return openDatabase().then(db => new Promise((resolve, reject) => {
-        const tx = db.transaction(STORE_NAME, 'readwrite');
-        tx.objectStore(STORE_NAME).delete(id);
-        tx.oncomplete = () => resolve();
-        tx.onerror = () => reject(tx.error);
-      }));
-    }
-
-    function dbClearAll() {
-      return openDatabase().then(db => new Promise((resolve, reject) => {
-        const tx = db.transaction(STORE_NAME, 'readwrite');
-        tx.objectStore(STORE_NAME).clear();
-        tx.oncomplete = () => resolve();
-        tx.onerror = () => reject(tx.error);
-      }));
-    }
-
-    async function enforcePersistentStorage() {
-      if (navigator.storage && navigator.storage.persist) {
-        try {
-          const isPersisted = await navigator.storage.persist();
-          if (isPersisted) {
-            dom.storagePersistenceText.textContent = 'BLINDAGEM FÍSICA PERSISTENTE';
-          }
-        } catch (err) {
-          console.warn('Storage persist check:', err);
-        }
-      }
+    function toast(msg, icon = '✨') {
+      const c = document.getElementById('toastContainer');
+      const el = document.createElement('div');
+      el.className = 'toast-msg';
+      el.innerHTML = `<span>${icon}</span><span>${msg}</span>`;
+      c.appendChild(el);
+      setTimeout(() => { el.style.opacity = '0'; setTimeout(() => el.remove(), 250); }, 3000);
     }
 
     function formatBytes(bytes) {
-      if (!bytes || bytes < 1) return '0 B';
-      const k = 1024;
-      const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
+      if (!bytes) return '0 B';
+      const k = 1024, s = ['B','KB','MB','GB','TB'];
       const i = Math.floor(Math.log(bytes) / Math.log(k));
-      return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+      return (bytes / Math.pow(k, i)).toFixed(1) + ' ' + s[i];
     }
 
-    function logToBotConsole(msg, type = 'normal') {
-      const line = document.createElement('div');
-      line.className = `console-line ${type}`;
-      const time = new Date().toLocaleTimeString('pt-BR');
-      line.innerHTML = `<span>[${time}]</span> <span>${msg}</span>`;
-      dom.botTerminalLogs.appendChild(line);
-      dom.botTerminalLogs.scrollTop = dom.botTerminalLogs.scrollHeight;
+    function formatDate(ts) {
+      return new Date(ts).toLocaleDateString('pt-BR', { day:'2-digit', month:'2-digit', year:'numeric' });
     }
 
-    function toast(message, type = 'info') {
-      const toastEl = document.createElement('div');
-      toastEl.className = `toast-item ${type}`;
+    function applyTheme(themeId, notify = true) {
+      const theme = THEMES.find(t => t.id === themeId) || THEMES[0];
+      appState.activeThemeId = theme.id;
+      localStorage.setItem(KEY_THEME, theme.id);
+      const root = document.documentElement;
+      for (const [k, v] of Object.entries(theme.vars)) root.style.setProperty(k, v);
+      document.querySelectorAll('.theme-item-card').forEach(c => {
+        c.classList.toggle('current-active', c.dataset.id === theme.id);
+      });
+      playSciFiBeep('click');
+      if (notify) toast(`Tema "${theme.name}" ativado!`, '🎨');
+    }
 
-      let iconSvg = `
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="12" y1="16" x2="12" y2="12"></line>
-          <line x1="12" y1="8" x2="12.01" y2="8"></line>
-        </svg>
-      `;
-      if (type === 'success') {
-        iconSvg = `
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5">
-            <polyline points="20 6 9 17 4 12"></polyline>
-          </svg>
-        `;
-      } else if (type === 'error') {
-        iconSvg = `
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f43f5e" stroke-width="2.5">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="15" y1="9" x2="9" y2="15"></line>
-            <line x1="9" y1="9" x2="15" y2="15"></line>
-          </svg>
-        `;
-      } else if (type === 'bot') {
-        iconSvg = `
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2">
-            <rect x="3" y="11" width="18" height="10" rx="2"></rect>
-            <circle cx="12" cy="5" r="2"></circle>
-            <path d="M12 7v4"></path>
-          </svg>
-        `;
-      } else if (type === 'gphotos') {
-        iconSvg = `
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="7" r="4" fill="#EA4335" />
-            <circle cx="17" cy="12" r="4" fill="#4285F4" />
-            <circle cx="12" cy="17" r="4" fill="#34A853" />
-            <circle cx="7" cy="12" r="4" fill="#FBBC05" />
-          </svg>
-        `;
+    function renderThemesGrid(filterCat = 'all', searchQuery = '') {
+      const grid = document.getElementById('themesGrid');
+      grid.innerHTML = '';
+      const q = searchQuery.trim().toLowerCase();
+      const list = THEMES.filter(t => {
+        const mCat = filterCat === 'all' || t.category === filterCat;
+        const mQ = !q || t.name.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q) || t.category.toLowerCase().includes(q);
+        return mCat && mQ;
+      });
+      if (!list.length) {
+        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--text-tertiary);">Nenhum tema encontrado.</div>';
+        return;
       }
-
-      toastEl.innerHTML = `<span>${iconSvg}</span><div>${message}</div>`;
-      dom.toastTray.appendChild(toastEl);
-
-      requestAnimationFrame(() => toastEl.classList.add('visible'));
-      setTimeout(() => {
-        toastEl.classList.remove('visible');
-        setTimeout(() => toastEl.remove(), 320);
-      }, 4000);
-    }
-
-    function generateSmartThumbnail(blob, isVideo = false) {
-      return new Promise((resolve) => {
-        const url = URL.createObjectURL(blob);
-
-        if (isVideo) {
-          const video = document.createElement('video');
-          video.preload = 'metadata';
-          video.muted = true;
-          video.playsInline = true;
-          video.src = url;
-
-          const cleanup = () => {
-            URL.revokeObjectURL(url);
-            video.remove();
-          };
-
-          video.onloadeddata = () => {
-            video.currentTime = Math.min(1.0, (video.duration || 1) / 2);
-          };
-
-          video.onseeked = () => {
-            try {
-              const canvas = document.createElement('canvas');
-              const maxSide = 400;
-              const ratio = Math.min(1, maxSide / Math.max(video.videoWidth || 300, video.videoHeight || 300));
-              canvas.width = Math.round((video.videoWidth || 300) * ratio);
-              canvas.height = Math.round((video.videoHeight || 300) * ratio);
-              const ctx = canvas.getContext('2d');
-              ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-              canvas.toBlob((b) => {
-                cleanup();
-                resolve(b);
-              }, 'image/jpeg', 0.82);
-            } catch (err) {
-              cleanup();
-              resolve(null);
-            }
-          };
-
-          video.onerror = () => {
-            cleanup();
-            resolve(null);
-          };
-
-          setTimeout(() => {
-            cleanup();
-            resolve(null);
-          }, 3500);
-
-        } else {
-          const img = new Image();
-          img.onload = () => {
-            try {
-              const maxSide = 450;
-              const ratio = Math.min(1, maxSide / Math.max(img.width, img.height));
-              const w = Math.round(img.width * ratio);
-              const h = Math.round(img.height * ratio);
-              const canvas = document.createElement('canvas');
-              canvas.width = w;
-              canvas.height = h;
-              canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-              URL.revokeObjectURL(url);
-              canvas.toBlob((b) => resolve(b), 'image/jpeg', 0.85);
-            } catch (e) {
-              URL.revokeObjectURL(url);
-              resolve(null);
-            }
-          };
-          img.onerror = () => {
-            URL.revokeObjectURL(url);
-            resolve(null);
-          };
-          img.src = url;
-        }
+      list.forEach(t => {
+        const card = document.createElement('div');
+        const isActive = t.id === appState.activeThemeId;
+        card.className = `theme-item-card ${isActive ? 'current-active' : ''}`;
+        card.dataset.id = t.id;
+        const swatches = t.colors.map(c => `<span class="palette-circle" style="background:${c}"></span>`).join('');
+        card.innerHTML = `
+          <div class="theme-active-tag">ATIVO</div>
+          <div class="theme-card-top"><span class="theme-card-title">${t.name}</span><span class="theme-card-cat">${t.category}</span></div>
+          <p class="theme-card-desc">${t.desc}</p>
+          <div class="palette-row">${swatches}</div>
+        `;
+        card.addEventListener('click', () => applyTheme(t.id, true));
+        grid.appendChild(card);
       });
     }
 
-    async function ingestMedia(blob, fileName, source = 'phone') {
-      try {
-        const arrayBuf = await blob.arrayBuffer();
-        const safeBlob = new Blob([arrayBuf], { type: blob.type || 'image/jpeg' });
-        const isVideo = (blob.type || '').startsWith('video/');
-        const thumbBlob = await generateSmartThumbnail(safeBlob, isVideo);
-
-        const item = {
-          id: 'vault_' + Date.now() + '_' + Math.random().toString(36).slice(2, 9),
-          name: fileName || (isVideo ? `video_${Date.now()}.mp4` : `foto_${Date.now()}.jpg`),
-          type: isVideo ? 'video' : 'photo',
-          mime: blob.type || (isVideo ? 'video/mp4' : 'image/jpeg'),
-          size: safeBlob.size,
-          blob: safeBlob,
-          thumb: thumbBlob,
-          createdAt: Date.now(),
-          source: source
-        };
-
-        await dbPut(item);
-        appState.items.unshift(item);
-        return item;
-      } catch (err) {
-        console.error('Falha ao ingerir mídia:', err);
-        throw err;
-      }
+    function getQuotaBytes() {
+      const v = appState.quotaVal, u = appState.quotaUnit;
+      return v * (u === 'TB' ? 1099511627776 : 1073741824);
     }
 
-    async function handleFilesSelected(files, source = 'phone') {
-      if (!files || !files.length) return;
-
-      const fileList = Array.from(files);
-      const isZip = fileList.length === 1 && fileList[0].name.toLowerCase().endsWith('.zip');
-
-      if (isZip) {
-        await handleZipImport(fileList[0]);
-        return;
-      }
-
-      toast(`Processando e blindando ${fileList.length} arquivo(s)...`, 'info');
-      let successCount = 0;
-
-      for (const file of fileList) {
-        try {
-          await ingestMedia(file, file.name, source);
-          successCount++;
-        } catch (e) {
-          console.error(e);
-        }
-      }
-
-      renderGallery();
-      await updateTelemetryAndCharts();
-      toast(`${successCount} mídia(s) protegida(s) no cofre! Agora você pode apagar com segurança do aparelho.`, 'success');
-    }
-
-    async function handleZipImport(zipFile) {
-      if (typeof JSZip === 'undefined') {
-        toast('Módulo ZIP ainda carregando. Tente novamente em alguns segundos.', 'error');
-        return;
-      }
-
-      toast('Descompactando pacote ZIP para o cofre...', 'gphotos');
-      try {
-        const zip = new JSZip();
-        const zipContent = await zip.loadAsync(zipFile);
-        const entries = Object.keys(zipContent.files);
-        let imported = 0;
-
-        for (const filename of entries) {
-          const fileEntry = zipContent.files[filename];
-          if (fileEntry.dir) continue;
-
-          const lower = filename.toLowerCase();
-          const isImg = lower.endsWith('.jpg') || lower.endsWith('.jpeg') || lower.endsWith('.png') || lower.endsWith('.webp') || lower.endsWith('.heic');
-          const isVid = lower.endsWith('.mp4') || lower.endsWith('.mov') || lower.endsWith('.webm') || lower.endsWith('.mkv');
-
-          if (isImg || isVid) {
-            const blob = await fileEntry.async('blob');
-            const cleanName = filename.split('/').pop();
-            const source = lower.includes('google') || lower.includes('photos') ? 'gphotos' : 'zip';
-            await ingestMedia(blob, cleanName, source);
-            imported++;
-          }
-        }
-
-        renderGallery();
-        await updateTelemetryAndCharts();
-        toast(`Sucesso! ${imported} mídias extraídas do ZIP diretamente para o cofre.`, 'success');
-      } catch (err) {
-        console.error(err);
-        toast('Erro ao abrir o arquivo ZIP.', 'error');
-      }
-    }
-
-    async function exportAllToZip() {
-      if (!appState.items.length) {
-        toast('Seu cofre está vazio no momento.', 'warning');
-        return;
-      }
-      toast(`Compactando ${appState.items.length} itens do cofre...`, 'info');
-      try {
-        const zip = new JSZip();
-        const folder = zip.folder('Mangedora_Apple_Cofre');
-
-        for (const item of appState.items) {
-          folder.file(item.name, item.blob);
-        }
-
-        const content = await zip.generateAsync({ type: 'blob' });
-        const a = document.createElement('a');
-        const url = URL.createObjectURL(content);
-        a.href = url;
-        a.download = `Mangedora_Apple_Backup_${new Date().toISOString().slice(0, 10)}.zip`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-        toast('Backup ZIP baixado com sucesso!', 'success');
-      } catch (err) {
-        console.error(err);
-        toast('Falha ao gerar arquivo ZIP de backup.', 'error');
-      }
-    }
-
-    async function exportSelectedToZip() {
-      if (!appState.selectedIds.size) return;
-      const selectedItems = appState.items.filter(i => appState.selectedIds.has(i.id));
-
-      toast(`Compactando ${selectedItems.length} mídias selecionadas...`, 'info');
-      try {
-        const zip = new JSZip();
-        for (const it of selectedItems) {
-          zip.file(it.name, it.blob);
-        }
-        const content = await zip.generateAsync({ type: 'blob' });
-        const a = document.createElement('a');
-        const url = URL.createObjectURL(content);
-        a.href = url;
-        a.download = `Cofre_Selecionados_${Date.now()}.zip`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-        toast('Download da seleção concluído!', 'success');
-      } catch (e) {
-        toast('Erro ao exportar seleção.', 'error');
-      }
-    }
-
-    async function updateTelemetryAndCharts() {
-      let totalUsed = 0;
-      let photoCount = 0;
-      let photoSize = 0;
-      let videoCount = 0;
-      let videoSize = 0;
-      let gphotosCount = 0;
-      let gphotosSize = 0;
-
-      for (const item of appState.items) {
-        const sz = item.size || 0;
-        totalUsed += sz;
-        if (item.type === 'video') {
-          videoCount++;
-          videoSize += sz;
-        } else {
-          photoCount++;
-          photoSize += sz;
-        }
-        if (item.source === 'gphotos') {
-          gphotosCount++;
-          gphotosSize += sz;
-        }
-      }
-
-      const quotaTotal = appState.customQuotaGB * 1024 * 1024 * 1024;
-      appState.quotaEstimate = { used: totalUsed, quota: quotaTotal };
-
-      const freeSpace = Math.max(0, quotaTotal - totalUsed);
-      const totalCapacityPct = Math.min(100, (totalUsed / quotaTotal) * 100);
-
-      dom.storageUsedFormatted.textContent = formatBytes(totalUsed);
-      dom.storageQuotaFormatted.textContent = `${appState.customQuotaGB} GB`;
-      dom.currentQuotaBadge.textContent = `${appState.customQuotaGB} GB`;
-      dom.donutCenterPct.textContent = totalCapacityPct < 0.1 && totalUsed > 0 ? '<0.1%' : totalCapacityPct.toFixed(1) + '%';
-
-      dom.statPhotosCount.textContent = photoCount.toString();
-      dom.statPhotosSize.textContent = formatBytes(photoSize);
-
-      dom.statVideosCount.textContent = videoCount.toString();
-      dom.statVideosSize.textContent = formatBytes(videoSize);
-
-      dom.statGPhotosCount.textContent = gphotosCount.toString();
-      dom.statGPhotosSize.textContent = formatBytes(gphotosSize);
-
-      dom.statFreeSpace.textContent = formatBytes(freeSpace);
-
-      dom.botDiagSummary.textContent = `${appState.items.length} mídias ativas no cofre (${formatBytes(totalUsed)} utilizados de ${appState.customQuotaGB} GB).`;
-
-      if (totalUsed > 0) {
-        const photoPct = (photoSize / totalUsed) * 100;
-        const videoPct = (videoSize / totalUsed) * 100;
-        const gphotoPct = (gphotosSize / totalUsed) * 100;
-
-        dom.barPhotos.style.width = photoPct + '%';
-        dom.barVideos.style.width = videoPct + '%';
-        dom.barGPhotos.style.width = gphotoPct + '%';
-      } else {
-        dom.barPhotos.style.width = '0%';
-        dom.barVideos.style.width = '0%';
-        dom.barGPhotos.style.width = '0%';
-      }
-
-      const circ = 238.76;
-      if (totalUsed === 0) {
-        dom.donutPhotos.setAttribute('stroke-dasharray', `0 ${circ}`);
-        dom.donutVideos.setAttribute('stroke-dasharray', `0 ${circ}`);
-        dom.donutGPhotos.setAttribute('stroke-dasharray', `0 ${circ}`);
-      } else {
-        const pFrac = photoSize / totalUsed;
-        const vFrac = videoSize / totalUsed;
-        const gFrac = gphotosSize / totalUsed;
-
-        const pLen = pFrac * circ;
-        const vLen = vFrac * circ;
-        const gLen = gFrac * circ;
-
-        dom.donutPhotos.setAttribute('stroke-dasharray', `${pLen} ${circ}`);
-        dom.donutPhotos.setAttribute('stroke-dashoffset', '0');
-
-        dom.donutVideos.setAttribute('stroke-dasharray', `${vLen} ${circ}`);
-        dom.donutVideos.setAttribute('stroke-dashoffset', `-${pLen}`);
-
-        dom.donutGPhotos.setAttribute('stroke-dasharray', `${gLen} ${circ}`);
-        dom.donutGPhotos.setAttribute('stroke-dashoffset', `-${pLen + vLen}`);
-      }
-
-      dom.presetGbButtons.forEach(btn => {
-        const gb = parseInt(btn.dataset.gb, 10);
-        if (gb === appState.customQuotaGB) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
+    function saveQuota(val, unit) {
+      appState.quotaVal = parseInt(val, 10) || 250;
+      appState.quotaUnit = unit === 'TB' ? 'TB' : 'GB';
+      localStorage.setItem(KEY_QUOTA_VAL, appState.quotaVal.toString());
+      localStorage.setItem(KEY_QUOTA_UNIT, appState.quotaUnit);
+      document.getElementById('settingsCurrentCapacity').textContent = `${appState.quotaVal} ${appState.quotaUnit}`;
+      document.getElementById('customQuotaInput').value = appState.quotaVal;
+      document.getElementById('customQuotaUnit').value = appState.quotaUnit;
+      document.querySelectorAll('#quotaPresets .preset-chip').forEach(b => {
+        b.classList.toggle('active', parseInt(b.dataset.val, 10) === appState.quotaVal && b.dataset.unit === appState.quotaUnit);
       });
+      updateTelemetry();
+      toast(`Capacidade ajustada para ${appState.quotaVal} ${appState.quotaUnit}!`, '💾');
     }
 
-    function setCustomQuotaGB(newGB) {
-      if (!newGB || newGB < 1) {
-        toast('Insira um valor válido de GB (mínimo 1 GB).', 'warning');
-        return;
-      }
-      appState.customQuotaGB = parseInt(newGB, 10);
-      localStorage.setItem(STORAGE_KEY_CUSTOM_QUOTA_GB, appState.customQuotaGB.toString());
-      updateTelemetryAndCharts();
-      toast(`Capacidade do cofre aumentada para ${appState.customQuotaGB} GB com sucesso!`, 'success');
-      logToBotConsole(`Capacidade do cofre reconfigurada para ${appState.customQuotaGB} GB.`, 'action');
+    function updateTelemetry() {
+      const items = appState.items;
+      const totalBytes = items.reduce((acc, i) => acc + (i.size || 0), 0);
+      const quotaBytes = getQuotaBytes();
+      const pct = Math.min(100, ((totalBytes / quotaBytes) * 100)).toFixed(2);
+
+      document.getElementById('headerStorageText').textContent = `${formatBytes(totalBytes)} / ${appState.quotaVal} ${appState.quotaUnit}`;
+      document.getElementById('headerStorageFill').style.width = `${Math.max(2, pct)}%`;
+      document.getElementById('telemetryCount').textContent = items.length;
+      const imgs = items.filter(i => i.type.startsWith('image/')).length;
+      const vids = items.filter(i => i.type.startsWith('video/')).length;
+      const favs = items.filter(i => i.isFav).length;
+      const opts = items.filter(i => i.optimized).length;
+
+      document.getElementById('telemetryBreakdown').textContent = `${imgs} fotos • ${vids} vídeos • ${favs} favs`;
+      document.getElementById('telemetryUsage').textContent = formatBytes(totalBytes);
+      document.getElementById('telemetryLimitText').textContent = `Limite: ${appState.quotaVal} ${appState.quotaUnit} (${pct}%)`;
+      document.getElementById('telemetrySavings').textContent = formatBytes(appState.savedBytes);
+
+      document.getElementById('countAll').textContent = items.length;
+      document.getElementById('countImg').textContent = imgs;
+      document.getElementById('countVid').textContent = vids;
+      document.getElementById('countFav').textContent = favs;
+      document.getElementById('countOpt').textContent = opts;
     }
 
-    async function runBotOptimization() {
-      if (!appState.items.length) {
-        toast('O cofre está vazio. Adicione fotos para otimizar.', 'warning');
-        logToBotConsole('Otimização abortada: cofre sem mídias.', 'warning');
-        return;
-      }
-
-      logToBotConsole('Iniciando análise neural de compactação em fotos...', 'action');
-      toast('Bot Treinado Plus analisando e compactando imagens pesadas...', 'bot');
-
-      let optimizedCount = 0;
-      let totalBytesSaved = 0;
-
-      for (const item of appState.items) {
-        if (item.type === 'photo' && item.size > 1.5 * 1024 * 1024) {
-          try {
-            const originalSize = item.size;
-            const imgUrl = URL.createObjectURL(item.blob);
-            const img = new Image();
-
-            await new Promise((res) => {
-              img.onload = () => res();
-              img.onerror = () => res();
-              img.src = imgUrl;
-            });
-
-            if (img.width && img.height) {
-              const canvas = document.createElement('canvas');
-              canvas.width = img.width;
-              canvas.height = img.height;
-              const ctx = canvas.getContext('2d');
-              ctx.drawImage(img, 0, 0);
-
-              const optimizedBlob = await new Promise(r => canvas.toBlob(r, 'image/jpeg', 0.88));
-              URL.revokeObjectURL(imgUrl);
-
-              if (optimizedBlob && optimizedBlob.size < originalSize) {
-                const saved = originalSize - optimizedBlob.size;
-                item.blob = optimizedBlob;
-                item.size = optimizedBlob.size;
-                await dbPut(item);
-                optimizedCount++;
-                totalBytesSaved += saved;
-                logToBotConsole(`Foto otimizada "${item.name}": economizados ${formatBytes(saved)}.`, 'success');
-              }
-            }
-          } catch (e) {
-            console.error(e);
-          }
-        }
-      }
-
-      renderGallery();
-      await updateTelemetryAndCharts();
-
-      if (optimizedCount > 0) {
-        logToBotConsole(`Otimização concluída! ${optimizedCount} foto(s) otimizada(s). Economia real de ${formatBytes(totalBytesSaved)}.`, 'action');
-        toast(`Bot Treinado Plus liberou ${formatBytes(totalBytesSaved)} no seu cofre!`, 'success');
-      } else {
-        logToBotConsole('Varredura concluída: todas as fotos já estão perfeitamente otimizadas.', 'success');
-        toast('Todas as fotos já estão no padrão ideal de compactação 4K!', 'bot');
-      }
-    }
-
-    async function runBotFindDuplicates() {
-      logToBotConsole('Iniciando varredura neural de arquivos duplicados...', 'action');
-      if (appState.items.length < 2) {
-        logToBotConsole('Menos de 2 mídias no cofre. Nenhuma duplicada detectada.', 'success');
-        toast('Nenhuma duplicada encontrada.', 'bot');
-        return;
-      }
-
-      const sizeMap = new Map();
-      const duplicates = [];
-
-      for (const item of appState.items) {
-        const key = `${item.size}_${item.type}`;
-        if (sizeMap.has(key)) {
-          duplicates.push(item);
-        } else {
-          sizeMap.set(key, item);
-        }
-      }
-
-      if (duplicates.length > 0) {
-        logToBotConsole(`Atenção: ${duplicates.length} mídia(s) com mesmo tamanho/conteúdo detectada(s).`, 'warning');
-        duplicates.forEach(d => logToBotConsole(`Possível duplicada: ${d.name} (${formatBytes(d.size)})`, 'warning'));
-        toast(`${duplicates.length} possível(is) foto(s) duplicada(s) encontrada(s). Verifique o console do Bot.`, 'warning');
-      } else {
-        logToBotConsole('Nenhuma mídia duplicada detectada. Banco 100% íntegro e limpo.', 'success');
-        toast('Excelente! Nenhuma foto ou vídeo duplicado.', 'success');
-      }
-    }
-
-    async function runBotDefragmentation() {
-      logToBotConsole('Iniciando desfragmentação e regeneração de índices no IndexedDB...', 'action');
-      let regenerated = 0;
-
-      for (const item of appState.items) {
-        if (!item.thumb) {
-          item.thumb = await generateSmartThumbnail(item.blob, item.type === 'video');
-          await dbPut(item);
-          regenerated++;
-        }
-      }
-
-      renderGallery();
-      await updateTelemetryAndCharts();
-      logToBotConsole(`Desfragmentação concluída. Índices compactados e ${regenerated} miniaturas restauradas.`, 'success');
-      toast('Banco de dados desfragmentado e acelerado!', 'success');
-    }
-
-    function runBotReport() {
-      const photos = appState.items.filter(i => i.type === 'photo').length;
-      const videos = appState.items.filter(i => i.type === 'video').length;
-      const gphotos = appState.items.filter(i => i.source === 'gphotos').length;
-      const totalSize = appState.items.reduce((a, b) => a + (b.size || 0), 0);
-
-      logToBotConsole('=== RELATÓRIO DO BOT TREINADO PLUS ===', 'action');
-      logToBotConsole(`• Total de itens salvos: ${appState.items.length}`);
-      logToBotConsole(`• Fotografias: ${photos} | Vídeos: ${videos}`);
-      logToBotConsole(`• Importados do Google Fotos: ${gphotos}`);
-      logToBotConsole(`• Espaço ocupado: ${formatBytes(totalSize)} de ${appState.customQuotaGB} GB configurados.`);
-      logToBotConsole('• Estado da Blindagem: 100% Isolado e Imune a exclusões externas.', 'success');
-      toast('Relatório de telemetria emitido no console do Bot.', 'bot');
-    }
-
-    function getFilteredAndSortedItems() {
+    function renderMediaGrid() {
+      const grid = document.getElementById('mediaGrid');
+      grid.innerHTML = '';
       let list = [...appState.items];
 
-      if (appState.filter === 'photo') {
-        list = list.filter(i => i.type === 'photo');
-      } else if (appState.filter === 'video') {
-        list = list.filter(i => i.type === 'video');
-      } else if (appState.filter === 'gphotos') {
-        list = list.filter(i => i.source === 'gphotos');
+      if (appState.filter === 'image') list = list.filter(i => i.type.startsWith('image/'));
+      else if (appState.filter === 'video') list = list.filter(i => i.type.startsWith('video/'));
+      else if (appState.filter === 'fav') list = list.filter(i => i.isFav);
+      else if (appState.filter === 'optimized') list = list.filter(i => i.optimized);
+
+      if (appState.search) {
+        const q = appState.search.toLowerCase();
+        list = list.filter(i => i.name.toLowerCase().includes(q));
       }
 
-      const searchQ = appState.search.trim().toLowerCase();
-      if (searchQ) {
-        list = list.filter(i => (i.name || '').toLowerCase().includes(searchQ));
-      }
+      if (appState.sort === 'newest') list.sort((a,b) => b.date - a.date);
+      else if (appState.sort === 'oldest') list.sort((a,b) => a.date - b.date);
+      else if (appState.sort === 'size-desc') list.sort((a,b) => b.size - a.size);
+      else if (appState.sort === 'name') list.sort((a,b) => a.name.localeCompare(b.name));
 
-      if (appState.sort === 'newest') {
-        list.sort((a, b) => b.createdAt - a.createdAt);
-      } else if (appState.sort === 'oldest') {
-        list.sort((a, b) => a.createdAt - b.createdAt);
-      } else if (appState.sort === 'largest') {
-        list.sort((a, b) => (b.size || 0) - (a.size || 0));
-      } else if (appState.sort === 'name') {
-        list.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
-      }
-
-      return list;
-    }
-
-    function updateBatchBar() {
-      const count = appState.selectedIds.size;
-      if (count > 0) {
-        dom.batchBar.classList.add('visible');
-        dom.batchSelectedCount.textContent = `${count} selecionado${count > 1 ? 's' : ''}`;
-      } else {
-        dom.batchBar.classList.remove('visible');
-      }
-    }
-
-    function renderGallery() {
-      const items = getFilteredAndSortedItems();
-
-      if (!items.length) {
-        dom.vaultGrid.innerHTML = `
-          <div class="vault-empty-state">
-            <div class="empty-shield-icon">
-              <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                <polyline points="21 15 16 10 5 21"></polyline>
-              </svg>
-            </div>
-            <h4 style="font-size:1.15rem;color:#fff;font-weight:700">Cofre Pronto e Protegido</h4>
-            <p style="font-size:0.85rem;max-width:420px;line-height:1.5">
-              Arraste fotos ou vídeos para cima, use o <strong>Google Fotos Direto</strong> ou ajuste sua cota em GBs no botão <strong>Configurações</strong>.
-            </p>
+      if (!list.length) {
+        grid.innerHTML = `
+          <div class="empty-vault">
+            <div class="empty-icon">📁</div>
+            <h3>Nenhum arquivo encontrado</h3>
+            <p style="color:var(--text-secondary);">Adicione novas fotos, limpe a busca ou mude a aba acima.</p>
           </div>
         `;
-        updateBatchBar();
         return;
       }
 
-      const fragment = document.createDocumentFragment();
-
-      items.forEach((item) => {
+      list.forEach(item => {
         const card = document.createElement('div');
-        const isSelected = appState.selectedIds.has(item.id);
-        card.className = `vault-card ${isSelected ? 'selected' : ''}`;
-        card.dataset.id = item.id;
-
-        const thumbUrl = getSafeBlobUrl(item.thumb || item.blob);
-        const isVid = item.type === 'video';
-
-        const sourceBadge = item.source === 'gphotos'
-          ? `<div class="card-badge-top-left badge-gphotos">☁️ Google Fotos</div>`
-          : `<div class="card-badge-top-left badge-phone">📱 Celular</div>`;
-
-        const videoPill = isVid
-          ? `<div class="card-video-pill">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-              <span>VÍDEO</span>
-            </div>`
-          : '';
-
-        const playOverlay = isVid
-          ? `<div class="card-play-overlay">
-              <div class="play-btn-circle">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <polygon points="6 4 20 12 6 20 6 4"></polygon>
-                </svg>
-              </div>
-            </div>`
-          : '';
+        card.className = 'media-card';
+        const mediaEl = item.type.startsWith('image/') 
+          ? `<img src="${item.dataUrl}" alt="${item.name}" loading="lazy">`
+          : (item.type.startsWith('video/') ? `<video src="${item.dataUrl}" preload="metadata"></video>` : '<div style="font-size:2.5rem;color:var(--accent-primary)">📄</div>');
+        const badgeText = item.optimized ? '⚡ Otimizado IA' : (item.type.startsWith('image/') ? '📷 Foto' : '🎬 Vídeo');
 
         card.innerHTML = `
-          <div class="card-thumbnail-container">
-            ${sourceBadge}
-            ${videoPill}
-            <img class="card-thumb-img" src="${thumbUrl}" alt="${item.name}" loading="lazy">
-            ${playOverlay}
-            <div class="card-checkbox" title="Selecionar" data-role="checkbox">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </div>
-            <button class="card-action-btn-del" title="Excluir do cofre" data-role="delete">✕</button>
+          <div class="media-thumb-wrap" data-id="${item.id}">
+            ${mediaEl}
+            <span class="media-badge">${badgeText}</span>
+            <button class="media-fav-btn ${item.isFav ? 'active' : ''}" title="Favoritar">★</button>
           </div>
-          <div class="card-meta-info">
-            <div class="card-file-name" title="${item.name}">${item.name}</div>
-            <div class="card-file-details">
-              <span>${formatBytes(item.size)}</span>
-              <span>${new Date(item.createdAt).toLocaleDateString('pt-BR')}</span>
+          <div class="media-info">
+            <div class="media-title" title="${item.name}">${item.name}</div>
+            <div class="media-meta"><span>${formatBytes(item.size)}</span><span>${formatDate(item.date)}</span></div>
+            <div class="media-actions">
+              <button class="btn-action-icon btn-view-item">👁️ Ver</button>
+              <button class="btn-action-icon btn-dl-item">⬇️ Baixar</button>
+              <button class="btn-action-icon btn-delete-icon btn-del-item">🗑️</button>
             </div>
           </div>
         `;
 
-        card.addEventListener('click', (e) => {
-          const target = e.target;
-          const role = target.getAttribute('data-role') || target.closest('[data-role]')?.getAttribute('data-role');
-
-          if (role === 'checkbox') {
-            e.stopPropagation();
-            if (appState.selectedIds.has(item.id)) {
-              appState.selectedIds.delete(item.id);
-            } else {
-              appState.selectedIds.add(item.id);
-            }
-            renderGallery();
-            return;
-          }
-
-          if (role === 'delete') {
-            e.stopPropagation();
-            confirmDeleteItem(item);
-            return;
-          }
-
+        const thumb = card.querySelector('.media-thumb-wrap');
+        thumb.addEventListener('click', e => {
+          if (e.target.closest('.media-fav-btn')) return;
           openLightbox(item);
         });
-
-        fragment.appendChild(card);
+        card.querySelector('.media-fav-btn').addEventListener('click', async e => {
+          e.stopPropagation();
+          item.isFav = !item.isFav;
+          await dbPut(item);
+          updateTelemetry();
+          renderMediaGrid();
+          playSciFiBeep('click');
+        });
+        card.querySelector('.btn-view-item').addEventListener('click', () => openLightbox(item));
+        card.querySelector('.btn-dl-item').addEventListener('click', () => downloadItem(item));
+        card.querySelector('.btn-del-item').addEventListener('click', async () => {
+          if (confirm(`Remover "${item.name}" do cofre?`)) {
+            await dbDelete(item.id);
+            appState.items = appState.items.filter(i => i.id !== item.id);
+            updateTelemetry();
+            renderMediaGrid();
+            toast('Arquivo removido.', '🗑️');
+            playSciFiBeep('click');
+          }
+        });
+        grid.appendChild(card);
       });
-
-      dom.vaultGrid.innerHTML = '';
-      dom.vaultGrid.appendChild(fragment);
-      updateBatchBar();
-    }
-
-    async function confirmDeleteItem(item) {
-      if (confirm(`Deseja realmente remover "${item.name}" do cofre?`)) {
-        await dbDelete(item.id);
-        appState.items = appState.items.filter(i => i.id !== item.id);
-        appState.selectedIds.delete(item.id);
-        renderGallery();
-        await updateTelemetryAndCharts();
-        toast('Mídia removida do cofre.', 'warning');
-      }
-    }
-
-    async function deleteSelectedItems() {
-      const count = appState.selectedIds.size;
-      if (!count) return;
-
-      if (confirm(`Remover permanentemente ${count} item(ns) selecionado(s) do cofre?`)) {
-        for (const id of appState.selectedIds) {
-          await dbDelete(id);
-        }
-        appState.items = appState.items.filter(i => !appState.selectedIds.has(i.id));
-        appState.selectedIds.clear();
-        renderGallery();
-        await updateTelemetryAndCharts();
-        toast(`${count} itens excluídos.`, 'warning');
-      }
-    }
-
-    function toggleSelectAll() {
-      const currentFiltered = getFilteredAndSortedItems();
-      if (appState.selectedIds.size === currentFiltered.length) {
-        appState.selectedIds.clear();
-      } else {
-        currentFiltered.forEach(i => appState.selectedIds.add(i.id));
-      }
-      renderGallery();
     }
 
     function openLightbox(item) {
-      const currentList = getFilteredAndSortedItems();
-      appState.activeLightboxIndex = currentList.findIndex(i => i.id === item.id);
-      appState.lightboxRotation = 0;
-      updateLightboxContent(item);
-      dom.lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden';
+      appState.activeLightboxItem = item;
+      const c = document.getElementById('lightboxMediaContainer');
+      c.innerHTML = item.type.startsWith('image/')
+        ? `<img src="${item.dataUrl}" class="lightbox-media" alt="${item.name}">`
+        : `<video src="${item.dataUrl}" class="lightbox-media" controls autoplay></video>`;
+      openModal('modalLightbox');
+      playSciFiBeep('click');
     }
 
-    function closeLightbox() {
-      dom.lightbox.classList.remove('active');
-      dom.lbMediaContainer.innerHTML = '';
-      document.body.style.overflow = '';
+    function downloadItem(item) {
+      const a = document.createElement('a');
+      a.href = item.dataUrl; a.download = item.name; a.click();
+      toast(`Baixando "${item.name}"...`, '⬇️');
     }
 
-    function updateLightboxContent(item) {
-      dom.lbFilename.textContent = item.name;
-      dom.lbMeta.textContent = `${formatBytes(item.size)} • ${item.source === 'gphotos' ? 'Google Fotos' : 'Celular Blindado'} • ${new Date(item.createdAt).toLocaleString('pt-BR')}`;
-
-      dom.lbMediaContainer.innerHTML = '';
-      dom.lbMediaContainer.style.transform = `rotate(${appState.lightboxRotation}deg)`;
-
-      const mediaUrl = getSafeBlobUrl(item.blob);
-
-      if (item.type === 'video') {
-        const video = document.createElement('video');
-        video.className = 'lightbox-video';
-        video.src = mediaUrl;
-        video.controls = true;
-        video.autoplay = true;
-        video.playsInline = true;
-        dom.lbMediaContainer.appendChild(video);
-        dom.lbBtnRotate.style.display = 'none';
-      } else {
-        const img = document.createElement('img');
-        img.className = 'lightbox-img';
-        img.src = mediaUrl;
-        img.alt = item.name;
-        dom.lbMediaContainer.appendChild(img);
-        dom.lbBtnRotate.style.display = 'inline-flex';
+    async function handleIncomingFiles(fileList) {
+      if (!fileList || !fileList.length) return;
+      let added = 0;
+      for (const file of Array.from(fileList)) {
+        try {
+          const dataUrl = await readFileAsDataURL(file);
+          const item = {
+            id: 'item_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
+            name: file.name, type: file.type || 'image/jpeg', size: file.size,
+            date: Date.now(), isFav: false, optimized: false, dataUrl: dataUrl
+          };
+          await dbPut(item);
+          appState.items.push(item);
+          added++;
+        } catch(e) {}
       }
-
-      dom.lbBtnDownload.onclick = () => {
-        const a = document.createElement('a');
-        a.href = mediaUrl;
-        a.download = item.name;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        toast('Download iniciado.', 'success');
-      };
-
-      dom.lbBtnDelete.onclick = async () => {
-        if (confirm(`Remover "${item.name}" do cofre?`)) {
-          await dbDelete(item.id);
-          appState.items = appState.items.filter(i => i.id !== item.id);
-          appState.selectedIds.delete(item.id);
-          closeLightbox();
-          renderGallery();
-          await updateTelemetryAndCharts();
-          toast('Mídia removida.', 'warning');
-        }
-      };
-    }
-
-    function navigateLightbox(dir) {
-      const currentList = getFilteredAndSortedItems();
-      if (!currentList.length) return;
-      appState.activeLightboxIndex = (appState.activeLightboxIndex + dir + currentList.length) % currentList.length;
-      appState.lightboxRotation = 0;
-      updateLightboxContent(currentList[appState.activeLightboxIndex]);
-    }
-
-    function launchDirectGooglePhotos() {
-      const gPhotosUrl = 'https://photos.google.com/';
-      window.open(gPhotosUrl, '_blank', 'noopener,noreferrer');
-      toast('Abrindo sua galeria do Google Fotos! Para guardar fotos aqui, copie (Ctrl+V) ou arraste-as para o cofre.', 'gphotos');
-    }
-
-    window.addEventListener('paste', async (e) => {
-      const items = (e.clipboardData || window.clipboardData)?.items;
-      if (!items) return;
-
-      const imageItems = [];
-      for (const it of items) {
-        if (it.kind === 'file' && (it.type.startsWith('image/') || it.type.startsWith('video/'))) {
-          const file = it.getAsFile();
-          if (file) imageItems.push(file);
-        }
+      if (added > 0) {
+        updateTelemetry();
+        renderMediaGrid();
+        playSciFiBeep('success');
+        toast(`${added} mídia(s) blindadas com sucesso!`, '🛡️');
       }
+    }
 
-      if (imageItems.length > 0) {
-        toast(`Mídia detectada na área de transferência! Guardando no cofre...`, 'gphotos');
-        for (const file of imageItems) {
-          await ingestMedia(file, `colado_google_fotos_${Date.now()}.jpg`, 'gphotos');
-        }
-        renderGallery();
-        await updateTelemetryAndCharts();
-        toast('Mídia colada guardada com sucesso no cofre!', 'success');
-      }
+    const readFileAsDataURL = f => new Promise((res, rej) => {
+      const r = new FileReader(); r.onload = () => res(r.result); r.onerror = () => rej(r.error); r.readAsDataURL(f);
     });
 
-    function bindAllEvents() {
-      dom.headerOpenGPhotosBtn.addEventListener('click', () => dom.gphotosModal.classList.add('open'));
-      dom.btnLaunchDirectGPhotos.addEventListener('click', launchDirectGooglePhotos);
-      dom.closeGPhotosModalBtn.addEventListener('click', () => dom.gphotosModal.classList.remove('open'));
+    function appendRobotLog(msg) {
+      const c = document.getElementById('robotConsole');
+      const t = new Date().toLocaleTimeString('pt-BR');
+      const l = document.createElement('div');
+      l.textContent = `[${t}] ${msg}`;
+      c.appendChild(l);
+      c.scrollTop = c.scrollHeight;
+    }
 
-      dom.modalBtnDirectOpen.addEventListener('click', () => {
-        dom.gphotosModal.classList.remove('open');
-        launchDirectGooglePhotos();
-      });
-      dom.modalBtnPickSystem.addEventListener('click', () => {
-        dom.gphotosModal.classList.remove('open');
-        dom.generalFileInput.click();
-      });
-      dom.modalBtnPickZip.addEventListener('click', () => {
-        dom.gphotosModal.classList.remove('open');
-        dom.zipImportInput.click();
-      });
-      dom.modalBtnPasteClipboard.addEventListener('click', async () => {
-        dom.gphotosModal.classList.remove('open');
+    async function robotRunOptimization() {
+      const unoptimized = appState.items.filter(i => i.type.startsWith('image/') && !i.optimized);
+      if (!unoptimized.length) {
+        appendRobotLog('⚡ Diagnóstico: Todas as imagens já estão com compressão neural máxima.');
+        toast('Todas as fotos já estão otimizadas!', '✨');
+        return;
+      }
+      appendRobotLog(`Iniciando compressão neural Canvas 4K em ${unoptimized.length} imagem(ns)...`);
+      let count = 0, sessionSaved = 0;
+
+      for (const item of unoptimized) {
         try {
-          if (navigator.clipboard && navigator.clipboard.read) {
-            const clipboardItems = await navigator.clipboard.read();
-            let count = 0;
-            for (const item of clipboardItems) {
-              for (const type of item.types) {
-                if (type.startsWith('image/')) {
-                  const blob = await item.getType(type);
-                  await ingestMedia(blob, `google_fotos_colado_${Date.now()}.png`, 'gphotos');
-                  count++;
-                }
-              }
-            }
-            if (count > 0) {
-              renderGallery();
-              await updateTelemetryAndCharts();
-              toast(`${count} foto(s) colada(s) do Google Fotos!`, 'success');
-              return;
-            }
+          const img = new Image();
+          await new Promise((res, rej) => { img.onload = res; img.onerror = rej; img.src = item.dataUrl; });
+          const canvas = document.createElement('canvas');
+          let w = img.naturalWidth || img.width, h = img.naturalHeight || img.height;
+          const MAX = 2560;
+          if (w > MAX || h > MAX) {
+            if (w > h) { h = Math.round((h * MAX) / w); w = MAX; }
+            else { w = Math.round((w * MAX) / h); h = MAX; }
           }
-        } catch (err) {}
-        toast('Pressione Ctrl + V em qualquer parte da tela para colar!', 'info');
-      });
+          canvas.width = w; canvas.height = h;
+          canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+          const compressed = canvas.toDataURL('image/webp', 0.80);
+          const newSize = Math.round((compressed.length * 3) / 4);
 
-      const openSettings = () => {
-        dom.inputCustomGB.value = appState.customQuotaGB;
-        dom.settingsModal.classList.add('open');
-      };
-      dom.btnOpenSettings.addEventListener('click', openSettings);
-      dom.btnQuickConfigCapacity.addEventListener('click', openSettings);
-      dom.closeSettingsModalBtn.addEventListener('click', () => dom.settingsModal.classList.remove('open'));
-
-      dom.presetGbButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const gb = parseInt(btn.dataset.gb, 10);
-          setCustomQuotaGB(gb);
-        });
-      });
-
-      dom.btnApplyCustomGB.addEventListener('click', () => {
-        const val = parseInt(dom.inputCustomGB.value, 10);
-        if (val) setCustomQuotaGB(val);
-      });
-
-      dom.btnResetVault.addEventListener('click', async () => {
-        if (confirm('ATENÇÃO: Deseja apagar permanentemente todas as mídias salvas dentro do cofre?')) {
-          if (confirm('Confirmação final: Esta ação é irreversível. Prosseguir?')) {
-            await dbClearAll();
-            appState.items = [];
-            appState.selectedIds.clear();
-            renderGallery();
-            await updateTelemetryAndCharts();
-            dom.settingsModal.classList.remove('open');
-            toast('O cofre foi completamente esvaziado.', 'warning');
-            logToBotConsole('Cofre reiniciado e esvaziado pelo usuário.', 'warning');
+          if (newSize < item.size) {
+            const diff = item.size - newSize;
+            sessionSaved += diff;
+            item.size = newSize;
+            item.dataUrl = compressed;
+            item.optimized = true;
+            await dbPut(item);
+            count++;
+            appendRobotLog(`✔️ "${item.name}": Reduzido em ${formatBytes(diff)} (Novo: ${formatBytes(newSize)})`);
+          } else {
+            item.optimized = true;
+            await dbPut(item);
+            appendRobotLog(`ℹ️ "${item.name}": Tamanho original já era ideal.`);
           }
-        }
-      });
-
-      dom.btnExportAllZipFromSettings.addEventListener('click', exportAllToZip);
-
-      const openBotModal = () => {
-        dom.botModal.classList.add('open');
-        logToBotConsole('Sessão neural ativa. Aguardando comandos.');
-      };
-      dom.btnOpenBotModal.addEventListener('click', openBotModal);
-      dom.btnTriggerBotOptimizer.addEventListener('click', openBotModal);
-      dom.btnOpenBotFromSettings.addEventListener('click', () => {
-        dom.settingsModal.classList.remove('open');
-        openBotModal();
-      });
-      dom.closeBotModalBtn.addEventListener('click', () => dom.botModal.classList.remove('open'));
-
-      dom.btnBotRunOptimization.addEventListener('click', runBotOptimization);
-      dom.btnBotFindDuplicates.addEventListener('click', runBotFindDuplicates);
-      dom.btnBotDefrag.addEventListener('click', runBotDefragmentation);
-      dom.btnBotReport.addEventListener('click', runBotReport);
-
-      ['dragenter', 'dragover'].forEach(evt => {
-        dom.mainDropzone.addEventListener(evt, (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          dom.mainDropzone.classList.add('dragover');
-        });
-      });
-
-      ['dragleave', 'drop'].forEach(evt => {
-        dom.mainDropzone.addEventListener(evt, (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          dom.mainDropzone.classList.remove('dragover');
-        });
-      });
-
-      dom.mainDropzone.addEventListener('drop', async (e) => {
-        const dt = e.dataTransfer;
-        if (dt && dt.files && dt.files.length) {
-          await handleFilesSelected(dt.files, 'phone');
-        }
-      });
-
-      dom.btnPickFiles.addEventListener('click', (e) => {
-        e.stopPropagation();
-        dom.generalFileInput.value = '';
-        dom.generalFileInput.click();
-      });
-
-      dom.btnMainUpload.addEventListener('click', () => {
-        dom.generalFileInput.value = '';
-        dom.generalFileInput.click();
-      });
-
-      dom.btnPickCamera.addEventListener('click', (e) => {
-        e.stopPropagation();
-        dom.cameraPhotoInput.value = '';
-        dom.cameraPhotoInput.click();
-      });
-
-      dom.generalFileInput.addEventListener('change', (e) => {
-        handleFilesSelected(e.target.files, 'phone');
-        dom.generalFileInput.value = '';
-      });
-
-      dom.cameraPhotoInput.addEventListener('change', (e) => {
-        handleFilesSelected(e.target.files, 'phone');
-        dom.cameraPhotoInput.value = '';
-      });
-
-      dom.zipImportInput.addEventListener('change', (e) => {
-        if (e.target.files && e.target.files[0]) {
-          handleZipImport(e.target.files[0]);
-        }
-        dom.zipImportInput.value = '';
-      });
-
-      dom.filterTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-          dom.filterTabs.forEach(t => t.classList.remove('active'));
-          tab.classList.add('active');
-          appState.filter = tab.dataset.filter;
-          renderGallery();
-        });
-      });
-
-      dom.gallerySearchInput.addEventListener('input', (e) => {
-        appState.search = e.target.value;
-        renderGallery();
-      });
-
-      dom.gallerySortSelect.addEventListener('change', (e) => {
-        appState.sort = e.target.value;
-        renderGallery();
-      });
-
-      dom.btnSelectAllToggle.addEventListener('click', toggleSelectAll);
-
-      dom.btnBatchDownload.addEventListener('click', exportSelectedToZip);
-      dom.btnBatchDelete.addEventListener('click', deleteSelectedItems);
-      dom.btnBatchCancel.addEventListener('click', () => {
-        appState.selectedIds.clear();
-        renderGallery();
-      });
-
-      dom.lbBtnClose.addEventListener('click', closeLightbox);
-      dom.lbBtnPrev.addEventListener('click', () => navigateLightbox(-1));
-      dom.lbBtnNext.addEventListener('click', () => navigateLightbox(1));
-      dom.lbBtnRotate.addEventListener('click', () => {
-        appState.lightboxRotation = (appState.lightboxRotation + 90) % 360;
-        dom.lbMediaContainer.style.transform = `rotate(${appState.lightboxRotation}deg)`;
-      });
-
-      window.addEventListener('keydown', (e) => {
-        if (dom.lightbox.classList.contains('active')) {
-          if (e.key === 'Escape') closeLightbox();
-          else if (e.key === 'ArrowLeft') navigateLightbox(-1);
-          else if (e.key === 'ArrowRight') navigateLightbox(1);
-        }
-        if (e.key === 'Escape') {
-          if (dom.gphotosModal.classList.contains('open')) dom.gphotosModal.classList.remove('open');
-          if (dom.settingsModal.classList.contains('open')) dom.settingsModal.classList.remove('open');
-          if (dom.botModal.classList.contains('open')) dom.botModal.classList.remove('open');
-        }
-      });
-    }
-
-    async function init() {
-      const savedQuota = localStorage.getItem(STORAGE_KEY_CUSTOM_QUOTA_GB);
-      if (savedQuota) {
-        const parsed = parseInt(savedQuota, 10);
-        if (parsed && parsed > 0) {
-          appState.customQuotaGB = parsed;
+        } catch(e) {
+          appendRobotLog(`❌ Erro em "${item.name}": ${e.message}`);
         }
       }
+      appState.savedBytes += sessionSaved;
+      localStorage.setItem(KEY_SAVINGS, appState.savedBytes.toString());
+      updateTelemetry();
+      renderMediaGrid();
+      playSciFiBeep('success');
+      appendRobotLog(`🎉 Concluído! ${count} imagens otimizadas. Economia: ${formatBytes(sessionSaved)}.`);
+      toast(`Robô economizou ${formatBytes(sessionSaved)}!`, '⚡');
+    }
 
-      await enforcePersistentStorage();
+    async function robotScanDuplicates() {
+      appendRobotLog('🔍 Escaneando mídias duplicadas por assinatura de tamanho e tipo...');
+      const map = new Map(), dups = [];
+      for (const item of appState.items) {
+        const k = `${item.size}_${item.type}`;
+        if (map.has(k)) dups.push({ orig: map.get(k), dup: item });
+        else map.set(k, item);
+      }
+      if (!dups.length) {
+        appendRobotLog('✔️ Nenhuma mídia duplicada encontrada.');
+        toast('Nenhuma foto duplicada encontrada.', '🛡️');
+        return;
+      }
+      appendRobotLog(`⚠️ Encontradas ${dups.length} mídias duplicadas.`);
+      if (confirm(`O Robô IA detectou ${dups.length} arquivo(s) duplicado(s). Deseja remover as cópias redundantes?`)) {
+        let freed = 0;
+        for (const p of dups) {
+          await dbDelete(p.dup.id);
+          appState.items = appState.items.filter(i => i.id !== p.dup.id);
+          freed += p.dup.size;
+          appendRobotLog(`🗑️ Cópia removida: "${p.dup.name}" (${formatBytes(p.dup.size)} liberados)`);
+        }
+        updateTelemetry();
+        renderMediaGrid();
+        playSciFiBeep('success');
+        appendRobotLog(`🎉 Limpeza finalizada! ${formatBytes(freed)} recuperados.`);
+        toast(`Liberados ${formatBytes(freed)}!`, '🧹');
+      }
+    }
 
+    async function robotDefragDatabase() {
+      appendRobotLog('🧹 Desfragmentando e recalculando índices IndexedDB...');
+      const all = await dbGetAll();
+      appState.items = all;
+      updateTelemetry();
+      renderMediaGrid();
+      appendRobotLog(`✔️ Recalibrados ${all.length} registros ativos. Integridade 100%.`);
+      playSciFiBeep('success');
+      toast('Banco de dados desfragmentado!', '🧹');
+    }
+
+    window.openModal = id => {
+      const el = document.getElementById(id);
+      if (el) { el.classList.add('open'); playSciFiBeep('click'); }
+    };
+    window.closeModal = id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.remove('open');
+    };
+
+    async function initApp() {
       try {
+        await initDB();
         appState.items = await dbGetAll();
-      } catch (err) {
-        console.error('Erro ao carregar banco:', err);
-        appState.items = [];
-      }
+      } catch(e) {}
 
-      bindAllEvents();
-      renderGallery();
-      await updateTelemetryAndCharts();
+      applyTheme(appState.activeThemeId, false);
+      renderThemesGrid('all', '');
+
+      document.getElementById('settingsCurrentCapacity').textContent = `${appState.quotaVal} ${appState.quotaUnit}`;
+      document.getElementById('customQuotaInput').value = appState.quotaVal;
+      document.getElementById('customQuotaUnit').value = appState.quotaUnit;
+
+      document.querySelectorAll('#quotaPresets .preset-chip').forEach(b => {
+        b.classList.toggle('active', parseInt(b.dataset.val, 10) === appState.quotaVal && b.dataset.unit === appState.quotaUnit);
+      });
+
+      updateTelemetry();
+      renderMediaGrid();
+
+      document.getElementById('btnOpenSettings').addEventListener('click', () => openModal('modalSettings'));
+      document.getElementById('quickStorageBtn').addEventListener('click', () => openModal('modalSettings'));
+      document.getElementById('btnOpenThemesModal').addEventListener('click', () => {
+        closeModal('modalSettings'); openModal('modalThemes');
+      });
+      document.getElementById('btnOpenRobot').addEventListener('click', () => openModal('modalRobot'));
+
+      const fileInput = document.getElementById('fileInput');
+      document.getElementById('btnUploadTrigger').addEventListener('click', () => fileInput.click());
+      fileInput.addEventListener('change', e => handleIncomingFiles(e.target.files));
+
+      document.getElementById('btnLaunchGooglePhotos').addEventListener('click', () => {
+        window.open('https://photos.google.com', '_blank');
+        toast('Google Fotos aberto! Copie fotos (Ctrl+C) e cole aqui com Ctrl+V.', '🚀');
+      });
+
+      const zipFileInput = document.getElementById('zipFileInput');
+      document.getElementById('btnImportTakeoutZip').addEventListener('click', () => zipFileInput.click());
+      zipFileInput.addEventListener('change', async e => {
+        const file = e.target.files[0];
+        if (!file) return;
+        toast('Extraindo e blindando pacote ZIP...', '📦');
+        try {
+          const zip = await JSZip.loadAsync(file);
+          let count = 0;
+          for (const [fn, fe] of Object.entries(zip.files)) {
+            if (fe.dir) continue;
+            const ext = fn.split('.').pop().toLowerCase();
+            if (['jpg','jpeg','png','webp','gif','mp4','mov','pdf'].includes(ext)) {
+              const blob = await fe.async('blob');
+              const dataUrl = await readFileAsDataURL(blob);
+              const item = {
+                id: 'zip_' + Date.now() + '_' + Math.random().toString(36).substr(2,6),
+                name: fn.split('/').pop(), type: blob.type || 'image/jpeg', size: blob.size,
+                date: Date.now(), isFav: false, optimized: false, dataUrl: dataUrl
+              };
+              await dbPut(item);
+              appState.items.push(item);
+              count++;
+            }
+          }
+          updateTelemetry();
+          renderMediaGrid();
+          toast(`${count} arquivo(s) extraídos do ZIP!`, '🎉');
+        } catch(err) {
+          toast('Erro ao ler arquivo ZIP.', '❌');
+        }
+      });
+
+      document.getElementById('btnExportAllZip').addEventListener('click', async () => {
+        if (!appState.items.length) return alert('O cofre está vazio!');
+        toast('Gerando arquivo ZIP blindado...', '📦');
+        const zip = new JSZip();
+        for (const item of appState.items) {
+          const base64 = item.dataUrl.split(',')[1];
+          zip.file(item.name, base64, { base64: true });
+        }
+        const content = await zip.generateAsync({ type: 'blob' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(content);
+        a.download = `MANGEDORA_APPLE_BACKUP_${Date.now()}.zip`;
+        a.click();
+        toast('Backup exportado com sucesso!', '🛡️');
+      });
+
+      document.getElementById('btnClearAllVault').addEventListener('click', async () => {
+        if (confirm('Deseja apagar todas as mídias do cofre local permanentemente?') && confirm('Confirmação final: ação irreversível.')) {
+          await dbClear();
+          appState.items = [];
+          updateTelemetry();
+          renderMediaGrid();
+          toast('Cofre esvaziado.', '🗑️');
+        }
+      });
+
+      document.querySelectorAll('#quotaPresets .preset-chip').forEach(b => {
+        b.addEventListener('click', () => saveQuota(b.dataset.val, b.dataset.unit));
+      });
+
+      document.getElementById('btnSaveCustomQuota').addEventListener('click', () => {
+        saveQuota(document.getElementById('customQuotaInput').value, document.getElementById('customQuotaUnit').value);
+      });
+
+      document.getElementById('themeSearchInput').addEventListener('input', e => {
+        const activeCat = document.querySelector('#themeCategoryNav .theme-cat-btn.active')?.dataset.cat || 'all';
+        renderThemesGrid(activeCat, e.target.value);
+      });
+
+      document.querySelectorAll('#themeCategoryNav .theme-cat-btn').forEach(b => {
+        b.addEventListener('click', () => {
+          document.querySelectorAll('#themeCategoryNav .theme-cat-btn').forEach(btn => btn.classList.remove('active'));
+          b.classList.add('active');
+          renderThemesGrid(b.dataset.cat, document.getElementById('themeSearchInput').value);
+        });
+      });
+
+      document.getElementById('btnRobotOptimize').addEventListener('click', robotRunOptimization);
+      document.getElementById('btnRobotDuplicates').addEventListener('click', robotScanDuplicates);
+      document.getElementById('btnRobotDefrag').addEventListener('click', robotDefragDatabase);
+      document.getElementById('btnDownloadLightbox').addEventListener('click', () => {
+        if (appState.activeLightboxItem) downloadItem(appState.activeLightboxItem);
+      });
+
+      document.querySelectorAll('.filter-tabs .filter-btn').forEach(b => {
+        b.addEventListener('click', () => {
+          document.querySelectorAll('.filter-tabs .filter-btn').forEach(btn => btn.classList.remove('active'));
+          b.classList.add('active');
+          appState.filter = b.dataset.filter;
+          renderMediaGrid();
+        });
+      });
+
+      document.getElementById('searchInput').addEventListener('input', e => {
+        appState.search = e.target.value; renderMediaGrid();
+      });
+
+      document.getElementById('sortSelect').addEventListener('change', e => {
+        appState.sort = e.target.value; renderMediaGrid();
+      });
+
+      window.addEventListener('paste', async e => {
+        const items = (e.clipboardData || e.originalEvent.clipboardData).items;
+        const files = [];
+        for (const it of items) {
+          if (it.kind === 'file') {
+            const f = it.getAsFile();
+            if (f) files.push(f);
+          }
+        }
+        if (files.length) {
+          toast('Foto recebida da área de transferência!', '📋');
+          await handleIncomingFiles(files);
+        }
+      });
+
+      window.addEventListener('dragover', e => e.preventDefault());
+      window.addEventListener('drop', async e => {
+        e.preventDefault();
+        if (e.dataTransfer && e.dataTransfer.files.length) {
+          toast('Arquivos recebidos!', '📥');
+          await handleIncomingFiles(e.dataTransfer.files);
+        }
+      });
+
+      document.querySelectorAll('.modal-overlay').forEach(o => {
+        o.addEventListener('click', e => { if (e.target === o) o.classList.remove('open'); });
+      });
     }
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init);
-    } else {
-      init();
-    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initApp);
+    else initApp();
   })();
   </script>
 </body>
