@@ -1,10 +1,27 @@
+<div align="center">
+
 # 🍎 MANGEDORA APPLE PRO ELITE
 
-**Cofre blindado permanente** para fotos e vídeos, rodando direto no navegador. **Funciona 100% offline para uso diário** — a internet só é necessária na primeira configuração e para importar do Google Fotos.
+### 🛡️ Cofre Blindado Permanente • Google Fotos OAuth 2.0 • Robô IA 4K
 
-Sem servidor. Sem cadastro obrigatório. Sem rastreamento. Suas mídias ficam guardadas **permanentemente** no seu aparelho via **IndexedDB** — apagar do celular **não** remove do cofre. **A nuvem só entra se você quiser** (importação opcional do Google Fotos).
+**Cofre blindado permanente para fotos e vídeos, rodando direto no navegador.**
+**Funciona 100% offline para uso diário** — a internet só é necessária na primeira configuração e para importar do Google Fotos.
+
+[![Status](https://img.shields.io/badge/status-pronto-brightgreen?style=for-the-badge)](https://renatosgs.github.io/mangedora-apple/)
+[![Versão](https://img.shields.io/badge/vers%C3%A3o-v7.1-blue?style=for-the-badge)](https://renatosgs.github.io/mangedora-apple/)
+[![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](LICENSE)
+[![Sem servidor](https://img.shields.io/badge/servidor-nenhum-orange?style=for-the-badge)](#)
+[![Privacidade](https://img.shields.io/badge/privacidade-100%25_local-purple?style=for-the-badge)](#)
 
 ### 🔗 [**Abrir o app →**](https://renatosgs.github.io/mangedora-apple/)
+
+![MANGEDORA APPLE](screenshot.png)
+
+</div>
+
+---
+
+Sem servidor. Sem cadastro obrigatório. Sem rastreamento. Suas mídias ficam guardadas **permanentemente** no seu aparelho via **IndexedDB** — apagar do celular **não** remove do cofre. **A nuvem só entra se você quiser** (importação opcional do Google Fotos).
 
 ---
 
@@ -84,7 +101,7 @@ No **Chrome (Android)** ou **Safari (iOS)**:
 ## 🌐 Quando precisa de internet?
 
 | Ação | Precisa de internet? |
-|---|---|
+|---|:---:|
 | Abrir o app pela primeira vez | ✅ Sim (baixa fontes e JSZip) |
 | Uso diário (ver, organizar, favoritar) | ❌ Não — 100% offline |
 | Adicionar fotos da galeria | ❌ Não |
@@ -135,13 +152,15 @@ Para puxar fotos direto do Google Fotos pro cofre, você precisa de um **Client 
 
 ## 🛠️ Tecnologias
 
-- **HTML5 + CSS3 + JavaScript puro** (zero build, zero npm)
-- **IndexedDB** — banco de dados local do navegador
-- **Canvas API** — compressão de imagens
-- **CSS Variables** — sistema de 40 temas dinâmicos
-- **JSZip** — import/export de pacotes ZIP
-- **Google Identity Services** — OAuth 2.0
-- **Photos Picker API** — seleção de fotos do Google Fotos
+| Tecnologia | Uso |
+|---|---|
+| **HTML5 + CSS3 + JavaScript puro** | Zero build, zero npm |
+| **IndexedDB** | Banco de dados local do navegador |
+| **Canvas API** | Compressão de imagens |
+| **CSS Variables** | Sistema de 40 temas dinâmicos |
+| **JSZip** | Import/export de pacotes ZIP |
+| **Google Identity Services** | OAuth 2.0 |
+| **Photos Picker API** | Seleção de fotos do Google Fotos |
 
 Todo o app é **single-file** — não precisa de build, webpack, npm ou qualquer coisa.
 
@@ -151,9 +170,10 @@ Todo o app é **single-file** — não precisa de build, webpack, npm ou qualque
 
 ```
 mangedora-apple/
-├── index.html    # Aplicativo completo (single-file)
-├── README.md     # Este arquivo
-└── LICENSE       # MIT (opcional)
+├── index.html       # Aplicativo completo (single-file)
+├── README.md        # Este arquivo
+├── screenshot.png   # Print do app (usado no README)
+└── LICENSE          # MIT (opcional)
 ```
 
 ---
@@ -161,10 +181,10 @@ mangedora-apple/
 ## 📋 Compatibilidade
 
 | Navegador | Suporte |
-|---|---|
+|---|:---:|
 | Chrome / Edge | ✅ Completo |
 | Firefox | ✅ Completo |
-| Safari (macOS/iOS 15+) | ✅ Completo |
+| Safari (macOS / iOS 15+) | ✅ Completo |
 | Navegadores antigos | ⚠️ Sem Google Fotos (fallback WebP→JPEG) |
 
 ---
@@ -190,4 +210,10 @@ MIT — use, modifique e distribua livremente.
 
 ---
 
-Feito com ☕ e luz vermelha de darkroom. 🛡️
+<div align="center">
+
+**Feito com ☕ e luz vermelha de darkroom.** 🛡️
+
+[⬆ Voltar ao topo](#-mangedora-apple-pro-elite)
+
+</div>
