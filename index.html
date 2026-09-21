@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <meta name="description" content="MANGEDORA APPLE PRO ELITE • Cofre Blindado Permanente com Robô IA, 40 Temas Exclusivos, Boot Estilista IA, Ajuste GB/TB e envio direto da galeria/Google Fotos.">
+  <meta name="description" content="MANGEDORA APPLE PRO ELITE • Cofre Blindado Permanente com Robô IA, 40 Temas, Boot IA, Ajuste GB/TB e Google Fotos OAuth 2.0.">
   <meta name="theme-color" content="#06070a">
-  <title>MANGEDORA APPLE • Elite Pro Vault Permanente, Bot de Temas & Robô IA 4K</title>
+  <title>MANGEDORA APPLE • Elite Pro Vault & Google Fotos OAuth</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%2306070a' stroke='%233b82f6' stroke-width='2'/><path d='M16 6l9 5v6c0 5.5-4 9.5-9 11-5-1.5-9-5.5-9-11v-6l9-5z' fill='%23121724' stroke='%233b82f6' stroke-width='1.5'/><circle cx='16' cy='16' r='3.5' fill='%23f59e0b'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,8 +69,9 @@
       display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem; padding: 0.6rem 1.15rem; font-size: 0.85rem;
       font-weight: 600; font-family: var(--font-sans); border-radius: var(--radius-md); border: 1px solid transparent; cursor: pointer; transition: var(--transition); text-decoration: none; white-space: nowrap;
     }
+    .btn:disabled { opacity: 0.45; cursor: not-allowed; }
     .btn-primary { background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); color: #fff; box-shadow: 0 4px 16px var(--accent-glow); }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px var(--accent-glow); }
+    .btn-primary:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 20px var(--accent-glow); }
     .btn-theme-header {
       background: linear-gradient(135deg, rgba(245,158,11,0.18), rgba(59,130,246,0.22)); border: 1px solid var(--accent-secondary);
       color: #fff; box-shadow: 0 0 14px rgba(245,158,11,0.25);
@@ -82,11 +83,18 @@
     .btn-settings:hover { background: rgba(255,255,255,0.12); border-color: var(--accent-primary); transform: translateY(-2px); }
     .btn-gf { background: rgba(234,67,53,0.14); border: 1px solid rgba(234,67,53,0.45); color: #ff8a80; }
     .btn-gf:hover { background: rgba(234,67,53,0.25); border-color: #ff5252; transform: translateY(-2px); }
+    .btn-google-link {
+      background: linear-gradient(135deg, #4285f4, #34a853); border: 1px solid #4285f4; color: #fff;
+      box-shadow: 0 4px 16px rgba(66,133,244,0.4);
+    }
+    .btn-google-link:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(66,133,244,0.6); }
     .btn-send-vault {
       background: linear-gradient(135deg, #10b981, #059669); border: 1px solid #10b981; color: #fff;
       box-shadow: 0 4px 16px rgba(16,185,129,0.35);
     }
     .btn-send-vault:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(16,185,129,0.55); }
+    .btn-danger { background: rgba(239,68,68,0.15); border: 1px solid #ef4444; color: #ef4444; }
+    .btn-danger:hover:not(:disabled) { background: rgba(239,68,68,0.28); }
     .btn-secondary { background: rgba(255,255,255,0.06); border-color: var(--border-subtle); color: var(--text-secondary); }
     .btn-secondary:hover { background: rgba(255,255,255,0.1); color: var(--text-primary); }
     .btn-sm { padding: 0.4rem 0.8rem; font-size: 0.78rem; border-radius: var(--radius-sm); }
@@ -101,8 +109,27 @@
     .card-icon { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); color: var(--accent-primary); }
     .card-val { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; color: var(--text-primary); }
     .card-subtext { font-size: 0.75rem; color: var(--text-tertiary); }
+    .google-link-card {
+      background: linear-gradient(135deg, rgba(66,133,244,0.1), rgba(52,168,83,0.08));
+      border: 1px solid rgba(66,133,244,0.4);
+      border-radius: var(--radius-lg); padding: 1.2rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;
+    }
+    .google-link-left { display: flex; align-items: center; gap: 1rem; flex: 1 1 340px; }
+    .google-logo-circle {
+      width: 46px; height: 46px; border-radius: 50%; background: rgba(255,255,255,0.95);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.2);
+    }
+    .google-status-pill { display:inline-flex; align-items:center; gap:0.35rem; padding: 0.2rem 0.6rem; border-radius: 999px; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.4px; }
+    .google-status-pill.off { background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid #f59e0b; }
+    .google-status-pill.on { background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid #10b981; }
+    .google-status-pill.loading { background: rgba(59,130,246,0.15); color: #38bdf8; border: 1px solid #3b82f6; }
+    .google-info-box { background: rgba(59,130,246,0.08); border-left: 3px solid var(--accent-primary); padding: 0.85rem 1rem; border-radius: var(--radius-sm); font-size: 0.78rem; line-height: 1.6; color: var(--text-secondary); }
+    .google-info-box strong { color: var(--text-primary); }
+    .google-info-box code { background: rgba(0,0,0,0.4); padding: 0.1rem 0.35rem; border-radius: 4px; font-family: var(--font-mono); font-size: 0.72rem; color: #38bdf8; }
+    .google-info-box a { color: #38bdf8; text-decoration: underline; }
     .gf-banner {
-      background: linear-gradient(135deg, rgba(16,185,129,0.09), rgba(66,133,244,0.09)); border: 1px solid rgba(16,185,129,0.3);
+      background: linear-gradient(135deg, rgba(66,133,244,0.09), rgba(16,185,129,0.09)); border: 1px solid rgba(66,133,244,0.3);
       border-radius: var(--radius-lg); padding: 1.2rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;
     }
     .gf-info { display: flex; align-items: center; gap: 1rem; flex: 1 1 340px; }
@@ -152,6 +179,10 @@
     .media-perm-shield {
       position: absolute; bottom: 8px; left: 8px; font-size: 0.62rem; font-weight: 800; padding: 0.2rem 0.45rem;
       border-radius: 5px; background: rgba(16,185,129,0.85); backdrop-filter: blur(6px); color: #fff; letter-spacing: 0.5px; display: flex; align-items: center; gap: 0.25rem;
+    }
+    .media-src-google {
+      position: absolute; bottom: 8px; right: 8px; font-size: 0.6rem; font-weight: 800; padding: 0.2rem 0.4rem;
+      border-radius: 5px; background: rgba(66,133,244,0.9); color: #fff; letter-spacing: 0.3px;
     }
     .media-fav-btn {
       position: absolute; top: 8px; right: 8px; width: 30px; height: 30px; border-radius: 50%;
@@ -216,10 +247,11 @@
     }
     .preset-chip:hover, .preset-chip.active { background: var(--accent-primary); border-color: var(--accent-primary); box-shadow: 0 0 10px var(--accent-glow); }
     .custom-quota-form { display: flex; align-items: center; gap: 0.65rem; flex-wrap: wrap; }
-    .custom-quota-form input {
+    .custom-quota-form input, .clientid-input {
       flex: 1; min-width: 110px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
-      padding: 0.55rem 0.85rem; color: #fff; font-family: var(--font-mono); font-size: 0.88rem; outline: none;
+      padding: 0.55rem 0.85rem; color: #fff; font-family: var(--font-mono); font-size: 0.82rem; outline: none;
     }
+    .clientid-input:focus { border-color: var(--accent-primary); box-shadow: 0 0 10px var(--accent-glow); }
     .custom-quota-form select {
       background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
       padding: 0.55rem 0.85rem; color: #fff; font-size: 0.88rem; outline: none; cursor: pointer;
@@ -287,7 +319,7 @@
       background: var(--bg-surface-elevated); border: 1px solid var(--accent-primary); border-radius: var(--radius-md);
       padding: 0.75rem 1.15rem; color: #fff; font-size: 0.82rem; font-weight: 600; box-shadow: 0 6px 25px rgba(0,0,0,0.6);
       animation: slideToast 0.25s forwards ease-out; pointer-events: auto; display: flex; align-items: center; gap: 0.5rem;
-      transition: opacity 0.25s ease, transform 0.25s ease;
+      transition: opacity 0.25s ease, transform 0.25s ease; max-width: 340px;
     }
     .toast-msg.hide { opacity: 0; transform: translateX(30px); }
     @keyframes slideToast { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
@@ -316,26 +348,26 @@
         </div>
         <div class="brand-info">
           <h1>MANGEDORA APPLE <span class="badge-elite">PRO ELITE</span></h1>
-          <p style="font-size:0.75rem;color:var(--text-tertiary);">Cofre Blindado Permanente • Envio Direto da Galeria • 40 Temas & Bot Estilista IA</p>
+          <p style="font-size:0.75rem;color:var(--text-tertiary);">Cofre Blindado Permanente • Google Fotos OAuth 2.0 • 40 Temas & Bot IA</p>
         </div>
       </div>
       <div class="header-actions">
         <div style="display:inline-flex;align-items:center;gap:0.35rem;">
-          <button class="btn btn-theme-header" id="btnTopChangeThemeManual" aria-label="Abrir painel de temas" title="Abrir painel com 40 temas e Boot Estilista IA">
-            <span>🎨</span> Mudar Tema Manualmente
+          <button class="btn btn-theme-header" id="btnTopChangeThemeManual" aria-label="Abrir painel de temas">
+            <span>🎨</span> Mudar Tema
           </button>
-          <button class="btn btn-secondary btn-sm" id="btnQuickNextTheme" aria-label="Próximo tema" title="Avançar para o próximo tema manualmente" style="padding:0.6rem 0.65rem;border-color:var(--accent-secondary);color:var(--accent-secondary);">
+          <button class="btn btn-secondary btn-sm" id="btnQuickNextTheme" aria-label="Próximo tema" style="padding:0.6rem 0.65rem;border-color:var(--accent-secondary);color:var(--accent-secondary);">
             <span>⏭️</span>
           </button>
         </div>
-        <div class="storage-pill" id="quickStorageBtn" title="Clique para ajustar GB / Terabytes nas Configurações">
+        <div class="storage-pill" id="quickStorageBtn" title="Ajustar GB / TB">
           <span>💾</span>
           <span id="headerStorageText">0 MB / 250 GB</span>
           <div class="storage-mini-bar"><div class="storage-mini-fill" id="headerStorageFill"></div></div>
         </div>
-        <button class="btn btn-robot" id="btnOpenRobot" aria-label="Robô IA Plus"><span>⚡</span> Robô IA Plus</button>
+        <button class="btn btn-robot" id="btnOpenRobot" aria-label="Robô IA Plus"><span>⚡</span> Robô IA</button>
         <button class="btn btn-settings" id="btnOpenSettings" aria-label="Configurações"><span>⚙️</span> Configurações</button>
-        <button class="btn btn-primary" id="btnUploadTrigger"><span>➕</span> Adicionar Mídia</button>
+        <button class="btn btn-primary" id="btnUploadTrigger"><span>➕</span> Adicionar</button>
         <input type="file" id="fileInput" multiple accept="image/*,video/*,application/pdf" style="display:none;">
       </div>
     </header>
@@ -363,25 +395,53 @@
       </div>
     </section>
 
+    <section class="google-link-card">
+      <div class="google-link-left">
+        <div class="google-logo-circle">
+          <svg width="26" height="26" viewBox="0 0 48 48">
+            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+          </svg>
+        </div>
+        <div class="gf-texts">
+          <h3>Vincular Conta Google Fotos <span class="google-status-pill off" id="googleStatusPill">🔌 Não vinculado</span></h3>
+          <p>Autorize com segurança via <strong>OAuth 2.0 oficial do Google</strong> (você digita e-mail/senha na <strong>janela do próprio Google</strong>). Depois é só clicar em <strong>"Selecionar Fotos do Google Fotos"</strong> e importar direto para o cofre, onde ficam <strong>blindadas permanentemente</strong>.</p>
+        </div>
+      </div>
+      <div class="gf-buttons">
+        <button class="btn btn-google-link" id="btnLinkGoogle">
+          <span>🔗</span> Vincular Conta Google
+        </button>
+        <button class="btn btn-primary" id="btnPickGooglePhotos" disabled>
+          <span>📸</span> Selecionar Fotos
+        </button>
+        <button class="btn btn-danger btn-sm" id="btnUnlinkGoogle" disabled title="Desvincular conta Google">
+          <span>🔌</span> Desvincular
+        </button>
+      </div>
+    </section>
+
     <section class="gf-banner">
       <div class="gf-info">
         <div class="gf-badge-icon">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="#4285f4"/></svg>
         </div>
         <div class="gf-texts">
-          <h3>📸 Enviar Foto Direto para o Cofre (Google Fotos / Galeria)</h3>
-          <p>Toque em <strong>“Enviar Foto Direto para o Cofre”</strong> para escolher da sua galeria (no Android/iOS aparece o Google Fotos como fonte). A foto é <strong>copiada e blindada permanentemente</strong> no IndexedDB — mesmo que você apague a original do celular depois, ela continua no cofre. Você também pode colar com Ctrl+V.</p>
+          <h3>📸 Envio Rápido (Galeria / Colar / ZIP)</h3>
+          <p>Alternativas rápidas: envie direto da <strong>galeria do celular</strong>, cole com <strong>Ctrl+V</strong>, arraste arquivos ou importe <strong>backup ZIP</strong> do Google Takeout.</p>
         </div>
       </div>
       <div class="gf-buttons">
-        <button class="btn btn-send-vault" id="btnSendPhotoDirect" aria-label="Enviar foto direto para o cofre">
-          <span>📸</span> Enviar Foto Direto para o Cofre
+        <button class="btn btn-send-vault" id="btnSendPhotoDirect">
+          <span>📸</span> Enviar da Galeria
         </button>
         <input type="file" id="photoPickerInput" multiple accept="image/*,video/*" style="display:none;">
         <button class="btn btn-gf" id="btnLaunchGooglePhotos"><span>🚀</span> Abrir Google Fotos</button>
-        <button class="btn btn-secondary" id="btnImportTakeoutZip"><span>📦</span> Importar Backup (.ZIP)</button>
-        <input type="file" id="zipFileInput" accept=".zip" style="display:none;">
-      </div>
+        <button class="btndisplay btn-secondary" id="btnImportTakeoutZip"><span>:n📦</span> Importarone ZIP</button>
+        <input type="file" id;">
+="zipFileInput" accept=".zip" style="      </div>
     </section>
 
     <section class="toolbar">
@@ -407,7 +467,7 @@
       <div class="empty-vault">
         <div class="empty-icon">🛡️</div>
         <h3>Seu Cofre está Vazio e Pronto para Blindagem</h3>
-        <p style="color:var(--text-secondary);max-width:520px;">Adicione fotos e vídeos pelo botão <strong>📸 Enviar Foto Direto para o Cofre</strong>, pelo botão <strong>➕ Adicionar Mídia</strong>, cole com <strong>Ctrl+V</strong> ou arraste arquivos para cá. Tudo fica <strong>armazenado permanentemente</strong> — apagar do celular não afeta o cofre.</p>
+        <p style="color:var(--text-secondary);max-width:560px;">Vincule sua conta Google Fotos para puxar fotos direto, use o botão <strong>📸 Enviar da Galeria</strong>, cole com <strong>Ctrl+V</strong> ou arraste arquivos. Tudo fica <strong>armazenado permanentemente</strong> — apagar do celular não afeta o cofre.</p>
         <button class="btn btn-primary" id="btnEmptyAdd"><span>➕</span> Carregar Primeiros Arquivos</button>
       </div>
     </main>
@@ -420,21 +480,54 @@
         <button class="modal-close" data-close="modalSettings" aria-label="Fechar">✕</button>
       </div>
       <div class="modal-body">
-        <div class="theme-highlight-banner">
-          <div>
-            <h4 style="font-size:1rem;font-weight:800;margin-bottom:0.25rem;">🎨 Mudar Tema do Aplicativo</h4>
-            <p style="font-size:0.78rem;color:var(--text-secondary);">40 temas exclusivos com Boot IA Estilista para transições automáticas.</p>
+
+        <div class="settings-section">
+          <div class="settings-head">
+            <h4><span>🔗</span> Google Fotos (OAuth 2.0)</h4>
+            <span class="badge-elite" id="googleClientIdStatusBadge">Não configurado</span>
           </div>
-          <button class="btn btn-primary" id="btnOpenThemesModal"><span>🎨</span> Escolher Entre os 40 Temas</button>
+          <div class="google-info-box">
+            <strong>Por que preciso de um Client ID?</strong> O Google <u>proíbe</u> que aplicativos peçam e-mail/senha diretamente (é proteção contra golpes). Cada app usa o próprio <code>OAuth Client ID</code> — <strong>público, gratuito e você mesmo cria em 5 minutos</strong>.
+            <br><br>
+            <strong>Passo a passo:</strong>
+            <br>1. Acesse <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">console.cloud.google.com</a>
+            <br>2. Crie um projeto → <strong>APIs e serviços → Biblioteca</strong> → ative <strong>Photos Picker API</strong>
+            <br>3. <strong>Tela de permissão OAuth</strong> → tipo <strong>Externo</strong> → adicione seu e-mail como testador
+            <br>4. <strong>Credenciais → Criar → ID do cliente OAuth → Aplicativo da Web</strong>
+            <br>5. Em <strong>Origens JavaScript autorizadas</strong>, adicione <code>http://localhost</code> e/ou seu domínio
+            <br>6. Copie o <strong>Client ID</strong> e cole abaixo
+          </div>
+          <input type="text" id="googleClientIdInput" class="clientid-input" placeholder="1234567890-xxxxxxxx.apps.googleusercontent.com">
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+            <button class="btn btn-primary btn-sm" id="btnSaveClientId"><span>💾</span> Salvar Client ID</button>
+            <button class="btn btn-secondary btn-sm" id="btnTestGoogleAuth"><span>🧪</span> Testar Vinculação</button>
+          </div>
         </div>
 
         <div class="settings-section">
           <div class="settings-head">
-            <h4><span>💾</span> Armazenamento & Limite Ajustável</h4>
+            <h4><span>🛡️</span> Armazenamento Permanente</h4>
+            <span class="badge-permanent" id="persistBadge">Verificando...</span>
+          </div>
+          <div class="perm-info-box" id="persistInfo">
+            Ao iniciar, o app solicita ao navegador <strong>armazenamento persistente</strong>. Quando concedido, o navegador <strong>não apaga automaticamente</strong> seus dados por falta de espaço.
+          </div>
+          <button class="btn btn-secondary btn-sm" id="btnRequestPersist"><span>🔒</span> Reforçar Armazenamento Permanente</button>
+        </div>
+
+        <div class="theme-highlight-banner">
+          <div>
+            <h4 style="font-size:1rem;font-weight:800;margin-bottom:0.25rem;">🎨 Mudar Tema do Aplicativo</h4>
+            <p style="font-size:0.78rem;color:var(--text-secondary);">40 temas exclusivos com Boot IA Estilista.</p>
+          </div>
+          <button class="btn btn-primary" id="btnOpenThemesModal"><span>🎨</span> Ver os 40 Temas</button>
+        </div>
+
+        <div class="settings-section">
+          <div class="settings-head">
+            <h4><span>💾</span> Armazenamento & Limite</h4>
             <span class="badge-elite" id="settingsCurrentCapacity">250 GB</span>
           </div>
-          <p style="font-size:0.78rem;color:var(--text-secondary);">Ajuste manualmente a quantia de Gigabytes (GB) ou Terabytes (TB) exibidos no cofre.</p>
-          <div style="font-size:0.75rem;font-weight:700;color:var(--text-tertiary);">PRESETS RÁPIDOS:</div>
           <div class="quota-presets" id="quotaPresets">
             <button class="preset-chip" data-val="50" data-unit="GB">50 GB</button>
             <button class="preset-chip" data-val="100" data-unit="GB">100 GB</button>
@@ -447,26 +540,14 @@
             <button class="preset-chip" data-val="50" data-unit="TB">50 TB</button>
             <button class="preset-chip" data-val="999" data-unit="TB">999 TB</button>
           </div>
-          <div style="font-size:0.75rem;font-weight:700;color:var(--text-tertiary);margin-top:0.35rem;">AJUSTE MANUAL PERSONALIZADO:</div>
           <div class="custom-quota-form">
             <input type="number" id="customQuotaInput" min="1" max="999999" value="250">
             <select id="customQuotaUnit">
-              <option value="GB">GB (Gigabytes)</option>
-              <option value="TB">TB (Terabytes)</option>
+              <option value="GB">GB</option>
+              <option value="TB">TB</option>
             </select>
-            <button class="btn btn-primary btn-sm" id="btnSaveCustomQuota"><span>💾</span> Salvar Limite</button>
+            <button class="btn btn-primary btn-sm" id="btnSaveCustomQuota"><span>💾</span> Salvar</button>
           </div>
-        </div>
-
-        <div class="settings-section">
-          <div class="settings-head">
-            <h4><span>🛡️</span> Armazenamento Permanente</h4>
-            <span class="badge-permanent" id="persistBadge">Verificando...</span>
-          </div>
-          <div class="perm-info-box" id="persistInfo">
-            Ao iniciar, o app solicita ao navegador <strong>armazenamento persistente</strong>. Quando concedido, o navegador <strong>não apaga automaticamente</strong> seus dados por falta de espaço, mantendo as fotos blindadas permanentemente mesmo que você apague a original do celular.
-          </div>
-          <button class="btn btn-secondary btn-sm" id="btnRequestPersist"><span>🔒</span> Reforçar Armazenamento Permanente</button>
         </div>
 
         <div class="settings-section">
@@ -474,17 +555,15 @@
             <h4><span>⚡</span> Robô Titânio IA Plus</h4>
             <span class="badge-elite">100% Funcional</span>
           </div>
-          <p style="font-size:0.78rem;color:var(--text-secondary);">Otimizador neural para redução de fotos em IndexedDB com Canvas 4K, fallback WebP→JPEG e eliminação de duplicados por hash.</p>
-          <div>
-            <button class="btn btn-robot btn-sm" id="btnOpenRobotFromSettings"><span>⚡</span> Iniciar Painel do Robô IA</button>
-          </div>
+          <p style="font-size:0.78rem;color:var(--text-secondary);">Otimizador neural com Canvas 4K, fallback WebP→JPEG e detecção de duplicados por hash.</p>
+          <button class="btn btn-robot btn-sm" id="btnOpenRobotFromSettings"><span>⚡</span> Iniciar Robô IA</button>
         </div>
 
         <div class="settings-section">
           <div class="settings-head"><h4><span>🛡️</span> Backup & Limpeza</h4></div>
           <div style="display:flex;gap:0.65rem;flex-wrap:wrap;">
             <button class="btn btn-secondary btn-sm" id="btnExportAllZip"><span>📦</span> Baixar Tudo em ZIP</button>
-            <button class="btn btn-secondary btn-sm" style="color:#ef4444;" id="btnClearAllVault"><span>🗑️</span> Esvaziar Cofre</button>
+            <button class="btn btn-danger btn-sm" id="btnClearAllVault"><span>🗑️</span> Esvaziar Cofre</button>
           </div>
         </div>
       </div>
@@ -494,7 +573,7 @@
   <div class="modal-overlay" id="modalThemes">
     <div class="modal-box modal-box-large">
       <div class="modal-header">
-        <div class="modal-title"><span>🎨</span> Seleção de Temas (40 Estilos Exclusivos)</div>
+        <div class="modal-title"><span>🎨</span> Seleção de Temas (40 Estilos)</div>
         <button class="modal-close" data-close="modalThemes" aria-label="Fechar">✕</button>
       </div>
       <div class="modal-body">
@@ -503,14 +582,11 @@
             <div class="theme-bot-avatar">🤖</div>
             <div class="theme-bot-speech">
               <h4>Boot Estilista Quântico IA <span class="badge-elite">Ativo</span></h4>
-              <p id="themeBotStatus">Aguardando comando. Selecione um dos 40 temas abaixo para calibrar a interface.</p>
+              <p id="themeBotStatus">Aguardando comando. Selecione um dos 40 temas abaixo.</p>
             </div>
           </div>
-          <button class="btn btn-sm btn-primary" id="btnBotRandomTheme">
-            <span>🎲</span> Sugerir Tema Ideal IA
-          </button>
+          <button class="btn btn-sm btn-primary" id="btnBotRandomTheme"><span>🎲</span> Sugerir Tema</button>
         </div>
-
         <div style="display:flex;gap:0.85rem;align-items:center;flex-wrap:wrap;">
           <input type="text" id="themeSearchInput" class="search-input" style="max-width:280px;" placeholder="🔍 Buscar tema...">
           <div class="theme-category-nav" id="themeCategoryNav">
@@ -531,7 +607,7 @@
   <div class="modal-overlay" id="modalRobot">
     <div class="modal-box">
       <div class="modal-header">
-        <div class="modal-title"><span>⚡</span> Robô Titânio IA Plus • Gestão Neural de Espaço</div>
+        <div class="modal-title"><span>⚡</span> Robô Titânio IA Plus</div>
         <button class="modal-close" data-close="modalRobot" aria-label="Fechar">✕</button>
       </div>
       <div class="modal-body">
@@ -544,17 +620,17 @@
           </div>
           <div class="robot-hud-details">
             <h3>Robô Neural Titânio Ativo</h3>
-            <p>Pronto para escanear e otimizar itens locais no banco de dados.</p>
+            <p>Pronto para escanear e otimizar itens locais.</p>
           </div>
         </div>
         <div style="display:grid;grid-template-columns:1fr;gap:0.65rem;">
-          <button class="btn btn-primary" id="btnRobotOptimize"><span>⚡</span> Executar Otimização Canvas 4K (Recomprimir Imagens)</button>
-          <button class="btn btn-secondary" id="btnRobotDuplicates"><span>🔍</span> Escanear e Eliminar Mídias Duplicadas</button>
-          <button class="btn btn-secondary" id="btnRobotDefrag"><span>🧹</span> Desfragmentar Banco e Recalcular Índices</button>
+          <button class="btn btn-primary" id="btnRobotOptimize"><span>⚡</span> Otimização Canvas 4K</button>
+          <button class="btn btn-secondary" id="btnRobotDuplicates"><span>🔍</span> Eliminar Duplicados</button>
+          <button class="btn btn-secondary" id="btnRobotDefrag"><span>🧹</span> Desfragmentar Banco</button>
         </div>
         <div>
           <div style="font-size:0.75rem;font-weight:700;color:var(--text-tertiary);margin-bottom:0.35rem;">TERMINAL DO ROBÔ:</div>
-          <div class="robot-terminal" id="robotConsole">[SISTEMA] Robô IA Inicializado. Pronto para otimização.</div>
+          <div class="robot-terminal" id="robotConsole">[SISTEMA] Robô IA Inicializado.</div>
         </div>
       </div>
     </div>
@@ -577,7 +653,48 @@
     'use strict';
 
     // ============ TEMAS (40) ============
-    const RAW_THEMES = [["apple-titanium","Apple Titanium Pro","Apple & Titanium","Titânio espacial escovado com safira executiva.",["#06070a","#121724","#3b82f6","#f59e0b"]],["cyberpunk-2077","Cyberpunk Neon 2077","Cyber & Futurista","High-tech com amarelo neon fluorescente e rosa laser.",["#07050d","#18102b","#fcee0a","#ff0055"]],["royal-champagne","Royal Champagne Gold","Elite & Luxo","Ônix polido com reflexos de ouro puro 24k.",["#080705","#1c1710","#f59e0b","#fef08a"]],["emerald-quantum","Emerald Matrix Quantum","Natureza & Joias","Esmeralda profunda com malha quântica holográfica.",["#040a07","#0e2017","#10b981","#34d399"]],["sapphire-midnight","Sapphire Midnight Blue","Natureza & Joias","Azul safira imperial em noite de alta fidelidade.",["#030712","#0f1c38","#2563eb","#60a5fa"]],["amethyst-violet","Amethyst Ultra Violet","Neon & Quântico","Púrpura ametista com irradiação laser quântica.",["#090514","#1e103d","#a855f7","#c084fc"]],["crimson-ruby","Crimson Ruby Red","Elite & Luxo","Vermelho rubi de alto prestígio sobre ardósia negra.",["#0d0407","#260c14","#e11d48","#fb7185"]],["deep-space-void","Deep Space Void OLED","Amoled & Escuros","Preto absoluto puro OLED com iluminação estelar.",["#000000","#0d0e12","#38bdf8","#e2e8f0"]],["quantum-cyan","Quantum Cyan Frost","Neon & Quântico","Ciano quântico ultra nítido de laboratório espacial.",["#040a0f","#0d202e","#06b6d4","#67e8f9"]],["sunset-vaporwave","Sunset Vaporwave 80s","Cyber & Futurista","Gradientes de pôr do sol digital, coral e magenta.",["#0a0512","#220e38","#f43f5e","#fb923c"]],["tokyo-night","Tokyo Cyber Night","Cyber & Futurista","Asfalto chuvoso de Shinjuku com luzes de neon laranja e ciano.",["#050811","#0e1a33","#ff6b00","#00d4ff"]],["stealth-matte","Stealth Fighter Matte","Amoled & Escuros","Caça invisível militar fosco com acentos âmbar.",["#0a0b0d","#171a1f","#f59e0b","#94a3b8"]],["aurora-borealis","Aurora Borealis Arctic","Natureza & Joias","Noite polar com luzes verde-esmeralda e lilás.",["#04090e","#0e1e2f","#10b981","#8b5cf6"]],["carbon-fiber","Carbon Fiber Racing","Apple & Titanium","Fibra de carbono aeroespacial com vermelho Brembo.",["#07080a","#16181e","#ef4444","#ffffff"]],["gold-vip-24k","Golden Luxury VIP 24K","Elite & Luxo","Mansão de alto padrão com dourado reluzente 24k.",["#060502","#1a150a","#eab308","#ca8a04"]],["solana-twilight","Solana Twilight","Neon & Quântico","Gradiente de alta velocidade roxo neon e ciano Solana.",["#090412","#1d0e3a","#14f195","#9945ff"]],["bitcoin-satoshi","Bitcoin Satoshi Orange","Cyber & Futurista","Ouro digital descentralizado com laranja cripto vibrante.",["#080603","#1c1208","#f7931a","#ffaa33"]],["apple-space-gray","Apple Space Gray Classic","Apple & Titanium","Clássico cinza espacial icônico e refinado Apple.",["#0d0e11","#1c1f26","#94a3b8","#e2e8f0"]],["cyber-samurai","Cyber Samurai Ronin","Cyber & Futurista","Aço katana com flor de cerejeira rosa neon e ciano laser.",["#090508","#1f0c1a","#ec4899","#38bdf8"]],["deep-ocean-abyss","Deep Ocean Abyss","Natureza & Joias","Fossa abissal com organismos bioluminescentes ciano.",["#02080d","#071a2e","#0ea5e9","#2dd4bf"]],["mars-horizon","Mars Horizon 2050","Cyber & Futurista","Superfície marciana com poeira carmim e cobre aeroespacial.",["#0b0403","#230b08","#ea580c","#f97316"]],["diamond-platinum","Diamond Platinum","Elite & Luxo","Brilho cristalino de diamante sobre platina espelhada.",["#08090d","#171c29","#e0f2fe","#93c5fd"]],["cyber-yellow-2088","Cyberpunk Yellow 2088","Neon & Quântico","Alta visibilidade em preto fosco com amarelo atômico.",["#080805","#1c1c0b","#facc15","#eab308"]],["synthwave-80s","Synthwave Retro Neon","Cyber & Futurista","Grade de horizonte retrô dos anos 80 em magenta e ciano.",["#07040d","#1a0b30","#d946ef","#06b6d4"]],["rose-gold-exec","Rose Gold Executive","Elite & Luxo","Metal nobre ouro rosa sobre couro aveludado escuro.",["#0a0507","#200d16","#fb7185","#f43f5e"]],["holographic-prism","Holographic Prismatic","Neon & Quântico","Refração prismática iridescente sobre vidro negro.",["#05060b","#111626","#38bdf8","#ec4899"]],["monulolith-minimal","Monolith Minimal(hist","Amoled & Esc1uros","Pureza minimalista com cont ^raste cirúrgico bran cco e ônix.",,["#000000","#0d0d0d","#ffffff","#a3a3a3"]],["obsidian-lava","Obsidian Lava Forge","Elite & Luxo","Rocha vulcânica vítrea com magma incandescente.",["#0a0502","#1e0b05","#ff4500","#ff8c00"]],["toxic-hazard","Neon Toxic Hazard","Neon & Quântico","Ficção científica química com verde biohazard fluorescente.",["#050803","#0f1c09","#22c55e","#84cc16"]],["nebula-galaxy","Nebula Galaxy Prime","Amoled & Escuros","Espaço sideral profundo com poeira cósmica violeta e índigo.",["#04030a","#120b24","#6366f1","#a855f7"]],["nordic-glacier","Nordic Glacier Ice","Natureza & Joias","Geleiras escandinavas com branco cristalino e azul celeste.",["#03070d","#0b1b2d","#38bdf8","#e0f2fe"]],["desert-bronze","Desert Mirage Bronze","Elite & Luxo","Bronze esculpido e dunas douradas em noite estrelada.",["#090604","#1d140c","#d97706","#b45309"]],["iron-man-reactor","Iron Man Arc Reactor","Cyber & Futurista","Armadura Mark titânio com reator arc azul e dourado.",["#0a0304","#22080a","#00d4ff","#eab308"]],["dark-matter","Quantum Dark Matter","Amoled & Escuros","Gravitação quântica e matéria escura cósmica com violeta.",["#020105","#0c0618","#7c3aed","#4c1d95"]],["british-racing","British Racing Emerald","Elite & Luxo","Verde clássico lendário de corrida com ouro e âmbar nobre.",["#020805","#091910","#059669","#d97706"]],["ghost-recon","Cyber Ghost Recon","Apple & Titanium","Camuflagem digital tática cinza com azul espectral neon.",["#06080a","#121720","#00f0ff","#64748b"]],["royal-monaco","Royal Monaco Yacht","Elite & Luxo","Azul marinho aristocrático da Riviera com dourado e pérola.",["#03060f","#0d1a38","#3b82f6","#f59e0b"]],["solar-eclipse","Eclipse Solar Corona","Amoled & Escuros","Sombra lunar profunda com coroa de fogo solar brilhante.",["#030202","#120c09","#f97316","#fbbf24"]],["cyber-glitch","Cyber Glitch Lavender","Neon & Quântico","Efeito glitch com lavanda eletrônica e ciano pulsante.",["#080410","#1a0d33","#818cf8","#38bdf8"]],["hyperion-ai","Hyperion Futuristic AI","Cyber & Futurista","Laboratório sci-fi hiper-avançado com prata e azul laser.",["#05070d","#10182b","#38bdf8","#0284c7"]]];
+    const RAW_THEMES = [
+      ["apple-titanium","Apple Titanium Pro","Apple & Titanium","Titânio espacial escovado com safira executiva.",["#06070a","#121724","#3b82f6","#f59e0b"]],
+      ["cyberpunk-2077","Cyberpunk Neon 2077","Cyber & Futurista","High-tech com amarelo neon fluorescente e rosa laser.",["#07050d","#18102b","#fcee0a","#ff0055"]],
+      ["royal-champagne","Royal Champagne Gold","Elite & Luxo","Ônix polido com reflexos de ouro puro 24k.",["#080705","#1c1710","#f59e0b","#fef08a"]],
+      ["emerald-quantum","Emerald Matrix Quantum","Natureza & Joias","Esmeralda profunda com malha quântica holográfica.",["#040a07","#0e2017","#10b981","#34d399"]],
+      ["sapphire-midnight","Sapphire Midnight Blue","Natureza & Joias","Azul safira imperial em noite de alta fidelidade.",["#030712","#0f1c38","#2563eb","#60a5fa"]],
+      ["amethyst-violet","Amethyst Ultra Violet","Neon & Quântico","Púrpura ametista com irradiação laser quântica.",["#090514","#1e103d","#a855f7","#c084fc"]],
+      ["crimson-ruby","Crimson Ruby Red","Elite & Luxo","Vermelho rubi de alto prestígio sobre ardósia negra.",["#0d0407","#260c14","#e11d48","#fb7185"]],
+      ["deep-space-void","Deep Space Void OLED","Amoled & Escuros","Preto absoluto puro OLED com iluminação estelar.",["#000000","#0d0e12","#38bdf8","#e2e8f0"]],
+      ["quantum-cyan","Quantum Cyan Frost","Neon & Quântico","Ciano quântico ultra nítido de laboratório espacial.",["#040a0f","#0d202e","#06b6d4","#67e8f9"]],
+      ["sunset-vaporwave","Sunset Vaporwave 80s","Cyber & Futurista","Gradientes de pôr do sol digital, coral e magenta.",["#0a0512","#220e38","#f43f5e","#fb923c"]],
+      ["tokyo-night","Tokyo Cyber Night","Cyber & Futurista","Asfalto chuvoso de Shinjuku com luzes de neon.",["#050811","#0e1a33","#ff6b00","#00d4ff"]],
+      ["stealth-matte","Stealth Fighter Matte","Amoled & Escuros","Caça invisível militar fosco com acentos âmbar.",["#0a0b0d","#171a1f","#f59e0b","#94a3b8"]],
+      ["aurora-borealis","Aurora Borealis Arctic","Natureza & Joias","Noite polar com luzes verde-esmeralda e lilás.",["#04090e","#0e1e2f","#10b981","#8b5cf6"]],
+      ["carbon-fiber","Carbon Fiber Racing","Apple & Titanium","Fibra de carbono aeroespacial com vermelho Brembo.",["#07080a","#16181e","#ef4444","#ffffff"]],
+      ["gold-vip-24k","Golden Luxury VIP 24K","Elite & Luxo","Mansão de alto padrão com dourado reluzente 24k.",["#060502","#1a150a","#eab308","#ca8a04"]],
+      ["solana-twilight","Solana Twilight","Neon & Quântico","Gradiente de alta velocidade roxo neon e ciano.",["#090412","#1d0e3a","#14f195","#9945ff"]],
+      ["bitcoin-satoshi","Bitcoin Satoshi Orange","Cyber & Futurista","Ouro digital descentralizado com laranja cripto.",["#080603","#1c1208","#f7931a","#ffaa33"]],
+      ["apple-space-gray","Apple Space Gray Classic","Apple & Titanium","Clássico cinza espacial icônico e refinado Apple.",["#0d0e11","#1c1f26","#94a3b8","#e2e8f0"]],
+      ["cyber-samurai","Cyber Samurai Ronin","Cyber & Futurista","Aço katana com flor de cerejeira rosa neon.",["#090508","#1f0c1a","#ec4899","#38bdf8"]],
+      ["deep-ocean-abyss","Deep Ocean Abyss","Natureza & Joias","Fossa abissal com organismos bioluminescentes.",["#02080d","#071a2e","#0ea5e9","#2dd4bf"]],
+      ["mars-horizon","Mars Horizon 2050","Cyber & Futurista","Superfície marciana com poeira carmim.",["#0b0403","#230b08","#ea580c","#f97316"]],
+      ["diamond-platinum","Diamond Platinum","Elite & Luxo","Brilho cristalino de diamante sobre platina.",["#08090d","#171c29","#e0f2fe","#93c5fd"]],
+      ["cyber-yellow-2088","Cyberpunk Yellow 2088","Neon & Quântico","Alta visibilidade em preto fosco com amarelo atômico.",["#080805","#1c1c0b","#facc15","#eab308"]],
+      ["synthwave-80s","Synthwave Retro Neon","Cyber & Futurista","Grade de horizonte retrô dos anos 80.",["#07040d","#1a0b30","#d946ef","#06b6d4"]],
+      ["rose-gold-exec","Rose Gold Executive","Elite & Luxo","Metal nobre ouro rosa sobre couro aveludado escuro.",["#0a0507","#200d16","#fb7185","#f43f5e"]],
+      ["holographic-prism","Holographic Prismatic","Neon & Quântico","Refração prismática iridescente sobre vidro negro.",["#05060b","#111626","#38bdf8","#ec4899"]],
+      ["monolith-minimal","Monolith Minimalist","Amoled & Escuros","Pureza minimalista com contraste cirúrgico.",["#000000","#0d0d0d","#ffffff","#a3a3a3"]],
+      ["obsidian-lava","Obsidian Lava Forge","Elite & Luxo","Rocha vulcânica vítrea com magma incandescente.",["#0a0502","#1e0b05","#ff4500","#ff8c00"]],
+      ["toxic-hazard","Neon Toxic Hazard","Neon & Quântico","Ficção científica química com verde biohazard.",["#050803","#0f1c09","#22c55e","#84cc16"]],
+      ["nebula-galaxy","Nebula Galaxy Prime","Amoled & Escuros","Espaço sideral profundo com poeira cósmica.",["#04030a","#120b24","#6366f1","#a855f7"]],
+      ["nordic-glacier","Nordic Glacier Ice","Natureza & Joias","Geleiras escandinavas com branco cristalino.",["#03070d","#0b1b2d","#38bdf8","#e0f2fe"]],
+      ["desert-bronze","Desert Mirage Bronze","Elite & Luxo","Bronze esculpido e dunas douradas em noite estrelada.",["#090604","#1d140c","#d97706","#b45309"]],
+      ["iron-man-reactor","Iron Man Arc Reactor","Cyber & Futurista","Armadura Mark titânio com reator arc azul e dourado.",["#0a0304","#22080a","#00d4ff","#eab308"]],
+      ["dark-matter","Quantum Dark Matter","Amoled & Escuros","Gravitação quântica e matéria escura cósmica.",["#020105","#0c0618","#7c3aed","#4c1d95"]],
+      ["british-racing","British Racing Emerald","Elite & Luxo","Verde clássico lendário de corrida com ouro.",["#020805","#091910","#059669","#d97706"]],
+      ["ghost-recon","Cyber Ghost Recon","Apple & Titanium","Camuflagem digital tática cinza com azul espectral.",["#06080a","#121720","#00f0ff","#64748b"]],
+      ["royal-monaco","Royal Monaco Yacht","Elite & Luxo","Azul marinho aristocrático da Riviera com dourado.",["#03060f","#0d1a38","#3b82f6","#f59e0b"]],
+      ["solar-eclipse","Eclipse Solar Corona","Amoled & Escuros","Sombra lunar profunda com coroa de fogo solar.",["#030202","#120c09","#f97316","#fbbf24"]],
+      ["cyber-glitch","Cyber Glitch Lavender","Neon & Quântico","Efeito glitch com lavanda eletrônica e ciano.",["#080410","#1a0d33","#818cf8","#38bdf8"]],
+      ["hyperion-ai","Hyperion Futuristic AI","Cyber & Futurista","Laboratório sci-fi hiper-avançado com prata e azul.",["#05070d","#10182b","#38bdf8","#0284c7"]]
+    ];
 
     // ============ UTILITÁRIOS ============
     function hexToRgba(hex, a) {
@@ -605,31 +722,46 @@
       id: t[0], name: t[1], category: t[2], desc: t[3], colors: t[4], vars: buildThemeVars(t[4])
     }));
 
-    // Sanitização HTML (anti-XSS)
     const escapeHtml = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({
       '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
     }[c]));
 
-    // Hash rápido para detecção de duplicados (FNV-1a duplo com amostragem)
     function quickHash(str) {
       if (!str) return 'empty';
       let h1 = 0x811c9dc5, h2 = 0x1000193;
       const step = Math.max(1, Math.floor(str.length / 4096));
       for (let i = 0; i < str.length; i += step) {
         const c = str.charCodeAt(i);
-        h1 = Math.im 16777619);
+        h1 = Math.imul(h1 ^ c, 16777619);
         h2 = Math.imul(h2 + c, 2246822519);
       }
       return ((h1 >>> 0).toString(16) + '_' + (h2 >>> 0).toString(16) + '_' + str.length.toString(16));
     }
 
+    function loadScript(src) {
+      return new Promise((res, rej) => {
+        if ([...document.scripts].some(s => s.src === src)) return res();
+        const s = document.createElement('script');
+        s.src = src; s.async = true; s.defer = true;
+        s.onload = () => res();
+        s.onerror = () => rej(new Error('Falha ao carregar ' + src));
+        document.head.appendChild(s);
+      });
+    }
+
     // ============ CONSTANTES ============
-    const KEY_THEME = 'mangedora_active_theme_v6';
-    const KEY_QUOTA_VAL = 'mangedora_quota_val_v6';
-    const KEY_QUOTA_UNIT = 'mangedora_quota_unit_v6';
-    const KEY_SAVINGS = 'mangedora_saved_bytes_v6';
-    const DB_NAME = 'mangedora_vault_db_v6';
+    const KEY_THEME = 'mangedora_active_theme_v7';
+    const KEY_QUOTA_VAL = 'mangedora_quota_val_v7';
+    const KEY_QUOTA_UNIT = 'mangedora_quota_unit_v7';
+    const KEY_SAVINGS = 'mangedora_saved_bytes_v7';
+    const KEY_GOOGLE_CLIENT_ID = 'mangedora_google_client_id_v1';
+    const DB_NAME = 'mangedora_vault_db_v7';
     const PAGE_SIZE = 60;
+
+    const GOOGLE_SCOPE = 'https://www.googleapis.com/auth/photospicker.mediaitems.readonly';
+    const GOOGLE_GIS_SRC = 'https://accounts.google.com/gsi/client';
+    const GOOGLE_PICKER_SESSIONS_URL = 'https://photospicker.googleapis.com/v1/sessions';
+    const GOOGLE_PICKER_MEDIA_URL = 'https://photospicker.googleapis.com/v1/mediaItems';
 
     const appState = {
       items: [], filter: 'all', search: '', sort: 'newest',
@@ -639,9 +771,15 @@
       savedBytes: parseInt(localStorage.getItem(KEY_SAVINGS) || '0', 10),
       activeLightboxItem: null,
       visibleCount: PAGE_SIZE,
-      persistentGranted: false
+      persistentGranted: false,
+      googleLinked: false,
+      googleLinking: false,
+      googleEmail: null
     };
 
+    let googleAccessToken = null;
+    let googleTokenExpiresAt = 0;
+    let googleTokenClient = null;
     let db = null;
 
     // ============ INDEXEDDB ============
@@ -660,57 +798,45 @@
         req.onerror = e => rej(e.target.error);
       });
     }
-
     const dbGetAll = () => new Promise((res, rej) => {
       const req = db.transaction('vault_items', 'readonly').objectStore('vault_items').getAll();
       req.onsuccess = () => res(req.result || []);
       req.onerror = () => rej(req.error);
     });
-
     const dbPut = item => new Promise((res, rej) => {
       const req = db.transaction('vault_items', 'readwrite').objectStore('vault_items').put(item);
       req.onsuccess = () => res();
       req.onerror = () => rej(req.error);
     });
-
     const dbDelete = id => new Promise((res, rej) => {
       const req = db.transaction('vault_items', 'readwrite').objectStore('vault_items').delete(id);
       req.onsuccess = () => res();
       req.onerror = () => rej(req.error);
     });
-
     const dbClear = () => new Promise((res, rej) => {
       const req = db.transaction('vault_items', 'readwrite').objectStore('vault_items').clear();
       req.onsuccess = () => res();
       req.onerror = () => rej(req.error);
     });
 
-    // ============ ARMAZENAMENTO PERSISTENTE ============
+    // ============ PERSISTÊNCIA ============
     async function requestPersistentStorage(silent = false) {
       if (!navigator.storage || !navigator.storage.persist) {
         updatePersistBadge(false, 'Não suportado');
         return false;
       }
       try {
-        // Consulta se já está persistente
         let granted = false;
-        if (navigator.storage.persisted) {
-          granted = await navigator.storage.persisted();
-        }
-        if (!granted) {
-          granted = await navigator.storage.persist();
-        }
+        if (navigator.storage.persisted) granted = await navigator.storage.persisted();
+        if (!granted) granted = await navigator.storage.persist();
         appState.persistentGranted = granted;
         updatePersistBadge(granted);
         if (!silent) {
-          if (granted) toast('🛡️ Armazenamento permanente concedido! Suas fotos estão blindadas.', '🔒');
-          else toast('⚠️ Navegador não concedeu persistência. Use o botão "Reforçar" ou instale como app.', '⚠️');
+          if (granted) toast('🛡️ Armazenamento permanente concedido!', '🔒');
+          else toast('⚠️ Navegador não concedeu persistência.', '⚠️');
         }
         return granted;
-      } catch (e) {
-        updatePersistBadge(false, 'Erro');
-        return false;
-      }
+      } catch (e) { updatePersistBadge(false, 'Erro'); return false; }
     }
 
     function updatePersistBadge(granted, fallbackText) {
@@ -720,21 +846,15 @@
       if (!badge) return;
       if (fallbackText) {
         badge.textContent = fallbackText;
-        badge.style.color = '#f59e0b';
-        badge.style.borderColor = '#f59e0b';
-        badge.style.background = 'rgba(245,158,11,0.15)';
+        badge.style.color = '#f59e0b'; badge.style.borderColor = '#f59e0b'; badge.style.background = 'rgba(245,158,11,0.15)';
       } else if (granted) {
         badge.textContent = '🛡️ Ativo';
-        badge.style.color = '#10b981';
-        badge.style.borderColor = '#10b981';
-        badge.style.background = 'rgba(16,185,129,0.15)';
+        badge.style.color = '#10b981'; badge.style.borderColor = '#10b981'; badge.style.background = 'rgba(16,185,129,0.15)';
         if (info) info.innerHTML = '✅ <strong>Armazenamento persistente concedido!</strong> O navegador <strong>não vai apagar automaticamente</strong> seus dados. Suas fotos permanecem no cofre mesmo que você apague a original do celular.';
         if (teleText) teleText.textContent = 'IndexedDB Persistente • Blindado';
       } else {
         badge.textContent = '⚠️ Limitado';
-        badge.style.color = '#f59e0b';
-        badge.style.borderColor = '#f59e0b';
-        badge.style.background = 'rgba(245,158,11,0.15)';
+        badge.style.color = '#f59e0b'; badge.style.borderColor = '#f59e0b'; badge.style.background = 'rgba(245,158,11,0.15)';
         if (teleText) teleText.textContent = 'IndexedDB Local • Não persistente';
       }
     }
@@ -763,7 +883,6 @@
       } catch(e) {}
     }
 
-    // ============ TOAST ============
     function toast(msg, icon = '✨') {
       const c = document.getElementById('toastContainer');
       const el = document.createElement('div');
@@ -773,10 +892,9 @@
       setTimeout(() => {
         el.classList.add('hide');
         setTimeout(() => el.remove(), 280);
-      }, 3000);
+      }, 3500);
     }
 
-    // ============ FORMATADORES ============
     function formatBytes(bytes) {
       if (!bytes) return '0 B';
       const k = 1024, s = ['B','KB','MB','GB','TB'];
@@ -799,12 +917,11 @@
       });
       const botStatus = document.getElementById('themeBotStatus');
       if (botStatus) {
-        botStatus.textContent = `⚡ Reconfigurando espectro para "${theme.name}" (${theme.category})... Paleta quântica sincronizada!`;
+        botStatus.textContent = `⚡ Reconfigurando espectro para "${theme.name}" (${theme.category})...`;
       }
       playSciFiBeep('theme-morph');
       if (notify) toast(`Boot IA: Tema "${escapeHtml(theme.name)}" ativado!`, '🎨');
     }
-
     function botSuggestRandomTheme() {
       const available = THEMES.filter(t => t.id !== appState.activeThemeId);
       const random = available[Math.floor(Math.random() * available.length)] || THEMES[0];
@@ -812,7 +929,6 @@
       const card = document.querySelector(`.theme-item-card[data-id="${random.id}"]`);
       if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
-
     function renderThemesGrid(filterCat = 'all', searchQuery = '') {
       const grid = document.getElementById('themesGrid');
       grid.innerHTML = '';
@@ -848,7 +964,6 @@
       const v = appState.quotaVal, u = appState.quotaUnit;
       return v * (u === 'TB' ? 1099511627776 : 1073741824);
     }
-
     function saveQuota(val, unit) {
       appState.quotaVal = parseInt(val, 10) || 250;
       appState.quotaUnit = unit === 'TB' ? 'TB' : 'GB';
@@ -891,7 +1006,7 @@
       document.getElementById('countOpt').textContent = opts;
     }
 
-    // ============ RENDER GRID ============
+    // ============ GRID ============
     function getFilteredList() {
       let list = [...appState.items];
       if (appState.filter === 'image') list = list.filter(i => i.type.startsWith('image/'));
@@ -903,7 +1018,6 @@
         const q = appState.search.toLowerCase();
         list = list.filter(i => i.name.toLowerCase().includes(q));
       }
-
       if (appState.sort === 'newest') list.sort((a,b) => b.date - a.date);
       else if (appState.sort === 'oldest') list.sort((a,b) => a.date - b.date);
       else if (appState.sort === 'size-desc') list.sort((a,b) => b.size - a.size);
@@ -921,29 +1035,29 @@
           <div class="empty-vault">
             <div class="empty-icon">🛡️</div>
             <h3>Nenhum arquivo encontrado</h3>
-            <p style="color:var(--text-secondary);">Adicione novas fotos pelo botão <strong>📸 Enviar Foto Direto para o Cofre</strong> ou ajuste os filtros.</p>
+            <p style="color:var(--text-secondary);">Vincule sua conta Google Fotos ou envie arquivos para começar.</p>
           </div>
         `;
         return;
       }
 
       const list = fullList.slice(0, appState.visibleCount);
-
       list.forEach(item => {
         const card = document.createElement('div');
         card.className = 'media-card';
         const safeName = escapeHtml(item.name);
-        const safeType = escapeHtml(item.type);
         const mediaEl = item.type.startsWith('image/')
           ? `<img src="${item.dataUrl}" alt="${safeName}" loading="lazy">`
           : (item.type.startsWith('video/') ? `<video src="${item.dataUrl}" preload="metadata"></video>` : '<div style="font-size:2.5rem;color:var(--accent-primary)">📄</div>');
         const badgeText = item.optimized ? '⚡ Otimizado IA' : (item.type.startsWith('image/') ? '📷 Foto' : '🎬 Vídeo');
+        const googleBadge = item.source === 'google' ? '<span class="media-src-google">G Fotos</span>' : '';
 
         card.innerHTML = `
           <div class="media-thumb-wrap" data-id="${escapeHtml(item.id)}">
             ${mediaEl}
             <span class="media-badge">${badgeText}</span>
             <span class="media-perm-shield" title="Armazenada permanentemente no IndexedDB">🔒 Permanente</span>
+            ${googleBadge}
             <button class="media-fav-btn ${item.isFav ? 'active' : ''}" title="Favoritar" aria-label="Favoritar">★</button>
           </div>
           <div class="media-info">
@@ -1010,20 +1124,19 @@
       openModal('modalLightbox');
       playSciFiBeep('click');
     }
-
     function downloadItem(item) {
       const a = document.createElement('a');
       a.href = item.dataUrl; a.download = item.name; a.click();
       toast(`Baixando "${escapeHtml(item.name)}"...`, '⬇️');
     }
 
-    // ============ INGESTÃO DE ARQUIVOS ============
+    // ============ INGESTÃO ============
     const readFileAsDataURL = f => new Promise((res, rej) => {
       const r = new FileReader(); r.onload = () => res(r.result); r.onerror = () => rej(r.error); r.readAsDataURL(f);
     });
 
-    async function handleIncomingFiles(fileList, sourceLabel = '') {
-      if (!fileList || !fileList.length) return;
+    async function handleIncomingFiles(fileList, sourceLabel = '', sourceTag = null) {
+      if (!fileList || !fileList.length) return { added: 0, quotaError: false };
       let added = 0, quotaError = false;
       for (const file of Array.from(fileList)) {
         try {
@@ -1039,6 +1152,7 @@
             optimized: false,
             permanent: true,
             hash: hash,
+            source: sourceTag || 'local',
             dataUrl: dataUrl
           };
           try {
@@ -1052,12 +1166,9 @@
           }
           appState.items.push(item);
           added++;
-        } catch(e) {
-          console.warn('Falha ao processar arquivo', file && file.name, e);
-        }
+        } catch(e) { console.warn('Falha ao processar arquivo', file && file.name, e); }
       }
       if (added > 0) {
-        // Recarrega do DB para garantir consistência
         try { appState.items = await dbGetAll(); } catch(e) {}
         updateTelemetry();
         renderMediaGrid();
@@ -1065,9 +1176,8 @@
         const prefix = sourceLabel ? `${escapeHtml(sourceLabel)}: ` : '';
         toast(`${prefix}${added} mídia(s) blindadas permanentemente!`, '🔒');
       }
-      if (quotaError) {
-        toast('⚠️ Cofre cheio! Libere espaço no Robô IA antes de adicionar mais mídias.', '⚠️');
-      }
+      if (quotaError) toast('⚠️ Cofre cheio! Libere espaço no Robô IA.', '⚠️');
+      return { added, quotaError };
     }
 
     // ============ ROBÔ IA ============
@@ -1079,7 +1189,6 @@
       c.appendChild(l);
       c.scrollTop = c.scrollHeight;
     }
-
     async function robotRunOptimization() {
       const unoptimized = appState.items.filter(i => i.type.startsWith('image/') && !i.optimized);
       if (!unoptimized.length) {
@@ -1089,7 +1198,6 @@
       }
       appendRobotLog(`Iniciando compressão neural Canvas 4K em ${unoptimized.length} imagem(ns)...`);
       let count = 0, sessionSaved = 0;
-
       for (const item of unoptimized) {
         try {
           const img = new Image();
@@ -1102,36 +1210,27 @@
             else { w = Math.round((w * MAX) / h); h = MAX; }
           }
           canvas.width = w; canvas.height = h;
-          const ctx = canvas.getContext('2d');
-          ctx.drawImage(img, 0, 0, w, h);
-
-          // WebP com fallback para JPEG
+          canvas.getContext('2d').drawImage(img, 0, 0, w, h);
           let compressed = canvas.toDataURL('image/webp', 0.82);
           if (!compressed.startsWith('data:image/webp')) {
             appendRobotLog(`ℹ️ WebP indisponível, usando JPEG em "${item.name}"`);
             compressed = canvas.toDataURL('image/jpeg', 0.85);
           }
-
           const newSize = Math.round((compressed.length * 3) / 4);
-
           if (newSize < item.size) {
             const diff = item.size - newSize;
             sessionSaved += diff;
-            item.size = newSize;
-            item.dataUrl = compressed;
-            item.optimized = true;
+            item.size = newSize; item.dataUrl = compressed; item.optimized = true;
             item.hash = quickHash(compressed);
             await dbPut(item);
             count++;
-            appendRobotLog(`✔️ "${item.name}": Reduzido em ${formatBytes(diff)} (Novo: ${formatBytes(newSize)})`);
+            appendRobotLog(`✔️ "${item.name}": Reduzido em ${formatBytes(diff)}`);
           } else {
             item.optimized = true;
             await dbPut(item);
-            appendRobotLog(`ℹ️ "${item.name}": Tamanho original já era ideal.`);
+            appendRobotLog(`ℹ️ "${item.name}": Já era ideal.`);
           }
-        } catch(e) {
-          appendRobotLog(`❌ Erro em "${item.name}": ${e.message}`);
-        }
+        } catch(e) { appendRobotLog(`❌ Erro em "${item.name}": ${e.message}`); }
       }
       appState.savedBytes += sessionSaved;
       localStorage.setItem(KEY_SAVINGS, appState.savedBytes.toString());
@@ -1141,17 +1240,12 @@
       appendRobotLog(`🎉 Concluído! ${count} imagens otimizadas. Economia: ${formatBytes(sessionSaved)}.`);
       toast(`Robô economizou ${formatBytes(sessionSaved)}!`, '⚡');
     }
-
     async function robotScanDuplicates() {
       appendRobotLog('🔍 Escaneando duplicados por hash de conteúdo...');
       const map = new Map(), dups = [];
       for (const item of appState.items) {
         let hash = item.hash;
-        if (!hash) {
-          hash = quickHash(item.dataUrl || '');
-          item.hash = hash;
-          try { await dbPut(item); } catch(e) {}
-        }
+        if (!hash) { hash = quickHash(item.dataUrl || ''); item.hash = hash; try { await dbPut(item); } catch(e) {} }
         if (map.has(hash)) dups.push({ orig: map.get(hash), dup: item });
         else map.set(hash, item);
       }
@@ -1161,13 +1255,13 @@
         return;
       }
       appendRobotLog(`⚠️ Encontradas ${dups.length} mídias duplicadas.`);
-      if (confirm(`O Robô IA detectou ${dups.length} arquivo(s) duplicado(s). Deseja remover as cópias redundantes?`)) {
+      if (confirm(`O Robô IA detectou ${dups.length} arquivo(s) duplicado(s). Remover cópias?`)) {
         let freed = 0;
         for (const p of dups) {
           try { await dbDelete(p.dup.id); } catch(e) {}
           appState.items = appState.items.filter(i => i.id !== p.dup.id);
           freed += p.dup.size;
-          appendRobotLog(`🗑️ Cópia removida: "${p.dup.name}" (${formatBytes(p.dup.size)} liberados)`);
+          appendRobotLog(`🗑️ Removido: "${p.dup.name}" (${formatBytes(p.dup.size)})`);
         }
         updateTelemetry();
         renderMediaGrid();
@@ -1176,23 +1270,275 @@
         toast(`Liberados ${formatBytes(freed)}!`, '🧹');
       }
     }
-
     async function robotDefragDatabase() {
-      appendRobotLog('🧹 Desfragmentando e recalculando índices IndexedDB...');
+      appendRobotLog('🧹 Desfragmentando e recalculando índices...');
       try {
         const all = await dbGetAll();
         appState.items = all;
         updateTelemetry();
         renderMediaGrid();
-        appendRobotLog(`✔️ Recalibrados ${all.length} registros ativos. Integridade 100%.`);
+        appendRobotLog(`✔️ Recalibrados ${all.length} registros. Integridade 100%.`);
         playSciFiBeep('success');
         toast('Banco de dados desfragmentado!', '🧹');
+      } catch(e) { appendRobotLog(`❌ Falha: ${e.message}`); }
+    }
+
+    // ==================================================
+    // GOOGLE FOTOS — OAuth 2.0 + Picker API
+    // ==================================================
+    function updateGoogleLinkUI(linked) {
+      const pill = document.getElementById('googleStatusPill');
+      const btnLink = document.getElementById('btnLinkGoogle');
+      const btnPick = document.getElementById('btnPickGooglePhotos');
+      const btnUnlink = document.getElementById('btnUnlinkGoogle');
+      const badge = document.getElementById('googleClientIdStatusBadge');
+      const clientId = localStorage.getItem(KEY_GOOGLE_CLIENT_ID);
+
+      if (badge) {
+        if (clientId) {
+          badge.textContent = '✅ Configurado';
+          badge.style.color = '#10b981';
+          badge.style.borderColor = '#10b981';
+          badge.style.background = 'rgba(16,185,129,0.15)';
+        } else {
+          badge.textContent = 'Não configurado';
+          badge.style.color = ''; badge.style.borderColor = ''; badge.style.background = '';
+        }
+      }
+
+      if (!pill || !btnLink || !btnPick || !btnUnlink) return;
+
+      appState.googleLinked = linked;
+      if (appState.googleLinking) {
+        pill.className = 'google-status-pill loading';
+        pill.innerHTML = '⏳ Vinculando...';
+      } else if (linked) {
+        pill.className = 'google-status-pill on';
+        pill.innerHTML = '✅ Vinculado' + (appState.googleEmail ? ` • ${escapeHtml(appState.googleEmail)}` : '');
+      } else {
+        pill.className = 'google-status-pill off';
+        pill.innerHTML = '🔌 Não vinculado';
+      }
+      btnPick.disabled = !linked;
+      btnUnlink.disabled = !linked;
+      btnLink.disabled = linked;
+    }
+
+    async function initGoogleAuth() {
+      const clientId = localStorage.getItem(KEY_GOOGLE_CLIENT_ID);
+      if (!clientId) return false;
+      try {
+        await loadScript(GOOGLE_GIS_SRC);
+        if (!window.google || !window.google.accounts || !window.google.accounts.oauth2) {
+          throw new Error('Google Identity Services não disponível');
+        }
+        googleTokenClient = window.google.accounts.oauth2.initTokenClient({
+          client_id: clientId,
+          scope: GOOGLE_SCOPE,
+          callback: (resp) => {
+            appState.googleLinking = false;
+            if (resp.error) {
+              toast('Erro ao vincular: ' + resp.error, '❌');
+              updateGoogleLinkUI(false);
+              return;
+            }
+            googleAccessToken = resp.access_token;
+            googleTokenExpiresAt = Date.now() + (resp.expires_in * 1000) - 30000;
+            fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+              headers: { Authorization: 'Bearer ' + googleAccessToken }
+            }).then(r => r.ok ? r.json() : null).then(u => {
+              if (u && u.email) { appState.googleEmail = u.email; updateGoogleLinkUI(true); }
+            }).catch(() => {});
+            updateGoogleLinkUI(true);
+            playSciFiBeep('success');
+            toast('✅ Conta Google vinculada com sucesso!', '🔗');
+          }
+        });
+        return true;
       } catch(e) {
-        appendRobotLog(`❌ Falha: ${e.message}`);
+        console.warn(e);
+        appState.googleLinking = false;
+        updateGoogleLinkUI(false);
+        return false;
       }
     }
 
-    // ============ MODAIS ============
+    function linkGoogleAccount() {
+      const clientId = localStorage.getItem(KEY_GOOGLE_CLIENT_ID);
+      if (!clientId) {
+        toast('⚠️ Configure primeiro o Google Client ID nas Configurações.', '⚠️');
+        openModal('modalSettings');
+        return;
+      }
+      appState.googleLinking = true;
+      updateGoogleLinkUI(false);
+      if (!googleTokenClient) {
+        initGoogleAuth().then(ok => {
+          if (ok && googleTokenClient) {
+            googleTokenClient.requestAccessToken({ prompt: 'consent' });
+          } else {
+            appState.googleLinking = false;
+            updateGoogleLinkUI(false);
+            toast('Falha ao inicializar o Google. Verifique sua conexão.', '❌');
+          }
+        });
+        return;
+      }
+      googleTokenClient.requestAccessToken({ prompt: 'consent' });
+    }
+
+    function unlinkGoogleAccount() {
+      if (!googleAccessToken) return;
+      try {
+        if (window.google && window.google.accounts && window.google.accounts.oauth2) {
+          window.google.accounts.oauth2.revoke(googleAccessToken, () => {});
+        }
+      } catch(e) {}
+      googleAccessToken = null;
+      googleTokenExpiresAt = 0;
+      appState.googleEmail = null;
+      updateGoogleLinkUI(false);
+      toast('Conta Google desvinculada.', '🔌');
+    }
+
+    function ensureFreshGoogleToken() {
+      if (!googleAccessToken) return false;
+      if (Date.now() >= googleTokenExpiresAt) {
+        toast('Sessão Google expirou. Vinculando novamente...', '⏳');
+        if (googleTokenClient) googleTokenClient.requestAccessToken({ prompt: '' });
+        return false;
+      }
+      return true;
+    }
+
+    async function pickGooglePhotos() {
+      if (!ensureFreshGoogleToken()) {
+        toast('Vincule sua conta Google primeiro.', '⚠️');
+        return;
+      }
+      try {
+        toast('Criando sessão do Google Photos Picker...', '📸');
+        const sessionRes = await fetch(GOOGLE_PICKER_SESSIONS_URL, {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Bearer ' + googleAccessToken,
+            'Content-Type': 'application/json'
+          },
+          body: '{}'
+        });
+        if (!sessionRes.ok) {
+          const errTxt = await sessionRes.text();
+          console.error('Erro criar sessão:', sessionRes.status, errTxt);
+          throw new Error('Não foi possível criar a sessão (HTTP ' + sessionRes.status + ').');
+        }
+        const session = await sessionRes.json();
+        const sessionId = session.id;
+        const pickerUri = session.pickerUri;
+
+        const popup = window.open(pickerUri, 'GooglePhotosPicker', 'width=1100,height=750,scrollbars=yes,resizable=yes');
+        if (!popup) {
+          toast('⚠️ Pop-up bloqueado! Permita pop-ups deste site.', '⚠️');
+          return;
+        }
+        toast('Selecione as fotos na janela do Google e confirme.', '📸');
+
+        let done = false;
+        const started = Date.now();
+        while (!done && Date.now() - started < 5 * 60 * 1000) {
+          await new Promise(r => setTimeout(r, 2500));
+          try {
+            const pollRes = await fetch(`${GOOGLE_PICKER_SESSIONS_URL}/${sessionId}`, {
+              headers: { 'Authorization': 'Bearer ' + googleAccessToken }
+            });
+            if (!pollRes.ok) break;
+            const pollData = await pollRes.json();
+            if (pollData.mediaItemsSet) {
+              done = true;
+              break;
+            }
+          } catch(e) { console.warn('poll err', e); }
+          if (popup.closed) {
+            await new Promise(r => setTimeout(r, 800));
+            try {
+              const finalRes = await fetch(`${GOOGLE_PICKER_SESSIONS_URL}/${sessionId}`, {
+                headers: { 'Authorization': 'Bearer ' + googleAccessToken }
+              });
+              const finalData = await finalRes.json();
+              if (finalData.mediaItemsSet) { done = true; }
+              else break;
+            } catch(e) { break; }
+          }
+        }
+
+        if (!done) {
+          toast('Nenhuma foto selecionada (ou tempo esgotado).', 'ℹ️');
+          return;
+        }
+
+        toast('Buscando lista de fotos selecionadas...', '📋');
+        const mediaItems = [];
+        let pageToken = '';
+        do {
+          const url = new URL(GOOGLE_PICKER_MEDIA_URL);
+          url.searchParams.set('sessionId', sessionId);
+          url.searchParams.set('pageSize', '100');
+          if (pageToken) url.searchParams.set('pageToken', pageToken);
+          const listRes = await fetch(url.toString(), {
+            headers: { 'Authorization': 'Bearer ' + googleAccessToken }
+          });
+          if (!listRes.ok) {
+            const txt = await listRes.text();
+            console.error('Erro lista media:', listRes.status, txt);
+            break;
+          }
+          const listData = await listRes.json();
+          if (listData.mediaItems) mediaItems.push(...listData.mediaItems);
+          pageToken = listData.nextPageToken || '';
+        } while (pageToken);
+
+        if (!mediaItems.length) {
+          toast('Nenhuma foto retornada pelo Google.', 'ℹ️');
+          return;
+        }
+
+        toast(`Baixando ${mediaItems.length} foto(s)...`, '⬇️');
+        const files = [];
+        for (const mi of mediaItems) {
+          try {
+            const isVideo = (mi.type === 'VIDEO');
+            const baseUrl = (mi.mediaFile && mi.mediaFile.baseUrl) || '';
+            if (!baseUrl) continue;
+            const downloadUrl = baseUrl + (isVideo ? '=dv' : '=d');
+            const resp = await fetch(downloadUrl);
+            if (!resp.ok) continue;
+            const blob = await resp.blob();
+            const fname = (mi.mediaFile && mi.mediaFile.filename) || ('google_' + mi.id);
+            const ftype = (mi.mediaFile && mi.mediaFile.mimeType) || (isVideo ? 'video/mp4' : 'image/jpeg');
+            files.push(new File([blob], fname, { type: ftype }));
+          } catch(e) { console.warn('Falha ao baixar', mi.id, e); }
+        }
+
+        if (!files.length) {
+          toast('Não foi possível baixar as fotos. Tente novamente.', '❌');
+          return;
+        }
+        await handleIncomingFiles(files, 'Google Fotos', 'google');
+
+        try {
+          await fetch(`${GOOGLE_PICKER_SESSIONS_URL}/${sessionId}`, {
+            method: 'DELETE',
+            headers: { 'Authorization': 'Bearer ' + googleAccessToken }
+          });
+        } catch(e) {}
+      } catch(e) {
+        console.error(e);
+        toast('Erro ao buscar fotos: ' + e.message, '❌');
+      }
+    }
+
+    // ==================================================
+    // MODAIS
+    // ==================================================
     window.openModal = id => {
       const el = document.getElementById(id);
       if (el) {
@@ -1205,21 +1551,21 @@
       const el = document.getElementById(id);
       if (el) {
         el.classList.remove('open');
-        // Só libera scroll se não houver outro modal aberto
-        if (!document.querySelector('.modal-overlay.open')) {
-          document.body.style.overflow = '';
-        }
+        if (!document.querySelector('.modal-overlay.open')) document.body.style.overflow = '';
       }
     };
 
-    // ============ INIT ============
+    // ==================================================
+    // INIT
+    // ==================================================
     async function initApp() {
       try {
         await initDB();
         appState.items = await dbGetAll();
-      } catch(e) {
-        console.error('DB init error', e);
-      }
+      } catch(e) { console.error('DB init error', e); }
+
+      const savedClientId = localStorage.getItem(KEY_GOOGLE_CLIENT_ID) || '';
+      document.getElementById('googleClientIdInput').value = savedClientId;
 
       applyThemeWithBot(appState.activeThemeId, false);
       renderThemesGrid('all', '');
@@ -1227,16 +1573,16 @@
       document.getElementById('settingsCurrentCapacity').textContent = `${appState.quotaVal} ${appState.quotaUnit}`;
       document.getElementById('customQuotaInput').value = appState.quotaVal;
       document.getElementById('customQuotaUnit').value = appState.quotaUnit;
-
       document.querySelectorAll('#quotaPresets .preset-chip').forEach(b => {
         b.classList.toggle('active', parseInt(b.dataset.val, 10) === appState.quotaVal && b.dataset.unit === appState.quotaUnit);
       });
 
       updateTelemetry();
       renderMediaGrid();
-
-      // Persistência
+      updateGoogleLinkUI(false);
       await requestPersistentStorage(true);
+
+      if (savedClientId) initGoogleAuth();
 
       // --- BOTÕES DO TOPO ---
       document.getElementById('btnTopChangeThemeManual').addEventListener('click', () => openModal('modalThemes'));
@@ -1256,6 +1602,41 @@
       });
       document.getElementById('btnRequestPersist').addEventListener('click', () => requestPersistentStorage(false));
 
+      // --- GOOGLE FOTOS ---
+      document.getElementById('btnLinkGoogle').addEventListener('click', linkGoogleAccount);
+      document.getElementById('btnUnlinkGoogle').addEventListener('click', unlinkGoogleAccount);
+      document.getElementById('btnPickGooglePhotos').addEventListener('click', pickGooglePhotos);
+      document.getElementById('btnSaveClientId').addEventListener('click', () => {
+        const val = document.getElementById('googleClientIdInput').value.trim();
+        if (!val || !val.includes('.apps.googleusercontent.com')) {
+          toast('⚠️ Client ID inválido. Deve terminar em .apps.googleusercontent.com', '⚠️');
+          return;
+        }
+        localStorage.setItem(KEY_GOOGLE_CLIENT_ID, val);
+        googleTokenClient = null;
+        toast('✅ Client ID salvo com sucesso!', '💾');
+        updateGoogleLinkUI(false);
+        initGoogleAuth();
+      });
+      document.getElementById('btnTestGoogleAuth').addEventListener('click', () => {
+        const val = document.getElementById('googleClientIdInput').value.trim();
+        if (!val) {
+          toast('⚠️ Cole o Client ID primeiro.', '⚠️');
+          return;
+        }
+        localStorage.setItem(KEY_GOOGLE_CLIENT_ID, val);
+        googleTokenClient = null;
+        updateGoogleLinkUI(false);
+        initGoogleAuth().then(ok => {
+          if (ok) {
+            toast('Testando vinculação...', '🧪');
+            linkGoogleAccount();
+          } else {
+            toast('Falha ao inicializar. Verifique sua conexão.', '❌');
+          }
+        });
+      });
+
       // --- TEMAS ---
       document.getElementById('btnBotRandomTheme').addEventListener('click', botSuggestRandomTheme);
       document.getElementById('themeSearchInput').addEventListener('input', e => {
@@ -1270,20 +1651,20 @@
         });
       });
 
-      // --- UPLOAD / ADIÇÃO ---
+      // --- UPLOAD ---
       const fileInput = document.getElementById('fileInput');
       document.getElementById('btnUploadTrigger').addEventListener('click', () => fileInput.click());
       document.getElementById('btnEmptyAdd').addEventListener('click', () => fileInput.click());
       fileInput.addEventListener('change', e => {
         handleIncomingFiles(e.target.files);
-        e.target.value = ''; // permite re-selecionar o mesmo arquivo
+        e.target.value = '';
       });
 
-      // --- ENVIO DIRETO DA GALERIA / GOOGLE FOTOS ---
+      // --- ENVIO DIRETO DA GALERIA ---
       const photoPicker = document.getElementById('photoPickerInput');
       document.getElementById('btnSendPhotoDirect').addEventListener('click', () => {
         photoPicker.click();
-        toast('Escolha uma foto da sua galeria (Google Fotos disponível como fonte no celular).', '📸');
+        toast('Escolha uma foto da galeria.', '📸');
       });
       photoPicker.addEventListener('change', async e => {
         await handleIncomingFiles(e.target.files, 'Envio Direto');
@@ -1293,7 +1674,7 @@
       // --- GOOGLE FOTOS WEB ---
       document.getElementById('btnLaunchGooglePhotos').addEventListener('click', () => {
         window.open('https://photos.google.com', '_blank', 'noopener');
-        toast('Google Fotos aberto! Baixe/copie fotos e use "Enviar Foto Direto para o Cofre" ou Ctrl+V.', '🚀');
+        toast('Google Fotos aberto! Baixe/copie e use "Enviar da Galeria" ou Ctrl+V.', '🚀');
       });
 
       // --- ZIP IMPORT ---
@@ -1315,7 +1696,6 @@
               blobs.push(blob);
             }
           }
-          // Reutiliza handleIncomingFiles via File objects
           const files = blobs.map(b => new File([b], b._zipName, { type: b.type || 'image/jpeg' }));
           await handleIncomingFiles(files, 'ZIP');
         } catch(err) {
@@ -1419,7 +1799,7 @@
         }
       });
 
-      // --- FECHAR MODAIS (overlay click, X, ESC) ---
+      // --- FECHAR MODAIS ---
       document.querySelectorAll('.modal-overlay').forEach(o => {
         o.addEventListener('click', e => {
           if (e.target === o) {
