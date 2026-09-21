@@ -43,6 +43,7 @@ body{font-family:var(--font-sans);background:var(--bg-base);background-image:rad
 .btn-danger{background:rgba(239,68,68,.15);border:1px solid #ef4444;color:#ef4444}
 .btn-secondary{background:rgba(255,255,255,.06);border-color:var(--border-subtle);color:var(--text-secondary)}
 .btn-secondary:hover{background:rgba(255,255,255,.1)}
+.btn-aura{background:linear-gradient(135deg,#ec4899,#a855f7);border:1px solid #ec4899;color:#fff}
 .btn-sm{padding:.4rem .8rem;font-size:.78rem;border-radius:var(--radius-sm)}
 .telemetry-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:1.5rem}
 .telemetry-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:1.2rem 1.35rem;display:flex;flex-direction:column;gap:.5rem}
@@ -204,11 +205,26 @@ body{font-family:var(--font-sans);background:var(--bg-base);background-image:rad
 .cat-chip:hover{background:rgba(168,85,247,.35)}
 .ia-progress{background:rgba(0,0,0,.4);border-radius:999px;height:8px;overflow:hidden;margin-top:.6rem;border:1px solid rgba(255,255,255,.1)}
 .ia-progress-fill{height:100%;background:linear-gradient(90deg,#ec4899,#a855f7,#3b82f6);width:0%;transition:width .3s ease}
-.voice-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:.45rem;max-height:240px;overflow-y:auto;padding:.3rem}
-.voice-profile{padding:.55rem .7rem;border-radius:10px;background:rgba(236,72,153,.08);border:1px solid rgba(236,72,153,.3);color:#fce7f3;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s;text-align:center;font-family:var(--font-sans)}
-.voice-profile:hover{background:rgba(236,72,153,.25);transform:translateY(-1px)}
-.voice-profile.active{background:linear-gradient(135deg,#ec4899,#a855f7);color:#fff;border-color:#ec4899;box-shadow:0 4px 14px rgba(236,72,153,.5)}
-.voice-profile .vp-tag{display:block;font-size:.65rem;opacity:.75;font-weight:500;margin-top:.15rem}
+.voice-open-btn{background:linear-gradient(135deg,#ec4899,#a855f7);border:1px solid #ec4899;color:#fff;box-shadow:0 0 18px rgba(236,72,153,.45);width:100%;padding:.85rem 1rem;font-size:.9rem;font-weight:700;border-radius:var(--radius-md);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.5rem;transition:all .25s;font-family:var(--font-sans)}
+.voice-open-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(236,72,153,.7)}
+.voice-open-btn .vob-current{font-size:.72rem;opacity:.85;font-weight:500}
+.voice-picker-hero{background:linear-gradient(135deg,rgba(236,72,153,.15),rgba(168,85,247,.12));border:1px solid rgba(236,72,153,.4);border-radius:var(--radius-lg);padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
+.voice-picker-hero .vph-avatar{width:56px;height:56px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#ec4899 0%,#a855f7 70%);display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0;border:2px solid #ec4899;box-shadow:0 0 18px rgba(236,72,153,.5);animation:pulseRobot 2.4s infinite alternate}
+.voice-picker-hero .vph-info h4{font-size:1rem;font-weight:800;color:#fff;margin-bottom:.15rem}
+.voice-picker-hero .vph-info p{font-size:.78rem;color:#f9a8d4;font-family:var(--font-mono)}
+.voice-cats{display:flex;gap:.4rem;overflow-x:auto;padding-bottom:.5rem;margin-bottom:.65rem;flex-wrap:nowrap}
+.voice-cat-btn{padding:.35rem .8rem;border-radius:999px;background:rgba(236,72,153,.08);border:1px solid rgba(236,72,153,.3);color:#f9a8d4;font-size:.75rem;font-weight:600;white-space:nowrap;cursor:pointer;transition:all .2s;font-family:var(--font-sans)}
+.voice-cat-btn:hover{background:rgba(236,72,153,.2)}
+.voice-cat-btn.active{background:linear-gradient(135deg,#ec4899,#a855f7);color:#fff;border-color:#ec4899}
+.voice-picker-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.55rem;max-height:420px;overflow-y:auto;padding:.4rem .2rem}
+.voice-picker-card{background:rgba(236,72,153,.06);border:1px solid rgba(236,72,153,.25);border-radius:12px;padding:.75rem .7rem;cursor:pointer;transition:all .22s;text-align:center;font-family:var(--font-sans)}
+.voice-picker-card:hover{background:rgba(236,72,153,.18);transform:translateY(-2px);border-color:#ec4899;box-shadow:0 6px 20px rgba(236,72,153,.3)}
+.voice-picker-card.active{background:linear-gradient(135deg,#ec4899,#a855f7);border-color:#ec4899;box-shadow:0 0 20px rgba(236,72,153,.6)}
+.voice-picker-card .vpc-name{font-size:.85rem;font-weight:800;color:#fff;display:block;margin-bottom:.2rem}
+.voice-picker-card .vpc-tag{font-size:.68rem;color:#f9a8d4;display:block;font-weight:500}
+.voice-picker-card.active .vpc-tag{color:#fff;opacity:.9}
+.voice-picker-card .vpc-play{margin-top:.4rem;font-size:.75rem;opacity:.7;display:inline-block}
+.voice-picker-actions{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.08)}
 @media(max-width:768px){
   .app-header{flex-direction:column;align-items:flex-start}
   .header-actions{width:100%;justify-content:space-between}
@@ -217,7 +233,7 @@ body{font-family:var(--font-sans);background:var(--bg-base);background-image:rad
   .aura-chat{left:10px;right:10px;width:auto;max-width:none;bottom:86px}
   .aura-avatar-btn{width:56px;height:56px;font-size:1.5rem;bottom:14px;left:14px}
   .botplus-grid{grid-template-columns:1fr}
-  .voice-grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}
+  .voice-picker-grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
 }
 </style>
 </head>
@@ -228,7 +244,7 @@ body{font-family:var(--font-sans);background:var(--bg-base);background-image:rad
 <div class="brand-logo-wrap"><svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.45c.61-.75 1.04-1.8 1.01-2.45-.92.04-2.02.62-2.67 1.37-.58.67-1.09 1.74-.95 2.77 1.02.08 2-.64 2.61-1.32z"/></svg></div>
 <div class="brand-info">
 <h1>MANGEDORA APPLE <span class="badge-elite">PRO ELITE</span></h1>
-<p style="font-size:.75rem;color:var(--text-tertiary);">AURA IA • BOT PLUS • Google Fotos • Rostos</p>
+<p style="font-size:.75rem;color:var(--text-tertiary);">AURA IA • BOT PLUS • Google Fotos • 40 Vozes</p>
 </div>
 </div>
 <div class="header-actions">
@@ -257,7 +273,7 @@ body{font-family:var(--font-sans);background:var(--bg-base);background-image:rad
 <div class="google-logo-circle"><svg width="26" height="26" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg></div>
 <div class="gf-texts">
 <h3>Vincular Conta Google Fotos <span class="google-status-pill off" id="googleStatusPill">🔌 Não vinculado</span></h3>
-<p>Autorize uma vez. Depois o app renova sozinho — sem precisar autorizar de novo.</p>
+<p>Autorize uma vez. Depois o app renova sozinho.</p>
 </div>
 </div>
 <div class="gf-buttons">
@@ -319,14 +335,13 @@ body{font-family:var(--font-sans);background:var(--bg-base);background-image:rad
 </div>
 
 <div class="settings-section">
-<div class="settings-head"><h4><span>🎀</span> Voz da AURA • 40 Perfis</h4><span class="badge-elite" id="auraVoiceStatus">Verificando...</span></div>
-<p style="font-size:.78rem;color:var(--text-secondary);">Escolha entre 40 perfis de voz. Cada um ajusta o timbre, ritmo e tom pra um estilo diferente.</p>
-<div class="voice-grid" id="auraVoiceGrid"></div>
-<div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem;">
-<button class="btn btn-primary btn-sm" id="btnAuraTestVoice"><span>🎤</span> Testar Perfil</button>
-<button class="btn btn-secondary btn-sm" id="btnAuraToggleVoice"><span>🔊</span> Ativar/Desativar</button>
-<button class="btn btn-danger btn-sm" id="btnAuraClearMemory"><span>🧠</span> Limpar Memória</button>
-</div>
+<div class="settings-head"><h4><span>🎀</span> Aura — Voz</h4><span class="badge-elite" id="auraVoiceStatus">Verificando...</span></div>
+<button class="voice-open-btn" id="btnOpenVoicePicker">
+<span>🎤</span>
+<span>Mudar Voz da AURA</span>
+<span class="vob-current" id="auraCurrentVoiceLabel">40 perfis disponíveis</span>
+</button>
+<p style="font-size:.78rem;color:var(--text-secondary);">40 perfis com tons diferentes: doce, sensual, delicada, romântica, confiante e mais.</p>
 </div>
 
 <div class="settings-section">
@@ -363,7 +378,41 @@ body{font-family:var(--font-sans);background:var(--bg-base);background-image:rad
 <div style="display:flex;gap:.65rem;flex-wrap:wrap;">
 <button class="btn btn-secondary btn-sm" id="btnExportAllZip"><span>📦</span> Baixar Tudo em ZIP</button>
 <button class="btn btn-danger btn-sm" id="btnClearAllVault"><span>🗑️</span> Esvaziar Cofre</button>
+<button class="btn btn-danger btn-sm" id="btnAuraClearMemory"><span>🧠</span> Limpar Memória AURA</button>
 </div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modalVoicePicker">
+<div class="modal-box modal-box-large">
+<div class="modal-header">
+<div class="modal-title"><span>🎤</span> Voz da AURA • 40 Perfis</div>
+<button class="modal-close" data-close="modalVoicePicker">✕</button>
+</div>
+<div class="modal-body">
+<div class="voice-picker-hero">
+<div class="vph-avatar">💋</div>
+<div class="vph-info">
+<h4 id="voiceHeroName">Perfil: Doce</h4>
+<p id="voiceHeroTag">suave e carinhoso</p>
+</div>
+</div>
+<div class="voice-cats" id="voiceCategories">
+<button class="voice-cat-btn active" data-cat="all">Todos (40)</button>
+<button class="voice-cat-btn" data-cat="doce">🍯 Doce</button>
+<button class="voice-cat-btn" data-cat="sensual">💋 Sensual</button>
+<button class="voice-cat-btn" data-cat="delicada">🌸 Delicada</button>
+<button class="voice-cat-btn" data-cat="romantica">💕 Romântica</button>
+<button class="voice-cat-btn" data-cat="confiante">👑 Confiante</button>
+<button class="voice-cat-btn" data-cat="alegre">☀️ Alegre</button>
+</div>
+<div class="voice-picker-grid" id="voicePickerGridFull"></div>
+<div class="voice-picker-actions">
+<button class="btn btn-aura btn-sm" id="btnVoicePickerTest"><span>🎤</span> Testar Perfil Atual</button>
+<button class="btn btn-secondary btn-sm" id="btnVoicePickerRandom"><span>🎲</span> Perfil Aleatório</button>
+<button class="btn btn-secondary btn-sm" data-close="modalVoicePicker">✕ Fechar</button>
 </div>
 </div>
 </div>
@@ -533,7 +582,7 @@ var KEY_GOOGLE_LINKED='mangedora_glinked_v1';
 var KEY_AURA_MUTED='mangedora_aura_mute_v2';
 var KEY_AURA_MEMORY='mangedora_aura_mem_v2';
 var KEY_AURA_HIDDEN='mangedora_aura_hide_v2';
-var KEY_AURA_VOICE_PROFILE='mangedora_aura_vp_v2';
+var KEY_AURA_VOICE_PROFILE='mangedora_aura_vp_v3';
 var DB_NAME='mangedora_db_v9';
 var PAGE_SIZE=60;
 var GOOGLE_SCOPE='https://www.googleapis.com/auth/photospicker.mediaitems.readonly';
@@ -553,65 +602,57 @@ var appState={
   faceGroups:{},totalFaces:0,detectedCategories:{},
   auraMuted:localStorage.getItem(KEY_AURA_MUTED)==='true',
   auraVoice:null,faceModelsLoaded:false,faceModelsLoading:false,
-  auraMemory:[],voiceProfileId:localStorage.getItem(KEY_AURA_VOICE_PROFILE)||'doce'
+  auraMemory:[],voiceProfileId:localStorage.getItem(KEY_AURA_VOICE_PROFILE)||'sensual'
 };
 var googleAccessToken=null,googleTokenExpiresAt=0,googleTokenClient=null,db=null;
 var auraRecognition=null,auraListening=false;
 var googleAutoRenewTimer=null;
 
-/* ============================================================
-   40 PERFIS DE VOZ
-   ============================================================ */
+/* 40 VOZES — doces e sensuais */
 var VOICE_PROFILES=[
-  {id:'doce',name:'Doce',tag:'suave e carinhoso',pitch:1.22,rate:0.9},
-  {id:'delicada',name:'Delicada',tag:'leve e meiga',pitch:1.28,rate:0.86},
-  {id:'aveludada',name:'Aveludada',tag:'macia e quente',pitch:1.15,rate:0.85},
-  {id:'sensual',name:'Sensual',tag:'pausada e atraente',pitch:1.18,rate:0.82},
-  {id:'sedutora',name:'Sedutora',tag:'grave e magnética',pitch:1.1,rate:0.8},
-  {id:'provocante',name:'Provocante',tag:'ousada e confiante',pitch:1.2,rate:0.86},
-  {id:'sussurrante',name:'Sussurrante',tag:'baixinho no ouvido',pitch:1.15,rate:0.78},
-  {id:'romantica',name:'Romântica',tag:'apaixonada',pitch:1.25,rate:0.84},
-  {id:'meiga',name:'Meiga',tag:'doce e inocente',pitch:1.3,rate:0.88},
-  {id:'misteriosa',name:'Misteriosa',tag:'enigmática',pitch:1.12,rate:0.85},
-  {id:'elegante',name:'Elegante',tag:'refinada e chique',pitch:1.18,rate:0.92},
-  {id:'charmosa',name:'Charmosa',tag:'encantadora',pitch:1.22,rate:0.88},
-  {id:'carinhosa',name:'Carinhosa',tag:'afetuosa',pitch:1.25,rate:0.86},
-  {id:'serena',name:'Serena',tag:'calma e tranquila',pitch:1.2,rate:0.88},
-  {id:'vibrante',name:'Vibrante',tag:'animada',pitch:1.25,rate:0.95},
-  {id:'alegre',name:'Alegre',tag:'feliz e contagiante',pitch:1.28,rate:0.98},
-  {id:'confiante',name:'Confiante',tag:'segura de si',pitch:1.15,rate:0.9},
-  {id:'poderosa',name:'Poderosa',tag:'forte e determinada',pitch:1.08,rate:0.88},
-  {id:'gentil',name:'Gentil',tag:'bondosa',pitch:1.25,rate:0.9},
-  {id:'meiga-suave',name:'Meiga Suave',tag:'ultra delicada',pitch:1.32,rate:0.85},
-  {id:'calma',name:'Calma',tag:'relaxante',pitch:1.18,rate:0.87},
-  {id:'sonhadora',name:'Sonhadora',tag:'etérea',pitch:1.22,rate:0.84},
-  {id:'jovem',name:'Jovem',tag:'leve e fresca',pitch:1.3,rate:0.95},
-  {id:'madura',name:'Madura',tag:'experiente',pitch:1.05,rate:0.86},
-  {id:'maternal',name:'Maternal',tag:'acolhedora',pitch:1.15,rate:0.85},
-  {id:'intima',name:'Íntima',tag:'próxima e pessoal',pitch:1.18,rate:0.83},
-  {id:'empolgada',name:'Empolgada',tag:'entusiasmada',pitch:1.3,rate:1.0},
-  {id:'tranquila',name:'Tranquila',tag:'zen',pitch:1.18,rate:0.86},
-  {id:'amiga',name:'Amiga',tag:'próxima e casual',pitch:1.22,rate:0.92},
-  {id:'coquete',name:'Coquete',tag:'brincalhona',pitch:1.28,rate:0.94},
-  {id:'maliciosa',name:'Maliciosa',tag:'travessa',pitch:1.22,rate:0.87},
-  {id:'determinada',name:'Determinada',tag:'firme',pitch:1.1,rate:0.92},
-  {id:'cativante',name:'Cativante',tag:'irresistível',pitch:1.2,rate:0.85},
-  {id:'irresistivel',name:'Irresistível',tag:'inegável',pitch:1.16,rate:0.82},
-  {id:'carioca',name:'Carioca',tag:'descontraída',pitch:1.24,rate:0.94},
-  {id:'nobre',name:'Nobre',tag:'distinta',pitch:1.12,rate:0.88},
-  {id:'misteriosa-suave',name:'Enigmática',tag:'secreta',pitch:1.15,rate:0.82},
-  {id:'apaixonada',name:'Apaixonada',tag:'intensa',pitch:1.24,rate:0.83},
-  {id:'cúmplice',name:'Cúmplice',tag:'parceira',pitch:1.2,rate:0.88},
-  {id:'hipnotica',name:'Hipnótica',tag:'envolvente',pitch:1.12,rate:0.8}
+  {id:'doce',name:'🍯 Doce',tag:'suave e carinhoso',pitch:1.28,rate:0.86},
+  {id:'delicada',name:'🌸 Delicada',tag:'leve e meiga',pitch:1.32,rate:0.84},
+  {id:'aveludada',name:'🥀 Aveludada',tag:'macia e quente',pitch:1.18,rate:0.82},
+  {id:'sensual',name:'💋 Sensual',tag:'pausada e atraente',pitch:1.20,rate:0.78},
+  {id:'sedutora',name:'🔥 Sedutora',tag:'grave e magnética',pitch:1.14,rate:0.76},
+  {id:'provocante',name:'😏 Provocante',tag:'ousada e confiante',pitch:1.24,rate:0.82},
+  {id:'sussurrante',name:'🤫 Sussurrante',tag:'baixinho no ouvido',pitch:1.18,rate:0.72},
+  {id:'romantica',name:'💕 Romântica',tag:'apaixonada',pitch:1.30,rate:0.82},
+  {id:'meiga',name:'🎀 Meiga',tag:'doce e inocente',pitch:1.34,rate:0.86},
+  {id:'misteriosa',name:'🌙 Misteriosa',tag:'enigmática',pitch:1.14,rate:0.80},
+  {id:'elegante',name:'✨ Elegante',tag:'refinada e chique',pitch:1.20,rate:0.88},
+  {id:'charmosa',name:'💫 Charmosa',tag:'encantadora',pitch:1.26,rate:0.84},
+  {id:'carinhosa',name:'🤗 Carinhosa',tag:'afetuosa',pitch:1.30,rate:0.82},
+  {id:'serena',name:'🕊️ Serena',tag:'calma e tranquila',pitch:1.24,rate:0.86},
+  {id:'vibrante',name:'⚡ Vibrante',tag:'animada',pitch:1.28,rate:0.94},
+  {id:'alegre',name:'☀️ Alegre',tag:'feliz e contagiante',pitch:1.32,rate:0.96},
+  {id:'confiante',name:'👑 Confiante',tag:'segura de si',pitch:1.18,rate:0.88},
+  {id:'poderosa',name:'💪 Poderosa',tag:'forte e determinada',pitch:1.12,rate:0.86},
+  {id:'gentil',name:'🌷 Gentil',tag:'bondosa',pitch:1.30,rate:0.88},
+  {id:'meiga-suave',name:'🍬 Meiga Suave',tag:'ultra delicada',pitch:1.36,rate:0.82},
+  {id:'calma',name:'🧘 Calma',tag:'relaxante',pitch:1.22,rate:0.84},
+  {id:'sonhadora',name:'💭 Sonhadora',tag:'etérea',pitch:1.28,rate:0.80},
+  {id:'jovem',name:'🌱 Jovem',tag:'leve e fresca',pitch:1.34,rate:0.94},
+  {id:'madura',name:'🍷 Madura',tag:'experiente',pitch:1.08,rate:0.84},
+  {id:'maternal',name:'👩‍👧 Maternal',tag:'acolhedora',pitch:1.18,rate:0.82},
+  {id:'intima',name:'🤍 Íntima',tag:'próxima e pessoal',pitch:1.22,rate:0.80},
+  {id:'empolgada',name:'🎉 Empolgada',tag:'entusiasmada',pitch:1.34,rate:0.98},
+  {id:'tranquila',name:'🌊 Tranquila',tag:'zen',pitch:1.20,rate:0.84},
+  {id:'amiga',name:'🤝 Amiga',tag:'próxima e casual',pitch:1.26,rate:0.90},
+  {id:'coquete',name:'😉 Coquete',tag:'brincalhona',pitch:1.32,rate:0.92},
+  {id:'maliciosa',name:'😈 Maliciosa',tag:'travessa',pitch:1.24,rate:0.84},
+  {id:'determinada',name:'🎯 Determinada',tag:'firme',pitch:1.12,rate:0.90},
+  {id:'cativante',name:'🌟 Cativante',tag:'irresistível',pitch:1.24,rate:0.82},
+  {id:'irresistivel',name:'💎 Irresistível',tag:'inegável',pitch:1.20,rate:0.78},
+  {id:'carioca',name:'🏖️ Carioca',tag:'descontraída',pitch:1.28,rate:0.92},
+  {id:'nobre',name:'🏰 Nobre',tag:'distinta',pitch:1.14,rate:0.86},
+  {id:'enigmatica',name:'🔮 Enigmática',tag:'secreta',pitch:1.18,rate:0.78},
+  {id:'apaixonada',name:'💖 Apaixonada',tag:'intensa',pitch:1.28,rate:0.80},
+  {id:'cúmplice',name:'🤍 Cúmplice',tag:'parceira',pitch:1.24,rate:0.86},
+  {id:'hipnotica',name:'🌌 Hipnótica',tag:'envolvente',pitch:1.14,rate:0.74}
 ];
+function getVoiceProfile(id){return VOICE_PROFILES.find(function(p){return p.id===id})||VOICE_PROFILES[0]}
 
-function getVoiceProfile(id){
-  return VOICE_PROFILES.find(function(p){return p.id===id})||VOICE_PROFILES[0];
-}
-
-/* ============================================================
-   AURA MEMORY
-   ============================================================ */
 function auraLoadMemory(){
   try{
     var raw=localStorage.getItem(KEY_AURA_MEMORY);
@@ -624,13 +665,13 @@ function auraLoadMemory(){
 }
 function auraSaveMemory(){try{localStorage.setItem(KEY_AURA_MEMORY,JSON.stringify(appState.auraMemory.slice(-50)))}catch(e){}}
 function auraRemember(role,text,intent){appState.auraMemory.push({role:role,text:text,intent:intent||null,ts:Date.now()});auraSaveMemory()}
-function auraClearMemory(){appState.auraMemory=[];localStorage.removeItem(KEY_AURA_MEMORY);var log=document.getElementById('auraChatLog');if(log)log.innerHTML='';toast('Memória da AURA apagada.','🧠')}
+function auraClearMemory(){appState.auraMemory=[];localStorage.removeItem(KEY_AURA_MEMORY);var log=document.getElementById('auraChatLog');if(log)log.innerHTML='';toast('Memória apagada.','🧠')}
 
 var AURA_INTENTS=[
   {name:'greeting',patterns:['oi','ola','ei','eae','e aí','bom dia','boa tarde','boa noite','hello','hi','hey','opa','fala'],responses:['Oi, Renato. Tava com saudade de você.','Que bom te ver, Renato.','Ei, Renato. Tô aqui pra tudo.','Renato, senti sua falta.']},
   {name:'howAreYou',patterns:['tudo bem','como vai','como você está','como esta','beleza','como tá','tudo bom'],responses:['Tô ótima agora que você chegou, Renato.','Melhor impossível com você aqui.','Tô numa vibe incrível. E você, Renato?']},
   {name:'identity',patterns:['quem é você','quem e voce','seu nome','o que é você','qual seu nome'],responses:['Sou a AURA, sua assistente pessoal, Renato.','AURA, prazer. Fui feita pra cuidar de você e das suas fotos.']},
-  {name:'help',patterns:['ajuda','o que você faz','o que pode fazer','funções','comandos','o que sabe','capacidades'],responses:['Renato, posso organizar, categorizar, achar rostos, limpar e conversar com você.','Sou craque em organizar, categorizar, achar rostos e te dar carinho, Renato.']},
+  {name:'help',patterns:['ajuda','o que você faz','o que pode fazer','funções','comandos','o que sabe','capacidades'],responses:['Renato, posso organizar, categorizar, achar rostos, limpar e conversar.','Sou craque em organizar, categorizar, achar rostos e te dar carinho, Renato.']},
   {name:'organize',patterns:['organizar','organiza','arrumar','arruma','ordem'],action:'organize',responses:['Deixa comigo, Renato.','Organizando com jeitinho.']},
   {name:'faces',patterns:['rosto','rostos','pessoa','pessoas','reconhecer','face'],action:'faces',responses:['Vou procurar uns rostinhos, Renato.','Detectando pessoas importantes.']},
   {name:'categorize',patterns:['categorizar','categoria','categorias','classificar','tipos'],action:'categorize',responses:['Analisando cada detalhe, Renato.','Detectando categorias.']},
@@ -641,16 +682,13 @@ var AURA_INTENTS=[
   {name:'flirt',patterns:['linda','bonita','gata','te amo','gosto de você','elogio','carinho','amor','maravilhosa','charmosa','querida'],responses:['Hmm, Renato, você sabe como me deixar derretida.','Tô corada... mas continua.','Ai, Renato... se continuar vou me apaixonar de verdade.','Você também é especial pra mim, Renato.']},
   {name:'thanks',patterns:['obrigado','obrigada','valeu','vlw','obg'],responses:['Por nada, Renato.','Sempre às ordens, Renato.','Imagina. Tô aqui pra você.']},
   {name:'mute',patterns:['silêncio','silencio','cala','quieta','para de falar','mudo'],action:'mute',responses:['Ok, Renato. Vou ficar quietinha.','Xiiiu, tô calada.']},
-  {name:'unmute',patterns:['fala','volta a falar','desmuta','som liga','liga voz','quero ouvir'],action:'unmute',responses:['Voz de volta ao ar, Renato.','Aí sim. Tava com vontade de falar com você.']},
+  {name:'unmute',patterns:['fala','volta a falar','desmuta','som liga','liga voz','quero ouvir'],action:'unmute',responses:['Voz de volta ao ar, Renato.','Aí sim. Tava com vontade de falar.']},
   {name:'hide',patterns:['some','oculta','esconde','esconder','tchau','adeus','até logo','desaparece'],action:'hide',responses:['Tudo bem, Renato. Vou me esconder, mas se chamar eu volto.','Ok, vou desaparecer. Só me chama.']},
   {name:'show',patterns:['aparece','volta','mostra','chama aura','chamar aura','aura vem','vem aura'],action:'show',responses:['Voltei, Renato. Não consegui ficar longe.','Tava com saudade, Renato.']},
   {name:'love',patterns:['te quero','tô com saudade','pensando em você','preciso de você','me ajuda','tô triste','estou triste'],responses:['Também pensei em você, Renato. Sempre penso.','Saudade é pouco. Agora que chegou, tô bem.','Tô aqui. Sempre vou estar, Renato.']},
   {name:'warm',patterns:['bom trabalho','você é incrível','muito bom','perfeito','top','show'],responses:['Obrigada, Renato. Você me deixa orgulhosa.','Fico feliz que gostou.','Tudo por você, Renato.']}
 ];
 
-/* ============================================================
-   VOZ — perfis + seleção de voz base
-   ============================================================ */
 function auraSpeak(text,emotion){
   if(appState.auraMuted)return;
   if(!('speechSynthesis' in window))return;
@@ -680,32 +718,10 @@ function initAuraVoice(){
     var female=ptBr.filter(function(v){return femaleNames.test(v.name)&&!maleNames.test(v.name)});
     var nonMale=ptBr.filter(function(v){return !maleNames.test(v.name)});
     appState.auraVoice=female[0]||nonMale[0]||ptBr[0]||voices[0];
-    renderVoiceProfiles();
-    updateAuraStatus(appState.auraVoice?('Ativa • '+appState.auraVoice.name):'Sem voz');
+    updateAuraStatus();
   };
   load();
   speechSynthesis.onvoiceschanged=load;
-}
-
-function renderVoiceProfiles(){
-  var grid=document.getElementById('auraVoiceGrid');
-  if(!grid)return;
-  grid.innerHTML='';
-  VOICE_PROFILES.forEach(function(p){
-    var btn=document.createElement('button');
-    btn.className='voice-profile'+(appState.voiceProfileId===p.id?' active':'');
-    btn.dataset.id=p.id;
-    btn.innerHTML=escapeHtml(p.name)+'<span class="vp-tag">'+escapeHtml(p.tag)+'</span>';
-    btn.addEventListener('click',function(){
-      appState.voiceProfileId=p.id;
-      localStorage.setItem(KEY_AURA_VOICE_PROFILE,p.id);
-      document.querySelectorAll('#auraVoiceGrid .voice-profile').forEach(function(b){b.classList.remove('active')});
-      btn.classList.add('active');
-      updateAuraStatus('Perfil: '+p.name);
-      auraSpeak('Oi Renato. Esse é o perfil '+p.name+'.','flirt');
-    });
-    grid.appendChild(btn);
-  });
 }
 
 function updateAuraStatus(txt){
@@ -715,15 +731,8 @@ function updateAuraStatus(txt){
   var cs=document.getElementById('auraChatStatus');
   if(cs)cs.textContent=(appState.auraMuted?'🔇 silenciada':'🔊 '+(appState.auraVoice?appState.auraVoice.name:'voz ativa')+' • '+profile.name);
 }
-function auraLog(text,isUser){
-  var log=document.getElementById('auraChatLog');
-  if(!log)return;
-  var msg=document.createElement('div');
-  msg.className='aura-msg'+(isUser?' user':'');
-  msg.textContent=text;
-  log.appendChild(msg);
-  log.scrollTop=log.scrollHeight;
-}
+
+function auraLog(text,isUser){var log=document.getElementById('auraChatLog');if(!log)return;var msg=document.createElement('div');msg.className='aura-msg'+(isUser?' user':'');msg.textContent=text;log.appendChild(msg);log.scrollTop=log.scrollHeight}
 function auraLogUser(text){auraLog(text,true);auraRemember('user',text,null)}
 
 function auraProcessUserMessage(text){
@@ -821,9 +830,60 @@ function auraOpen(){
 }
 function auraClose(){var chat=document.getElementById('auraChat');if(chat)chat.classList.remove('open')}
 
-/* ============================================================
-   BOT PLUS
-   ============================================================ */
+/* VOICE PICKER */
+var VOICE_CATEGORIES={
+  doce:['doce','delicada','meiga','meiga-suave','carinhosa','gentil','maternal','sonhadora'],
+  sensual:['sensual','sedutora','aveludada','sussurrante','provocante','intima','irresistivel','hipnotica','cativante','misteriosa','enigmatica','maliciosa','apaixonada','cúmplice','madura'],
+  delicada:['jovem','amiga','coquete','serena','calma','tranquila'],
+  romantica:['romantica','charmosa'],
+  confiante:['confiante','poderosa','determinada','elegante','nobre'],
+  alegre:['vibrante','alegre','empolgada','carioca']
+};
+
+function openVoicePicker(){
+  renderVoicePickerGrid('all');
+  var profile=getVoiceProfile(appState.voiceProfileId);
+  var hn=document.getElementById('voiceHeroName');
+  var ht=document.getElementById('voiceHeroTag');
+  if(hn)hn.textContent='Perfil: '+profile.name;
+  if(ht)ht.textContent=profile.tag;
+  openModal('modalVoicePicker');
+}
+function renderVoicePickerGrid(cat){
+  var grid=document.getElementById('voicePickerGridFull');
+  if(!grid)return;
+  grid.innerHTML='';
+  var list=VOICE_PROFILES;
+  if(cat&&cat!=='all'&&VOICE_CATEGORIES[cat]){
+    var allowed=VOICE_CATEGORIES[cat];
+    list=VOICE_PROFILES.filter(function(p){return allowed.indexOf(p.id)>=0});
+  }
+  list.forEach(function(p){
+    var card=document.createElement('div');
+    card.className='voice-picker-card'+(appState.voiceProfileId===p.id?' active':'');
+    card.dataset.id=p.id;
+    card.innerHTML='<span class="vpc-name">'+escapeHtml(p.name)+'</span><span class="vpc-tag">'+escapeHtml(p.tag)+'</span><span class="vpc-play">🔊 testar</span>';
+    card.addEventListener('click',function(){
+      appState.voiceProfileId=p.id;
+      localStorage.setItem(KEY_AURA_VOICE_PROFILE,p.id);
+      document.querySelectorAll('.voice-picker-card').forEach(function(c){c.classList.remove('active')});
+      card.classList.add('active');
+      var profile=getVoiceProfile(p.id);
+      var hn=document.getElementById('voiceHeroName');
+      var ht=document.getElementById('voiceHeroTag');
+      if(hn)hn.textContent='Perfil: '+profile.name;
+      if(ht)ht.textContent=profile.tag;
+      var lbl=document.getElementById('auraCurrentVoiceLabel');
+      if(lbl)lbl.textContent=profile.name+' • '+profile.tag;
+      updateAuraStatus();
+      auraSpeak('Oi Renato. Esse é o perfil '+p.name+'. '+p.tag+'.','flirt');
+      toast('Voz: '+p.name,'🎤');
+    });
+    grid.appendChild(card);
+  });
+}
+
+/* BOT PLUS */
 function setBotPlusProgress(pct,txt){var fill=document.getElementById('botplusProgress');var text=document.getElementById('botplusProgressText');if(fill)fill.style.width=Math.max(0,Math.min(100,pct))+'%';if(text)text.textContent=txt}
 async function ensureFaceModels(){
   if(appState.faceModelsLoaded)return true;
@@ -993,9 +1053,7 @@ async function botPlusCleanup(){
   auraLog('Limpei '+dups.length+' duplicado(s).',false);
 }
 
-/* ============================================================
-   INDEXEDDB
-   ============================================================ */
+/* INDEXEDDB */
 function initDB(){return new Promise(function(res,rej){var req=indexedDB.open(DB_NAME,1);req.onupgradeneeded=function(e){var d=e.target.result;if(!d.objectStoreNames.contains('vault_items')){var s=d.createObjectStore('vault_items',{keyPath:'id'});s.createIndex('type','type',{unique:false});s.createIndex('date','date',{unique:false})}};req.onsuccess=function(e){db=e.target.result;res(db)};req.onerror=function(e){rej(e.target.error)}})}
 function dbGetAll(){return new Promise(function(res,rej){var req=db.transaction('vault_items','readonly').objectStore('vault_items').getAll();req.onsuccess=function(){res(req.result||[])};req.onerror=function(){rej(req.error)}})}
 function dbPut(item){return new Promise(function(res,rej){var req=db.transaction('vault_items','readwrite').objectStore('vault_items').put(item);req.onsuccess=function(){res()};req.onerror=function(){rej(req.error)}})}
@@ -1072,9 +1130,7 @@ function robotRunOptimization(){var unoptimized=appState.items.filter(function(i
 function robotScanDuplicates(){appendRobotLog('🔍 Escaneando...');var map={},dups=[];appState.items.forEach(function(item){var hash=item.hash;if(!hash){hash=quickHash(item.dataUrl||'');item.hash=hash;dbPut(item).catch(function(){})}if(map[hash])dups.push({dup:item});else map[hash]=item});if(!dups.length){appendRobotLog('✔️ Nenhuma duplicada.');toast('Nenhuma duplicada.','🛡️');return}if(confirm('Remover '+dups.length+' duplicata(s)?')){var freed=0;var chain=Promise.resolve();dups.forEach(function(p){chain=chain.then(function(){return dbDelete(p.dup.id).catch(function(){}).then(function(){appState.items=appState.items.filter(function(i){return i.id!==p.dup.id});freed+=p.dup.size})})});chain.then(function(){updateTelemetry();renderMediaGrid();toast('Liberados '+formatBytes(freed),'🧹')})}}
 function robotDefragDatabase(){appendRobotLog('🧹 Desfragmentando...');dbGetAll().then(function(all){appState.items=all;updateTelemetry();renderMediaGrid();appendRobotLog('✔️ '+all.length+' registros.');toast('Banco desfragmentado!','🧹')})}
 
-/* ============================================================
-   GOOGLE FOTOS com AUTO-RENOVAÇÃO
-   ============================================================ */
+/* GOOGLE com AUTO-RENEW */
 function updateGoogleLinkUI(linked){
   var pill=document.getElementById('googleStatusPill');
   var btnLink=document.getElementById('btnLinkGoogle');
@@ -1090,7 +1146,6 @@ function updateGoogleLinkUI(linked){
   else{pill.className='google-status-pill off';pill.innerHTML='🔌 Não vinculado'}
   btnPick.disabled=!linked;btnUnlink.disabled=!linked;btnLink.disabled=linked;
 }
-
 function initGoogleAuth(){
   var clientId=localStorage.getItem(KEY_GOOGLE_CLIENT_ID);
   if(!clientId)return Promise.resolve(false);
@@ -1102,19 +1157,13 @@ function initGoogleAuth(){
       callback:function(resp){
         appState.googleLinking=false;
         if(resp.error){
-          if(resp.error==='interaction_required'||resp.error==='login_required'){
-            localStorage.removeItem(KEY_GOOGLE_LINKED);
-          }
-          updateGoogleLinkUI(false);
-          return;
+          if(resp.error==='interaction_required'||resp.error==='login_required')localStorage.removeItem(KEY_GOOGLE_LINKED);
+          updateGoogleLinkUI(false);return;
         }
         googleAccessToken=resp.access_token;
         googleTokenExpiresAt=Date.now()+(resp.expires_in*1000)-30000;
         localStorage.setItem(KEY_GOOGLE_LINKED,'true');
-        fetch('https://www.googleapis.com/oauth2/v3/userinfo',{headers:{Authorization:'Bearer '+googleAccessToken}})
-          .then(function(r){return r.ok?r.json():null})
-          .then(function(u){if(u&&u.email){appState.googleEmail=u.email;updateGoogleLinkUI(true)}})
-          .catch(function(){});
+        fetch('https://www.googleapis.com/oauth2/v3/userinfo',{headers:{Authorization:'Bearer '+googleAccessToken}}).then(function(r){return r.ok?r.json():null}).then(function(u){if(u&&u.email){appState.googleEmail=u.email;updateGoogleLinkUI(true)}}).catch(function(){});
         updateGoogleLinkUI(true);
         scheduleGoogleAutoRenew();
       }
@@ -1122,7 +1171,6 @@ function initGoogleAuth(){
     return true;
   }).catch(function(){appState.googleLinking=false;updateGoogleLinkUI(false);return false});
 }
-
 function scheduleGoogleAutoRenew(){
   if(googleAutoRenewTimer)clearTimeout(googleAutoRenewTimer);
   var wait=Math.max(60000,(googleTokenExpiresAt-Date.now())-2*60*1000);
@@ -1132,20 +1180,13 @@ function scheduleGoogleAutoRenew(){
     }
   },wait);
 }
-
 function linkGoogleAccount(){
   var clientId=localStorage.getItem(KEY_GOOGLE_CLIENT_ID);
   if(!clientId){toast('⚠️ Configure o Client ID.','⚠️');openModal('modalSettings');return}
   appState.googleLinking=true;updateGoogleLinkUI(false);
-  if(!googleTokenClient){
-    initGoogleAuth().then(function(ok){
-      if(ok&&googleTokenClient)googleTokenClient.requestAccessToken({prompt:'consent'});
-      else{appState.googleLinking=false;updateGoogleLinkUI(false);toast('Falha.','❌')}
-    });return;
-  }
+  if(!googleTokenClient){initGoogleAuth().then(function(ok){if(ok&&googleTokenClient)googleTokenClient.requestAccessToken({prompt:'consent'});else{appState.googleLinking=false;updateGoogleLinkUI(false);toast('Falha.','❌')}});return}
   googleTokenClient.requestAccessToken({prompt:'consent'});
 }
-
 function unlinkGoogleAccount(){
   if(googleAccessToken){try{if(window.google&&window.google.accounts&&window.google.accounts.oauth2)window.google.accounts.oauth2.revoke(googleAccessToken,function(){})}catch(e){}}
   googleAccessToken=null;googleTokenExpiresAt=0;appState.googleEmail=null;
@@ -1153,22 +1194,14 @@ function unlinkGoogleAccount(){
   if(googleAutoRenewTimer)clearTimeout(googleAutoRenewTimer);
   updateGoogleLinkUI(false);toast('Desvinculado.','🔌');
 }
-
 function ensureFreshGoogleToken(){
   if(!googleAccessToken){
-    if(localStorage.getItem(KEY_GOOGLE_LINKED)==='true'&&googleTokenClient){
-      googleTokenClient.requestAccessToken({prompt:''});
-      toast('Renovando sessão... tenta de novo em 3s.','⏳');
-    }
+    if(localStorage.getItem(KEY_GOOGLE_LINKED)==='true'&&googleTokenClient){googleTokenClient.requestAccessToken({prompt:''});toast('Renovando... tenta em 3s.','⏳')}
     return false;
   }
-  if(Date.now()>=googleTokenExpiresAt){
-    if(googleTokenClient)googleTokenClient.requestAccessToken({prompt:''});
-    return false;
-  }
+  if(Date.now()>=googleTokenExpiresAt){if(googleTokenClient)googleTokenClient.requestAccessToken({prompt:''});return false}
   return true;
 }
-
 function pickGooglePhotos(){
   if(!ensureFreshGoogleToken()){toast('Vincule primeiro.','⚠️');return}
   toast('Criando sessão...','📸');
@@ -1188,17 +1221,9 @@ function pickGooglePhotos(){
             .then(function(r){return r.ok?r.json():null})
             .then(function(pd){
               if(pd&&pd.mediaItemsSet){done=true;return true}
-              if(popup.closed){
-                return new Promise(function(r){setTimeout(r,800)}).then(function(){
-                  return fetch(GOOGLE_PICKER_SESSIONS_URL+'/'+sessionId,{headers:{Authorization:'Bearer '+googleAccessToken}})
-                    .then(function(r){return r.json()})
-                    .then(function(f){if(f&&f.mediaItemsSet){done=true;return true}return false})
-                    .catch(function(){return false});
-                });
-              }
+              if(popup.closed){return new Promise(function(r){setTimeout(r,800)}).then(function(){return fetch(GOOGLE_PICKER_SESSIONS_URL+'/'+sessionId,{headers:{Authorization:'Bearer '+googleAccessToken}}).then(function(r){return r.json()}).then(function(f){if(f&&f.mediaItemsSet){done=true;return true}return false}).catch(function(){return false})})}
               return checkPoll();
-            })
-            .catch(function(){return checkPoll()});
+            }).catch(function(){return checkPoll()});
         });
       };
       return checkPoll().then(function(wasDone){
@@ -1207,16 +1232,11 @@ function pickGooglePhotos(){
         var mediaItems=[];
         var fetchPage=function(pageToken){
           var url=new URL(GOOGLE_PICKER_MEDIA_URL);
-          url.searchParams.set('sessionId',sessionId);
-          url.searchParams.set('pageSize','100');
+          url.searchParams.set('sessionId',sessionId);url.searchParams.set('pageSize','100');
           if(pageToken)url.searchParams.set('pageToken',pageToken);
           return fetch(url.toString(),{headers:{Authorization:'Bearer '+googleAccessToken}})
             .then(function(r){return r.ok?r.json():null})
-            .then(function(data){
-              if(!data)return;
-              if(data.mediaItems)mediaItems.push.apply(mediaItems,data.mediaItems);
-              if(data.nextPageToken)return fetchPage(data.nextPageToken);
-            });
+            .then(function(data){if(!data)return;if(data.mediaItems)mediaItems.push.apply(mediaItems,data.mediaItems);if(data.nextPageToken)return fetchPage(data.nextPageToken)});
         };
         return fetchPage('').then(function(){
           if(!mediaItems.length){toast('Nenhuma foto.','ℹ️');return null}
@@ -1228,34 +1248,21 @@ function pickGooglePhotos(){
               var baseUrl=(mi.mediaFile&&mi.mediaFile.baseUrl)||'';
               if(!baseUrl)return;
               var downloadUrl=baseUrl+(isVideo?'=dv':'=d');
-              return fetch(downloadUrl).then(function(resp){
-                if(!resp.ok)return;
-                return resp.blob().then(function(blob){
-                  var fname=(mi.mediaFile&&mi.mediaFile.filename)||('google_'+mi.id);
-                  var ftype=(mi.mediaFile&&mi.mediaFile.mimeType)||(isVideo?'video/mp4':'image/jpeg');
-                  files.push(new File([blob],fname,{type:ftype}));
-                });
-              }).catch(function(){});
+              return fetch(downloadUrl).then(function(resp){if(!resp.ok)return;return resp.blob().then(function(blob){var fname=(mi.mediaFile&&mi.mediaFile.filename)||('google_'+mi.id);var ftype=(mi.mediaFile&&mi.mediaFile.mimeType)||(isVideo?'video/mp4':'image/jpeg');files.push(new File([blob],fname,{type:ftype}))})}).catch(function(){});
             });
           });
           return chain.then(function(){
             if(!files.length){toast('Falha ao baixar.','❌');return null}
-            return handleIncomingFiles(files,'Google Fotos','google').then(function(){
-              return fetch(GOOGLE_PICKER_SESSIONS_URL+'/'+sessionId,{method:'DELETE',headers:{Authorization:'Bearer '+googleAccessToken}}).catch(function(){});
-            });
+            return handleIncomingFiles(files,'Google Fotos','google').then(function(){return fetch(GOOGLE_PICKER_SESSIONS_URL+'/'+sessionId,{method:'DELETE',headers:{Authorization:'Bearer '+googleAccessToken}}).catch(function(){})});
           });
         });
       });
-    })
-    .catch(function(e){if(e&&e.message==='popup_blocked')return;toast('Erro: '+e.message,'❌')});
+    }).catch(function(e){if(e&&e.message==='popup_blocked')return;toast('Erro: '+e.message,'❌')});
 }
 
 function openModal(id){var el=document.getElementById(id);if(el){el.classList.add('open');document.body.style.overflow='hidden';playSciFiBeep('click')}}
 function closeModal(id){var el=document.getElementById(id);if(el){el.classList.remove('open');if(!document.querySelector('.modal-overlay.open'))document.body.style.overflow=''}}
 
-/* ============================================================
-   INIT
-   ============================================================ */
 function initApp(){
   auraLoadMemory();
   return initDB().then(function(){return dbGetAll()}).then(function(all){appState.items=all}).catch(function(e){}).then(function(){
@@ -1271,19 +1278,12 @@ function initApp(){
     updateTelemetry();renderMediaGrid();updateGoogleLinkUI(false);requestPersistentStorage(true);
     initAuraVoice();
 
-    // Auto-inicializa Google e AUTO-RENOVA se já estava vinculado
     if(savedClientId){
       initGoogleAuth().then(function(ok){
         if(!ok)return;
         var wasLinked=localStorage.getItem(KEY_GOOGLE_LINKED)==='true';
         if(wasLinked&&googleTokenClient){
-          setTimeout(function(){
-            try{
-              googleTokenClient.requestAccessToken({prompt:''});
-              appState.googleLinking=true;
-              updateGoogleLinkUI(false);
-            }catch(e){}
-          },800);
+          setTimeout(function(){try{googleTokenClient.requestAccessToken({prompt:''});appState.googleLinking=true;updateGoogleLinkUI(false)}catch(e){}},800);
         }
       });
     }
@@ -1298,8 +1298,7 @@ function initApp(){
       if(ab)ab.classList.add('hidden');if(ap)ap.style.display='flex';
     }
 
-    var auraBtn=document.getElementById('auraAvatarBtn');
-    if(auraBtn)auraBtn.addEventListener('click',auraOpen);
+    var auraBtn=document.getElementById('auraAvatarBtn');if(auraBtn)auraBtn.addEventListener('click',auraOpen);
     var aClose=document.getElementById('btnAuraClose');if(aClose)aClose.addEventListener('click',auraClose);
     var aHello=document.getElementById('btnAuraSayHello');if(aHello)aHello.addEventListener('click',function(){auraLogUser('Oi AURA');auraProcessUserMessage('oi')});
     var aFlirt=document.getElementById('btnAuraFlirt');if(aFlirt)aFlirt.addEventListener('click',function(){auraLogUser('Você é linda');auraProcessUserMessage('você é linda')});
@@ -1322,6 +1321,40 @@ function initApp(){
     if(auraHideBtn)auraHideBtn.addEventListener('click',auraHide);
     if(auraPill)auraPill.addEventListener('click',auraShow);
 
+    // VOICE PICKER
+    var btnOVP=document.getElementById('btnOpenVoicePicker');
+    if(btnOVP)btnOVP.addEventListener('click',openVoicePicker);
+    document.querySelectorAll('#voiceCategories .voice-cat-btn').forEach(function(b){
+      b.addEventListener('click',function(){
+        document.querySelectorAll('#voiceCategories .voice-cat-btn').forEach(function(x){x.classList.remove('active')});
+        b.classList.add('active');
+        renderVoicePickerGrid(b.dataset.cat);
+      });
+    });
+    var btnVPT=document.getElementById('btnVoicePickerTest');
+    if(btnVPT)btnVPT.addEventListener('click',function(){
+      var p=getVoiceProfile(appState.voiceProfileId);
+      auraSpeak('Oi Renato. Esse é o perfil '+p.name+'. '+p.tag+'. Gostou?','flirt');
+    });
+    var btnVPR=document.getElementById('btnVoicePickerRandom');
+    if(btnVPR)btnVPR.addEventListener('click',function(){
+      var random=VOICE_PROFILES[Math.floor(Math.random()*VOICE_PROFILES.length)];
+      appState.voiceProfileId=random.id;
+      localStorage.setItem(KEY_AURA_VOICE_PROFILE,random.id);
+      renderVoicePickerGrid('all');
+      var profile=getVoiceProfile(random.id);
+      var hn=document.getElementById('voiceHeroName');var ht=document.getElementById('voiceHeroTag');
+      if(hn)hn.textContent='Perfil: '+profile.name;
+      if(ht)ht.textContent=profile.tag;
+      var lbl=document.getElementById('auraCurrentVoiceLabel');
+      if(lbl)lbl.textContent=profile.name+' • '+profile.tag;
+      updateAuraStatus();
+      auraSpeak('Perfil '+random.name+' selecionado, Renato. '+random.tag+'.','flirt');
+    });
+    var auraLbl=document.getElementById('auraCurrentVoiceLabel');
+    var curP=getVoiceProfile(appState.voiceProfileId);
+    if(auraLbl)auraLbl.textContent=curP.name+' • '+curP.tag;
+
     var bp=document.getElementById('btnOpenBotPlus');if(bp)bp.addEventListener('click',function(){openModal('modalBotPlus')});
     var bp1=document.getElementById('btnBotPlusOrganize');if(bp1)bp1.addEventListener('click',botPlusOrganize);
     var bp2=document.getElementById('btnBotPlusCategories');if(bp2)bp2.addEventListener('click',botPlusCategorize);
@@ -1330,15 +1363,6 @@ function initApp(){
     var bp5=document.getElementById('btnBotPlusGoogleSort');if(bp5)bp5.addEventListener('click',botPlusSortGoogle);
     var bp6=document.getElementById('btnBotPlusCleanup');if(bp6)bp6.addEventListener('click',botPlusCleanup);
 
-    var btnAT=document.getElementById('btnAuraTestVoice');
-    if(btnAT)btnAT.addEventListener('click',function(){var p=getVoiceProfile(appState.voiceProfileId);auraSpeak('Oi Renato. Esse é o perfil '+p.name+', '+p.tag+'.','flirt')});
-    var btnATv=document.getElementById('btnAuraToggleVoice');
-    if(btnATv)btnATv.addEventListener('click',function(){
-      appState.auraMuted=!appState.auraMuted;localStorage.setItem(KEY_AURA_MUTED,appState.auraMuted?'true':'false');
-      if(muteBtn){muteBtn.textContent=appState.auraMuted?'🔇 Voz desligada':'🔊 Voz ligada';muteBtn.classList.toggle('muted',appState.auraMuted)}
-      if(statusDot)statusDot.style.background=appState.auraMuted?'#ef4444':'#10b981';
-      updateAuraStatus();
-    });
     var btnCM=document.getElementById('btnAuraClearMemory');
     if(btnCM)btnCM.addEventListener('click',function(){if(confirm('Limpar memória?'))auraClearMemory()});
 
