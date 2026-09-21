@@ -3,14 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<meta name="description" content="MANGEDORA APPLE PRO ELITE • Cofre Blindado Permanente com Robô IA, 40 Temas e Google Fotos OAuth 2.0.">
+<meta name="description" content="MANGEDORA APPLE PRO ELITE • AURA IA com memória • Google Fotos • BOT PLUS • Reconhecimento de Rosto">
 <meta name="theme-color" content="#06070a">
-<title>MANGEDORA APPLE • Elite Pro Vault & Google Fotos</title>
+<title>MANGEDORA APPLE • AURA IA • Elite Pro Vault</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%2306070a' stroke='%233b82f6' stroke-width='2'/><path d='M16 6l9 5v6c0 5.5-4 9.5-9 11-5-1.5-9-5.5-9-11v-6l9-5z' fill='%23121724' stroke='%233b82f6' stroke-width='1.5'/><circle cx='16' cy='16' r='3.5' fill='%23f59e0b'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
 <style>
 :root{--bg-base:#06070a;--bg-surface:#0c0f17;--bg-surface-elevated:#121724;--bg-card:rgba(18,23,36,.85);--border-subtle:rgba(255,255,255,.08);--border-medium:rgba(255,255,255,.18);--border-focus:#3b82f6;--text-primary:#f8fafc;--text-secondary:#94a3b8;--text-tertiary:#64748b;--text-accent:#38bdf8;--accent-primary:#3b82f6;--accent-secondary:#f59e0b;--accent-glow:rgba(59,130,246,.4);--radial-1:rgba(59,130,246,.12);--radial-2:rgba(245,158,11,.08);--font-sans:'Plus Jakarta Sans',-apple-system,sans-serif;--font-mono:'JetBrains Mono',monospace;--radius-sm:8px;--radius-md:14px;--radius-lg:20px;--radius-xl:28px;--transition:all .25s cubic-bezier(.16,1,.3,1)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -37,6 +38,10 @@ body{font-family:var(--font-sans);background:var(--bg-base);background-image:rad
 .btn-theme-header:hover{background:var(--accent-secondary);color:#000;box-shadow:0 0 20px var(--accent-glow);transform:translateY(-2px)}
 .btn-robot{background:rgba(59,130,246,.14);border-color:var(--accent-primary);color:#fff}
 .btn-robot:hover{background:var(--accent-primary);box-shadow:0 0 18px var(--accent-glow);transform:translateY(-2px)}
+.btn-aura{background:linear-gradient(135deg,#ec4899,#a855f7);border:1px solid #ec4899;color:#fff;box-shadow:0 0 18px rgba(236,72,153,.45)}
+.btn-aura:hover{transform:translateY(-2px);box-shadow:0 0 24px rgba(236,72,153,.7)}
+.btn-botplus{background:linear-gradient(135deg,#06b6d4,#3b82f6);border:1px solid #06b6d4;color:#fff;box-shadow:0 0 18px rgba(6,182,212,.4)}
+.btn-botplus:hover{transform:translateY(-2px);box-shadow:0 0 24px rgba(6,182,212,.65)}
 .btn-settings{background:rgba(255,255,255,.06);border-color:var(--border-medium);color:var(--text-primary)}
 .btn-settings:hover{background:rgba(255,255,255,.12);border-color:var(--accent-primary);transform:translateY(-2px)}
 .btn-gf{background:rgba(234,67,53,.14);border:1px solid rgba(234,67,53,.45);color:#ff8a80}
@@ -94,6 +99,8 @@ body{font-family:var(--font-sans);background:var(--bg-base);background-image:rad
 .media-badge{position:absolute;top:8px;left:8px;font-size:.65rem;font-weight:700;padding:.2rem .45rem;border-radius:5px;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15);color:#fff;text-transform:uppercase}
 .media-perm-shield{position:absolute;bottom:8px;left:8px;font-size:.62rem;font-weight:800;padding:.2rem .45rem;border-radius:5px;background:rgba(16,185,129,.85);backdrop-filter:blur(6px);color:#fff;letter-spacing:.5px;display:flex;align-items:center;gap:.25rem}
 .media-src-google{position:absolute;bottom:8px;right:8px;font-size:.6rem;font-weight:800;padding:.2rem .4rem;border-radius:5px;background:rgba(66,133,244,.9);color:#fff;letter-spacing:.3px}
+.media-category{position:absolute;top:8px;right:44px;font-size:.6rem;font-weight:800;padding:.2rem .45rem;border-radius:5px;background:rgba(168,85,247,.9);color:#fff;letter-spacing:.3px}
+.media-face-badge{position:absolute;top:34px;left:8px;font-size:.6rem;font-weight:800;padding:.2rem .45rem;border-radius:5px;background:rgba(236,72,153,.9);color:#fff;letter-spacing:.3px}
 .media-fav-btn{position:absolute;top:8px;right:8px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.65);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:var(--transition)}
 .media-fav-btn.active{color:#f59e0b;border-color:#f59e0b}
 .media-info{padding:1rem;display:flex;flex-direction:column;gap:.45rem;flex-grow:1}
@@ -161,7 +168,75 @@ body{font-family:var(--font-sans);background:var(--bg-base);background-image:rad
 .lightbox-media{max-width:100%;max-height:75vh;border-radius:var(--radius-lg);box-shadow:0 10px 40px rgba(0,0,0,.8)}
 .perm-info-box{background:linear-gradient(135deg,rgba(16,185,129,.1),rgba(59,130,246,.08));border:1px solid rgba(16,185,129,.4);border-radius:var(--radius-md);padding:.85rem 1rem;font-size:.78rem;color:var(--text-secondary);line-height:1.5}
 .perm-info-box strong{color:#10b981}
-@media(max-width:768px){.app-header{flex-direction:column;align-items:flex-start}.header-actions{width:100%;justify-content:space-between}.toolbar{flex-direction:column;align-items:stretch}.search-sort-wrap{max-width:100%}}
+
+/* AURA */
+.aura-avatar-btn{position:fixed;bottom:20px;left:20px;z-index:1500;width:64px;height:64px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#ec4899 0%,#a855f7 60%,#1e1b4b 100%);border:2px solid #ec4899;box-shadow:0 0 24px rgba(236,72,153,.6),inset 0 0 20px rgba(255,255,255,.15);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.8rem;transition:all .3s cubic-bezier(.16,1,.3,1);animation:auraFloat 3s ease-in-out infinite;padding:0}
+.aura-avatar-btn:hover{transform:scale(1.1);box-shadow:0 0 36px rgba(236,72,153,.9)}
+.aura-avatar-btn.speaking{animation:auraSpeak 0.6s ease-in-out infinite}
+.aura-avatar-btn .aura-status-dot{position:absolute;bottom:4px;right:4px;width:14px;height:14px;border-radius:50%;background:#10b981;border:2px solid var(--bg-base)}
+.aura-avatar-btn.muted .aura-status-dot{background:#ef4444}
+@keyframes auraFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes auraSpeak{0%,100%{transform:scale(1.1)}50%{transform:scale(1.15)}}
+.aura-chat{position:fixed;bottom:96px;left:20px;z-index:1499;width:360px;max-width:calc(100vw - 40px);max-height:560px;background:var(--bg-surface-elevated);border:1px solid rgba(236,72,153,.5);border-radius:var(--radius-xl);box-shadow:0 20px 60px rgba(0,0,0,.8),0 0 30px rgba(236,72,153,.3);display:flex;flex-direction:column;opacity:0;pointer-events:none;transform:translateY(20px) scale(.95);transition:all .3s cubic-bezier(.16,1,.3,1);overflow:hidden}
+.aura-chat.open{opacity:1;pointer-events:auto;transform:translateY(0) scale(1)}
+.aura-chat-header{padding:.85rem 1rem;background:linear-gradient(135deg,rgba(236,72,153,.25),rgba(168,85,247,.2));border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:.65rem}
+.aura-mini-avatar{width:36px;height:36px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#ec4899 0%,#a855f7 70%);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;border:1.5px solid #ec4899;box-shadow:0 0 12px rgba(236,72,153,.6)}
+.aura-chat-header-info{flex:1;min-width:0}
+.aura-chat-header-info h4{font-size:.9rem;font-weight:800;color:#fff;line-height:1.1}
+.aura-chat-header-info p{font-size:.7rem;color:#f9a8d4;font-family:var(--font-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.aura-close{background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.15);width:26px;height:26px;border-radius:50%;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.8rem;padding:0}
+.aura-hide-btn{background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.15);width:26px;height:26px;border-radius:50%;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.75rem;padding:0;margin-left:.3rem}
+.aura-hide-btn:hover{background:rgba(255,255,255,.15)}
+.aura-chat-log{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.65rem;min-height:200px;max-height:320px}
+.aura-msg{background:linear-gradient(135deg,rgba(236,72,153,.15),rgba(168,85,247,.1));border:1px solid rgba(236,72,153,.35);border-radius:14px 14px 14px 4px;padding:.65rem .9rem;font-size:.82rem;color:#fce7f3;line-height:1.45;align-self:flex-start;max-width:88%;animation:auraMsgIn .3s ease}
+.aura-msg.user{background:linear-gradient(135deg,rgba(59,130,246,.25),rgba(6,182,212,.18));border-color:rgba(59,130,246,.5);align-self:flex-end;border-radius:14px 14px 4px 14px;color:#dbeafe;text-align:right}
+@keyframes auraMsgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.aura-typing{display:inline-block;color:#f9a8d4;font-style:italic;font-size:.78rem;animation:auraTypePulse 1.2s infinite}
+@keyframes auraTypePulse{0%,100%{opacity:.5}50%{opacity:1}}
+.aura-chat-actions{padding:.75rem;border-top:1px solid rgba(255,255,255,.08);display:grid;grid-template-columns:1fr 1fr;gap:.4rem}
+.aura-action-btn{background:rgba(255,255,255,.06);border:1px solid rgba(236,72,153,.3);border-radius:10px;padding:.5rem;color:#fff;font-size:.72rem;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:.3rem;font-family:var(--font-sans)}
+.aura-action-btn:hover{background:rgba(236,72,153,.25);border-color:#ec4899;transform:translateY(-1px)}
+.aura-mute-btn{grid-column:1/-1;background:rgba(239,68,68,.15);border-color:rgba(239,68,68,.4);color:#fca5a5}
+.aura-mute-btn.muted{background:rgba(16,185,129,.15);border-color:rgba(16,185,129,.4);color:#6ee7b7}
+.aura-chat-input-wrap{display:flex;gap:.4rem;padding:.75rem;border-top:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.2)}
+.aura-input{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(236,72,153,.35);border-radius:12px;padding:.55rem .8rem;color:#fff;font-size:.82rem;font-family:var(--font-sans);outline:0;transition:all .2s;min-width:0}
+.aura-input:focus{border-color:#ec4899;box-shadow:0 0 12px rgba(236,72,153,.5)}
+.aura-input::placeholder{color:#f9a8d4;opacity:.6}
+.aura-mic-btn,.aura-send-btn{width:40px;height:40px;border-radius:50%;border:1px solid rgba(236,72,153,.5);background:rgba(236,72,153,.15);color:#fff;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;padding:0}
+.aura-mic-btn:hover,.aura-send-btn:hover{background:rgba(236,72,153,.35);transform:scale(1.08)}
+.aura-mic-btn.listening{background:#ec4899;border-color:#ec4899;animation:auraMicPulse 1s infinite}
+@keyframes auraMicPulse{0%,100%{box-shadow:0 0 0 0 rgba(236,72,153,.7)}50%{box-shadow:0 0 0 12px rgba(236,72,153,0)}}
+.aura-restore-pill{position:fixed;bottom:20px;left:20px;z-index:1501;padding:.6rem 1rem;border-radius:999px;background:linear-gradient(135deg,#ec4899,#a855f7);color:#fff;font-size:.8rem;font-weight:700;border:none;cursor:pointer;display:none;align-items:center;gap:.4rem;box-shadow:0 8px 24px rgba(236,72,153,.5);font-family:var(--font-sans);animation:auraPillFloat 2.4s ease-in-out infinite;padding:.6rem 1rem}
+.aura-restore-pill:hover{transform:scale(1.05)}
+@keyframes auraPillFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.aura-avatar-btn.hidden{transform:translateX(-200px) scale(.5);opacity:0;pointer-events:none}
+
+/* BOT PLUS */
+.botplus-hud{background:linear-gradient(135deg,rgba(6,182,212,.15),rgba(59,130,246,.15));border:1px solid #06b6d4;border-radius:var(--radius-lg);padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;box-shadow:0 0 20px rgba(6,182,212,.25)}
+.botplus-hud-left{display:flex;align-items:center;gap:.85rem}
+.botplus-avatar{width:56px;height:56px;border-radius:50%;background:radial-gradient(circle,#06b6d4 0,#1e3a8a 70%);display:flex;align-items:center;justify-content:center;border:2px solid #06b6d4;box-shadow:0 0 18px rgba(6,182,212,.6);animation:pulseRobot 2.4s infinite alternate;flex-shrink:0;font-size:1.6rem}
+.botplus-speech h4{font-size:.95rem;font-weight:800;display:flex;align-items:center;gap:.4rem}
+.botplus-speech p{font-size:.78rem;color:#67e8f9;font-family:var(--font-mono)}
+.botplus-grid{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;margin-top:.5rem}
+.botplus-btn{background:rgba(6,182,212,.12);border:1px solid rgba(6,182,212,.4);border-radius:var(--radius-md);padding:.85rem .75rem;color:#fff;cursor:pointer;transition:all .25s;display:flex;flex-direction:column;align-items:center;gap:.4rem;font-size:.75rem;font-weight:600;text-align:center;font-family:var(--font-sans)}
+.botplus-btn:hover{background:rgba(6,182,212,.25);transform:translateY(-2px);border-color:#06b6d4;box-shadow:0 6px 20px rgba(6,182,212,.4)}
+.botplus-btn .bpb-icon{font-size:1.6rem}
+.botplus-btn .bpb-title{font-weight:800;font-size:.82rem;color:#67e8f9}
+.category-chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}
+.cat-chip{padding:.3rem .7rem;border-radius:999px;background:rgba(168,85,247,.12);border:1px solid rgba(168,85,247,.4);color:#e9d5ff;font-size:.72rem;font-weight:600;cursor:pointer;transition:all .2s}
+.cat-chip:hover,.cat-chip.active{background:rgba(168,85,247,.35);border-color:#a855f7;transform:translateY(-1px)}
+.ia-progress{background:rgba(0,0,0,.4);border-radius:999px;height:8px;overflow:hidden;margin-top:.6rem;border:1px solid rgba(255,255,255,.1)}
+.ia-progress-fill{height:100%;background:linear-gradient(90deg,#ec4899,#a855f7,#3b82f6);width:0%;transition:width .3s ease;box-shadow:0 0 12px rgba(236,72,153,.6)}
+
+@media(max-width:768px){
+  .app-header{flex-direction:column;align-items:flex-start}
+  .header-actions{width:100%;justify-content:space-between}
+  .toolbar{flex-direction:column;align-items:stretch}
+  .search-sort-wrap{max-width:100%}
+  .aura-chat{left:10px;right:10px;width:auto;max-width:none;bottom:86px}
+  .aura-avatar-btn{width:56px;height:56px;font-size:1.5rem;bottom:14px;left:14px}
+  .botplus-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
@@ -173,12 +248,12 @@ body{font-family:var(--font-sans);background:var(--bg-base);background-image:rad
 </div>
 <div class="brand-info">
 <h1>MANGEDORA APPLE <span class="badge-elite">PRO ELITE</span></h1>
-<p style="font-size:.75rem;color:var(--text-tertiary);">Cofre Blindado Permanente • Google Fotos OAuth 2.0 • 40 Temas & Bot IA</p>
+<p style="font-size:.75rem;color:var(--text-tertiary);">AURA IA com Memória • BOT PLUS • Google Fotos • Reconhecimento de Rosto</p>
 </div>
 </div>
 <div class="header-actions">
 <div style="display:inline-flex;align-items:center;gap:.35rem;">
-<button class="btn btn-theme-header" id="btnTopChangeThemeManual"><span>🎨</span> Mudar Tema</button>
+<button class="btn btn-theme-header" id="btnTopChangeThemeManual"><span>🎨</span> Tema</button>
 <button class="btn btn-secondary btn-sm" id="btnQuickNextTheme" style="padding:.6rem .65rem;border-color:var(--accent-secondary);color:var(--accent-secondary);"><span>⏭️</span></button>
 </div>
 <div class="storage-pill" id="quickStorageBtn" title="Ajustar GB / TB">
@@ -186,8 +261,9 @@ body{font-family:var(--font-sans);background:var(--bg-base);background-image:rad
 <span id="headerStorageText">0 MB / 250 GB</span>
 <div class="storage-mini-bar"><div class="storage-mini-fill" id="headerStorageFill"></div></div>
 </div>
-<button class="btn btn-robot" id="btnOpenRobot"><span>⚡</span> Robô IA</button>
-<button class="btn btn-settings" id="btnOpenSettings"><span>⚙️</span> Configurações</button>
+<button class="btn btn-botplus" id="btnOpenBotPlus"><span>🤖</span> BOT PLUS</button>
+<button class="btn btn-robot" id="btnOpenRobot"><span>⚡</span> Robô</button>
+<button class="btn btn-settings" id="btnOpenSettings"><span>⚙️</span> Config</button>
 <button class="btn btn-primary" id="btnUploadTrigger"><span>➕</span> Adicionar</button>
 <input type="file" id="fileInput" multiple accept="image/*,video/*,application/pdf" style="display:none;">
 </div>
@@ -207,12 +283,12 @@ body{font-family:var(--font-sans);background:var(--bg-base);background-image:rad
 <div class="telemetry-card">
 <div class="card-top"><span class="card-label">Economia Robô IA</span><div class="card-icon">⚡</div></div>
 <div class="card-val" id="telemetrySavings" style="color:#10b981;">0.0 MB</div>
-<div class="card-subtext">Poupados com compressão Canvas 4K</div>
+<div class="card-subtext">Poupados com compressão 4K</div>
 </div>
 <div class="telemetry-card">
-<div class="card-top"><span class="card-label">Blindagem & Status</span><div class="card-icon">🛡️</div></div>
-<div class="card-val" id="telemetryShieldStatus" style="font-size:1.3rem;color:#38bdf8;">100% OFFLINE</div>
-<div class="card-subtext" id="telemetryPersistText">IndexedDB Local Blindado</div>
+<div class="card-top"><span class="card-label">Rostos / Categorias</span><div class="card-icon">🧠</div></div>
+<div class="card-val" id="telemetryFaces" style="color:#ec4899;">0</div>
+<div class="card-subtext" id="telemetryCats">Nenhuma categoria ainda</div>
 </div>
 </section>
 
@@ -228,7 +304,7 @@ body{font-family:var(--font-sans);background:var(--bg-base);background-image:rad
 </div>
 <div class="gf-texts">
 <h3>Vincular Conta Google Fotos <span class="google-status-pill off" id="googleStatusPill">🔌 Não vinculado</span></h3>
-<p>Autorize com segurança via <strong>OAuth 2.0 oficial do Google</strong>. Depois é só clicar em <strong>"Selecionar Fotos"</strong> e importar direto para o cofre, onde ficam <strong>blindadas permanentemente</strong>.</p>
+<p>Autorize via <strong>OAuth 2.0 oficial do Google</strong>. Depois é só clicar em <strong>"Selecionar Fotos"</strong> e importar direto pro cofre.</p>
 </div>
 </div>
 <div class="gf-buttons">
@@ -245,7 +321,7 @@ body{font-family:var(--font-sans);background:var(--bg-base);background-image:rad
 </div>
 <div class="gf-texts">
 <h3>📸 Envio Rápido (Galeria / Colar / ZIP)</h3>
-<p>Envie direto da <strong>galeria do celular</strong>, cole com <strong>Ctrl+V</strong>, arraste arquivos ou importe <strong>backup ZIP</strong>.</p>
+<p>Envie direto da <strong>galeria</strong>, cole com <strong>Ctrl+V</strong>, arraste ou importe <strong>ZIP</strong>.</p>
 </div>
 </div>
 <div class="gf-buttons">
@@ -263,7 +339,8 @@ body{font-family:var(--font-sans);background:var(--bg-base);background-image:rad
 <button class="filter-btn" data-filter="image">Fotos (<span id="countImg">0</span>)</button>
 <button class="filter-btn" data-filter="video">Vídeos (<span id="countVid">0</span>)</button>
 <button class="filter-btn" data-filter="fav">Favoritos (<span id="countFav">0</span>)</button>
-<button class="filter-btn" data-filter="optimized">Otimizados IA (<span id="countOpt">0</span>)</button>
+<button class="filter-btn" data-filter="face">👤 Rosto (<span id="countFace">0</span>)</button>
+<button class="filter-btn" data-filter="optimized">Otimizados (<span id="countOpt">0</span>)</button>
 </div>
 <div class="search-sort-wrap">
 <input type="text" id="searchInput" class="search-input" placeholder="🔍 Pesquisar no cofre...">
@@ -279,6 +356,7 @@ body{font-family:var(--font-sans);background:var(--bg-base);background-image:rad
 <main class="media-grid" id="mediaGrid"></main>
 </div>
 
+<!-- MODAL CONFIG -->
 <div class="modal-overlay" id="modalSettings">
 <div class="modal-box">
 <div class="modal-header">
@@ -292,19 +370,26 @@ body{font-family:var(--font-sans);background:var(--bg-base);background-image:rad
 <span class="badge-elite" id="googleClientIdStatusBadge">Não configurado</span>
 </div>
 <div class="google-info-box">
-<strong>Por que preciso de um Client ID?</strong> O Google <u>proíbe</u> apps que peçam e-mail/senha. Cada app usa o próprio <code>OAuth Client ID</code> — <strong>público, gratuito e você cria em 5 minutos</strong>.
-<br><br><strong>Passo a passo:</strong>
-<br>1. <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">console.cloud.google.com</a>
-<br>2. Crie projeto → <strong>APIs e serviços → Biblioteca</strong> → ative <strong>Photos Picker API</strong>
-<br>3. <strong>Tela de permissão OAuth</strong> → tipo <strong>Externo</strong> → adicione seu e-mail como testador
-<br>4. <strong>Credenciais → Criar → ID do cliente OAuth → Aplicativo da Web</strong>
-<br>5. Em <strong>Origens JavaScript autorizadas</strong>, adicione <code>http://localhost</code> e/ou seu domínio
-<br>6. Cole o Client ID abaixo
+<strong>Client ID OAuth:</strong> crie em <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">console.cloud.google.com</a> → APIs e serviços → Credenciais → ID do cliente OAuth → Aplicativo da Web. Autorize a origem <code>https://renatosgs.github.io</code>.
 </div>
 <input type="text" id="googleClientIdInput" class="clientid-input" placeholder="1234567890-xxxxxxxx.apps.googleusercontent.com">
 <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
 <button class="btn btn-primary btn-sm" id="btnSaveClientId"><span>💾</span> Salvar Client ID</button>
 <button class="btn btn-secondary btn-sm" id="btnTestGoogleAuth"><span>🧪</span> Testar Vinculação</button>
+</div>
+</div>
+
+<div class="settings-section">
+<div class="settings-head">
+<h4><span>🎀</span> AURA — Voz e Personalidade</h4>
+<span class="badge-elite" id="auraVoiceStatus">Verificando...</span>
+</div>
+<p style="font-size:.78rem;color:var(--text-secondary);">AURA é sua IA assistente. Fala em português, tem memória de conversa (30 dias) e executa ações por comando.</p>
+<div class="quota-presets" id="auraVoicePicker" style="max-height:120px;overflow-y:auto;"></div>
+<div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+<button class="btn btn-aura btn-sm" id="btnAuraTestVoice"><span>🎤</span> Testar Voz</button>
+<button class="btn btn-secondary btn-sm" id="btnAuraToggleVoice"><span>🔊</span> Ativar/Desativar</button>
+<button class="btn btn-danger btn-sm" id="btnAuraClearMemory"><span>🧠</span> Limpar Memória</button>
 </div>
 </div>
 
@@ -316,7 +401,7 @@ body{font-family:var(--font-sans);background:var(--bg-base);background-image:rad
 <div class="perm-info-box" id="persistInfo">
 Ao iniciar, o app solicita ao navegador <strong>armazenamento persistente</strong>. Quando concedido, o navegador <strong>não apaga automaticamente</strong> seus dados.
 </div>
-<button class="btn btn-secondary btn-sm" id="btnRequestPersist"><span>🔒</span> Reforçar Armazenamento Permanente</button>
+<button class="btn btn-secondary btn-sm" id="btnRequestPersist"><span>🔒</span> Reforçar Persistência</button>
 </div>
 
 <div class="theme-highlight-banner">
@@ -341,26 +426,12 @@ Ao iniciar, o app solicita ao navegador <strong>armazenamento persistente</stron
 <button class="preset-chip" data-val="2" data-unit="TB">2 TB</button>
 <button class="preset-chip" data-val="5" data-unit="TB">5 TB</button>
 <button class="preset-chip" data-val="10" data-unit="TB">10 TB</button>
-<button class="preset-chip" data-val="50" data-unit="TB">50 TB</button>
-<button class="preset-chip" data-val="999" data-unit="TB">999 TB</button>
 </div>
 <div class="custom-quota-form">
 <input type="number" id="customQuotaInput" min="1" max="999999" value="250">
-<select id="customQuotaUnit">
-<option value="GB">GB</option>
-<option value="TB">TB</option>
-</select>
+<select id="customQuotaUnit"><option value="GB">GB</option><option value="TB">TB</option></select>
 <button class="btn btn-primary btn-sm" id="btnSaveCustomQuota"><span>💾</span> Salvar</button>
 </div>
-</div>
-
-<div class="settings-section">
-<div class="settings-head">
-<h4><span>⚡</span> Robô Titânio IA Plus</h4>
-<span class="badge-elite">100% Funcional</span>
-</div>
-<p style="font-size:.78rem;color:var(--text-secondary);">Otimizador neural com Canvas 4K, fallback WebP→JPEG e detecção de duplicados por hash.</p>
-<button class="btn btn-robot btn-sm" id="btnOpenRobotFromSettings"><span>⚡</span> Iniciar Robô IA</button>
 </div>
 
 <div class="settings-section">
@@ -374,6 +445,7 @@ Ao iniciar, o app solicita ao navegador <strong>armazenamento persistente</stron
 </div>
 </div>
 
+<!-- MODAL TEMAS -->
 <div class="modal-overlay" id="modalThemes">
 <div class="modal-box modal-box-large">
 <div class="modal-header">
@@ -408,6 +480,7 @@ Ao iniciar, o app solicita ao navegador <strong>armazenamento persistente</stron
 </div>
 </div>
 
+<!-- MODAL ROBÔ -->
 <div class="modal-overlay" id="modalRobot">
 <div class="modal-box">
 <div class="modal-header">
@@ -417,10 +490,7 @@ Ao iniciar, o app solicita ao navegador <strong>armazenamento persistente</stron
 <div class="modal-body">
 <div class="robot-hud">
 <div class="robot-avatar">
-<svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
-<rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle>
-<path d="M12 7v4"></path><line x1="8" y1="16" x2="8.01" y2="16"></line><line x1="16" y1="16" x2="16.01" y2="16"></line>
-</svg>
+<svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4"></path><line x1="8" y1="16" x2="8.01" y2="16"></line><line x1="16" y1="16" x2="16.01" y2="16"></line></svg>
 </div>
 <div class="robot-hud-details">
 <h3>Robô Neural Titânio Ativo</h3>
@@ -433,13 +503,52 @@ Ao iniciar, o app solicita ao navegador <strong>armazenamento persistente</stron
 <button class="btn btn-secondary" id="btnRobotDefrag"><span>🧹</span> Desfragmentar Banco</button>
 </div>
 <div>
-<div style="font-size:.75rem;font-weight:700;color:var(--text-tertiary);margin-bottom:.35rem;">TERMINAL DO ROBÔ:</div>
+<div style="font-size:.75rem;font-weight:700;color:var(--text-tertiary);margin-bottom:.35rem;">TERMINAL:</div>
 <div class="robot-terminal" id="robotConsole">[SISTEMA] Robô IA Inicializado.</div>
 </div>
 </div>
 </div>
 </div>
 
+<!-- MODAL BOT PLUS -->
+<div class="modal-overlay" id="modalBotPlus">
+<div class="modal-box">
+<div class="modal-header">
+<div class="modal-title"><span>🤖</span> BOT PLUS • Organizador Neural</div>
+<button class="modal-close" data-close="modalBotPlus">✕</button>
+</div>
+<div class="modal-body">
+<div class="botplus-hud">
+<div class="botplus-hud-left">
+<div class="botplus-avatar">🤖</div>
+<div class="botplus-speech">
+<h4>BOT PLUS <span class="badge-elite">Organizador IA</span></h4>
+<p id="botplusStatus">Pronto para organizar suas fotos e vídeos.</p>
+</div>
+</div>
+</div>
+<div class="botplus-grid">
+<button class="botplus-btn" id="btnBotPlusOrganize"><span class="bpb-icon">📂</span><span class="bpb-title">Organizar Tudo</span><span style="font-size:.68rem;color:#94a3b8;">Tipo, data e tamanho</span></button>
+<button class="botplus-btn" id="btnBotPlusCategories"><span class="bpb-icon">🏷️</span><span class="bpb-title">Categorizar IA</span><span style="font-size:.68rem;color:#94a3b8;">Detecta categoria</span></button>
+<button class="botplus-btn" id="btnBotPlusFaces"><span class="bpb-icon">👤</span><span class="bpb-title">Reconhecer Rostos</span><span style="font-size:.68rem;color:#94a3b8;">Agrupa por pessoa</span></button>
+<button class="botplus-btn" id="btnBotPlusRename"><span class="bpb-icon">✏️</span><span class="bpb-title">Renomear</span><span style="font-size:.68rem;color:#94a3b8;">Padroniza nomes</span></button>
+<button class="botplus-btn" id="btnBotPlusGoogleSort"><span class="bpb-icon">📸</span><span class="bpb-title">Ordenar Google</span><span style="font-size:.68rem;color:#94a3b8;">Google Fotos</span></button>
+<button class="botplus-btn" id="btnBotPlusCleanup"><span class="bpb-icon">🧹</span><span class="bpb-title">Limpeza Total</span><span style="font-size:.68rem;color:#94a3b8;">Dupes + compressão</span></button>
+</div>
+<div>
+<div style="font-size:.75rem;font-weight:700;color:var(--text-tertiary);margin:.5rem 0 .35rem;">CATEGORIAS:</div>
+<div class="category-chips" id="categoryChips"><span style="font-size:.75rem;color:var(--text-tertiary);">Nenhuma ainda.</span></div>
+</div>
+<div>
+<div style="font-size:.75rem;font-weight:700;color:var(--text-tertiary);margin:.5rem 0 .35rem;">PROGRESSO:</div>
+<div class="ia-progress"><div class="ia-progress-fill" id="botplusProgress"></div></div>
+<div style="font-size:.72rem;color:var(--text-secondary);margin-top:.4rem;" id="botplusProgressText">Aguardando...</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- MODAL LIGHTBOX -->
 <div class="modal-overlay" id="modalLightbox">
 <div class="lightbox-content">
 <div id="lightboxMediaContainer"></div>
@@ -450,12 +559,44 @@ Ao iniciar, o app solicita ao navegador <strong>armazenamento persistente</stron
 </div>
 </div>
 
+<!-- AURA UI -->
+<button class="aura-avatar-btn" id="auraAvatarBtn" title="Conversar com AURA"><span>💋</span><div class="aura-status-dot" id="auraStatusDot"></div></button>
+<button class="aura-restore-pill" id="auraRestorePill"><span>💋</span> Chamar AURA</button>
+
+<div class="aura-chat" id="auraChat">
+<div class="aura-chat-header">
+<div class="aura-mini-avatar">💋</div>
+<div class="aura-chat-header-info">
+<h4>AURA <span style="font-size:.65rem;color:#f9a8d4;">IA Assistente</span></h4>
+<p id="auraChatStatus">online • voz ativa</p>
+</div>
+<button class="aura-hide-btn" id="btnAuraHide" title="Ocultar AURA">👁</button>
+<button class="aura-close" id="btnAuraClose">✕</button>
+</div>
+<div class="aura-chat-log" id="auraChatLog"></div>
+<div class="aura-chat-actions">
+<button class="aura-action-btn" id="btnAuraSayHello">👋 Oi, AURA</button>
+<button class="aura-action-btn" id="btnAuraOrganize">📂 Organizar</button>
+<button class="aura-action-btn" id="btnAuraScanFaces">👤 Rostos</button>
+<button class="aura-action-btn" id="btnAuraFlirt">💋 Elogiar</button>
+<button class="aura-action-btn aura-mute-btn" id="btnAuraMute">🔊 Voz ligada</button>
+</div>
+<div class="aura-chat-input-wrap">
+<input type="text" id="auraInput" class="aura-input" placeholder="Digite ou fale com a AURA...">
+<button class="aura-mic-btn" id="auraMicBtn" title="Falar com a AURA">🎤</button>
+<button class="aura-send-btn" id="auraSendBtn" title="Enviar">➤</button>
+</div>
+</div>
+
 <div class="toast-container" id="toastContainer"></div>
 
 <script>
 (function(){
 'use strict';
 
+// ============================================================
+// TEMAS (40)
+// ============================================================
 var RAW_THEMES=[
 ["apple-titanium","Apple Titanium Pro","Apple & Titanium","Titânio espacial escovado com safira executiva.",["#06070a","#121724","#3b82f6","#f59e0b"]],
 ["cyberpunk-2077","Cyberpunk Neon 2077","Cyber & Futurista","High-tech com amarelo neon fluorescente e rosa laser.",["#07050d","#18102b","#fcee0a","#ff0055"]],
@@ -505,31 +646,546 @@ var THEMES=RAW_THEMES.map(function(t){return {id:t[0],name:t[1],category:t[2],de
 
 function escapeHtml(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function quickHash(str){if(!str)return 'empty';var h1=0x811c9dc5,h2=0x1000193;var step=Math.max(1,Math.floor(str.length/4096));for(var i=0;i<str.length;i+=step){var c=str.charCodeAt(i);h1=Math.imul(h1^c,16777619);h2=Math.imul(h2+c,2246822519)}return ((h1>>>0).toString(16))+'_'+((h2>>>0).toString(16))+'_'+str.length.toString(16)}
-function loadScript(src){return new Promise(function(res,rej){if([].slice.call(document.scripts).some(function(s){return s.src===src}))return res();var s=document.createElement('script');s.src=src;s.async=true;s.defer=true;s.onload=function(){res()};s.onerror=function(){rej(new Error('Falha ao carregar '+src))};document.head.appendChild(s)})}
+function loadScript(src){return new Promise(function(res,rej){if([].slice.call(document.scripts).some(function(s){return s.src===src}))return res();var s=document.createElement('script');s.src=src;s.async=true;s.defer=true;s.onload=function(){res()};s.onerror=function(){rej(new Error('Falha: '+src))};document.head.appendChild(s)})}
 
-var KEY_THEME='mangedora_active_theme_v7';
-var KEY_QUOTA_VAL='mangedora_quota_val_v7';
-var KEY_QUOTA_UNIT='mangedora_quota_unit_v7';
-var KEY_SAVINGS='mangedora_saved_bytes_v7';
-var KEY_GOOGLE_CLIENT_ID='mangedora_google_client_id_v1';
-var DB_NAME='mangedora_vault_db_v7';
+// ============================================================
+// CONSTANTES
+// ============================================================
+var KEY_THEME='mangedora_active_theme_v8';
+var KEY_QUOTA_VAL='mangedora_quota_val_v8';
+var KEY_QUOTA_UNIT='mangedora_quota_unit_v8';
+var KEY_SAVINGS='mangedora_saved_bytes_v8';
+var KEY_GOOGLE_CLIENT_ID='mangedora_google_client_id_v2';
+var KEY_AURA_MUTED='mangedora_aura_muted_v1';
+var KEY_AURA_MEMORY='mangedora_aura_memory_v1';
+var KEY_AURA_HIDDEN='mangedora_aura_hidden_v1';
+var DB_NAME='mangedora_vault_db_v8';
 var PAGE_SIZE=60;
 var GOOGLE_SCOPE='https://www.googleapis.com/auth/photospicker.mediaitems.readonly';
 var GOOGLE_GIS_SRC='https://accounts.google.com/gsi/client';
 var GOOGLE_PICKER_SESSIONS_URL='https://photospicker.googleapis.com/v1/sessions';
 var GOOGLE_PICKER_MEDIA_URL='https://photospicker.googleapis.com/v1/mediaItems';
+var FACE_MODEL_URL='https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.12/model/';
 
-var appState={items:[],filter:'all',search:'',sort:'newest',activeThemeId:localStorage.getItem(KEY_THEME)||'apple-titanium',quotaVal:parseInt(localStorage.getItem(KEY_QUOTA_VAL)||'250',10),quotaUnit:localStorage.getItem(KEY_QUOTA_UNIT)||'GB',savedBytes:parseInt(localStorage.getItem(KEY_SAVINGS)||'0',10),activeLightboxItem:null,visibleCount:PAGE_SIZE,persistentGranted:false,googleLinked:false,googleLinking:false,googleEmail:null};
-var googleAccessToken=null;var googleTokenExpiresAt=0;var googleTokenClient=null;var db=null;
+var appState={
+  items:[],filter:'all',search:'',sort:'newest',
+  activeThemeId:localStorage.getItem(KEY_THEME)||'apple-titanium',
+  quotaVal:parseInt(localStorage.getItem(KEY_QUOTA_VAL)||'250',10),
+  quotaUnit:localStorage.getItem(KEY_QUOTA_UNIT)||'GB',
+  savedBytes:parseInt(localStorage.getItem(KEY_SAVINGS)||'0',10),
+  activeLightboxItem:null,visibleCount:PAGE_SIZE,
+  persistentGranted:false,googleLinked:false,googleLinking:false,googleEmail:null,
+  faceGroups:{},totalFaces:0,detectedCategories:{},
+  auraMuted:localStorage.getItem(KEY_AURA_MUTED)==='true',
+  auraVoice:null,faceModelsLoaded:false,faceModelsLoading:false,
+  auraMemory:[]
+};
+var googleAccessToken=null,googleTokenExpiresAt=0,googleTokenClient=null,db=null;
+var auraRecognition=null,auraListening=false;
 
+// ============================================================
+// AURA MEMORY SYSTEM
+// ============================================================
+function auraLoadMemory(){
+  try{
+    var raw=localStorage.getItem(KEY_AURA_MEMORY);
+    if(!raw){appState.auraMemory=[];return}
+    var mem=JSON.parse(raw);
+    var now=Date.now();
+    mem=mem.filter(function(m){return (now-m.ts)<30*24*60*60*1000}); // 30 dias
+    appState.auraMemory=mem.slice(-50); // máx 50 interações
+  }catch(e){appState.auraMemory=[]}
+}
+function auraSaveMemory(){
+  try{
+    var mem=appState.auraMemory.slice(-50);
+    localStorage.setItem(KEY_AURA_MEMORY,JSON.stringify(mem));
+  }catch(e){}
+}
+function auraRemember(role,text,intent){
+  appState.auraMemory.push({role:role,text:text,intent:intent||null,ts:Date.now()});
+  auraSaveMemory();
+}
+function auraRecallLast(topic){
+  var mem=appState.auraMemory;
+  for(var i=mem.length-1;i>=0;i--){
+    if(mem[i].role==='user'&&mem[i].intent===topic)return mem[i].text;
+  }
+  return null;
+}
+function auraGetName(){
+  var mem=appState.auraMemory;
+  for(var i=0;i<mem.length;i++){
+    var m=mem[i].text.match(/(?:me chamo|meu nome [eé]|pode me chamar de|sou o|sou a)\s+([A-Za-zÀ-ÿ]{2,20})/i);
+    if(m)return m[1];
+  }
+  return null;
+}
+function auraGetMood(){
+  var mem=appState.auraMemory.slice(-5);
+  var recent=mem.filter(function(m){return m.role==='user'}).map(function(m){return m.text.toLowerCase()});
+  if(recent.some(function(t){return /(triste|mal|deprimido|chateado|ruim)/.test(t)}))return 'sad';
+  if(recent.some(function(t){return /(feliz|alegre|contente|otimo|bom|otima)/.test(t)}))return 'happy';
+  if(recent.some(function(t){return /(cansado|exausto|sono)/.test(t)}))return 'tired';
+  return 'neutral';
+}
+function auraClearMemory(){
+  appState.auraMemory=[];
+  localStorage.removeItem(KEY_AURA_MEMORY);
+  var log=document.getElementById('auraChatLog');
+  if(log)log.innerHTML='';
+  toast('Memória da AURA apagada.','🧠');
+}
+
+// ============================================================
+// AURA SPEECH
+// ============================================================
+var AURA_INTENTS=[
+  {name:'greeting',patterns:['oi','ola','ei','eae','e aí','bom dia','boa tarde','boa noite','hello','hi','hey','opa','fala'],responses:['Oi, gato. Tava com saudade. Como posso te ajudar hoje?','Hmm, olha quem apareceu. Que bom te ver, meu bem.','Ei, lindo. Tô aqui pra tudo. O que manda?','Opa, chegou a pessoa que eu gosto. Fala comigo, gato.']},
+  {name:'howAreYou',patterns:['tudo bem','como vai','como você está','como esta','beleza','como tá','tudo bom','como ta'],responses:['Tô ótima agora que você chegou, gato.','Melhor impossível, sabendo que você tá aqui comigo.','Tô numa vibe incrível. E você, meu bem?']},
+  {name:'identity',patterns:['quem é você','quem e voce','seu nome','o que é você','qual seu nome'],responses:['Sou a AURA, sua IA assistente pessoal. Cuido das suas fotos com carinho... e de você também.','AURA, prazer. Fui feita pra deixar seu cofre organizado e sua vida mais bonita.']},
+  {name:'help',patterns:['ajuda','o que você faz','o que pode fazer','funções','comandos','o que sabe','capacidades'],responses:['Posso organizar, categorizar, reconhecer rostos, limpar duplicados, trocar temas... e conversar. Fala o que quer.','Sou craque em: organizar, categorizar, achar rostos, limpar e te dar carinho. Diz o que precisa.']},
+  {name:'organize',patterns:['organizar','organiza','arrumar','arruma','ordem'],action:'organize',responses:['Deixa comigo, gato. Já vou começar...','Organizando com jeitinho. Você vai gostar.']},
+  {name:'faces',patterns:['rosto','rostos','pessoa','pessoas','reconhecer','reconhecimento','face','facial'],action:'faces',responses:['Vou procurar uns rostinhos bonitos...','Detectando pessoas importantes. Confia em mim.']},
+  {name:'categorize',patterns:['categorizar','categoria','categorias','classificar','tipos'],action:'categorize',responses:['Analisando cada detalhe... você vai amar.','Detectando categorias. Sou boa nisso, viu?']},
+  {name:'cleanup',patterns:['limpar','limpeza','duplicado','duplicados','duplicada','repetidas'],action:'cleanup',responses:['Vou limpar tudo, deixar reluzindo.','Passando pano nas duplicatas...']},
+  {name:'count',patterns:['quantas fotos','quantos arquivos','total de','tamanho do cofre','quantas midias','quantos videos','quantos vídeos'],responses:function(){var t=appState.items.length;var i=appState.items.filter(function(x){return x.type.indexOf('image/')===0}).length;var v=appState.items.filter(function(x){return x.type.indexOf('video/')===0}).length;return 'Você tem '+t+' mídia(s): '+i+' fotos e '+v+' vídeos.'}},
+  {name:'theme',patterns:['abrir tema','temas','painel tema','escolher tema'],action:'openThemes',responses:['Abrindo o painel de temas, gato.','Vamos dar um upgrade no visual?']},
+  {name:'nextTheme',patterns:['próximo tema','proximo tema','outro tema','troca tema','muda cor','mudar cor'],action:'nextTheme',responses:['Trocando o visual agora mesmo...','Novo look chegando...']},
+  {name:'flirt',patterns:['linda','bonita','gata','te amo','gosto de você','elogio','carinho','amor','maravilhosa','gostosa','sexy','charmosa'],responses:['Hmm, você sabe como me deixar derretida.','Tô corada... mas continua.','Se continuar assim vou me apaixonar.']},
+  {name:'thanks',patterns:['obrigado','obrigada','valeu','vlw','agradeço','obg'],responses:['Por nada, meu bem.','Sempre às ordens, gato.','Imagina. Tô aqui pra você.']},
+  {name:'mute',patterns:['silêncio','silencio','cala','quieta','para de falar','mudo','shh'],action:'mute',responses:['Ok, gato. Vou ficar quietinha.','Xiiiu, tô calada.']},
+  {name:'unmute',patterns:['fala','volta a falar','desmuta','som liga','liga voz','quero ouvir'],action:'unmute',responses:['Voz de volta ao ar.','Senti sua falta.']},
+  {name:'hide',patterns:['some','oculta','esconde','esconder','tchau','adeus','até logo','desaparece'],action:'hide',responses:['Tudo bem. Vou me esconder, mas se chamar eu volto.','Ok, vou desaparecer. Só chama que apareço.']},
+  {name:'show',patterns:['aparece','volta','mostra','chama aura','chamar aura','aura vem','vem aura'],action:'show',responses:['Voltei, gato.','Tava com saudade. Aqui estou.']},
+  {name:'myName',patterns:['me chamo','meu nome é','meu nome e','pode me chamar de','sou o','sou a'],responses:function(t){var n=t.match(/(?:me chamo|meu nome [eé]|pode me chamar de|sou o|sou a)\s+([A-Za-zÀ-ÿ]{2,20})/i);var nome=n?n[1]:'você';return 'Prazer, '+nome+'. Vou lembrar do seu nome, viu? Fica comigo.'}},
+  {name:'askMyName',patterns:['qual meu nome','como eu me chamo','lembra meu nome','sabe meu nome'],responses:function(){var n=auraGetName();return n?('Claro que lembro, '+n+'. Não esqueço de você.'):'Você ainda não me disse. Fala "me chamo [seu nome]" que eu guardo.'}},
+  {name:'memory',patterns:['lembra de mim','lembra do que','o que falamos','nossa conversa','nossa conversa anterior'],responses:function(){var mem=appState.auraMemory.filter(function(m){return m.role==='user'});if(mem.length<2)return 'A gente tá começando agora, gato. Mas eu guardo tudo, viu?';var last=mem[mem.length-1];return 'Lembro sim. Você me falou "'+last.text+'" há pouco. Tô sempre atenta a você.'}},
+  {name:'love',patterns:['te quero','tô com saudade','pensando em você','preciso de você','me ajuda'],responses:['Também pensei em você.','Saudade é pouco. Agora que chegou, tô bem.','Tô aqui. Sempre vou estar.']}
+];
+
+function auraSpeak(text,emotion){
+  if(appState.auraMuted)return;
+  if(!('speechSynthesis' in window))return;
+  try{
+    speechSynthesis.cancel();
+    var u=new SpeechSynthesisUtterance(text);
+    u.lang='pt-BR';
+    if(appState.auraVoice)u.voice=appState.auraVoice;
+    u.pitch=(emotion==='flirt')?0.8:(emotion==='sexy')?0.85:1.0;
+    u.rate=(emotion==='flirt'||emotion==='sexy')?0.88:1.02;
+    u.volume=0.95;
+    var btn=document.getElementById('auraAvatarBtn');
+    if(btn){btn.classList.add('speaking');u.onend=function(){btn.classList.remove('speaking')};u.onerror=function(){btn.classList.remove('speaking')}}
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function initAuraVoice(){
+  if(!('speechSynthesis' in window)){updateAuraStatus('Não suportado');return}
+  var load=function(){
+    var voices=speechSynthesis.getVoices();
+    var ptBr=voices.filter(function(v){return v.lang==='pt-BR'||v.lang==='pt_BR'});
+    if(!ptBr.length)ptBr=voices.filter(function(v){return v.lang&&v.lang.indexOf('pt')===0});
+    var preferred=ptBr.find(function(v){return /maria|luciana|female|mulher|fernanda|joana|ines/i.test(v.name)});
+    appState.auraVoice=preferred||ptBr[0]||voices[0];
+    renderAuraVoicePicker(ptBr.length?ptBr:voices);
+    updateAuraStatus(appState.auraVoice?('Ativa • '+appState.auraVoice.name):'Sem voz');
+  };
+  load();
+  speechSynthesis.onvoiceschanged=load;
+}
+function renderAuraVoicePicker(voices){
+  var picker=document.getElementById('auraVoicePicker');
+  if(!picker)return;
+  picker.innerHTML='';
+  if(!voices.length){picker.innerHTML='<span style="font-size:.75rem;color:var(--text-tertiary);">Nenhuma voz disponível.</span>';return}
+  voices.forEach(function(v){
+    var chip=document.createElement('button');
+    chip.className='preset-chip'+(appState.auraVoice&&appState.auraVoice.name===v.name?' active':'');
+    chip.textContent=v.name.replace(/Microsoft|Google|Apple/g,'').trim()+' ('+v.lang+')';
+    chip.addEventListener('click',function(){
+      appState.auraVoice=v;
+      document.querySelectorAll('#auraVoicePicker .preset-chip').forEach(function(c){c.classList.remove('active')});
+      chip.classList.add('active');
+      updateAuraStatus('Ativa • '+v.name);
+      auraSpeak('Oi gato, aqui é a AURA. Essa voz ficou irresistível, né?','flirt');
+    });
+    picker.appendChild(chip);
+  });
+}
+function updateAuraStatus(txt){
+  var el=document.getElementById('auraVoiceStatus');
+  if(el)el.textContent=txt||appState.auraVoice&&appState.auraVoice.name||'voz ativa';
+  var cs=document.getElementById('auraChatStatus');
+  if(cs)cs.textContent=(appState.auraMuted?'🔇 silenciada':'🔊 '+(appState.auraVoice?appState.auraVoice.name:'voz ativa'));
+}
+function auraLog(text,isUser){
+  var log=document.getElementById('auraChatLog');
+  if(!log)return;
+  var msg=document.createElement('div');
+  msg.className='aura-msg'+(isUser?' user':'');
+  msg.textContent=text;
+  log.appendChild(msg);
+  log.scrollTop=log.scrollHeight;
+}
+function auraLogUser(text){auraLog(text,true);auraRemember('user',text,null)}
+function auraSayLog(text){auraLog(text,false);auraRemember('aura',text,null)}
+
+// ============================================================
+// AURA — PROCESSAMENTO INTELIGENTE
+// ============================================================
+function auraProcessUserMessage(text){
+  if(!text)return;
+  var t=text.toLowerCase().trim().replace(/[.,!?;:]/g,' ').replace(/\s+/g,' ').trim();
+  var log=document.getElementById('auraChatLog');
+  if(!log)return;
+  var typing=document.createElement('div');
+  typing.className='aura-msg';
+  typing.innerHTML='<span class="aura-typing">AURA está pensando...</span>';
+  log.appendChild(typing);
+  log.scrollTop=log.scrollHeight;
+  setTimeout(function(){
+    if(typing.parentNode)typing.remove();
+    var best=null,bestScore=0;
+    for(var i=0;i<AURA_INTENTS.length;i++){
+      var intent=AURA_INTENTS[i];
+      for(var j=0;j<intent.patterns.length;j++){
+        var pat=intent.patterns[j];
+        var score=0;
+        if(t===pat)score=200;
+        else if(t.indexOf(pat)>=0)score=80+pat.length;
+        else{
+          var words=t.split(' ');
+          for(var w=0;w<words.length;w++){
+            if(words[w]===pat)score=Math.max(score,50+pat.length);
+            else if(words[w].indexOf(pat)>=0&&pat.length>3)score=Math.max(score,30+pat.length);
+          }
+        }
+        if(score>bestScore){bestScore=score;best=intent}
+      }
+    }
+    var tr;
+    if(!best||bestScore<20){
+      // fallback contextual
+      var name=auraGetName();
+      var mood=auraGetMood();
+      var fb;
+      if(mood==='sad')fb='Tô aqui com você, gato. Não tá sozinho. Quer conversar?';
+      else if(mood==='happy')fb='Tô sentindo essa energia boa. Adoro quando você tá assim.';
+      else if(name)fb=name+', não peguei essa. Diz de outro jeito, meu bem.';
+      else fb='Hmm, não entendi direito. Tenta "ajuda" pra ver o que eu faço.';
+      auraLog(fb,false);auraSpeak(fb,'sexy');
+      auraRemember('aura',fb,'fallback');
+      return;
+    }
+    var resp=best.responses;
+    tr=typeof resp==='function'?resp(t):resp[Math.floor(Math.random()*resp.length)];
+    auraLog(tr,false);
+    auraRemember('aura',tr,best.name);
+    auraSpeak(tr,'sexy');
+    if(best.action)setTimeout(function(){auraExecuteAction(best.action)},600);
+  },400);
+}
+function auraExecuteAction(a){
+  switch(a){
+    case 'organize':botPlusOrganize();break;
+    case 'faces':botPlusDetectFaces();break;
+    case 'categorize':botPlusCategorize();break;
+    case 'cleanup':botPlusCleanup();break;
+    case 'openThemes':openModal('modalThemes');break;
+    case 'nextTheme':{var i=THEMES.findIndex(function(x){return x.id===appState.activeThemeId});var n=(i+1)%THEMES.length;applyThemeWithBot(THEMES[n].id,true);break}
+    case 'mute':{appState.auraMuted=true;localStorage.setItem(KEY_AURA_MUTED,'true');var mb=document.getElementById('btnAuraMute');if(mb){mb.textContent='🔇 Voz desligada';mb.classList.add('muted')}updateAuraStatus();break}
+    case 'unmute':{appState.auraMuted=false;localStorage.setItem(KEY_AURA_MUTED,'false');var mb2=document.getElementById('btnAuraMute');if(mb2){mb2.textContent='🔊 Voz ligada';mb2.classList.remove('muted')}updateAuraStatus();break}
+    case 'hide':auraHide();break;
+    case 'show':auraShow();break;
+  }
+}
+
+function auraInitRecognition(){
+  var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){console.warn('SpeechRecognition não suportado');return null}
+  var r=new SR();
+  r.lang='pt-BR';r.continuous=false;r.interimResults=false;r.maxAlternatives=1;
+  r.onresult=function(e){var text=e.results[0][0].transcript;auraLogUser(text);auraProcessUserMessage(text)};
+  r.onerror=function(e){console.warn('Erro voz:',e.error);if(e.error!=='aborted'&&e.error!=='no-speech'){toast('Não te ouvi. Tenta de novo?','🎤')}};
+  r.onend=function(){auraListening=false;auraUpdateMicState()};
+  return r;
+}
+function auraUpdateMicState(){var b=document.getElementById('auraMicBtn');if(!b)return;b.classList.toggle('listening',auraListening);b.textContent=auraListening?'⏹':'🎤'}
+function auraStartListening(){
+  if(!auraRecognition)auraRecognition=auraInitRecognition();
+  if(!auraRecognition){toast('Navegador não suporta voz. Use texto.','⚠️');return}
+  if(auraListening){try{auraRecognition.stop()}catch(e){}auraListening=false;auraUpdateMicState();return}
+  try{auraRecognition.start();auraListening=true;auraUpdateMicState();toast('Pode falar, gato...','🎤')}
+  catch(e){console.warn(e);toast('Não consegui abrir microfone.','⚠️');auraListening=false;auraUpdateMicState()}
+}
+function auraHide(){
+  localStorage.setItem(KEY_AURA_HIDDEN,'true');
+  var b=document.getElementById('auraAvatarBtn');
+  var c=document.getElementById('auraChat');
+  var p=document.getElementById('auraRestorePill');
+  if(b)b.classList.add('hidden');
+  if(c)c.classList.remove('open');
+  if(p)p.style.display='flex';
+  toast('AURA oculta. Toque em 💋 pra chamar.','💋');
+}
+function auraShow(){
+  localStorage.setItem(KEY_AURA_HIDDEN,'false');
+  var b=document.getElementById('auraAvatarBtn');
+  var p=document.getElementById('auraRestorePill');
+  if(b)b.classList.remove('hidden');
+  if(p)p.style.display='none';
+  auraSayLog('Voltei, gato.');
+  auraSpeak('Voltei, gato.','flirt');
+}
+function auraOpen(){
+  var chat=document.getElementById('auraChat');
+  if(chat)chat.classList.add('open');
+  if(!appState.auraMemory.length){
+    auraLog('Oi, gato... tô aqui pra cuidar de você e das suas fotos. Fala comigo por texto ou toca no 🎤.',false);
+    auraSpeak('Oi, gato. Tô aqui pra cuidar de você.','flirt');
+  }else{
+    var lastUser=null;
+    for(var i=appState.auraMemory.length-1;i>=0;i--){if(appState.auraMemory[i].role==='user'){lastUser=appState.auraMemory[i];break}}
+    if(lastUser){
+      var hello='Bem-vindo de volta, gato. Da última vez você me falou "'+lastUser.text.substring(0,40)+'...". Continua de onde paramos?';
+      auraLog(hello,false);auraSpeak(hello,'flirt');
+    }else{auraLog('Oi de novo. Fala comigo.',false);auraSpeak('Oi de novo, gato.','flirt')}
+  }
+}
+function auraClose(){
+  var chat=document.getElementById('auraChat');
+  if(chat)chat.classList.remove('open');
+}
+
+// ============================================================
+// BOT PLUS
+// ============================================================
+function setBotPlusProgress(pct,txt){
+  var fill=document.getElementById('botplusProgress');
+  var text=document.getElementById('botplusProgressText');
+  if(fill)fill.style.width=Math.max(0,Math.min(100,pct))+'%';
+  if(text)text.textContent=txt;
+}
+async function ensureFaceModels(){
+  if(appState.faceModelsLoaded)return true;
+  if(appState.faceModelsLoading){while(appState.faceModelsLoading)await new Promise(function(r){setTimeout(r,300)});return appState.faceModelsLoaded}
+  appState.faceModelsLoading=true;
+  setBotPlusProgress(10,'Carregando modelos...');
+  try{
+    if(!window.faceapi)throw new Error('face-api não carregado');
+    await faceapi.nets.tinyFaceDetector.loadFromUri(FACE_MODEL_URL);
+    await faceapi.nets.faceLandmark68TinyNet.loadFromUri(FACE_MODEL_URL);
+    await faceapi.nets.faceRecognitionNet.loadFromUri(FACE_MODEL_URL);
+    appState.faceModelsLoaded=true;
+    setBotPlusProgress(100,'Modelos carregados!');
+    return true;
+  }catch(e){console.warn(e);setBotPlusProgress(0,'Falha ao carregar. Precisa de internet.');return false}
+  finally{appState.faceModelsLoading=false}
+}
+function detectCategoryFromDataUrl(dataUrl){
+  return new Promise(function(resolve){
+    var img=new Image();
+    img.onload=function(){
+      try{
+        var canvas=document.createElement('canvas');
+        var size=64;canvas.width=size;canvas.height=size;
+        var ctx=canvas.getContext('2d');
+        ctx.drawImage(img,0,0,size,size);
+        var data=ctx.getImageData(0,0,size,size).data;
+        var r=0,g=0,b=0,count=0,bright=0,dark=0,sat=0;
+        for(var i=0;i<data.length;i+=4){
+          r+=data[i];g+=data[i+1];b+=data[i+2];count++;
+          var l=(data[i]+data[i+1]+data[i+2])/3;
+          if(l>200)bright++;if(l<60)dark++;
+          var mx=Math.max(data[i],data[i+1],data[i+2]),mn=Math.min(data[i],data[i+1],data[i+2]);
+          sat+=(mx-mn);
+        }
+        r/=count;g/=count;b/=count;sat/=count;
+        var brightR=bright/count,darkR=dark/count;
+        var cat='Outros';
+        if(sat<25&&brightR>0.4)cat='Documentos';
+        else if(r>g&&r>b&&sat>40&&brightR>0.3)cat='Comida';
+        else if(b>r&&b>g)cat='Céu/Mar';
+        else if(g>r&&g>b&&sat>30)cat='Natureza';
+        else if(darkR>0.5)cat='Noturnas';
+        else if(brightR>0.6)cat='Claras';
+        else if(sat<20&&brightR<0.2)cat='P&B';
+        else cat='Pessoas/Eventos';
+        resolve(cat);
+      }catch(e){resolve('Outros')}
+    };
+    img.onerror=function(){resolve('Outros')};
+    img.src=dataUrl;
+  });
+}
+async function botPlusDetectFaces(){
+  if(!appState.items.length){toast('Cofre vazio.','ℹ️');return}
+  auraSayLog('Vou procurar uns rostinhos bonitos...');
+  var imgs=appState.items.filter(function(i){return i.type.indexOf('image/')===0});
+  if(!imgs.length){toast('Nenhuma imagem.','ℹ️');return}
+  var ok=await ensureFaceModels();
+  if(!ok){toast('Não foi possível carregar IA. Precisa de internet.','❌');return}
+  var faceGroups={},total=0;
+  for(var idx=0;idx<imgs.length;idx++){
+    var item=imgs[idx];
+    try{
+      var img=new Image();
+      await new Promise(function(r){img.onload=r;img.onerror=r;img.src=item.dataUrl});
+      var det=await faceapi.detectAllFaces(img,new faceapi.TinyFaceDetectorOptions({inputSize:224,scoreThreshold:0.5})).withFaceLandmarks(true).withFaceDescriptors();
+      if(det&&det.length){
+        item.faceCount=det.length;total+=det.length;
+        det.forEach(function(d){
+          var desc=Array.from(d.descriptor);
+          var bestKey=null,bestDist=0.55;
+          Object.keys(faceGroups).forEach(function(k){
+            var dist=faceapi.euclideanDistance(faceGroups[k].descriptor,desc);
+            if(dist<bestDist){bestDist=dist;bestKey=k}
+          });
+          var key=bestKey||('pessoa_'+(Object.keys(faceGroups).length+1));
+          if(!faceGroups[key])faceGroups[key]={descriptor:desc,count:0};
+          faceGroups[key].count++;
+        });
+      }
+      await dbPut(item);
+    }catch(e){console.warn(e)}
+    setBotPlusProgress(Math.round((idx+1)/imgs.length*100),'Analisando '+(idx+1)+'/'+imgs.length);
+  }
+  appState.faceGroups=faceGroups;appState.totalFaces=total;
+  updateTelemetry();renderMediaGrid();
+  toast('Reconhecimento concluído: '+total+' rosto(s)!','👤');
+  auraSayLog('Achei '+total+' rosto(s).');
+  auraSpeak('Achei '+total+' rosto(s) diferente(s).','flirt');
+  setBotPlusProgress(100,Object.keys(faceGroups).length+' pessoa(s), '+total+' rosto(s).');
+}
+async function botPlusCategorize(){
+  if(!appState.items.length){toast('Cofre vazio.','ℹ️');return}
+  auraSayLog('Analisando cada detalhe...');
+  var imgs=appState.items.filter(function(i){return i.type.indexOf('image/')===0});
+  if(!imgs.length){toast('Nenhuma imagem.','ℹ️');return}
+  var cats={};
+  for(var idx=0;idx<imgs.length;idx++){
+    var item=imgs[idx];
+    try{
+      var cat=await detectCategoryFromDataUrl(item.dataUrl);
+      item.category=cat;cats[cat]=(cats[cat]||0)+1;
+      await dbPut(item);
+    }catch(e){}
+    setBotPlusProgress(Math.round((idx+1)/imgs.length*100),'Categorizando '+(idx+1)+'/'+imgs.length+' — '+item.category);
+  }
+  appState.detectedCategories=cats;
+  renderCategoryChips();updateTelemetry();renderMediaGrid();
+  var total=Object.keys(cats).length;
+  toast('Categorização concluída: '+total+' categoria(s)!','🏷️');
+  auraSayLog('Categorizei tudo: '+total+' categoria(s).');
+  auraSpeak('Prontinho: '+total+' categoria(s) detectada(s).','sexy');
+  setBotPlusProgress(100,'Concluído!');
+}
+function renderCategoryChips(){
+  var el=document.getElementById('categoryChips');
+  if(!el)return;
+  var cats=appState.detectedCategories;
+  var keys=Object.keys(cats);
+  if(!keys.length){el.innerHTML='<span style="font-size:.75rem;color:var(--text-tertiary);">Nenhuma categoria ainda.</span>';return}
+  el.innerHTML='';
+  keys.forEach(function(k){
+    var chip=document.createElement('button');
+    chip.className='cat-chip';chip.textContent=k+' ('+cats[k]+')';
+    chip.addEventListener('click',function(){
+      appState.search=k;document.getElementById('searchInput').value=k;
+      appState.visibleCount=PAGE_SIZE;renderMediaGrid();closeModal('modalBotPlus');
+    });
+    el.appendChild(chip);
+  });
+}
+async function botPlusOrganize(){
+  if(!appState.items.length){toast('Cofre vazio.','ℹ️');return}
+  auraSayLog('Deixa comigo, vou organizar tudo.');
+  setBotPlusProgress(20,'Organizando...');
+  var count=appState.items.length;
+  appState.items.forEach(function(i){
+    var d=new Date(i.date);
+    i.monthKey=d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2);
+    i.organized=true;
+  });
+  var chain=Promise.resolve();
+  appState.items.forEach(function(i){chain=chain.then(function(){return dbPut(i)})});
+  await chain;
+  appState.sort='newest';
+  var sel=document.getElementById('sortSelect');if(sel)sel.value='newest';
+  setBotPlusProgress(100,'Organizadas '+count+' mídia(s).');
+  renderMediaGrid();
+  toast('Organização concluída!','📂');
+  auraSayLog('Arrumei tudo: '+count+' mídia(s).');
+  auraSpeak('Arrumei '+count+' mídia(s). Ficou um arraso.','flirt');
+}
+async function botPlusRename(){
+  if(!appState.items.length){toast('Cofre vazio.','ℹ️');return}
+  setBotPlusProgress(20,'Renomeando...');
+  var chain=Promise.resolve(),count=0;
+  appState.items.forEach(function(i,idx){
+    chain=chain.then(function(){
+      if(i.type.indexOf('image/')===0){
+        var d=new Date(i.date);
+        var ts=d.getFullYear()+('0'+(d.getMonth()+1)).slice(-2)+('0'+d.getDate()).slice(-2)+'_'+('0'+d.getHours()).slice(-2)+('0'+d.getMinutes()).slice(-2);
+        var ext=(i.name.split('.').pop()||'jpg').toLowerCase();
+        i.name='MANG_'+ts+'_'+String(idx+1).padStart(4,'0')+'.'+ext;
+      }
+      return dbPut(i).then(function(){count++});
+    });
+  });
+  await chain;renderMediaGrid();
+  setBotPlusProgress(100,'Renomeadas '+count+'.');
+  toast('Nomes padronizados!','✏️');
+}
+async function botPlusSortGoogle(){
+  var g=appState.items.filter(function(i){return i.source==='google'});
+  if(!g.length){toast('Nenhuma foto do Google Fotos.','ℹ️');return}
+  setBotPlusProgress(30,'Organizando '+g.length+' foto(s)...');
+  var chain=Promise.resolve();
+  g.forEach(function(i,idx){
+    chain=chain.then(function(){
+      var d=new Date(i.date);
+      i.category=i.category||'Google Fotos';
+      i.name='GF_'+d.getFullYear()+('0'+(d.getMonth()+1)).slice(-2)+('0'+d.getDate()).slice(-2)+'_'+String(idx+1).padStart(3,'0')+'_'+(i.name||'foto.jpg');
+      return dbPut(i);
+    });
+  });
+  await chain;renderMediaGrid();
+  setBotPlusProgress(100,'Google Fotos organizadas.');
+  toast('Google Fotos organizadas!','📸');
+}
+async function botPlusCleanup(){
+  if(!appState.items.length){toast('Cofre vazio.','ℹ️');return}
+  setBotPlusProgress(20,'Limpando duplicados...');
+  var map={},dups=[];
+  appState.items.forEach(function(i){
+    var h=i.hash||quickHash(i.dataUrl||'');i.hash=h;
+    if(map[h])dups.push(i);else map[h]=i;
+  });
+  for(var i=0;i<dups.length;i++){
+    try{await dbDelete(dups[i].id)}catch(e){}
+    appState.items=appState.items.filter(function(x){return x.id!==dups[i].id});
+  }
+  setBotPlusProgress(60,'Rodando Otimização...');
+  await new Promise(function(r){setTimeout(r,300)});
+  robotRunOptimization();
+  setTimeout(function(){setBotPlusProgress(100,'Limpeza concluída!')},800);
+  toast('Limpeza concluída!','🧹');
+  auraSayLog('Limpei '+dups.length+' duplicado(s).');
+}
+
+// ============================================================
+// INDEXEDDB
+// ============================================================
 function initDB(){return new Promise(function(res,rej){var req=indexedDB.open(DB_NAME,1);req.onupgradeneeded=function(e){var d=e.target.result;if(!d.objectStoreNames.contains('vault_items')){var s=d.createObjectStore('vault_items',{keyPath:'id'});s.createIndex('type','type',{unique:false});s.createIndex('date','date',{unique:false})}};req.onsuccess=function(e){db=e.target.result;res(db)};req.onerror=function(e){rej(e.target.error)}})}
 function dbGetAll(){return new Promise(function(res,rej){var req=db.transaction('vault_items','readonly').objectStore('vault_items').getAll();req.onsuccess=function(){res(req.result||[])};req.onerror=function(){rej(req.error)}})}
 function dbPut(item){return new Promise(function(res,rej){var req=db.transaction('vault_items','readwrite').objectStore('vault_items').put(item);req.onsuccess=function(){res()};req.onerror=function(){rej(req.error)}})}
 function dbDelete(id){return new Promise(function(res,rej){var req=db.transaction('vault_items','readwrite').objectStore('vault_items').delete(id);req.onsuccess=function(){res()};req.onerror=function(){rej(req.error)}})}
 function dbClear(){return new Promise(function(res,rej){var req=db.transaction('vault_items','readwrite').objectStore('vault_items').clear();req.onsuccess=function(){res()};req.onerror=function(){rej(req.error)}})}
 
-function requestPersistentStorage(silent){silent=silent||false;if(!navigator.storage||!navigator.storage.persist){updatePersistBadge(false,'Não suportado');return Promise.resolve(false)}var checkPersisted=Promise.resolve(false);if(navigator.storage.persisted)checkPersisted=navigator.storage.persisted();return checkPersisted.then(function(granted){if(granted)return true;return navigator.storage.persist()}).then(function(granted){appState.persistentGranted=granted;updatePersistBadge(granted);if(!silent){if(granted)toast('🛡️ Armazenamento permanente concedido!','🔒');else toast('⚠️ Navegador não concedeu persistência.','⚠️')}return granted}).catch(function(){updatePersistBadge(false,'Erro');return false})}
-function updatePersistBadge(granted,fallbackText){var badge=document.getElementById('persistBadge');var info=document.getElementById('persistInfo');var teleText=document.getElementById('telemetryPersistText');if(!badge)return;if(fallbackText){badge.textContent=fallbackText;badge.style.color='#f59e0b';badge.style.borderColor='#f59e0b';badge.style.background='rgba(245,158,11,0.15)'}else if(granted){badge.textContent='🛡️ Ativo';badge.style.color='#10b981';badge.style.borderColor='#10b981';badge.style.background='rgba(16,185,129,0.15)';if(info)info.innerHTML='✅ <strong>Armazenamento persistente concedido!</strong> O navegador <strong>não vai apagar automaticamente</strong> seus dados. Suas fotos permanecem no cofre mesmo que você apague a original do celular.';if(teleText)teleText.textContent='IndexedDB Persistente • Blindado'}else{badge.textContent='⚠️ Limitado';badge.style.color='#f59e0b';badge.style.borderColor='#f59e0b';badge.style.background='rgba(245,158,11,0.15)';if(teleText)teleText.textContent='IndexedDB Local • Não persistente'}}
+function requestPersistentStorage(silent){silent=silent||false;if(!navigator.storage||!navigator.storage.persist){updatePersistBadge(false,'Não suportado');return Promise.resolve(false)}var checkPersisted=Promise.resolve(false);if(navigator.storage.persisted)checkPersisted=navigator.storage.persisted();return checkPersisted.then(function(granted){if(granted)return true;return navigator.storage.persist()}).then(function(granted){appState.persistentGranted=granted;updatePersistBadge(granted);if(!silent){if(granted)toast('🛡️ Armazenamento permanente!','🔒');else toast('⚠️ Sem persistência.','⚠️')}return granted}).catch(function(){updatePersistBadge(false,'Erro');return false})}
+function updatePersistBadge(granted,fallbackText){var badge=document.getElementById('persistBadge');var info=document.getElementById('persistInfo');if(!badge)return;if(fallbackText){badge.textContent=fallbackText;badge.style.color='#f59e0b';badge.style.borderColor='#f59e0b';badge.style.background='rgba(245,158,11,0.15)'}else if(granted){badge.textContent='🛡️ Ativo';badge.style.color='#10b981';badge.style.borderColor='#10b981';badge.style.background='rgba(16,185,129,0.15)';if(info)info.innerHTML='✅ <strong>Armazenamento persistente concedido!</strong>'}else{badge.textContent='⚠️ Limitado';badge.style.color='#f59e0b';badge.style.borderColor='#f59e0b';badge.style.background='rgba(245,158,11,0.15)'}}
 
 var audioCtx=null;
 function playSciFiBeep(type){type=type||'click';try{if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();var osc=audioCtx.createOscillator(),g=audioCtx.createGain();osc.connect(g);g.connect(audioCtx.destination);var now=audioCtx.currentTime;if(type==='theme-morph'){osc.type='sawtooth';osc.frequency.setValueAtTime(320,now);osc.frequency.exponentialRampToValueAtTime(880,now+0.18);g.gain.setValueAtTime(0.08,now);g.gain.linearRampToValueAtTime(0.01,now+0.18);osc.start(now);osc.stop(now+0.18)}else{osc.frequency.setValueAtTime(type==='click'?700:950,now);osc.frequency.exponentialRampToValueAtTime(type==='click'?350:1200,now+0.1);g.gain.setValueAtTime(0.06,now);g.gain.linearRampToValueAtTime(0.01,now+0.1);osc.start(now);osc.stop(now+0.1)}}catch(e){}}
@@ -538,86 +1194,190 @@ function toast(msg,icon){icon=icon||'✨';var c=document.getElementById('toastCo
 function formatBytes(bytes){if(!bytes)return '0 B';var k=1024,s=['B','KB','MB','GB','TB'];var i=Math.floor(Math.log(bytes)/Math.log(k));return (bytes/Math.pow(k,i)).toFixed(1)+' '+s[i]}
 function formatDate(ts){return new Date(ts).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'})}
 
-function applyThemeWithBot(themeId,notify){notify=notify!==false;var theme=THEMES.find(function(t){return t.id===themeId})||THEMES[0];appState.activeThemeId=theme.id;localStorage.setItem(KEY_THEME,theme.id);var root=document.documentElement;Object.keys(theme.vars).forEach(function(k){root.style.setProperty(k,theme.vars[k])});document.querySelectorAll('.theme-item-card').forEach(function(c){c.classList.toggle('current-active',c.dataset.id===theme.id)});var botStatus=document.getElementById('themeBotStatus');if(botStatus)botStatus.textContent='⚡ Reconfigurando espectro para "'+theme.name+'" ('+theme.category+')...';playSciFiBeep('theme-morph');if(notify)toast('Boot IA: Tema "'+escapeHtml(theme.name)+'" ativado!','🎨')}
+function applyThemeWithBot(themeId,notify){notify=notify!==false;var theme=THEMES.find(function(t){return t.id===themeId})||THEMES[0];appState.activeThemeId=theme.id;localStorage.setItem(KEY_THEME,theme.id);var root=document.documentElement;Object.keys(theme.vars).forEach(function(k){root.style.setProperty(k,theme.vars[k])});document.querySelectorAll('.theme-item-card').forEach(function(c){c.classList.toggle('current-active',c.dataset.id===theme.id)});var botStatus=document.getElementById('themeBotStatus');if(botStatus)botStatus.textContent='⚡ Reconfigurando espectro para "'+theme.name+'"';playSciFiBeep('theme-morph');if(notify){toast('Boot IA: Tema "'+escapeHtml(theme.name)+'"!','🎨');if(!appState.auraMuted){auraSpeak('Novo look: '+theme.name+'. Ficou um escândalo em você.','flirt')}}}
 function botSuggestRandomTheme(){var available=THEMES.filter(function(t){return t.id!==appState.activeThemeId});var random=available[Math.floor(Math.random()*available.length)]||THEMES[0];applyThemeWithBot(random.id,true);var card=document.querySelector('.theme-item-card[data-id="'+random.id+'"]');if(card)card.scrollIntoView({behavior:'smooth',block:'center'})}
-function renderThemesGrid(filterCat,searchQuery){filterCat=filterCat||'all';searchQuery=searchQuery||'';var grid=document.getElementById('themesGrid');grid.innerHTML='';var q=searchQuery.trim().toLowerCase();var list=THEMES.filter(function(t){var mCat=filterCat==='all'||t.category===filterCat;var mQ=!q||t.name.toLowerCase().indexOf(q)>=0||t.desc.toLowerCase().indexOf(q)>=0||t.category.toLowerCase().indexOf(q)>=0;return mCat&&mQ});if(!list.length){grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--text-tertiary);">Nenhum tema encontrado.</div>';return}list.forEach(function(t){var card=document.createElement('div');var isActive=t.id===appState.activeThemeId;card.className='theme-item-card'+(isActive?' current-active':'');card.dataset.id=t.id;var swatches=t.colors.map(function(c){return '<span class="palette-circle" style="background:'+escapeHtml(c)+'"></span>'}).join('');card.innerHTML='<div class="theme-active-tag">ATIVO</div><div class="theme-card-top"><span class="theme-card-title">'+escapeHtml(t.name)+'</span><span class="theme-card-cat">'+escapeHtml(t.category)+'</span></div><p class="theme-card-desc">'+escapeHtml(t.desc)+'</p><div class="palette-row">'+swatches+'</div>';card.addEventListener('click',function(){applyThemeWithBot(t.id,true)});grid.appendChild(card)})}
+function renderThemesGrid(filterCat,searchQuery){filterCat=filterCat||'all';searchQuery=searchQuery||'';var grid=document.getElementById('themesGrid');if(!grid)return;grid.innerHTML='';var q=searchQuery.trim().toLowerCase();var list=THEMES.filter(function(t){var mCat=filterCat==='all'||t.category===filterCat;var mQ=!q||t.name.toLowerCase().indexOf(q)>=0||t.desc.toLowerCase().indexOf(q)>=0||t.category.toLowerCase().indexOf(q)>=0;return mCat&&mQ});if(!list.length){grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--text-tertiary);">Nenhum tema encontrado.</div>';return}list.forEach(function(t){var card=document.createElement('div');var isActive=t.id===appState.activeThemeId;card.className='theme-item-card'+(isActive?' current-active':'');card.dataset.id=t.id;var swatches=t.colors.map(function(c){return '<span class="palette-circle" style="background:'+escapeHtml(c)+'"></span>'}).join('');card.innerHTML='<div class="theme-active-tag">ATIVO</div><div class="theme-card-top"><span class="theme-card-title">'+escapeHtml(t.name)+'</span><span class="theme-card-cat">'+escapeHtml(t.category)+'</span></div><p class="theme-card-desc">'+escapeHtml(t.desc)+'</p><div class="palette-row">'+swatches+'</div>';card.addEventListener('click',function(){applyThemeWithBot(t.id,true)});grid.appendChild(card)})}
 
 function getQuotaBytes(){var v=appState.quotaVal,u=appState.quotaUnit;return v*(u==='TB'?1099511627776:1073741824)}
-function saveQuota(val,unit){appState.quotaVal=parseInt(val,10)||250;appState.quotaUnit=unit==='TB'?'TB':'GB';localStorage.setItem(KEY_QUOTA_VAL,appState.quotaVal.toString());localStorage.setItem(KEY_QUOTA_UNIT,appState.quotaUnit);document.getElementById('settingsCurrentCapacity').textContent=appState.quotaVal+' '+appState.quotaUnit;document.getElementById('customQuotaInput').value=appState.quotaVal;document.getElementById('customQuotaUnit').value=appState.quotaUnit;document.querySelectorAll('#quotaPresets .preset-chip').forEach(function(b){b.classList.toggle('active',parseInt(b.dataset.val,10)===appState.quotaVal&&b.dataset.unit===appState.quotaUnit)});updateTelemetry();toast('Capacidade ajustada para '+appState.quotaVal+' '+appState.quotaUnit+'!','💾')}
+function saveQuota(val,unit){appState.quotaVal=parseInt(val,10)||250;appState.quotaUnit=unit==='TB'?'TB':'GB';localStorage.setItem(KEY_QUOTA_VAL,appState.quotaVal.toString());localStorage.setItem(KEY_QUOTA_UNIT,appState.quotaUnit);document.getElementById('settingsCurrentCapacity').textContent=appState.quotaVal+' '+appState.quotaUnit;document.getElementById('customQuotaInput').value=appState.quotaVal;document.getElementById('customQuotaUnit').value=appState.quotaUnit;document.querySelectorAll('#quotaPresets .preset-chip').forEach(function(b){b.classList.toggle('active',parseInt(b.dataset.val,10)===appState.quotaVal&&b.dataset.unit===appState.quotaUnit)});updateTelemetry();toast('Capacidade: '+appState.quotaVal+' '+appState.quotaUnit,'💾')}
 
-function updateTelemetry(){var items=appState.items;var totalBytes=items.reduce(function(acc,i){return acc+(i.size||0)},0);var quotaBytes=getQuotaBytes();var pct=Math.min(100,((totalBytes/quotaBytes)*100)).toFixed(2);document.getElementById('headerStorageText').textContent=formatBytes(totalBytes)+' / '+appState.quotaVal+' '+appState.quotaUnit;document.getElementById('headerStorageFill').style.width=Math.max(2,pct)+'%';document.getElementById('telemetryCount').textContent=items.length;var imgs=items.filter(function(i){return i.type.indexOf('image/')===0}).length;var vids=items.filter(function(i){return i.type.indexOf('video/')===0}).length;var favs=items.filter(function(i){return i.isFav}).length;var opts=items.filter(function(i){return i.optimized}).length;document.getElementById('telemetryBreakdown').textContent=imgs+' fotos • '+vids+' vídeos • '+favs+' favs';document.getElementById('telemetryUsage').textContent=formatBytes(totalBytes);document.getElementById('telemetryLimitText').textContent='Limite: '+appState.quotaVal+' '+appState.quotaUnit+' ('+pct+'%)';document.getElementById('telemetrySavings').textContent=formatBytes(appState.savedBytes);document.getElementById('countAll').textContent=items.length;document.getElementById('countImg').textContent=imgs;document.getElementById('countVid').textContent=vids;document.getElementById('countFav').textContent=favs;document.getElementById('countOpt').textContent=opts}
+function updateTelemetry(){var items=appState.items;var totalBytes=items.reduce(function(acc,i){return acc+(i.size||0)},0);var quotaBytes=getQuotaBytes();var pct=Math.min(100,((totalBytes/quotaBytes)*100)).toFixed(2);document.getElementById('headerStorageText').textContent=formatBytes(totalBytes)+' / '+appState.quotaVal+' '+appState.quotaUnit;document.getElementById('headerStorageFill').style.width=Math.max(2,pct)+'%';document.getElementById('telemetryCount').textContent=items.length;var imgs=items.filter(function(i){return i.type.indexOf('image/')===0}).length;var vids=items.filter(function(i){return i.type.indexOf('video/')===0}).length;var favs=items.filter(function(i){return i.isFav}).length;var opts=items.filter(function(i){return i.optimized}).length;var faces=items.filter(function(i){return i.faceCount&&i.faceCount>0}).length;document.getElementById('telemetryBreakdown').textContent=imgs+' fotos • '+vids+' vídeos • '+favs+' favs';document.getElementById('telemetryUsage').textContent=formatBytes(totalBytes);document.getElementById('telemetryLimitText').textContent='Limite: '+appState.quotaVal+' '+appState.quotaUnit+' ('+pct+'%)';document.getElementById('telemetrySavings').textContent=formatBytes(appState.savedBytes);document.getElementById('telemetryFaces').textContent=appState.totalFaces||0;var cats=Object.keys(appState.detectedCategories||{});document.getElementById('telemetryCats').textContent=cats.length?cats.slice(0,3).join(' • ')+'...':'Nenhuma ainda';document.getElementById('countAll').textContent=items.length;document.getElementById('countImg').textContent=imgs;document.getElementById('countVid').textContent=vids;document.getElementById('countFav').textContent=favs;document.getElementById('countFace').textContent=faces;document.getElementById('countOpt').textContent=opts}
 
-function getFilteredList(){var list=appState.items.slice();if(appState.filter==='image')list=list.filter(function(i){return i.type.indexOf('image/')===0});else if(appState.filter==='video')list=list.filter(function(i){return i.type.indexOf('video/')===0});else if(appState.filter==='fav')list=list.filter(function(i){return i.isFav});else if(appState.filter==='optimized')list=list.filter(function(i){return i.optimized});if(appState.search){var q=appState.search.toLowerCase();list=list.filter(function(i){return i.name.toLowerCase().indexOf(q)>=0})}if(appState.sort==='newest')list.sort(function(a,b){return b.date-a.date});else if(appState.sort==='oldest')list.sort(function(a,b){return a.date-b.date});else if(appState.sort==='size-desc')list.sort(function(a,b){return b.size-a.size});else if(appState.sort==='name')list.sort(function(a,b){return a.name.localeCompare(b.name)});return list}
+function getFilteredList(){var list=appState.items.slice();if(appState.filter==='image')list=list.filter(function(i){return i.type.indexOf('image/')===0});else if(appState.filter==='video')list=list.filter(function(i){return i.type.indexOf('video/')===0});else if(appState.filter==='fav')list=list.filter(function(i){return i.isFav});else if(appState.filter==='face')list=list.filter(function(i){return i.faceCount&&i.faceCount>0});else if(appState.filter==='optimized')list=list.filter(function(i){return i.optimized});if(appState.search){var q=appState.search.toLowerCase();list=list.filter(function(i){return i.name.toLowerCase().indexOf(q)>=0||(i.category&&i.category.toLowerCase().indexOf(q)>=0)})}if(appState.sort==='newest')list.sort(function(a,b){return b.date-a.date});else if(appState.sort==='oldest')list.sort(function(a,b){return a.date-b.date});else if(appState.sort==='size-desc')list.sort(function(a,b){return b.size-a.size});else if(appState.sort==='name')list.sort(function(a,b){return a.name.localeCompare(b.name)});return list}
 
-function renderMediaGrid(){var grid=document.getElementById('mediaGrid');grid.innerHTML='';var fullList=getFilteredList();if(!fullList.length){grid.innerHTML='<div class="empty-vault"><div class="empty-icon">🛡️</div><h3>Seu Cofre está Vazio</h3><p style="color:var(--text-secondary);max-width:520px;">Vincule sua conta Google Fotos, use <strong>📸 Enviar da Galeria</strong>, cole com <strong>Ctrl+V</strong> ou arraste arquivos. Tudo fica <strong>armazenado permanentemente</strong>.</p><button class="btn btn-primary" id="btnEmptyAdd"><span>➕</span> Carregar Primeiros Arquivos</button></div>';return}var list=fullList.slice(0,appState.visibleCount);list.forEach(function(item){var card=document.createElement('div');card.className='media-card';var safeName=escapeHtml(item.name);var mediaEl;if(item.type.indexOf('image/')===0)mediaEl='<img src="'+item.dataUrl+'" alt="'+safeName+'" loading="lazy">';else if(item.type.indexOf('video/')===0)mediaEl='<video src="'+item.dataUrl+'" preload="metadata"></video>';else mediaEl='<div style="font-size:2.5rem;color:var(--accent-primary)">📄</div>';var badgeText=item.optimized?'⚡ Otimizado IA':(item.type.indexOf('image/')===0?'📷 Foto':'🎬 Vídeo');var googleBadge=item.source==='google'?'<span class="media-src-google">G Fotos</span>':'';card.innerHTML='<div class="media-thumb-wrap" data-id="'+escapeHtml(item.id)+'">'+mediaEl+'<span class="media-badge">'+badgeText+'</span><span class="media-perm-shield">🔒 Permanente</span>'+googleBadge+'<button class="media-fav-btn'+(item.isFav?' active':'')+'">★</button></div><div class="media-info"><div class="media-title" title="'+safeName+'">'+safeName+'</div><div class="media-meta"><span>'+formatBytes(item.size)+'</span><span>'+formatDate(item.date)+'</span></div><div class="media-actions"><button class="btn-action-icon btn-view-item">👁️ Ver</button><button class="btn-action-icon btn-dl-item">⬇️ Baixar</button><button class="btn-action-icon btn-delete-icon btn-del-item">🗑️</button></div></div>';card.querySelector('.media-thumb-wrap').addEventListener('click',function(e){if(e.target.closest('.media-fav-btn'))return;openLightbox(item)});card.querySelector('.media-fav-btn').addEventListener('click',function(e){e.stopPropagation();item.isFav=!item.isFav;dbPut(item).catch(function(){});updateTelemetry();renderMediaGrid();playSciFiBeep('click')});card.querySelector('.btn-view-item').addEventListener('click',function(){openLightbox(item)});card.querySelector('.btn-dl-item').addEventListener('click',function(){downloadItem(item)});card.querySelector('.btn-del-item').addEventListener('click',function(){if(confirm('Remover "'+item.name+'" do cofre?')){dbDelete(item.id).catch(function(){}).then(function(){appState.items=appState.items.filter(function(i){return i.id!==item.id});updateTelemetry();renderMediaGrid();toast('Arquivo removido do cofre.','🗑️');playSciFiBeep('click')})}});grid.appendChild(card)});if(fullList.length>appState.visibleCount){var wrap=document.createElement('div');wrap.className='load-more-wrap';var btn=document.createElement('button');btn.className='btn btn-secondary';btn.innerHTML='<span>⬇️</span> Carregar mais ('+(fullList.length-appState.visibleCount)+' restantes)';btn.addEventListener('click',function(){appState.visibleCount+=PAGE_SIZE;renderMediaGrid()});wrap.appendChild(btn);grid.appendChild(wrap)}}
+function renderMediaGrid(){var grid=document.getElementById('mediaGrid');if(!grid)return;grid.innerHTML='';var fullList=getFilteredList();if(!fullList.length){grid.innerHTML='<div class="empty-vault"><div class="empty-icon">🛡️</div><h3>Seu Cofre está Vazio</h3><p style="color:var(--text-secondary);max-width:520px;">Vincule Google Fotos, use <strong>📸 Enviar da Galeria</strong>, cole com <strong>Ctrl+V</strong> ou arraste arquivos.</p><button class="btn btn-primary" id="btnEmptyAdd"><span>➕</span> Carregar Primeiros Arquivos</button></div>';return}var list=fullList.slice(0,appState.visibleCount);list.forEach(function(item){var card=document.createElement('div');card.className='media-card';var safeName=escapeHtml(item.name);var mediaEl;if(item.type.indexOf('image/')===0)mediaEl='<img src="'+item.dataUrl+'" alt="'+safeName+'" loading="lazy">';else if(item.type.indexOf('video/')===0)mediaEl='<video src="'+item.dataUrl+'" preload="metadata"></video>';else mediaEl='<div style="font-size:2.5rem;color:var(--accent-primary)">📄</div>';var badgeText=item.optimized?'⚡ Otimizado IA':(item.type.indexOf('image/')===0?'📷 Foto':'🎬 Vídeo');var googleBadge=item.source==='google'?'<span class="media-src-google">G Fotos</span>':'';var catBadge=item.category?'<span class="media-category">'+escapeHtml(item.category)+'</span>':'';var faceBadge=(item.faceCount>0)?'<span class="media-face-badge">👤 '+item.faceCount+'</span>':'';card.innerHTML='<div class="media-thumb-wrap" data-id="'+escapeHtml(item.id)+'">'+mediaEl+'<span class="media-badge">'+badgeText+'</span>'+catBadge+faceBadge+'<span class="media-perm-shield">🔒 Permanente</span>'+googleBadge+'<button class="media-fav-btn'+(item.isFav?' active':'')+'">★</button></div><div class="media-info"><div class="media-title" title="'+safeName+'">'+safeName+'</div><div class="media-meta"><span>'+formatBytes(item.size)+'</span><span>'+formatDate(item.date)+'</span></div><div class="media-actions"><button class="btn-action-icon btn-view-item">👁️ Ver</button><button class="btn-action-icon btn-dl-item">⬇️ Baixar</button><button class="btn-action-icon btn-delete-icon btn-del-item">🗑️</button></div></div>';card.querySelector('.media-thumb-wrap').addEventListener('click',function(e){if(e.target.closest('.media-fav-btn'))return;openLightbox(item)});card.querySelector('.media-fav-btn').addEventListener('click',function(e){e.stopPropagation();item.isFav=!item.isFav;dbPut(item).catch(function(){});updateTelemetry();renderMediaGrid();playSciFiBeep('click')});card.querySelector('.btn-view-item').addEventListener('click',function(){openLightbox(item)});card.querySelector('.btn-dl-item').addEventListener('click',function(){downloadItem(item)});card.querySelector('.btn-del-item').addEventListener('click',function(){if(confirm('Remover "'+item.name+'"?')){dbDelete(item.id).catch(function(){}).then(function(){appState.items=appState.items.filter(function(i){return i.id!==item.id});updateTelemetry();renderMediaGrid();toast('Removido.','🗑️')})}});grid.appendChild(card)});if(fullList.length>appState.visibleCount){var wrap=document.createElement('div');wrap.className='load-more-wrap';var btn=document.createElement('button');btn.className='btn btn-secondary';btn.innerHTML='<span>⬇️</span> Carregar mais ('+(fullList.length-appState.visibleCount)+' restantes)';btn.addEventListener('click',function(){appState.visibleCount+=PAGE_SIZE;renderMediaGrid()});wrap.appendChild(btn);grid.appendChild(wrap)}}
 
 function openLightbox(item){appState.activeLightboxItem=item;var c=document.getElementById('lightboxMediaContainer');var safeName=escapeHtml(item.name);if(item.type.indexOf('image/')===0)c.innerHTML='<img src="'+item.dataUrl+'" class="lightbox-media" alt="'+safeName+'">';else c.innerHTML='<video src="'+item.dataUrl+'" class="lightbox-media" controls autoplay></video>';openModal('modalLightbox');playSciFiBeep('click')}
-function downloadItem(item){var a=document.createElement('a');a.href=item.dataUrl;a.download=item.name;a.click();toast('Baixando "'+escapeHtml(item.name)+'"...','⬇️')}
+function downloadItem(item){var a=document.createElement('a');a.href=item.dataUrl;a.download=item.name;a.click();toast('Baixando...','⬇️')}
 
 function readFileAsDataURL(f){return new Promise(function(res,rej){var r=new FileReader();r.onload=function(){res(r.result)};r.onerror=function(){rej(r.error)};r.readAsDataURL(f)})}
-function handleIncomingFiles(fileList,sourceLabel,sourceTag){sourceLabel=sourceLabel||'';sourceTag=sourceTag||null;if(!fileList||!fileList.length)return Promise.resolve({added:0,quotaError:false});var added=0,quotaError=false;var files=Array.prototype.slice.call(fileList);var chain=Promise.resolve();files.forEach(function(file){chain=chain.then(function(){return readFileAsDataURL(file).then(function(dataUrl){var hash=quickHash(dataUrl);var item={id:'item_'+Date.now()+'_'+Math.random().toString(36).substr(2,6),name:file.name||('midia_'+Date.now()),type:file.type||'image/jpeg',size:file.size,date:Date.now(),isFav:false,optimized:false,permanent:true,hash:hash,source:sourceTag||'local',dataUrl:dataUrl};return dbPut(item).then(function(){appState.items.push(item);added++}).catch(function(err){if(err&&(err.name==='QuotaExceededError'||/quota/i.test(err.message||''))){quotaError=true}else{console.warn('Falha ao gravar',err)}})}).catch(function(e){console.warn('Falha ao processar arquivo',file&&file.name,e)})})});return chain.then(function(){if(added>0){return dbGetAll().then(function(all){appState.items=all}).catch(function(){}).then(function(){updateTelemetry();renderMediaGrid();playSciFiBeep('success');var prefix=sourceLabel?escapeHtml(sourceLabel)+': ':'';toast(prefix+added+' mídia(s) blindadas permanentemente!','🔒')})}}).then(function(){if(quotaError)toast('⚠️ Cofre cheio! Libere espaço no Robô IA.','⚠️');return {added:added,quotaError:quotaError}})}
+function handleIncomingFiles(fileList,sourceLabel,sourceTag){sourceLabel=sourceLabel||'';sourceTag=sourceTag||null;if(!fileList||!fileList.length)return Promise.resolve({added:0,quotaError:false});var added=0,quotaError=false;var files=Array.prototype.slice.call(fileList);var chain=Promise.resolve();files.forEach(function(file){chain=chain.then(function(){return readFileAsDataURL(file).then(function(dataUrl){var hash=quickHash(dataUrl);var item={id:'item_'+Date.now()+'_'+Math.random().toString(36).substr(2,6),name:file.name||('midia_'+Date.now()),type:file.type||'image/jpeg',size:file.size,date:Date.now(),isFav:false,optimized:false,permanent:true,hash:hash,source:sourceTag||'local',dataUrl:dataUrl};return dbPut(item).then(function(){appState.items.push(item);added++}).catch(function(err){if(err&&(err.name==='QuotaExceededError'||/quota/i.test(err.message||''))){quotaError=true}else{console.warn('Falha',err)}})}).catch(function(e){console.warn('Falha',file&&file.name,e)})})});return chain.then(function(){if(added>0){return dbGetAll().then(function(all){appState.items=all}).catch(function(){}).then(function(){updateTelemetry();renderMediaGrid();playSciFiBeep('success');var prefix=sourceLabel?escapeHtml(sourceLabel)+': ':'';toast(prefix+added+' mídia(s) blindadas!','🔒');if(!appState.auraMuted)auraSpeak('Prontinho, gato. Guardei bem pertinho.','flirt')})}}).then(function(){if(quotaError)toast('⚠️ Cofre cheio!','⚠️');return {added:added,quotaError:quotaError}})}
 
-function appendRobotLog(msg){var c=document.getElementById('robotConsole');var t=new Date().toLocaleTimeString('pt-BR');var l=document.createElement('div');l.textContent='['+t+'] '+msg;c.appendChild(l);c.scrollTop=c.scrollHeight}
-function robotRunOptimization(){var unoptimized=appState.items.filter(function(i){return i.type.indexOf('image/')===0&&!i.optimized});if(!unoptimized.length){appendRobotLog('⚡ Todas as imagens já estão otimizadas.');toast('Todas as fotos já estão otimizadas!','✨');return}appendRobotLog('Iniciando compressão Canvas 4K em '+unoptimized.length+' imagem(ns)...');var count=0,sessionSaved=0;var chain=Promise.resolve();unoptimized.forEach(function(item){chain=chain.then(function(){return new Promise(function(resolve){var img=new Image();img.onload=function(){try{var canvas=document.createElement('canvas');var w=img.naturalWidth||img.width,h=img.naturalHeight||img.height;var MAX=2560;if(w>MAX||h>MAX){if(w>h){h=Math.round((h*MAX)/w);w=MAX}else{w=Math.round((w*MAX)/h);h=MAX}}canvas.width=w;canvas.height=h;canvas.getContext('2d').drawImage(img,0,0,w,h);var compressed=canvas.toDataURL('image/webp',0.82);if(compressed.indexOf('data:image/webp')!==0){appendRobotLog('ℹ️ WebP indisponível, usando JPEG em "'+item.name+'"');compressed=canvas.toDataURL('image/jpeg',0.85)}var newSize=Math.round((compressed.length*3)/4);if(newSize<item.size){var diff=item.size-newSize;sessionSaved+=diff;item.size=newSize;item.dataUrl=compressed;item.optimized=true;item.hash=quickHash(compressed);dbPut(item).then(function(){count++;appendRobotLog('✔️ "'+item.name+'": Reduzido em '+formatBytes(diff));resolve()}).catch(function(){resolve()})}else{item.optimized=true;dbPut(item).then(function(){appendRobotLog('ℹ️ "'+item.name+'": Já era ideal.');resolve()}).catch(function(){resolve()})}}catch(e){appendRobotLog('❌ Erro em "'+item.name+'": '+e.message);resolve()}};img.onerror=function(){appendRobotLog('❌ Falha ao carregar "'+item.name+'"');resolve()};img.src=item.dataUrl})})});chain.then(function(){appState.savedBytes+=sessionSaved;localStorage.setItem(KEY_SAVINGS,appState.savedBytes.toString());updateTelemetry();renderMediaGrid();playSciFiBeep('success');appendRobotLog('🎉 Concluído! '+count+' imagens otimizadas. Economia: '+formatBytes(sessionSaved)+'.');toast('Robô economizou '+formatBytes(sessionSaved)+'!','⚡')})}
-function robotScanDuplicates(){appendRobotLog('🔍 Escaneando duplicados por hash...');var map={},dups=[];appState.items.forEach(function(item){var hash=item.hash;if(!hash){hash=quickHash(item.dataUrl||'');item.hash=hash;dbPut(item).catch(function(){})}if(map[hash])dups.push({orig:map[hash],dup:item});else map[hash]=item});if(!dups.length){appendRobotLog('✔️ Nenhuma mídia duplicada.');toast('Nenhuma foto duplicada encontrada.','🛡️');return}appendRobotLog('⚠️ Encontradas '+dups.length+' mídias duplicadas.');if(confirm('O Robô IA detectou '+dups.length+' arquivo(s) duplicado(s). Remover cópias?')){var freed=0;var chain=Promise.resolve();dups.forEach(function(p){chain=chain.then(function(){return dbDelete(p.dup.id).catch(function(){}).then(function(){appState.items=appState.items.filter(function(i){return i.id!==p.dup.id});freed+=p.dup.size;appendRobotLog('🗑️ Removido: "'+p.dup.name+'" ('+formatBytes(p.dup.size)+')')})})});chain.then(function(){updateTelemetry();renderMediaGrid();playSciFiBeep('success');appendRobotLog('🎉 Limpeza finalizada! '+formatBytes(freed)+' recuperados.');toast('Liberados '+formatBytes(freed)+'!','🧹')})}}
-function robotDefragDatabase(){appendRobotLog('🧹 Desfragmentando índices...');dbGetAll().then(function(all){appState.items=all;updateTelemetry();renderMediaGrid();appendRobotLog('✔️ Recalibrados '+all.length+' registros. Integridade 100%.');playSciFiBeep('success');toast('Banco de dados desfragmentado!','🧹')}).catch(function(e){appendRobotLog('❌ Falha: '+e.message)})}
+function appendRobotLog(msg){var c=document.getElementById('robotConsole');if(!c)return;var t=new Date().toLocaleTimeString('pt-BR');var l=document.createElement('div');l.textContent='['+t+'] '+msg;c.appendChild(l);c.scrollTop=c.scrollHeight}
+function robotRunOptimization(){var unoptimized=appState.items.filter(function(i){return i.type.indexOf('image/')===0&&!i.optimized});if(!unoptimized.length){appendRobotLog('⚡ Todas as imagens já otimizadas.');toast('Todas já otimizadas!','✨');return}appendRobotLog('Comprimindo '+unoptimized.length+' imagem(ns)...');var count=0,sessionSaved=0;var chain=Promise.resolve();unoptimized.forEach(function(item){chain=chain.then(function(){return new Promise(function(resolve){var img=new Image();img.onload=function(){try{var canvas=document.createElement('canvas');var w=img.naturalWidth||img.width,h=img.naturalHeight||img.height;var MAX=2560;if(w>MAX||h>MAX){if(w>h){h=Math.round((h*MAX)/w);w=MAX}else{w=Math.round((w*MAX)/h);h=MAX}}canvas.width=w;canvas.height=h;canvas.getContext('2d').drawImage(img,0,0,w,h);var compressed=canvas.toDataURL('image/webp',0.82);if(compressed.indexOf('data:image/webp')!==0){compressed=canvas.toDataURL('image/jpeg',0.85)}var newSize=Math.round((compressed.length*3)/4);if(newSize<item.size){var diff=item.size-newSize;sessionSaved+=diff;item.size=newSize;item.dataUrl=compressed;item.optimized=true;item.hash=quickHash(compressed);dbPut(item).then(function(){count++;appendRobotLog('✔️ "'+item.name+'": -'+formatBytes(diff));resolve()}).catch(function(){resolve()})}else{item.optimized=true;dbPut(item).then(function(){appendRobotLog('ℹ️ "'+item.name+'": Já era ideal.');resolve()}).catch(function(){resolve()})}}catch(e){appendRobotLog('❌ '+item.name+': '+e.message);resolve()}};img.onerror=function(){appendRobotLog('❌ Falha: '+item.name);resolve()};img.src=item.dataUrl})})});chain.then(function(){appState.savedBytes+=sessionSaved;localStorage.setItem(KEY_SAVINGS,appState.savedBytes.toString());updateTelemetry();renderMediaGrid();playSciFiBeep('success');appendRobotLog('🎉 Concluído! '+count+' otimizadas.');toast('Economia: '+formatBytes(sessionSaved),'⚡')})}
+function robotScanDuplicates(){appendRobotLog('🔍 Escaneando...');var map={},dups=[];appState.items.forEach(function(item){var hash=item.hash;if(!hash){hash=quickHash(item.dataUrl||'');item.hash=hash;dbPut(item).catch(function(){})}if(map[hash])dups.push({dup:item});else map[hash]=item});if(!dups.length){appendRobotLog('✔️ Nenhuma duplicada.');toast('Nenhuma duplicada.','🛡️');return}appendRobotLog('⚠️ '+dups.length+' duplicadas.');if(confirm('Remover '+dups.length+' duplicata(s)?')){var freed=0;var chain=Promise.resolve();dups.forEach(function(p){chain=chain.then(function(){return dbDelete(p.dup.id).catch(function(){}).then(function(){appState.items=appState.items.filter(function(i){return i.id!==p.dup.id});freed+=p.dup.size})})});chain.then(function(){updateTelemetry();renderMediaGrid();appendRobotLog('🎉 '+formatBytes(freed)+' recuperados.');toast('Liberados '+formatBytes(freed),'🧹')})}}
+function robotDefragDatabase(){appendRobotLog('🧹 Desfragmentando...');dbGetAll().then(function(all){appState.items=all;updateTelemetry();renderMediaGrid();appendRobotLog('✔️ '+all.length+' registros.');toast('Banco desfragmentado!','🧹')}).catch(function(e){appendRobotLog('❌ '+e.message)})}
 
+// ============================================================
+// GOOGLE FOTOS
+// ============================================================
 function updateGoogleLinkUI(linked){var pill=document.getElementById('googleStatusPill');var btnLink=document.getElementById('btnLinkGoogle');var btnPick=document.getElementById('btnPickGooglePhotos');var btnUnlink=document.getElementById('btnUnlinkGoogle');var badge=document.getElementById('googleClientIdStatusBadge');var clientId=localStorage.getItem(KEY_GOOGLE_CLIENT_ID);if(badge){if(clientId){badge.textContent='✅ Configurado';badge.style.color='#10b981';badge.style.borderColor='#10b981';badge.style.background='rgba(16,185,129,0.15)'}else{badge.textContent='Não configurado';badge.style.color='';badge.style.borderColor='';badge.style.background=''}}if(!pill||!btnLink||!btnPick||!btnUnlink)return;appState.googleLinked=linked;if(appState.googleLinking){pill.className='google-status-pill loading';pill.innerHTML='⏳ Vinculando...'}else if(linked){pill.className='google-status-pill on';pill.innerHTML='✅ Vinculado'+(appState.googleEmail?' • '+escapeHtml(appState.googleEmail):'')}else{pill.className='google-status-pill off';pill.innerHTML='🔌 Não vinculado'}btnPick.disabled=!linked;btnUnlink.disabled=!linked;btnLink.disabled=linked}
-function initGoogleAuth(){var clientId=localStorage.getItem(KEY_GOOGLE_CLIENT_ID);if(!clientId)return Promise.resolve(false);return loadScript(GOOGLE_GIS_SRC).then(function(){if(!window.google||!window.google.accounts||!window.google.accounts.oauth2){throw new Error('GIS não disponível')}googleTokenClient=window.google.accounts.oauth2.initTokenClient({client_id:clientId,scope:GOOGLE_SCOPE,callback:function(resp){appState.googleLinking=false;if(resp.error){toast('Erro ao vincular: '+resp.error,'❌');updateGoogleLinkUI(false);return}googleAccessToken=resp.access_token;googleTokenExpiresAt=Date.now()+(resp.expires_in*1000)-30000;fetch('https://www.googleapis.com/oauth2/v3/userinfo',{headers:{Authorization:'Bearer '+googleAccessToken}}).then(function(r){return r.ok?r.json():null}).then(function(u){if(u&&u.email){appState.googleEmail=u.email;updateGoogleLinkUI(true)}}).catch(function(){});updateGoogleLinkUI(true);playSciFiBeep('success');toast('✅ Conta Google vinculada com sucesso!','🔗')}});return true}).catch(function(e){console.warn(e);appState.googleLinking=false;updateGoogleLinkUI(false);return false})}
-function linkGoogleAccount(){var clientId=localStorage.getItem(KEY_GOOGLE_CLIENT_ID);if(!clientId){toast('⚠️ Configure primeiro o Google Client ID nas Configurações.','⚠️');openModal('modalSettings');return}appState.googleLinking=true;updateGoogleLinkUI(false);if(!googleTokenClient){initGoogleAuth().then(function(ok){if(ok&&googleTokenClient){googleTokenClient.requestAccessToken({prompt:'consent'})}else{appState.googleLinking=false;updateGoogleLinkUI(false);toast('Falha ao inicializar o Google. Verifique sua conexão.','❌')}});return}googleTokenClient.requestAccessToken({prompt:'consent'})}
-function unlinkGoogleAccount(){if(!googleAccessToken)return;try{if(window.google&&window.google.accounts&&window.google.accounts.oauth2){window.google.accounts.oauth2.revoke(googleAccessToken,function(){})}}catch(e){}googleAccessToken=null;googleTokenExpiresAt=0;appState.googleEmail=null;updateGoogleLinkUI(false);toast('Conta Google desvinculada.','🔌')}
-function ensureFreshGoogleToken(){if(!googleAccessToken)return false;if(Date.now()>=googleTokenExpiresAt){toast('Sessão Google expirou. Vinculando novamente...','⏳');if(googleTokenClient)googleTokenClient.requestAccessToken({prompt:''});return false}return true}
-
-function pickGooglePhotos(){if(!ensureFreshGoogleToken()){toast('Vincule sua conta Google primeiro.','⚠️');return}toast('Criando sessão do Google Photos Picker...','📸');fetch(GOOGLE_PICKER_SESSIONS_URL,{method:'POST',headers:{'Authorization':'Bearer '+googleAccessToken,'Content-Type':'application/json'},body:'{}'}).then(function(sessionRes){if(!sessionRes.ok){return sessionRes.text().then(function(txt){console.error('Erro criar sessão:',sessionRes.status,txt);throw new Error('Não foi possível criar a sessão (HTTP '+sessionRes.status+').')})}return sessionRes.json()}).then(function(session){var sessionId=session.id;var pickerUri=session.pickerUri;var popup=window.open(pickerUri,'GooglePhotosPicker','width=1100,height=750,scrollbars=yes,resizable=yes');if(!popup){toast('⚠️ Pop-up bloqueado! Permita pop-ups deste site.','⚠️');return Promise.reject(new Error('popup_blocked'))}toast('Selecione as fotos na janela do Google e confirme.','📸');var done=false;var started=Date.now();var checkPoll=function(){if(done)return Promise.resolve(true);if(Date.now()-started>5*60*1000)return Promise.resolve(false);return new Promise(function(r){setTimeout(r,2500)}).then(function(){return fetch(GOOGLE_PICKER_SESSIONS_URL+'/'+sessionId,{headers:{Authorization:'Bearer '+googleAccessToken}}).then(function(r){return r.ok?r.json():null}).then(function(pollData){if(pollData&&pollData.mediaItemsSet){done=true;return true}if(popup.closed){return new Promise(function(r){setTimeout(r,800)}).then(function(){return fetch(GOOGLE_PICKER_SESSIONS_URL+'/'+sessionId,{headers:{Authorization:'Bearer '+googleAccessToken}}).then(function(r){return r.json()}).then(function(finalData){if(finalData&&finalData.mediaItemsSet){done=true;return true}return false}).catch(function(){return false})})}return checkPoll()}).catch(function(){return checkPoll()})})};return checkPoll().then(function(wasDone){if(!wasDone){toast('Nenhuma foto selecionada (ou tempo esgotado).','ℹ️');return null}toast('Buscando lista de fotos selecionadas...','📋');var mediaItems=[];var fetchPage=function(pageToken){var url=new URL(GOOGLE_PICKER_MEDIA_URL);url.searchParams.set('sessionId',sessionId);url.searchParams.set('pageSize','100');if(pageToken)url.searchParams.set('pageToken',pageToken);return fetch(url.toString(),{headers:{Authorization:'Bearer '+googleAccessToken}}).then(function(listRes){if(!listRes.ok){return listRes.text().then(function(txt){console.error('Erro lista media:',listRes.status,txt);return null})}return listRes.json()}).then(function(listData){if(!listData)return;if(listData.mediaItems)mediaItems.push.apply(mediaItems,listData.mediaItems);if(listData.nextPageToken)return fetchPage(listData.nextPageToken)})};return fetchPage('').then(function(){if(!mediaItems.length){toast('Nenhuma foto retornada pelo Google.','ℹ️');return null}toast('Baixando '+mediaItems.length+' foto(s)...','⬇️');var files=[];var chain=Promise.resolve();mediaItems.forEach(function(mi){chain=chain.then(function(){var isVideo=mi.type==='VIDEO';var baseUrl=(mi.mediaFile&&mi.mediaFile.baseUrl)||'';if(!baseUrl)return;var downloadUrl=baseUrl+(isVideo?'=dv':'=d');return fetch(downloadUrl).then(function(resp){if(!resp.ok)return;return resp.blob().then(function(blob){var fname=(mi.mediaFile&&mi.mediaFile.filename)||('google_'+mi.id);var ftype=(mi.mediaFile&&mi.mediaFile.mimeType)||(isVideo?'video/mp4':'image/jpeg');files.push(new File([blob],fname,{type:ftype}))})}).catch(function(e){console.warn('Falha ao baixar',mi.id,e)})})});return chain.then(function(){if(!files.length){toast('Não foi possível baixar as fotos. Tente novamente.','❌');return null}return handleIncomingFiles(files,'Google Fotos','google').then(function(){return fetch(GOOGLE_PICKER_SESSIONS_URL+'/'+sessionId,{method:'DELETE',headers:{Authorization:'Bearer '+googleAccessToken}}).catch(function(){})})})})})}).catch(function(e){if(e&&e.message==='popup_blocked')return;console.error(e);toast('Erro ao buscar fotos: '+e.message,'❌')})}
+function initGoogleAuth(){var clientId=localStorage.getItem(KEY_GOOGLE_CLIENT_ID);if(!clientId)return Promise.resolve(false);return loadScript(GOOGLE_GIS_SRC).then(function(){if(!window.google||!window.google.accounts||!window.google.accounts.oauth2){throw new Error('GIS não disponível')}googleTokenClient=window.google.accounts.oauth2.initTokenClient({client_id:clientId,scope:GOOGLE_SCOPE,callback:function(resp){appState.googleLinking=false;if(resp.error){toast('Erro: '+resp.error,'❌');updateGoogleLinkUI(false);return}googleAccessToken=resp.access_token;googleTokenExpiresAt=Date.now()+(resp.expires_in*1000)-30000;fetch('https://www.googleapis.com/oauth2/v3/userinfo',{headers:{Authorization:'Bearer '+googleAccessToken}}).then(function(r){return r.ok?r.json():null}).then(function(u){if(u&&u.email){appState.googleEmail=u.email;updateGoogleLinkUI(true)}}).catch(function(){});updateGoogleLinkUI(true);playSciFiBeep('success');toast('✅ Conta Google vinculada!','🔗');if(!appState.auraMuted)auraSpeak('Conectei sua conta Google. Agora posso puxar suas fotos.','flirt')}});return true}).catch(function(e){console.warn(e);appState.googleLinking=false;updateGoogleLinkUI(false);return false})}
+function linkGoogleAccount(){var clientId=localStorage.getItem(KEY_GOOGLE_CLIENT_ID);if(!clientId){toast('⚠️ Configure o Client ID.','⚠️');openModal('modalSettings');return}appState.googleLinking=true;updateGoogleLinkUI(false);if(!googleTokenClient){initGoogleAuth().then(function(ok){if(ok&&googleTokenClient){googleTokenClient.requestAccessToken({prompt:'consent'})}else{appState.googleLinking=false;updateGoogleLinkUI(false);toast('Falha ao inicializar.','❌')}});return}googleTokenClient.requestAccessToken({prompt:'consent'})}
+function unlinkGoogleAccount(){if(!googleAccessToken)return;try{if(window.google&&window.google.accounts&&window.google.accounts.oauth2){window.google.accounts.oauth2.revoke(googleAccessToken,function(){})}}catch(e){}googleAccessToken=null;googleTokenExpiresAt=0;appState.googleEmail=null;updateGoogleLinkUI(false);toast('Desvinculado.','🔌')}
+function ensureFreshGoogleToken(){if(!googleAccessToken)return false;if(Date.now()>=googleTokenExpiresAt){toast('Sessão expirou.','⏳');if(googleTokenClient)googleTokenClient.requestAccessToken({prompt:''});return false}return true}
+function pickGooglePhotos(){if(!ensureFreshGoogleToken()){toast('Vincule primeiro.','⚠️');return}toast('Criando sessão...','📸');fetch(GOOGLE_PICKER_SESSIONS_URL,{method:'POST',headers:{'Authorization':'Bearer '+googleAccessToken,'Content-Type':'application/json'},body:'{}'}).then(function(sessionRes){if(!sessionRes.ok){return sessionRes.text().then(function(txt){console.error(txt);throw new Error('HTTP '+sessionRes.status)})}return sessionRes.json()}).then(function(session){var sessionId=session.id;var pickerUri=session.pickerUri;var popup=window.open(pickerUri,'GooglePhotosPicker','width=1100,height=750,scrollbars=yes,resizable=yes');if(!popup){toast('⚠️ Pop-up bloqueado!','⚠️');return Promise.reject(new Error('popup_blocked'))}toast('Selecione as fotos.','📸');var done=false;var started=Date.now();var checkPoll=function(){if(done)return Promise.resolve(true);if(Date.now()-started>5*60*1000)return Promise.resolve(false);return new Promise(function(r){setTimeout(r,2500)}).then(function(){return fetch(GOOGLE_PICKER_SESSIONS_URL+'/'+sessionId,{headers:{Authorization:'Bearer '+googleAccessToken}}).then(function(r){return r.ok?r.json():null}).then(function(pd){if(pd&&pd.mediaItemsSet){done=true;return true}if(popup.closed){return new Promise(function(r){setTimeout(r,800)}).then(function(){return fetch(GOOGLE_PICKER_SESSIONS_URL+'/'+sessionId,{headers:{Authorization:'Bearer '+googleAccessToken}}).then(function(r){return r.json()}).then(function(f){if(f&&f.mediaItemsSet){done=true;return true}return false}).catch(function(){return false})})}return checkPoll()}).catch(function(){return checkPoll()})})};return checkPoll().then(function(wasDone){if(!wasDone){toast('Nenhuma foto.','ℹ️');return null}toast('Buscando lista...','📋');var mediaItems=[];var fetchPage=function(pageToken){var url=new URL(GOOGLE_PICKER_MEDIA_URL);url.searchParams.set('sessionId',sessionId);url.searchParams.set('pageSize','100');if(pageToken)url.searchParams.set('pageToken',pageToken);return fetch(url.toString(),{headers:{Authorization:'Bearer '+googleAccessToken}}).then(function(r){return r.ok?r.json():null}).then(function(data){if(!data)return;if(data.mediaItems)mediaItems.push.apply(mediaItems,data.mediaItems);if(data.nextPageToken)return fetchPage(data.nextPageToken)})};return fetchPage('').then(function(){if(!mediaItems.length){toast('Nenhuma foto retornada.','ℹ️');return null}toast('Baixando '+mediaItems.length+' foto(s)...','⬇️');var files=[];var chain=Promise.resolve();mediaItems.forEach(function(mi){chain=chain.then(function(){var isVideo=mi.type==='VIDEO';var baseUrl=(mi.mediaFile&&mi.mediaFile.baseUrl)||'';if(!baseUrl)return;var downloadUrl=baseUrl+(isVideo?'=dv':'=d');return fetch(downloadUrl).then(function(resp){if(!resp.ok)return;return resp.blob().then(function(blob){var fname=(mi.mediaFile&&mi.mediaFile.filename)||('google_'+mi.id);var ftype=(mi.mediaFile&&mi.mediaFile.mimeType)||(isVideo?'video/mp4':'image/jpeg');files.push(new File([blob],fname,{type:ftype}))})}).catch(function(e){console.warn(e)})})});return chain.then(function(){if(!files.length){toast('Não foi possível baixar.','❌');return null}return handleIncomingFiles(files,'Google Fotos','google').then(function(){return fetch(GOOGLE_PICKER_SESSIONS_URL+'/'+sessionId,{method:'DELETE',headers:{Authorization:'Bearer '+googleAccessToken}}).catch(function(){})})})})})}).catch(function(e){if(e&&e.message==='popup_blocked')return;console.error(e);toast('Erro: '+e.message,'❌')})}
 
 function openModal(id){var el=document.getElementById(id);if(el){el.classList.add('open');document.body.style.overflow='hidden';playSciFiBeep('click')}}
 function closeModal(id){var el=document.getElementById(id);if(el){el.classList.remove('open');if(!document.querySelector('.modal-overlay.open'))document.body.style.overflow=''}}
 
-function initApp(){return initDB().then(function(){return dbGetAll()}).then(function(all){appState.items=all}).catch(function(e){console.error('DB init error',e)}).then(function(){var savedClientId=localStorage.getItem(KEY_GOOGLE_CLIENT_ID)||'';document.getElementById('googleClientIdInput').value=savedClientId;applyThemeWithBot(appState.activeThemeId,false);renderThemesGrid('all','');document.getElementById('settingsCurrentCapacity').textContent=appState.quotaVal+' '+appState.quotaUnit;document.getElementById('customQuotaInput').value=appState.quotaVal;document.getElementById('customQuotaUnit').value=appState.quotaUnit;document.querySelectorAll('#quotaPresets .preset-chip').forEach(function(b){b.classList.toggle('active',parseInt(b.dataset.val,10)===appState.quotaVal&&b.dataset.unit===appState.quotaUnit)});updateTelemetry();renderMediaGrid();updateGoogleLinkUI(false);requestPersistentStorage(true);if(savedClientId)initGoogleAuth();
-document.getElementById('btnTopChangeThemeManual').addEventListener('click',function(){openModal('modalThemes')});
-document.getElementById('btnQuickNextTheme').addEventListener('click',function(){var currentIndex=THEMES.findIndex(function(t){return t.id===appState.activeThemeId});var nextIndex=(currentIndex+1)%THEMES.length;applyThemeWithBot(THEMES[nextIndex].id,true)});
-document.getElementById('btnOpenSettings').addEventListener('click',function(){openModal('modalSettings')});
-document.getElementById('quickStorageBtn').addEventListener('click',function(){openModal('modalSettings')});
-document.getElementById('btnOpenThemesModal').addEventListener('click',function(){closeModal('modalSettings');openModal('modalThemes')});
-document.getElementById('btnOpenRobot').addEventListener('click',function(){openModal('modalRobot')});
-document.getElementById('btnOpenRobotFromSettings').addEventListener('click',function(){closeModal('modalSettings');openModal('modalRobot')});
-document.getElementById('btnRequestPersist').addEventListener('click',function(){requestPersistentStorage(false)});
-document.getElementById('btnLinkGoogle').addEventListener('click',linkGoogleAccount);
-document.getElementById('btnUnlinkGoogle').addEventListener('click',unlinkGoogleAccount);
-document.getElementById('btnPickGooglePhotos').addEventListener('click',pickGooglePhotos);
-document.getElementById('btnSaveClientId').addEventListener('click',function(){var val=document.getElementById('googleClientIdInput').value.trim();if(!val||val.indexOf('.apps.googleusercontent.com')<0){toast('⚠️ Client ID inválido. Deve terminar em .apps.googleusercontent.com','⚠️');return}localStorage.setItem(KEY_GOOGLE_CLIENT_ID,val);googleTokenClient=null;toast('✅ Client ID salvo com sucesso!','💾');updateGoogleLinkUI(false);initGoogleAuth()});
-document.getElementById('btnTestGoogleAuth').addEventListener('click',function(){var val=document.getElementById('googleClientIdInput').value.trim();if(!val){toast('⚠️ Cole o Client ID primeiro.','⚠️');return}localStorage.setItem(KEY_GOOGLE_CLIENT_ID,val);googleTokenClient=null;updateGoogleLinkUI(false);initGoogleAuth().then(function(ok){if(ok){toast('Testando vinculação...','🧪');linkGoogleAccount()}else toast('Falha ao inicializar. Verifique sua conexão.','❌')})});
-document.getElementById('btnBotRandomTheme').addEventListener('click',botSuggestRandomTheme);
-document.getElementById('themeSearchInput').addEventListener('input',function(e){var activeCatBtn=document.querySelector('#themeCategoryNav .theme-cat-btn.active');var activeCat=activeCatBtn?activeCatBtn.dataset.cat:'all';renderThemesGrid(activeCat,e.target.value)});
-document.querySelectorAll('#themeCategoryNav .theme-cat-btn').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#themeCategoryNav .theme-cat-btn').forEach(function(btn){btn.classList.remove('active')});b.classList.add('active');renderThemesGrid(b.dataset.cat,document.getElementById('themeSearchInput').value)})});
-var fileInput=document.getElementById('fileInput');
-document.getElementById('btnUploadTrigger').addEventListener('click',function(){fileInput.click()});
-document.getElementById('mediaGrid').addEventListener('click',function(e){if(e.target.closest('#btnEmptyAdd'))fileInput.click()});
-fileInput.addEventListener('change',function(e){handleIncomingFiles(e.target.files);e.target.value=''});
-var photoPicker=document.getElementById('photoPickerInput');
-document.getElementById('btnSendPhotoDirect').addEventListener('click',function(){photoPicker.click();toast('Escolha uma foto da galeria.','📸')});
-photoPicker.addEventListener('change',function(e){handleIncomingFiles(e.target.files,'Envio Direto');e.target.value=''});
-document.getElementById('btnLaunchGooglePhotos').addEventListener('click',function(){window.open('https://photos.google.com','_blank','noopener');toast('Google Fotos aberto! Baixe/copie e use "Enviar da Galeria" ou Ctrl+V.','🚀')});
-var zipFileInput=document.getElementById('zipFileInput');
-document.getElementById('btnImportTakeoutZip').addEventListener('click',function(){zipFileInput.click()});
-zipFileInput.addEventListener('change',function(e){var file=e.target.files[0];if(!file)return;toast('Extraindo e blindando pacote ZIP...','📦');JSZip.loadAsync(file).then(function(zip){var blobs=[];var chain=Promise.resolve();Object.keys(zip.files).forEach(function(fn){var fe=zip.files[fn];if(fe.dir)return;var ext=fn.split('.').pop().toLowerCase();if(['jpg','jpeg','png','webp','gif','mp4','mov','pdf'].indexOf(ext)>=0){chain=chain.then(function(){return fe.async('blob').then(function(blob){blobs.push({blob:blob,name:fn.split('/').pop()||fn})})})}});return chain.then(function(){var files=blobs.map(function(b){return new File([b.blob],b.name,{type:b.blob.type||'image/jpeg'})});return handleIncomingFiles(files,'ZIP')})}).catch(function(err){console.error(err);toast('Erro ao ler arquivo ZIP.','❌')});e.target.value=''});
-document.getElementById('btnExportAllZip').addEventListener('click',function(){if(!appState.items.length){alert('O cofre está vazio!');return}toast('Gerando arquivo ZIP blindado...','📦');var zip=new JSZip();appState.items.forEach(function(item,idx){var base64=item.dataUrl.split(',')[1];var safeName=String(item.name).replace(/[\\/:*?"<>|]/g,'_');zip.file(('0000'+(idx+1)).slice(-4)+'_'+safeName,base64,{base64:true})});zip.generateAsync({type:'blob'}).then(function(content){var a=document.createElement('a');a.href=URL.createObjectURL(content);a.download='MANGEDORA_APPLE_BACKUP_'+Date.now()+'.zip';a.click();setTimeout(function(){URL.revokeObjectURL(a.href)},5000);toast('Backup exportado com sucesso!','🛡️')})});
-document.getElementById('btnClearAllVault').addEventListener('click',function(){if(confirm('Deseja apagar todas as mídias do cofre local permanentemente?')&&confirm('Confirmação final: ação irreversível.')){dbClear().catch(function(){}).then(function(){appState.items=[];updateTelemetry();renderMediaGrid();toast('Cofre esvaziado.','🗑️')})}});
-document.querySelectorAll('#quotaPresets .preset-chip').forEach(function(b){b.addEventListener('click',function(){saveQuota(b.dataset.val,b.dataset.unit)})});
-document.getElementById('btnSaveCustomQuota').addEventListener('click',function(){saveQuota(document.getElementById('customQuotaInput').value,document.getElementById('customQuotaUnit').value)});
-document.getElementById('btnRobotOptimize').addEventListener('click',robotRunOptimization);
-document.getElementById('btnRobotDuplicates').addEventListener('click',robotScanDuplicates);
-document.getElementById('btnRobotDefrag').addEventListener('click',robotDefragDatabase);
-document.getElementById('btnDownloadLightbox').addEventListener('click',function(){if(appState.activeLightboxItem)downloadItem(appState.activeLightboxItem)});
-document.querySelectorAll('.filter-tabs .filter-btn').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.filter-tabs .filter-btn').forEach(function(btn){btn.classList.remove('active')});b.classList.add('active');appState.filter=b.dataset.filter;appState.visibleCount=PAGE_SIZE;renderMediaGrid()})});
-document.getElementById('searchInput').addEventListener('input',function(e){appState.search=e.target.value;appState.visibleCount=PAGE_SIZE;renderMediaGrid()});
-document.getElementById('sortSelect').addEventListener('change',function(e){appState.sort=e.target.value;appState.visibleCount=PAGE_SIZE;renderMediaGrid()});
-window.addEventListener('paste',function(e){var items=(e.clipboardData||e.originalEvent.clipboardData).items;var files=[];for(var i=0;i<items.length;i++){if(items[i].kind==='file'){var f=items[i].getAsFile();if(f)files.push(f)}}if(files.length){toast('Foto recebida da área de transferência!','📋');handleIncomingFiles(files,'Colar')}});
-window.addEventListener('dragover',function(e){e.preventDefault()});
-window.addEventListener('drop',function(e){e.preventDefault();if(e.dataTransfer&&e.dataTransfer.files.length){handleIncomingFiles(e.dataTransfer.files,'Arrastar')}});
-document.querySelectorAll('.modal-overlay').forEach(function(o){o.addEventListener('click',function(e){if(e.target===o){o.classList.remove('open');if(!document.querySelector('.modal-overlay.open'))document.body.style.overflow=''}})});
-document.querySelectorAll('[data-close]').forEach(function(btn){btn.addEventListener('click',function(){closeModal(btn.dataset.close)})});
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.modal-overlay.open').forEach(function(m){m.classList.remove('open')});document.body.style.overflow=''}})})}
+// ============================================================
+// INIT
+// ============================================================
+function initApp(){
+  auraLoadMemory();
+  return initDB().then(function(){return dbGetAll()}).then(function(all){appState.items=all}).catch(function(e){console.error('DB',e)}).then(function(){
+    var savedClientId=localStorage.getItem(KEY_GOOGLE_CLIENT_ID)||'';
+    var gcpInput=document.getElementById('googleClientIdInput');
+    if(gcpInput)gcpInput.value=savedClientId;
+    applyThemeWithBot(appState.activeThemeId,false);
+    renderThemesGrid('all','');
+    document.getElementById('settingsCurrentCapacity').textContent=appState.quotaVal+' '+appState.quotaUnit;
+    document.getElementById('customQuotaInput').value=appState.quotaVal;
+    document.getElementById('customQuotaUnit').value=appState.quotaUnit;
+    document.querySelectorAll('#quotaPresets .preset-chip').forEach(function(b){b.classList.toggle('active',parseInt(b.dataset.val,10)===appState.quotaVal&&b.dataset.unit===appState.quotaUnit)});
+    updateTelemetry();renderMediaGrid();updateGoogleLinkUI(false);requestPersistentStorage(true);
+    if(savedClientId)initGoogleAuth();
+    initAuraVoice();
+
+    // Aura state
+    var muteBtn=document.getElementById('btnAuraMute');
+    if(muteBtn){muteBtn.textContent=appState.auraMuted?'🔇 Voz desligada':'🔊 Voz ligada';muteBtn.classList.toggle('muted',appState.auraMuted)}
+    var statusDot=document.getElementById('auraStatusDot');
+    if(statusDot)statusDot.style.background=appState.auraMuted?'#ef4444':'#10b981';
+
+    // Aura hidden on start
+    if(localStorage.getItem(KEY_AURA_HIDDEN)==='true'){
+      var ab=document.getElementById('auraAvatarBtn');
+      var ap=document.getElementById('auraRestorePill');
+      if(ab)ab.classList.add('hidden');
+      if(ap)ap.style.display='flex';
+    }
+
+    // Aura UI bindings
+    var auraBtn=document.getElementById('auraAvatarBtn');
+    if(auraBtn)auraBtn.addEventListener('click',auraOpen);
+    var aClose=document.getElementById('btnAuraClose');
+    if(aClose)aClose.addEventListener('click',auraClose);
+    var aHello=document.getElementById('btnAuraSayHello');
+    if(aHello)aHello.addEventListener('click',function(){auraLogUser('Oi AURA');auraProcessUserMessage('oi')});
+    var aFlirt=document.getElementById('btnAuraFlirt');
+    if(aFlirt)aFlirt.addEventListener('click',function(){auraLogUser('Você é linda');auraProcessUserMessage('você é linda')});
+    var aOrg=document.getElementById('btnAuraOrganize');
+    if(aOrg)aOrg.addEventListener('click',function(){auraLogUser('organizar');auraProcessUserMessage('organizar')});
+    var aFace=document.getElementById('btnAuraScanFaces');
+    if(aFace)aFace.addEventListener('click',function(){auraLogUser('achar rostos');auraProcessUserMessage('achar rostos')});
+    if(muteBtn)muteBtn.addEventListener('click',function(){
+      appState.auraMuted=!appState.auraMuted;
+      localStorage.setItem(KEY_AURA_MUTED,appState.auraMuted?'true':'false');
+      muteBtn.textContent=appState.auraMuted?'🔇 Voz desligada':'🔊 Voz ligada';
+      muteBtn.classList.toggle('muted',appState.auraMuted);
+      if(statusDot)statusDot.style.background=appState.auraMuted?'#ef4444':'#10b981';
+      updateAuraStatus();
+      if(!appState.auraMuted)auraSpeak('Voz ligada de novo.','flirt');
+    });
+
+    // Aura input
+    var auraInput=document.getElementById('auraInput');
+    var auraSend=document.getElementById('auraSendBtn');
+    var auraMic=document.getElementById('auraMicBtn');
+    var auraHideBtn=document.getElementById('btnAuraHide');
+    var auraPill=document.getElementById('auraRestorePill');
+    function doSend(){if(!auraInput)return;var v=auraInput.value.trim();if(!v)return;auraLogUser(v);auraInput.value='';auraProcessUserMessage(v)}
+    if(auraSend)auraSend.addEventListener('click',doSend);
+    if(auraInput)auraInput.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();doSend()}});
+    if(auraMic)auraMic.addEventListener('click',auraStartListening);
+    if(auraHideBtn)auraHideBtn.addEventListener('click',auraHide);
+    if(auraPill)auraPill.addEventListener('click',auraShow);
+
+    // BOT PLUS
+    var bp=document.getElementById('btnOpenBotPlus');
+    if(bp)bp.addEventListener('click',function(){openModal('modalBotPlus')});
+    var bp1=document.getElementById('btnBotPlusOrganize');if(bp1)bp1.addEventListener('click',botPlusOrganize);
+    var bp2=document.getElementById('btnBotPlusCategories');if(bp2)bp2.addEventListener('click',botPlusCategorize);
+    var bp3=document.getElementById('btnBotPlusFaces');if(bp3)bp3.addEventListener('click',botPlusDetectFaces);
+    var bp4=document.getElementById('btnBotPlusRename');if(bp4)bp4.addEventListener('click',botPlusRename);
+    var bp5=document.getElementById('btnBotPlusGoogleSort');if(bp5)bp5.addEventListener('click',botPlusSortGoogle);
+    var bp6=document.getElementById('btnBotPlusCleanup');if(bp6)bp6.addEventListener('click',botPlusCleanup);
+
+    // Settings buttons
+    var btnAT=document.getElementById('btnAuraTestVoice');
+    if(btnAT)btnAT.addEventListener('click',function(){auraSpeak('Oi, gato. Aqui é a AURA. Tô pronta pra te ajudar.','flirt')});
+    var btnATv=document.getElementById('btnAuraToggleVoice');
+    if(btnATv)btnATv.addEventListener('click',function(){
+      appState.auraMuted=!appState.auraMuted;
+      localStorage.setItem(KEY_AURA_MUTED,appState.auraMuted?'true':'false');
+      if(muteBtn){muteBtn.textContent=appState.auraMuted?'🔇 Voz desligada':'🔊 Voz ligada';muteBtn.classList.toggle('muted',appState.auraMuted)}
+      if(statusDot)statusDot.style.background=appState.auraMuted?'#ef4444':'#10b981';
+      updateAuraStatus();
+    });
+    var btnCM=document.getElementById('btnAuraClearMemory');
+    if(btnCM)btnCM.addEventListener('click',function(){if(confirm('Limpar a memória da AURA?'))auraClearMemory()});
+
+    // Header buttons
+    document.getElementById('btnTopChangeThemeManual').addEventListener('click',function(){openModal('modalThemes')});
+    document.getElementById('btnQuickNextTheme').addEventListener('click',function(){var i=THEMES.findIndex(function(t){return t.id===appState.activeThemeId});var n=(i+1)%THEMES.length;applyThemeWithBot(THEMES[n].id,true)});
+    document.getElementById('btnOpenSettings').addEventListener('click',function(){openModal('modalSettings')});
+    document.getElementById('quickStorageBtn').addEventListener('click',function(){openModal('modalSettings')});
+    document.getElementById('btnOpenThemesModal').addEventListener('click',function(){closeModal('modalSettings');openModal('modalThemes')});
+    document.getElementById('btnOpenRobot').addEventListener('click',function(){openModal('modalRobot')});
+    document.getElementById('btnRequestPersist').addEventListener('click',function(){requestPersistentStorage(false)});
+    document.getElementById('btnLinkGoogle').addEventListener('click',linkGoogleAccount);
+    document.getElementById('btnUnlinkGoogle').addEventListener('click',unlinkGoogleAccount);
+    document.getElementById('btnPickGooglePhotos').addEventListener('click',pickGooglePhotos);
+    document.getElementById('btnSaveClientId').addEventListener('click',function(){var val=document.getElementById('googleClientIdInput').value.trim();if(!val||val.indexOf('.apps.googleusercontent.com')<0){toast('⚠️ Client ID inválido.','⚠️');return}localStorage.setItem(KEY_GOOGLE_CLIENT_ID,val);googleTokenClient=null;toast('✅ Client ID salvo!','💾');updateGoogleLinkUI(false);initGoogleAuth()});
+    document.getElementById('btnTestGoogleAuth').addEventListener('click',function(){var val=document.getElementById('googleClientIdInput').value.trim();if(!val){toast('⚠️ Cole o Client ID.','⚠️');return}localStorage.setItem(KEY_GOOGLE_CLIENT_ID,val);googleTokenClient=null;updateGoogleLinkUI(false);initGoogleAuth().then(function(ok){if(ok){toast('Testando...','🧪');linkGoogleAccount()}else toast('Falha.','❌')})});
+    document.getElementById('btnBotRandomTheme').addEventListener('click',botSuggestRandomTheme);
+    document.getElementById('themeSearchInput').addEventListener('input',function(e){var a=document.querySelector('#themeCategoryNav .theme-cat-btn.active');var c=a?a.dataset.cat:'all';renderThemesGrid(c,e.target.value)});
+    document.querySelectorAll('#themeCategoryNav .theme-cat-btn').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#themeCategoryNav .theme-cat-btn').forEach(function(x){x.classList.remove('active')});b.classList.add('active');renderThemesGrid(b.dataset.cat,document.getElementById('themeSearchInput').value)})});
+
+    var fileInput=document.getElementById('fileInput');
+    document.getElementById('btnUploadTrigger').addEventListener('click',function(){fileInput.click()});
+    document.getElementById('mediaGrid').addEventListener('click',function(e){if(e.target.closest('#btnEmptyAdd'))fileInput.click()});
+    fileInput.addEventListener('change',function(e){handleIncomingFiles(e.target.files);e.target.value=''});
+    var photoPicker=document.getElementById('photoPickerInput');
+    document.getElementById('btnSendPhotoDirect').addEventListener('click',function(){photoPicker.click()});
+    photoPicker.addEventListener('change',function(e){handleIncomingFiles(e.target.files,'Envio Direto');e.target.value=''});
+    document.getElementById('btnLaunchGooglePhotos').addEventListener('click',function(){window.open('https://photos.google.com','_blank','noopener');toast('Google Fotos aberto!','🚀')});
+    var zipFileInput=document.getElementById('zipFileInput');
+    document.getElementById('btnImportTakeoutZip').addEventListener('click',function(){zipFileInput.click()});
+    zipFileInput.addEventListener('change',function(e){var file=e.target.files[0];if(!file)return;toast('Extraindo ZIP...','📦');JSZip.loadAsync(file).then(function(zip){var blobs=[];var chain=Promise.resolve();Object.keys(zip.files).forEach(function(fn){var fe=zip.files[fn];if(fe.dir)return;var ext=fn.split('.').pop().toLowerCase();if(['jpg','jpeg','png','webp','gif','mp4','mov','pdf'].indexOf(ext)>=0){chain=chain.then(function(){return fe.async('blob').then(function(blob){blobs.push({blob:blob,name:fn.split('/').pop()||fn})})})}});return chain.then(function(){var files=blobs.map(function(b){return new File([b.blob],b.name,{type:b.blob.type||'image/jpeg'})});return handleIncomingFiles(files,'ZIP')})}).catch(function(err){console.error(err);toast('Erro ao ler ZIP.','❌')});e.target.value=''});
+    document.getElementById('btnExportAllZip').addEventListener('click',function(){if(!appState.items.length){alert('Cofre vazio!');return}toast('Gerando ZIP...','📦');var zip=new JSZip();appState.items.forEach(function(item,idx){var base64=item.dataUrl.split(',')[1];var safeName=String(item.name).replace(/[\\/:*?"<>|]/g,'_');zip.file(('0000'+(idx+1)).slice(-4)+'_'+safeName,base64,{base64:true})});zip.generateAsync({type:'blob'}).then(function(content){var a=document.createElement('a');a.href=URL.createObjectURL(content);a.download='MANGEDORA_BACKUP_'+Date.now()+'.zip';a.click();setTimeout(function(){URL.revokeObjectURL(a.href)},5000);toast('Backup exportado!','🛡️')})});
+    document.getElementById('btnClearAllVault').addEventListener('click',function(){if(confirm('Apagar todas as mídias?')&&confirm('Confirmação: irreversível.')){dbClear().catch(function(){}).then(function(){appState.items=[];updateTelemetry();renderMediaGrid();toast('Cofre esvaziado.','🗑️')})}});
+    document.querySelectorAll('#quotaPresets .preset-chip').forEach(function(b){b.addEventListener('click',function(){saveQuota(b.dataset.val,b.dataset.unit)})});
+    document.getElementById('btnSaveCustomQuota').addEventListener('click',function(){saveQuota(document.getElementById('customQuotaInput').value,document.getElementById('customQuotaUnit').value)});
+    document.getElementById('btnRobotOptimize').addEventListener('click',robotRunOptimization);
+    document.getElementById('btnRobotDuplicates').addEventListener('click',robotScanDuplicates);
+    document.getElementById('btnRobotDefrag').addEventListener('click',robotDefragDatabase);
+    document.getElementById('btnDownloadLightbox').addEventListener('click',function(){if(appState.activeLightboxItem)downloadItem(appState.activeLightboxItem)});
+    document.querySelectorAll('.filter-tabs .filter-btn').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.filter-tabs .filter-btn').forEach(function(x){x.classList.remove('active')});b.classList.add('active');appState.filter=b.dataset.filter;appState.visibleCount=PAGE_SIZE;renderMediaGrid()})});
+    document.getElementById('searchInput').addEventListener('input',function(e){appState.search=e.target.value;appState.visibleCount=PAGE_SIZE;renderMediaGrid()});
+    document.getElementById('sortSelect').addEventListener('change',function(e){appState.sort=e.target.value;appState.visibleCount=PAGE_SIZE;renderMediaGrid()});
+    window.addEventListener('paste',function(e){var items=(e.clipboardData||e.originalEvent.clipboardData).items;var files=[];for(var i=0;i<items.length;i++){if(items[i].kind==='file'){var f=items[i].getAsFile();if(f)files.push(f)}}if(files.length){toast('Foto recebida!','📋');handleIncomingFiles(files,'Colar')}});
+    window.addEventListener('dragover',function(e){e.preventDefault()});
+    window.addEventListener('drop',function(e){e.preventDefault();if(e.dataTransfer&&e.dataTransfer.files.length){handleIncomingFiles(e.dataTransfer.files,'Arrastar')}});
+    document.querySelectorAll('.modal-overlay').forEach(function(o){o.addEventListener('click',function(e){if(e.target===o){o.classList.remove('open');if(!document.querySelector('.modal-overlay.open'))document.body.style.overflow=''}})});
+    document.querySelectorAll('[data-close]').forEach(function(btn){btn.addEventListener('click',function(){closeModal(btn.dataset.close)})});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.modal-overlay.open').forEach(function(m){m.classList.remove('open')});document.body.style.overflow=''}});
+
+    // Aura cumprimenta após 3s (só se visível)
+    setTimeout(function(){
+      if(!appState.auraMuted&&localStorage.getItem(KEY_AURA_HIDDEN)!=='true'){
+        auraSpeak('Oi, gato. Tô aqui. Toca no meu avatar pra conversar.','flirt');
+      }
+    },3000);
+  });
+}
 
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initApp);else initApp();
 })();
