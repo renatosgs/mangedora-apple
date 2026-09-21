@@ -1,1827 +1,1647 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <meta name="description" content="MANGEDORA APPLE PRO ELITE • Cofre Blindado Permanente com Robô IA, 40 Temas, Boot IA, Ajuste GB/TB e Google Fotos OAuth 2.0.">
-  <meta name="theme-color" content="#06070a">
-  <title>MANGEDORA APPLE • Elite Pro Vault & Google Fotos OAuth</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%2306070a' stroke='%233b82f6' stroke-width='2'/><path d='M16 6l9 5v6c0 5.5-4 9.5-9 11-5-1.5-9-5.5-9-11v-6l9-5z' fill='%23121724' stroke='%233b82f6' stroke-width='1.5'/><circle cx='16' cy='16' r='3.5' fill='%23f59e0b'/></svg>">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-  <style>
-    :root {
-      --bg-base: #06070a; --bg-surface: #0c0f17; --bg-surface-elevated: #121724;
-      --bg-card: rgba(18,23,36,0.85); --border-subtle: rgba(255,255,255,0.08);
-      --border-medium: rgba(255,255,255,0.18); --border-focus: #3b82f6;
-      --text-primary: #f8fafc; --text-secondary: #94a3b8; --text-tertiary: #64748b;
-      --text-accent: #38bdf8; --accent-primary: #3b82f6; --accent-secondary: #f59e0b;
-      --accent-glow: rgba(59,130,246,0.4); --radial-1: rgba(59,130,246,0.12); --radial-2: rgba(245,158,11,0.08);
-      --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif; --font-mono: 'JetBrains Mono', monospace;
-      --radius-sm: 8px; --radius-md: 14px; --radius-lg: 20px; --radius-xl: 28px;
-      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: var(--font-sans); background: var(--bg-base);
-      background-image: radial-gradient(circle at 15% 10%, var(--radial-1) 0%, transparent 45%), radial-gradient(circle at 85% 15%, var(--radial-2) 0%, transparent 45%);
-      background-attachment: fixed; color: var(--text-primary); min-height: 100vh; overflow-x: hidden;
-    }
-    ::-webkit-scrollbar { width: 8px; height: 8px; }
-    ::-webkit-scrollbar-track { background: var(--bg-base); }
-    ::-webkit-scrollbar-thumb { background: var(--bg-surface-elevated); border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
-    .app-container { max-width: 1400px; margin: 0 auto; padding: 1.25rem 1.5rem 3rem; }
-    .app-header {
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
-      padding: 1.1rem 1.6rem; background: var(--bg-card); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); margin-bottom: 1.5rem;
-    }
-    .brand-section { display: flex; align-items: center; gap: 0.9rem; }
-    .brand-logo-wrap {
-      width: 44px; height: 44px; border-radius: var(--radius-md); background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-      display: flex; align-items: center; justify-content: center; box-shadow: 0 0 18px var(--accent-glow); flex-shrink: 0;
-    }
-    .brand-logo-wrap svg { width: 24px; height: 24px; fill: #ffffff; }
-    .brand-info h1 {
-      font-size: 1.22rem; font-weight: 800; display: flex; align-items: center; gap: 0.5rem;
-      background: linear-gradient(90deg, #fff, var(--text-secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .badge-elite {
-      font-size: 0.65rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 0.2rem 0.5rem;
-      border-radius: 999px; background: rgba(59,130,246,0.15); border: 1px solid var(--accent-primary); color: var(--text-accent); -webkit-text-fill-color: var(--text-accent);
-    }
-    .badge-permanent {
-      font-size: 0.6rem; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; padding: 0.15rem 0.4rem;
-      border-radius: 999px; background: rgba(16,185,129,0.15); border: 1px solid #10b981; color: #10b981;
-    }
-    .header-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 0.65rem; }
-    .storage-pill {
-      display: flex; align-items: center; gap: 0.65rem; background: rgba(255,255,255,0.04); border: 1px solid var(--border-subtle);
-      border-radius: 999px; padding: 0.4rem 0.9rem; font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); cursor: pointer; transition: var(--transition);
-    }
-    .storage-pill:hover { background: rgba(255,255,255,0.08); border-color: var(--accent-primary); }
-    .storage-mini-bar { width: 55px; height: 6px; background: rgba(255,255,255,0.1); border-radius: 999px; overflow: hidden; }
-    .storage-mini-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary)); transition: width 0.4s ease; }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem; padding: 0.6rem 1.15rem; font-size: 0.85rem;
-      font-weight: 600; font-family: var(--font-sans); border-radius: var(--radius-md); border: 1px solid transparent; cursor: pointer; transition: var(--transition); text-decoration: none; white-space: nowrap;
-    }
-    .btn:disabled { opacity: 0.45; cursor: not-allowed; }
-    .btn-primary { background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); color: #fff; box-shadow: 0 4px 16px var(--accent-glow); }
-    .btn-primary:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 20px var(--accent-glow); }
-    .btn-theme-header {
-      background: linear-gradient(135deg, rgba(245,158,11,0.18), rgba(59,130,246,0.22)); border: 1px solid var(--accent-secondary);
-      color: #fff; box-shadow: 0 0 14px rgba(245,158,11,0.25);
-    }
-    .btn-theme-header:hover { background: var(--accent-secondary); color: #000; box-shadow: 0 0 20px var(--accent-glow); transform: translateY(-2px); }
-    .btn-robot { background: rgba(59,130,246,0.14); border-color: var(--accent-primary); color: #fff; }
-    .btn-robot:hover { background: var(--accent-primary); box-shadow: 0 0 18px var(--accent-glow); transform: translateY(-2px); }
-    .btn-settings { background: rgba(255,255,255,0.06); border-color: var(--border-medium); color: var(--text-primary); }
-    .btn-settings:hover { background: rgba(255,255,255,0.12); border-color: var(--accent-primary); transform: translateY(-2px); }
-    .btn-gf { background: rgba(234,67,53,0.14); border: 1px solid rgba(234,67,53,0.45); color: #ff8a80; }
-    .btn-gf:hover { background: rgba(234,67,53,0.25); border-color: #ff5252; transform: translateY(-2px); }
-    .btn-google-link {
-      background: linear-gradient(135deg, #4285f4, #34a853); border: 1px solid #4285f4; color: #fff;
-      box-shadow: 0 4px 16px rgba(66,133,244,0.4);
-    }
-    .btn-google-link:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(66,133,244,0.6); }
-    .btn-send-vault {
-      background: linear-gradient(135deg, #10b981, #059669); border: 1px solid #10b981; color: #fff;
-      box-shadow: 0 4px 16px rgba(16,185,129,0.35);
-    }
-    .btn-send-vault:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(16,185,129,0.55); }
-    .btn-danger { background: rgba(239,68,68,0.15); border: 1px solid #ef4444; color: #ef4444; }
-    .btn-danger:hover:not(:disabled) { background: rgba(239,68,68,0.28); }
-    .btn-secondary { background: rgba(255,255,255,0.06); border-color: var(--border-subtle); color: var(--text-secondary); }
-    .btn-secondary:hover { background: rgba(255,255,255,0.1); color: var(--text-primary); }
-    .btn-sm { padding: 0.4rem 0.8rem; font-size: 0.78rem; border-radius: var(--radius-sm); }
-    .telemetry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
-    .telemetry-card {
-      background: var(--bg-card); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg); padding: 1.2rem 1.35rem; display: flex; flex-direction: column; gap: 0.5rem; transition: var(--transition);
-    }
-    .telemetry-card:hover { border-color: var(--border-medium); transform: translateY(-2px); }
-    .card-top { display: flex; align-items: center; justify-content: space-between; }
-    .card-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-secondary); }
-    .card-icon { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); color: var(--accent-primary); }
-    .card-val { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; color: var(--text-primary); }
-    .card-subtext { font-size: 0.75rem; color: var(--text-tertiary); }
-    .google-link-card {
-      background: linear-gradient(135deg, rgba(66,133,244,0.1), rgba(52,168,83,0.08));
-      border: 1px solid rgba(66,133,244,0.4);
-      border-radius: var(--radius-lg); padding: 1.2rem 1.5rem;
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;
-    }
-    .google-link-left { display: flex; align-items: center; gap: 1rem; flex: 1 1 340px; }
-    .google-logo-circle {
-      width: 46px; height: 46px; border-radius: 50%; background: rgba(255,255,255,0.95);
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.2);
-    }
-    .google-status-pill { display:inline-flex; align-items:center; gap:0.35rem; padding: 0.2rem 0.6rem; border-radius: 999px; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.4px; }
-    .google-status-pill.off { background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid #f59e0b; }
-    .google-status-pill.on { background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid #10b981; }
-    .google-status-pill.loading { background: rgba(59,130,246,0.15); color: #38bdf8; border: 1px solid #3b82f6; }
-    .google-info-box { background: rgba(59,130,246,0.08); border-left: 3px solid var(--accent-primary); padding: 0.85rem 1rem; border-radius: var(--radius-sm); font-size: 0.78rem; line-height: 1.6; color: var(--text-secondary); }
-    .google-info-box strong { color: var(--text-primary); }
-    .google-info-box code { background: rgba(0,0,0,0.4); padding: 0.1rem 0.35rem; border-radius: 4px; font-family: var(--font-mono); font-size: 0.72rem; color: #38bdf8; }
-    .google-info-box a { color: #38bdf8; text-decoration: underline; }
-    .gf-banner {
-      background: linear-gradient(135deg, rgba(66,133,244,0.09), rgba(16,185,129,0.09)); border: 1px solid rgba(66,133,244,0.3);
-      border-radius: var(--radius-lg); padding: 1.2rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;
-    }
-    .gf-info { display: flex; align-items: center; gap: 1rem; flex: 1 1 340px; }
-    .gf-badge-icon {
-      width: 46px; height: 46px; border-radius: var(--radius-md); background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.1);
-    }
-    .gf-texts h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem; }
-    .gf-texts p { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.45; }
-    .gf-buttons { display: flex; align-items: center; flex-wrap: wrap; gap: 0.6rem; }
-    .toolbar {
-      background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
-      padding: 0.85rem 1.15rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.85rem; margin-bottom: 1.35rem;
-    }
-    .filter-tabs { display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem; }
-    .filter-btn {
-      padding: 0.4rem 0.8rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; background: transparent; border: 1px solid transparent;
-      color: var(--text-secondary); cursor: pointer; transition: var(--transition);
-    }
-    .filter-btn:hover { color: var(--text-primary); background: rgba(255,255,255,0.05); }
-    .filter-btn.active { background: var(--accent-primary); color: #fff; box-shadow: 0 2px 10px var(--accent-glow); }
-    .search-sort-wrap { display: flex; align-items: center; gap: 0.65rem; flex-grow: 1; max-width: 440px; }
-    .search-input {
-      width: 100%; background: rgba(255,255,255,0.04); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
-      padding: 0.5rem 0.85rem; color: var(--text-primary); font-size: 0.84rem; font-family: var(--font-sans); outline: none; transition: var(--transition);
-    }
-    .search-input:focus { border-color: var(--accent-primary); background: rgba(255,255,255,0.08); box-shadow: 0 0 10px var(--accent-glow); }
-    .sort-select {
-      background: rgba(255,255,255,0.04); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
-      padding: 0.5rem 0.75rem; color: var(--text-primary); font-size: 0.8rem; font-family: var(--font-sans); outline: none; cursor: pointer;
-    }
-    .sort-select option { background: var(--bg-surface-elevated); color: var(--text-primary); }
-    .media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; }
-    .media-card {
-      background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
-      overflow: hidden; display: flex; flex-direction: column; transition: var(--transition); position: relative;
-    }
-    .media-card:hover { transform: translateY(-3px); border-color: var(--border-medium); box-shadow: 0 10px 28px rgba(0,0,0,0.5); }
-    .media-thumb-wrap {
-      width: 100%; height: 170px; position: relative; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: pointer;
-    }
-    .media-thumb-wrap img, .media-thumb-wrap video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.35s ease; }
-    .media-card:hover .media-thumb-wrap img { transform: scale(1.05); }
-    .media-badge {
-      position: absolute; top: 8px; left: 8px; font-size: 0.65rem; font-weight: 700; padding: 0.2rem 0.45rem;
-      border-radius: 5px; background: rgba(0,0,0,0.7); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.15); color: #fff; text-transform: uppercase;
-    }
-    .media-perm-shield {
-      position: absolute; bottom: 8px; left: 8px; font-size: 0.62rem; font-weight: 800; padding: 0.2rem 0.45rem;
-      border-radius: 5px; background: rgba(16,185,129,0.85); backdrop-filter: blur(6px); color: #fff; letter-spacing: 0.5px; display: flex; align-items: center; gap: 0.25rem;
-    }
-    .media-src-google {
-      position: absolute; bottom: 8px; right: 8px; font-size: 0.6rem; font-weight: 800; padding: 0.2rem 0.4rem;
-      border-radius: 5px; background: rgba(66,133,244,0.9); color: #fff; letter-spacing: 0.3px;
-    }
-    .media-fav-btn {
-      position: absolute; top: 8px; right: 8px; width: 30px; height: 30px; border-radius: 50%;
-      background: rgba(0,0,0,0.65); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.15); color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition);
-    }
-    .media-fav-btn.active { color: #f59e0b; border-color: #f59e0b; }
-    .media-info { padding: 1rem; display: flex; flex-direction: column; gap: 0.45rem; flex-grow: 1; }
-    .media-title { font-size: 0.88rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .media-meta { display: flex; align-items: center; justify-content: space-between; font-size: 0.72rem; color: var(--text-tertiary); }
-    .media-actions { display: flex; align-items: center; gap: 0.4rem; margin-top: 0.35rem; padding-top: 0.5rem; border-top: 1px solid var(--border-subtle); }
-    .btn-action-icon {
-      flex: 1; padding: 0.35rem; font-size: 0.75rem; background: rgba(255,255,255,0.04); border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm); color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.3rem; transition: var(--transition);
-    }
-    .btn-action-icon:hover { background: rgba(255,255,255,0.1); color: var(--text-primary); border-color: var(--border-medium); }
-    .btn-delete-icon:hover { background: rgba(239,68,68,0.18); color: #ef4444; border-color: #ef4444; }
-    .empty-vault {
-      grid-column: 1/-1; background: var(--bg-card); border: 2px dashed var(--border-medium); border-radius: var(--radius-xl);
-      padding: 3.5rem 1.5rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.85rem;
-    }
-    .empty-icon {
-      width: 64px; height: 64px; border-radius: 50%; background: rgba(59,130,246,0.1); border: 1px solid var(--accent-primary);
-      display: flex; align-items: center; justify-content: center; color: var(--accent-primary); font-size: 1.8rem;
-    }
-    .load-more-wrap { grid-column: 1/-1; display: flex; justify-content: center; margin-top: 1rem; }
-    .modal-overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-      z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 1.25rem; opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
-    }
-    .modal-overlay.open { opacity: 1; pointer-events: auto; }
-    .modal-box {
-      background: var(--bg-surface-elevated); border: 1px solid var(--border-medium); border-radius: var(--radius-xl);
-      width: 100%; max-width: 650px; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-      transform: scale(0.96); transition: transform 0.25s ease; display: flex; flex-direction: column;
-    }
-    .modal-overlay.open .modal-box { transform: scale(1); }
-    .modal-box-large { max-width: 920px; }
-    .modal-header {
-      display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border-subtle);
-    }
-    .modal-title { font-size: 1.15rem; font-weight: 800; display: flex; align-items: center; gap: 0.5rem; }
-    .modal-close {
-      background: rgba(255,255,255,0.06); border: 1px solid var(--border-subtle); width: 32px; height: 32px;
-      border-radius: 50%; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition);
-    }
-    .modal-close:hover { background: rgba(255,255,255,0.12); color: var(--text-primary); }
-    .modal-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
-    .settings-section {
-      background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
-      padding: 1.25rem; display: flex; flex-direction: column; gap: 0.85rem;
-    }
-    .settings-head { display: flex; align-items: center; justify-content: space-between; }
-    .settings-head h4 { font-size: 1rem; font-weight: 700; display: flex; align-items: center; gap: 0.45rem; }
-    .theme-highlight-banner {
-      background: linear-gradient(135deg, rgba(59,130,246,0.15), rgba(245,158,11,0.1)); border: 1px solid var(--accent-primary);
-      border-radius: var(--radius-md); padding: 1.15rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.85rem;
-    }
-    .quota-presets { display: flex; flex-wrap: wrap; gap: 0.45rem; }
-    .preset-chip {
-      padding: 0.4rem 0.75rem; border-radius: 999px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle);
-      color: var(--text-primary); font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: var(--transition);
-    }
-    .preset-chip:hover, .preset-chip.active { background: var(--accent-primary); border-color: var(--accent-primary); box-shadow: 0 0 10px var(--accent-glow); }
-    .custom-quota-form { display: flex; align-items: center; gap: 0.65rem; flex-wrap: wrap; }
-    .custom-quota-form input, .clientid-input {
-      flex: 1; min-width: 110px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
-      padding: 0.55rem 0.85rem; color: #fff; font-family: var(--font-mono); font-size: 0.82rem; outline: none;
-    }
-    .clientid-input:focus { border-color: var(--accent-primary); box-shadow: 0 0 10px var(--accent-glow); }
-    .custom-quota-form select {
-      background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
-      padding: 0.55rem 0.85rem; color: #fff; font-size: 0.88rem; outline: none; cursor: pointer;
-    }
-    .theme-bot-hud {
-      background: linear-gradient(135deg, rgba(245,158,11,0.12), rgba(59,130,246,0.14));
-      border: 1px solid var(--accent-primary); border-radius: var(--radius-lg); padding: 1rem 1.25rem;
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
-      box-shadow: 0 0 20px rgba(59,130,246,0.2);
-    }
-    .theme-bot-left { display: flex; align-items: center; gap: 0.85rem; }
-    .theme-bot-avatar {
-      width: 52px; height: 52px; border-radius: 50%;
-      background: radial-gradient(circle, var(--accent-secondary) 0%, #000 75%);
-      display: flex; align-items: center; justify-content: center;
-      border: 2px solid var(--accent-secondary); box-shadow: 0 0 16px var(--accent-glow);
-      animation: pulseRobot 2.2s infinite alternate; flex-shrink: 0; font-size: 1.5rem;
-    }
-    .theme-bot-speech h4 { font-size: 0.95rem; font-weight: 800; display: flex; align-items: center; gap: 0.4rem; }
-    .theme-bot-speech p { font-size: 0.78rem; color: var(--text-accent); font-family: var(--font-mono); }
-    .theme-category-nav { display: flex; align-items: center; gap: 0.45rem; overflow-x: auto; padding-bottom: 0.4rem; }
-    .theme-cat-btn {
-      padding: 0.35rem 0.75rem; border-radius: 999px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle);
-      color: var(--text-secondary); font-size: 0.75rem; font-weight: 600; white-space: nowrap; cursor: pointer; transition: var(--transition);
-    }
-    .theme-cat-btn:hover, .theme-cat-btn.active { background: var(--accent-primary); color: #fff; border-color: var(--accent-primary); }
-    .themes-grid-40 {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.85rem; max-height: 440px; overflow-y: auto; padding: 0.4rem 0.1rem;
-    }
-    .theme-item-card {
-      background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
-      padding: 0.85rem; cursor: pointer; position: relative; transition: var(--transition); display: flex; flex-direction: column; gap: 0.5rem;
-    }
-    .theme-item-card:hover { transform: translateY(-2px); border-color: var(--accent-primary); background: rgba(255,255,255,0.06); }
-    .theme-item-card.current-active { border-color: var(--accent-primary); background: rgba(59,130,246,0.12); box-shadow: 0 0 14px var(--accent-glow); }
-    .theme-active-tag {
-      position: absolute; top: 8px; right: 8px; font-size: 0.6rem; font-weight: 800; background: var(--accent-primary);
-      color: #fff; padding: 0.15rem 0.45rem; border-radius: 999px; display: none;
-    }
-    .theme-item-card.current-active .theme-active-tag { display: block; }
-    .theme-card-top { display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; }
-    .theme-card-title { font-size: 0.88rem; font-weight: 700; }
-    .theme-card-cat { font-size: 0.65rem; color: var(--text-tertiary); text-transform: uppercase; font-weight: 600; }
-    .theme-card-desc { font-size: 0.75rem; color: var(--text-secondary); line-height: 1.35; }
-    .palette-row { display: flex; align-items: center; gap: 0.35rem; margin-top: 0.25rem; }
-    .palette-circle { width: 20px; height: 20px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); }
-    .robot-hud {
-      background: rgba(0,0,0,0.45); border: 1px solid var(--accent-primary); border-radius: var(--radius-lg);
-      padding: 1.25rem; display: flex; align-items: center; gap: 1.25rem; box-shadow: inset 0 0 25px var(--accent-glow);
-    }
-    .robot-avatar {
-      width: 70px; height: 70px; border-radius: 50%; background: radial-gradient(circle, var(--accent-primary) 0%, #000 70%);
-      display: flex; align-items: center; justify-content: center; border: 2px solid var(--accent-primary);
-      box-shadow: 0 0 20px var(--accent-glow); animation: pulseRobot 2s infinite alternate; flex-shrink: 0;
-    }
-    @keyframes pulseRobot { 0% { transform: scale(1); } 100% { transform: scale(1.06); box-shadow: 0 0 28px var(--accent-glow); } }
-    .robot-hud-details h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.25rem; }
-    .robot-hud-details p { font-size: 0.78rem; color: var(--text-secondary); }
-    .robot-terminal {
-      background: #020305; border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-md);
-      padding: 0.85rem; font-family: var(--font-mono); font-size: 0.75rem; color: #38bdf8; height: 130px; overflow-y: auto; line-height: 1.5;
-    }
-    .toast-container { position: fixed; bottom: 20px; right: 20px; z-index: 2000; display: flex; flex-direction: column; gap: 0.5rem; pointer-events: none; }
-    .toast-msg {
-      background: var(--bg-surface-elevated); border: 1px solid var(--accent-primary); border-radius: var(--radius-md);
-      padding: 0.75rem 1.15rem; color: #fff; font-size: 0.82rem; font-weight: 600; box-shadow: 0 6px 25px rgba(0,0,0,0.6);
-      animation: slideToast 0.25s forwards ease-out; pointer-events: auto; display: flex; align-items: center; gap: 0.5rem;
-      transition: opacity 0.25s ease, transform 0.25s ease; max-width: 340px;
-    }
-    .toast-msg.hide { opacity: 0; transform: translateX(30px); }
-    @keyframes slideToast { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-    .lightbox-content { max-width: 90vw; max-height: 90vh; display: flex; flex-direction: column; align-items: center; gap: 0.85rem; }
-    .lightbox-media { max-width: 100%; max-height: 75vh; border-radius: var(--radius-lg); box-shadow: 0 10px 40px rgba(0,0,0,0.8); }
-    .perm-info-box {
-      background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(59,130,246,0.08));
-      border: 1px solid rgba(16,185,129,0.4); border-radius: var(--radius-md);
-      padding: 0.85rem 1rem; font-size: 0.78rem; color: var(--text-secondary); line-height: 1.5;
-    }
-    .perm-info-box strong { color: #10b981; }
-    @media (max-width: 768px) {
-      .app-header { flex-direction: column; align-items: flex-start; }
-      .header-actions { width: 100%; justify-content: space-between; }
-      .toolbar { flex-direction: column; align-items: stretch; }
-      .search-sort-wrap { max-width: 100%; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="description" content="MANGEDORA APPLE PRO ELITE • Cofre Blindado Permanente com Robô IA, 40 Temas e Google Fotos OAuth 2.0.">
+<meta name="theme-color" content="#06070a">
+<title>MANGEDORA APPLE • Elite Pro Vault & Google Fotos</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%2306070a' stroke='%233b82f6' stroke-width='2'/><path d='M16 6l9 5v6c0 5.5-4 9.5-9 11-5-1.5-9-5.5-9-11v-6l9-5z' fill='%23121724' stroke='%233b82f6' stroke-width='1.5'/><circle cx='16' cy='16' r='3.5' fill='%23f59e0b'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<style>
+:root{--bg-base:#06070a;--bg-surface:#0c0f17;--bg-surface-elevated:#121724;--bg-card:rgba(18,23,36,.85);--border-subtle:rgba(255,255,255,.08);--border-medium:rgba(255,255,255,.18);--border-focus:#3b82f6;--text-primary:#f8fafc;--text-secondary:#94a3b8;--text-tertiary:#64748b;--text-accent:#38bdf8;--accent-primary:#3b82f6;--accent-secondary:#f59e0b;--accent-glow:rgba(59,130,246,.4);--radial-1:rgba(59,130,246,.12);--radial-2:rgba(245,158,11,.08);--font-sans:'Plus Jakarta Sans',-apple-system,sans-serif;--font-mono:'JetBrains Mono',monospace;--radius-sm:8px;--radius-md:14px;--radius-lg:20px;--radius-xl:28px;--transition:all .25s cubic-bezier(.16,1,.3,1)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);background:var(--bg-base);background-image:radial-gradient(circle at 15% 10%,var(--radial-1) 0,transparent 45%),radial-gradient(circle at 85% 15%,var(--radial-2) 0,transparent 45%);background-attachment:fixed;color:var(--text-primary);min-height:100vh;overflow-x:hidden}
+::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-track{background:var(--bg-base)}::-webkit-scrollbar-thumb{background:var(--bg-surface-elevated);border-radius:4px}::-webkit-scrollbar-thumb:hover{background:var(--accent-primary)}
+.app-container{max-width:1400px;margin:0 auto;padding:1.25rem 1.5rem 3rem}
+.app-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:1.1rem 1.6rem;background:var(--bg-card);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);margin-bottom:1.5rem}
+.brand-section{display:flex;align-items:center;gap:.9rem}
+.brand-logo-wrap{width:44px;height:44px;border-radius:var(--radius-md);background:linear-gradient(135deg,var(--accent-primary),var(--accent-secondary));display:flex;align-items:center;justify-content:center;box-shadow:0 0 18px var(--accent-glow);flex-shrink:0}
+.brand-logo-wrap svg{width:24px;height:24px;fill:#fff}
+.brand-info h1{font-size:1.22rem;font-weight:800;display:flex;align-items:center;gap:.5rem;background:linear-gradient(90deg,#fff,var(--text-secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.badge-elite{font-size:.65rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:.2rem .5rem;border-radius:999px;background:rgba(59,130,246,.15);border:1px solid var(--accent-primary);color:var(--text-accent);-webkit-text-fill-color:var(--text-accent)}
+.badge-permanent{font-size:.6rem;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:.15rem .4rem;border-radius:999px;background:rgba(16,185,129,.15);border:1px solid #10b981;color:#10b981}
+.header-actions{display:flex;align-items:center;flex-wrap:wrap;gap:.65rem}
+.storage-pill{display:flex;align-items:center;gap:.65rem;background:rgba(255,255,255,.04);border:1px solid var(--border-subtle);border-radius:999px;padding:.4rem .9rem;font-size:.8rem;font-weight:600;color:var(--text-secondary);cursor:pointer;transition:var(--transition)}
+.storage-pill:hover{background:rgba(255,255,255,.08);border-color:var(--accent-primary)}
+.storage-mini-bar{width:55px;height:6px;background:rgba(255,255,255,.1);border-radius:999px;overflow:hidden}
+.storage-mini-fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent-primary),var(--accent-secondary));transition:width .4s ease}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;padding:.6rem 1.15rem;font-size:.85rem;font-weight:600;font-family:var(--font-sans);border-radius:var(--radius-md);border:1px solid transparent;cursor:pointer;transition:var(--transition);text-decoration:none;white-space:nowrap}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn-primary{background:linear-gradient(135deg,var(--accent-primary),var(--accent-secondary));color:#fff;box-shadow:0 4px 16px var(--accent-glow)}
+.btn-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 6px 20px var(--accent-glow)}
+.btn-theme-header{background:linear-gradient(135deg,rgba(245,158,11,.18),rgba(59,130,246,.22));border:1px solid var(--accent-secondary);color:#fff;box-shadow:0 0 14px rgba(245,158,11,.25)}
+.btn-theme-header:hover{background:var(--accent-secondary);color:#000;box-shadow:0 0 20px var(--accent-glow);transform:translateY(-2px)}
+.btn-robot{background:rgba(59,130,246,.14);border-color:var(--accent-primary);color:#fff}
+.btn-robot:hover{background:var(--accent-primary);box-shadow:0 0 18px var(--accent-glow);transform:translateY(-2px)}
+.btn-settings{background:rgba(255,255,255,.06);border-color:var(--border-medium);color:var(--text-primary)}
+.btn-settings:hover{background:rgba(255,255,255,.12);border-color:var(--accent-primary);transform:translateY(-2px)}
+.btn-gf{background:rgba(234,67,53,.14);border:1px solid rgba(234,67,53,.45);color:#ff8a80}
+.btn-gf:hover{background:rgba(234,67,53,.25);border-color:#ff5252;transform:translateY(-2px)}
+.btn-google-link{background:linear-gradient(135deg,#4285f4,#34a853);border:1px solid #4285f4;color:#fff;box-shadow:0 4px 16px rgba(66,133,244,.4)}
+.btn-google-link:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 6px 22px rgba(66,133,244,.6)}
+.btn-send-vault{background:linear-gradient(135deg,#10b981,#059669);border:1px solid #10b981;color:#fff;box-shadow:0 4px 16px rgba(16,185,129,.35)}
+.btn-send-vault:hover{transform:translateY(-2px);box-shadow:0 6px 22px rgba(16,185,129,.55)}
+.btn-danger{background:rgba(239,68,68,.15);border:1px solid #ef4444;color:#ef4444}
+.btn-danger:hover:not(:disabled){background:rgba(239,68,68,.28)}
+.btn-secondary{background:rgba(255,255,255,.06);border-color:var(--border-subtle);color:var(--text-secondary)}
+.btn-secondary:hover{background:rgba(255,255,255,.1);color:var(--text-primary)}
+.btn-sm{padding:.4rem .8rem;font-size:.78rem;border-radius:var(--radius-sm)}
+.telemetry-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:1.5rem}
+.telemetry-card{background:var(--bg-card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:1.2rem 1.35rem;display:flex;flex-direction:column;gap:.5rem;transition:var(--transition)}
+.telemetry-card:hover{border-color:var(--border-medium);transform:translateY(-2px)}
+.card-top{display:flex;align-items:center;justify-content:space-between}
+.card-label{font-size:.75rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--text-secondary)}
+.card-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.05);color:var(--accent-primary)}
+.card-val{font-size:1.5rem;font-weight:800;letter-spacing:-.5px;color:var(--text-primary)}
+.card-subtext{font-size:.75rem;color:var(--text-tertiary)}
+.google-link-card{background:linear-gradient(135deg,rgba(66,133,244,.1),rgba(52,168,83,.08));border:1px solid rgba(66,133,244,.4);border-radius:var(--radius-lg);padding:1.2rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem}
+.google-link-left{display:flex;align-items:center;gap:1rem;flex:1 1 340px}
+.google-logo-circle{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid rgba(255,255,255,.2)}
+.google-status-pill{display:inline-flex;align-items:center;gap:.35rem;padding:.2rem .6rem;border-radius:999px;font-size:.7rem;font-weight:800;letter-spacing:.4px}
+.google-status-pill.off{background:rgba(245,158,11,.15);color:#f59e0b;border:1px solid #f59e0b}
+.google-status-pill.on{background:rgba(16,185,129,.15);color:#10b981;border:1px solid #10b981}
+.google-status-pill.loading{background:rgba(59,130,246,.15);color:#38bdf8;border:1px solid #3b82f6}
+.google-info-box{background:rgba(59,130,246,.08);border-left:3px solid var(--accent-primary);padding:.85rem 1rem;border-radius:var(--radius-sm);font-size:.78rem;line-height:1.6;color:var(--text-secondary)}
+.google-info-box strong{color:var(--text-primary)}
+.google-info-box code{background:rgba(0,0,0,.4);padding:.1rem .35rem;border-radius:4px;font-family:var(--font-mono);font-size:.72rem;color:#38bdf8}
+.google-info-box a{color:#38bdf8;text-decoration:underline}
+.gf-banner{background:linear-gradient(135deg,rgba(66,133,244,.09),rgba(16,185,129,.09));border:1px solid rgba(66,133,244,.3);border-radius:var(--radius-lg);padding:1.2rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem}
+.gf-info{display:flex;align-items:center;gap:1rem;flex:1 1 340px}
+.gf-badge-icon{width:46px;height:46px;border-radius:var(--radius-md);background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid rgba(255,255,255,.1)}
+.gf-texts h3{font-size:1rem;font-weight:700;margin-bottom:.2rem}
+.gf-texts p{font-size:.8rem;color:var(--text-secondary);line-height:1.45}
+.gf-buttons{display:flex;align-items:center;flex-wrap:wrap;gap:.6rem}
+.toolbar{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:.85rem 1.15rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.85rem;margin-bottom:1.35rem}
+.filter-tabs{display:flex;align-items:center;flex-wrap:wrap;gap:.4rem}
+.filter-btn{padding:.4rem .8rem;border-radius:999px;font-size:.8rem;font-weight:600;background:transparent;border:1px solid transparent;color:var(--text-secondary);cursor:pointer;transition:var(--transition)}
+.filter-btn:hover{color:var(--text-primary);background:rgba(255,255,255,.05)}
+.filter-btn.active{background:var(--accent-primary);color:#fff;box-shadow:0 2px 10px var(--accent-glow)}
+.search-sort-wrap{display:flex;align-items:center;gap:.65rem;flex-grow:1;max-width:440px}
+.search-input{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:.5rem .85rem;color:var(--text-primary);font-size:.84rem;font-family:var(--font-sans);outline:0;transition:var(--transition)}
+.search-input:focus{border-color:var(--accent-primary);background:rgba(255,255,255,.08);box-shadow:0 0 10px var(--accent-glow)}
+.sort-select{background:rgba(255,255,255,.04);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:.5rem .75rem;color:var(--text-primary);font-size:.8rem;font-family:var(--font-sans);outline:0;cursor:pointer}
+.sort-select option{background:var(--bg-surface-elevated);color:var(--text-primary)}
+.media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem}
+.media-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column;transition:var(--transition);position:relative}
+.media-card:hover{transform:translateY(-3px);border-color:var(--border-medium);box-shadow:0 10px 28px rgba(0,0,0,.5)}
+.media-thumb-wrap{width:100%;height:170px;position:relative;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;overflow:hidden;cursor:pointer}
+.media-thumb-wrap img,.media-thumb-wrap video{width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
+.media-card:hover .media-thumb-wrap img{transform:scale(1.05)}
+.media-badge{position:absolute;top:8px;left:8px;font-size:.65rem;font-weight:700;padding:.2rem .45rem;border-radius:5px;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15);color:#fff;text-transform:uppercase}
+.media-perm-shield{position:absolute;bottom:8px;left:8px;font-size:.62rem;font-weight:800;padding:.2rem .45rem;border-radius:5px;background:rgba(16,185,129,.85);backdrop-filter:blur(6px);color:#fff;letter-spacing:.5px;display:flex;align-items:center;gap:.25rem}
+.media-src-google{position:absolute;bottom:8px;right:8px;font-size:.6rem;font-weight:800;padding:.2rem .4rem;border-radius:5px;background:rgba(66,133,244,.9);color:#fff;letter-spacing:.3px}
+.media-fav-btn{position:absolute;top:8px;right:8px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.65);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:var(--transition)}
+.media-fav-btn.active{color:#f59e0b;border-color:#f59e0b}
+.media-info{padding:1rem;display:flex;flex-direction:column;gap:.45rem;flex-grow:1}
+.media-title{font-size:.88rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.media-meta{display:flex;align-items:center;justify-content:space-between;font-size:.72rem;color:var(--text-tertiary)}
+.media-actions{display:flex;align-items:center;gap:.4rem;margin-top:.35rem;padding-top:.5rem;border-top:1px solid var(--border-subtle)}
+.btn-action-icon{flex:1;padding:.35rem;font-size:.75rem;background:rgba(255,255,255,.04);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-secondary);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.3rem;transition:var(--transition)}
+.btn-action-icon:hover{background:rgba(255,255,255,.1);color:var(--text-primary);border-color:var(--border-medium)}
+.btn-delete-icon:hover{background:rgba(239,68,68,.18);color:#ef4444;border-color:#ef4444}
+.empty-vault{grid-column:1/-1;background:var(--bg-card);border:2px dashed var(--border-medium);border-radius:var(--radius-xl);padding:3.5rem 1.5rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.85rem}
+.empty-icon{width:64px;height:64px;border-radius:50%;background:rgba(59,130,246,.1);border:1px solid var(--accent-primary);display:flex;align-items:center;justify-content:center;color:var(--accent-primary);font-size:1.8rem}
+.load-more-wrap{grid-column:1/-1;display:flex;justify-content:center;margin-top:1rem}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:1000;display:flex;align-items:center;justify-content:center;padding:1.25rem;opacity:0;pointer-events:none;transition:opacity .25s ease}
+.modal-overlay.open{opacity:1;pointer-events:auto}
+.modal-box{background:var(--bg-surface-elevated);border:1px solid var(--border-medium);border-radius:var(--radius-xl);width:100%;max-width:650px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 50px rgba(0,0,0,.8);transform:scale(.96);transition:transform .25s ease;display:flex;flex-direction:column}
+.modal-overlay.open .modal-box{transform:scale(1)}
+.modal-box-large{max-width:920px}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;border-bottom:1px solid var(--border-subtle)}
+.modal-title{font-size:1.15rem;font-weight:800;display:flex;align-items:center;gap:.5rem}
+.modal-close{background:rgba(255,255,255,.06);border:1px solid var(--border-subtle);width:32px;height:32px;border-radius:50%;color:var(--text-secondary);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--transition)}
+.modal-close:hover{background:rgba(255,255,255,.12);color:var(--text-primary)}
+.modal-body{padding:1.5rem;display:flex;flex-direction:column;gap:1.25rem}
+.settings-section{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:1.25rem;display:flex;flex-direction:column;gap:.85rem}
+.settings-head{display:flex;align-items:center;justify-content:space-between}
+.settings-head h4{font-size:1rem;font-weight:700;display:flex;align-items:center;gap:.45rem}
+.theme-highlight-banner{background:linear-gradient(135deg,rgba(59,130,246,.15),rgba(245,158,11,.1));border:1px solid var(--accent-primary);border-radius:var(--radius-md);padding:1.15rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.85rem}
+.quota-presets{display:flex;flex-wrap:wrap;gap:.45rem}
+.preset-chip{padding:.4rem .75rem;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--border-subtle);color:var(--text-primary);font-size:.78rem;font-weight:600;cursor:pointer;transition:var(--transition)}
+.preset-chip:hover,.preset-chip.active{background:var(--accent-primary);border-color:var(--accent-primary);box-shadow:0 0 10px var(--accent-glow)}
+.custom-quota-form{display:flex;align-items:center;gap:.65rem;flex-wrap:wrap}
+.custom-quota-form input,.clientid-input{flex:1;min-width:110px;background:rgba(255,255,255,.05);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:.55rem .85rem;color:#fff;font-family:var(--font-mono);font-size:.82rem;outline:0}
+.clientid-input:focus{border-color:var(--accent-primary);box-shadow:0 0 10px var(--accent-glow)}
+.custom-quota-form select{background:var(--bg-surface-elevated);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:.55rem .85rem;color:#fff;font-size:.88rem;outline:0;cursor:pointer}
+.theme-bot-hud{background:linear-gradient(135deg,rgba(245,158,11,.12),rgba(59,130,246,.14));border:1px solid var(--accent-primary);border-radius:var(--radius-lg);padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;box-shadow:0 0 20px rgba(59,130,246,.2)}
+.theme-bot-left{display:flex;align-items:center;gap:.85rem}
+.theme-bot-avatar{width:52px;height:52px;border-radius:50%;background:radial-gradient(circle,var(--accent-secondary) 0,#000 75%);display:flex;align-items:center;justify-content:center;border:2px solid var(--accent-secondary);box-shadow:0 0 16px var(--accent-glow);animation:pulseRobot 2.2s infinite alternate;flex-shrink:0;font-size:1.5rem}
+.theme-bot-speech h4{font-size:.95rem;font-weight:800;display:flex;align-items:center;gap:.4rem}
+.theme-bot-speech p{font-size:.78rem;color:var(--text-accent);font-family:var(--font-mono)}
+.theme-category-nav{display:flex;align-items:center;gap:.45rem;overflow-x:auto;padding-bottom:.4rem}
+.theme-cat-btn{padding:.35rem .75rem;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--border-subtle);color:var(--text-secondary);font-size:.75rem;font-weight:600;white-space:nowrap;cursor:pointer;transition:var(--transition)}
+.theme-cat-btn:hover,.theme-cat-btn.active{background:var(--accent-primary);color:#fff;border-color:var(--accent-primary)}
+.themes-grid-40{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.85rem;max-height:440px;overflow-y:auto;padding:.4rem .1rem}
+.theme-item-card{background:rgba(255,255,255,.03);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:.85rem;cursor:pointer;position:relative;transition:var(--transition);display:flex;flex-direction:column;gap:.5rem}
+.theme-item-card:hover{transform:translateY(-2px);border-color:var(--accent-primary);background:rgba(255,255,255,.06)}
+.theme-item-card.current-active{border-color:var(--accent-primary);background:rgba(59,130,246,.12);box-shadow:0 0 14px var(--accent-glow)}
+.theme-active-tag{position:absolute;top:8px;right:8px;font-size:.6rem;font-weight:800;background:var(--accent-primary);color:#fff;padding:.15rem .45rem;border-radius:999px;display:none}
+.theme-item-card.current-active .theme-active-tag{display:block}
+.theme-card-top{display:flex;align-items:center;justify-content:space-between;gap:.4rem}
+.theme-card-title{font-size:.88rem;font-weight:700}
+.theme-card-cat{font-size:.65rem;color:var(--text-tertiary);text-transform:uppercase;font-weight:600}
+.theme-card-desc{font-size:.75rem;color:var(--text-secondary);line-height:1.35}
+.palette-row{display:flex;align-items:center;gap:.35rem;margin-top:.25rem}
+.palette-circle{width:20px;height:20px;border-radius:50%;border:1px solid rgba(255,255,255,.2)}
+.robot-hud{background:rgba(0,0,0,.45);border:1px solid var(--accent-primary);border-radius:var(--radius-lg);padding:1.25rem;display:flex;align-items:center;gap:1.25rem;box-shadow:inset 0 0 25px var(--accent-glow)}
+.robot-avatar{width:70px;height:70px;border-radius:50%;background:radial-gradient(circle,var(--accent-primary) 0,#000 70%);display:flex;align-items:center;justify-content:center;border:2px solid var(--accent-primary);box-shadow:0 0 20px var(--accent-glow);animation:pulseRobot 2s infinite alternate;flex-shrink:0}
+@keyframes pulseRobot{0%{transform:scale(1)}100%{transform:scale(1.06);box-shadow:0 0 28px var(--accent-glow)}}
+.robot-hud-details h3{font-size:1.05rem;font-weight:800;margin-bottom:.25rem}
+.robot-hud-details p{font-size:.78rem;color:var(--text-secondary)}
+.robot-terminal{background:#020305;border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-md);padding:.85rem;font-family:var(--font-mono);font-size:.75rem;color:#38bdf8;height:130px;overflow-y:auto;line-height:1.5}
+.toast-container{position:fixed;bottom:20px;right:20px;z-index:2000;display:flex;flex-direction:column;gap:.5rem;pointer-events:none}
+.toast-msg{background:var(--bg-surface-elevated);border:1px solid var(--accent-primary);border-radius:var(--radius-md);padding:.75rem 1.15rem;color:#fff;font-size:.82rem;font-weight:600;box-shadow:0 6px 25px rgba(0,0,0,.6);animation:slideToast .25s forwards ease-out;pointer-events:auto;display:flex;align-items:center;gap:.5rem;transition:opacity .25s ease,transform .25s ease;max-width:340px}
+.toast-msg.hide{opacity:0;transform:translateX(30px)}
+@keyframes slideToast{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
+.lightbox-content{max-width:90vw;max-height:90vh;display:flex;flex-direction:column;align-items:center;gap:.85rem}
+.lightbox-media{max-width:100%;max-height:75vh;border-radius:var(--radius-lg);box-shadow:0 10px 40px rgba(0,0,0,.8)}
+.perm-info-box{background:linear-gradient(135deg,rgba(16,185,129,.1),rgba(59,130,246,.08));border:1px solid rgba(16,185,129,.4);border-radius:var(--radius-md);padding:.85rem 1rem;font-size:.78rem;color:var(--text-secondary);line-height:1.5}
+.perm-info-box strong{color:#10b981}
+@media(max-width:768px){.app-header{flex-direction:column;align-items:flex-start}.header-actions{width:100%;justify-content:space-between}.toolbar{flex-direction:column;align-items:stretch}.search-sort-wrap{max-width:100%}}
+</style>
 </head>
 <body>
-  <div class="app-container">
-    <header class="app-header">
-      <div class="brand-section">
-        <div class="brand-logo-wrap">
-          <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.45c.61-.75 1.04-1.8 1.01-2.45-.92.04-2.02.62-2.67 1.37-.58.67-1.09 1.74-.95 2.77 1.02.08 2-.64 2.61-1.32z"/></svg>
-        </div>
-        <div class="brand-info">
-          <h1>MANGEDORA APPLE <span class="badge-elite">PRO ELITE</span></h1>
-          <p style="font-size:0.75rem;color:var(--text-tertiary);">Cofre Blindado Permanente • Google Fotos OAuth 2.0 • 40 Temas & Bot IA</p>
-        </div>
-      </div>
-      <div class="header-actions">
-        <div style="display:inline-flex;align-items:center;gap:0.35rem;">
-          <button class="btn btn-theme-header" id="btnTopChangeThemeManual" aria-label="Abrir painel de temas">
-            <span>🎨</span> Mudar Tema
-          </button>
-          <button class="btn btn-secondary btn-sm" id="btnQuickNextTheme" aria-label="Próximo tema" style="padding:0.6rem 0.65rem;border-color:var(--accent-secondary);color:var(--accent-secondary);">
-            <span>⏭️</span>
-          </button>
-        </div>
-        <div class="storage-pill" id="quickStorageBtn" title="Ajustar GB / TB">
-          <span>💾</span>
-          <span id="headerStorageText">0 MB / 250 GB</span>
-          <div class="storage-mini-bar"><div class="storage-mini-fill" id="headerStorageFill"></div></div>
-        </div>
-        <button class="btn btn-robot" id="btnOpenRobot" aria-label="Robô IA Plus"><span>⚡</span> Robô IA</button>
-        <button class="btn btn-settings" id="btnOpenSettings" aria-label="Configurações"><span>⚙️</span> Configurações</button>
-        <button class="btn btn-primary" id="btnUploadTrigger"><span>➕</span> Adicionar</button>
-        <input type="file" id="fileInput" multiple accept="image/*,video/*,application/pdf" style="display:none;">
-      </div>
-    </header>
+<div class="app-container">
+<header class="app-header">
+<div class="brand-section">
+<div class="brand-logo-wrap">
+<svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.45c.61-.75 1.04-1.8 1.01-2.45-.92.04-2.02.62-2.67 1.37-.58.67-1.09 1.74-.95 2.77 1.02.08 2-.64 2.61-1.32z"/></svg>
+</div>
+<div class="brand-info">
+<h1>MANGEDORA APPLE <span class="badge-elite">PRO ELITE</span></h1>
+<p style="font-size:.75rem;color:var(--text-tertiary);">Cofre Blindado Permanente • Google Fotos OAuth 2.0 • 40 Temas & Bot IA</p>
+</div>
+</div>
+<div class="header-actions">
+<div style="display:inline-flex;align-items:center;gap:.35rem;">
+<button class="btn btn-theme-header" id="btnTopChangeThemeManual"><span>🎨</span> Mudar Tema</button>
+<button class="btn btn-secondary btn-sm" id="btnQuickNextTheme" style="padding:.6rem .65rem;border-color:var(--accent-secondary);color:var(--accent-secondary);"><span>⏭️</span></button>
+</div>
+<div class="storage-pill" id="quickStorageBtn" title="Ajustar GB / TB">
+<span>💾</span>
+<span id="headerStorageText">0 MB / 250 GB</span>
+<div class="storage-mini-bar"><div class="storage-mini-fill" id="headerStorageFill"></div></div>
+</div>
+<button class="btn btn-robot" id="btnOpenRobot"><span>⚡</span> Robô IA</button>
+<button class="btn btn-settings" id="btnOpenSettings"><span>⚙️</span> Configurações</button>
+<button class="btn btn-primary" id="btnUploadTrigger"><span>➕</span> Adicionar</button>
+<input type="file" id="fileInput" multiple accept="image/*,video/*,application/pdf" style="display:none;">
+</div>
+</header>
 
-    <section class="telemetry-grid">
-      <div class="telemetry-card">
-        <div class="card-top"><span class="card-label">Total no Cofre</span><div class="card-icon">📁</div></div>
-        <div class="card-val" id="telemetryCount">0</div>
-        <div class="card-subtext" id="telemetryBreakdown">0 fotos • 0 vídeos • 0 outros</div>
-      </div>
-      <div class="telemetry-card">
-        <div class="card-top"><span class="card-label">Espaço Usado / Limite</span><div class="card-icon">💾</div></div>
-        <div class="card-val" id="telemetryUsage">0 MB</div>
-        <div class="card-subtext" id="telemetryLimitText">Capacidade: 250 GB</div>
-      </div>
-      <div class="telemetry-card">
-        <div class="card-top"><span class="card-label">Economia Robô IA</span><div class="card-icon">⚡</div></div>
-        <div class="card-val" id="telemetrySavings" style="color:#10b981;">0.0 MB</div>
-        <div class="card-subtext">Poupados com compressão Canvas 4K</div>
-      </div>
-      <div class="telemetry-card">
-        <div class="card-top"><span class="card-label">Blindagem & Status</span><div class="card-icon">🛡️</div></div>
-        <div class="card-val" id="telemetryShieldStatus" style="font-size:1.3rem;color:#38bdf8;">100% OFFLINE</div>
-        <div class="card-subtext" id="telemetryPersistText">IndexedDB Local Blindado</div>
-      </div>
-    </section>
+<section class="telemetry-grid">
+<div class="telemetry-card">
+<div class="card-top"><span class="card-label">Total no Cofre</span><div class="card-icon">📁</div></div>
+<div class="card-val" id="telemetryCount">0</div>
+<div class="card-subtext" id="telemetryBreakdown">0 fotos • 0 vídeos • 0 outros</div>
+</div>
+<div class="telemetry-card">
+<div class="card-top"><span class="card-label">Espaço Usado / Limite</span><div class="card-icon">💾</div></div>
+<div class="card-val" id="telemetryUsage">0 MB</div>
+<div class="card-subtext" id="telemetryLimitText">Capacidade: 250 GB</div>
+</div>
+<div class="telemetry-card">
+<div class="card-top"><span class="card-label">Economia Robô IA</span><div class="card-icon">⚡</div></div>
+<div class="card-val" id="telemetrySavings" style="color:#10b981;">0.0 MB</div>
+<div class="card-subtext">Poupados com compressão Canvas 4K</div>
+</div>
+<div class="telemetry-card">
+<div class="card-top"><span class="card-label">Blindagem & Status</span><div class="card-icon">🛡️</div></div>
+<div class="card-val" id="telemetryShieldStatus" style="font-size:1.3rem;color:#38bdf8;">100% OFFLINE</div>
+<div class="card-subtext" id="telemetryPersistText">IndexedDB Local Blindado</div>
+</div>
+</section>
 
-    <section class="google-link-card">
-      <div class="google-link-left">
-        <div class="google-logo-circle">
-          <svg width="26" height="26" viewBox="0 0 48 48">
-            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
-            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
-            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
-            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
-          </svg>
-        </div>
-        <div class="gf-texts">
-          <h3>Vincular Conta Google Fotos <span class="google-status-pill off" id="googleStatusPill">🔌 Não vinculado</span></h3>
-          <p>Autorize com segurança via <strong>OAuth 2.0 oficial do Google</strong> (você digita e-mail/senha na <strong>janela do próprio Google</strong>). Depois é só clicar em <strong>"Selecionar Fotos do Google Fotos"</strong> e importar direto para o cofre, onde ficam <strong>blindadas permanentemente</strong>.</p>
-        </div>
-      </div>
-      <div class="gf-buttons">
-        <button class="btn btn-google-link" id="btnLinkGoogle">
-          <span>🔗</span> Vincular Conta Google
-        </button>
-        <button class="btn btn-primary" id="btnPickGooglePhotos" disabled>
-          <span>📸</span> Selecionar Fotos
-        </button>
-        <button class="btn btn-danger btn-sm" id="btnUnlinkGoogle" disabled title="Desvincular conta Google">
-          <span>🔌</span> Desvincular
-        </button>
-      </div>
-    </section>
+<section class="google-link-card">
+<div class="google-link-left">
+<div class="google-logo-circle">
+<svg width="26" height="26" viewBox="0 0 48 48">
+<path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+<path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+<path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+<path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+</svg>
+</div>
+<div class="gf-texts">
+<h3>Vincular Conta Google Fotos <span class="google-status-pill off" id="googleStatusPill">🔌 Não vinculado</span></h3>
+<p>Autorize com segurança via <strong>OAuth 2.0 oficial do Google</strong>. Depois é só clicar em <strong>"Selecionar Fotos"</strong> e importar direto para o cofre, onde ficam <strong>blindadas permanentemente</strong>.</p>
+</div>
+</div>
+<div class="gf-buttons">
+<button class="btn btn-google-link" id="btnLinkGoogle"><span>🔗</span> Vincular Conta Google</button>
+<button class="btn btn-primary" id="btnPickGooglePhotos" disabled><span>📸</span> Selecionar Fotos</button>
+<button class="btn btn-danger btn-sm" id="btnUnlinkGoogle" disabled><span>🔌</span> Desvincular</button>
+</div>
+</section>
 
-    <section class="gf-banner">
-      <div class="gf-info">
-        <div class="gf-badge-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="#4285f4"/></svg>
-        </div>
-        <div class="gf-texts">
-          <h3>📸 Envio Rápido (Galeria / Colar / ZIP)</h3>
-          <p>Alternativas rápidas: envie direto da <strong>galeria do celular</strong>, cole com <strong>Ctrl+V</strong>, arraste arquivos ou importe <strong>backup ZIP</strong> do Google Takeout.</p>
-        </div>
-      </div>
-      <div class="gf-buttons">
-        <button class="btn btn-send-vault" id="btnSendPhotoDirect">
-          <span>📸</span> Enviar da Galeria
-        </button>
-        <input type="file" id="photoPickerInput" multiple accept="image/*,video/*" style="display:none;">
-        <button class="btn btn-gf" id="btnLaunchGooglePhotos"><span>🚀</span> Abrir Google Fotos</button>
-        <button class="btndisplay btn-secondary" id="btnImportTakeoutZip"><span>:n📦</span> Importarone ZIP</button>
-        <input type="file" id;">
-="zipFileInput" accept=".zip" style="      </div>
-    </section>
+<section class="gf-banner">
+<div class="gf-info">
+<div class="gf-badge-icon">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="#4285f4"/></svg>
+</div>
+<div class="gf-texts">
+<h3>📸 Envio Rápido (Galeria / Colar / ZIP)</h3>
+<p>Envie direto da <strong>galeria do celular</strong>, cole com <strong>Ctrl+V</strong>, arraste arquivos ou importe <strong>backup ZIP</strong>.</p>
+</div>
+</div>
+<div class="gf-buttons">
+<button class="btn btn-send-vault" id="btnSendPhotoDirect"><span>📸</span> Enviar da Galeria</button>
+<input type="file" id="photoPickerInput" multiple accept="image/*,video/*" style="display:none;">
+<button class="btn btn-gf" id="btnLaunchGooglePhotos"><span>🚀</span> Abrir Google Fotos</button>
+<button class="btn btn-secondary" id="btnImportTakeoutZip"><span>📦</span> Importar ZIP</button>
+<input type="file" id="zipFileInput" accept=".zip" style="display:none;">
+</div>
+</section>
 
-    <section class="toolbar">
-      <div class="filter-tabs">
-        <button class="filter-btn active" data-filter="all">Todos (<span id="countAll">0</span>)</button>
-        <button class="filter-btn" data-filter="image">Fotos (<span id="countImg">0</span>)</button>
-        <button class="filter-btn" data-filter="video">Vídeos (<span id="countVid">0</span>)</button>
-        <button class="filter-btn" data-filter="fav">Favoritos (<span id="countFav">0</span>)</button>
-        <button class="filter-btn" data-filter="optimized">Otimizados IA (<span id="countOpt">0</span>)</button>
-      </div>
-      <div class="search-sort-wrap">
-        <input type="text" id="searchInput" class="search-input" placeholder="🔍 Pesquisar no cofre...">
-        <select id="sortSelect" class="sort-select">
-          <option value="newest">Mais recentes</option>
-          <option value="oldest">Mais antigos</option>
-          <option value="size-desc">Maior tamanho</option>
-          <option value="name">Nome (A-Z)</option>
-        </select>
-      </div>
-    </section>
+<section class="toolbar">
+<div class="filter-tabs">
+<button class="filter-btn active" data-filter="all">Todos (<span id="countAll">0</span>)</button>
+<button class="filter-btn" data-filter="image">Fotos (<span id="countImg">0</span>)</button>
+<button class="filter-btn" data-filter="video">Vídeos (<span id="countVid">0</span>)</button>
+<button class="filter-btn" data-filter="fav">Favoritos (<span id="countFav">0</span>)</button>
+<button class="filter-btn" data-filter="optimized">Otimizados IA (<span id="countOpt">0</span>)</button>
+</div>
+<div class="search-sort-wrap">
+<input type="text" id="searchInput" class="search-input" placeholder="🔍 Pesquisar no cofre...">
+<select id="sortSelect" class="sort-select">
+<option value="newest">Mais recentes</option>
+<option value="oldest">Mais antigos</option>
+<option value="size-desc">Maior tamanho</option>
+<option value="name">Nome (A-Z)</option>
+</select>
+</div>
+</section>
 
-    <main class="media-grid" id="mediaGrid">
-      <div class="empty-vault">
-        <div class="empty-icon">🛡️</div>
-        <h3>Seu Cofre está Vazio e Pronto para Blindagem</h3>
-        <p style="color:var(--text-secondary);max-width:560px;">Vincule sua conta Google Fotos para puxar fotos direto, use o botão <strong>📸 Enviar da Galeria</strong>, cole com <strong>Ctrl+V</strong> ou arraste arquivos. Tudo fica <strong>armazenado permanentemente</strong> — apagar do celular não afeta o cofre.</p>
-        <button class="btn btn-primary" id="btnEmptyAdd"><span>➕</span> Carregar Primeiros Arquivos</button>
-      </div>
-    </main>
-  </div>
+<main class="media-grid" id="mediaGrid"></main>
+</div>
 
-  <div class="modal-overlay" id="modalSettings">
-    <div class="modal-box">
-      <div class="modal-header">
-        <div class="modal-title"><span>⚙️</span> Configurações do Aplicativo</div>
-        <button class="modal-close" data-close="modalSettings" aria-label="Fechar">✕</button>
-      </div>
-      <div class="modal-body">
+<div class="modal-overlay" id="modalSettings">
+<div class="modal-box">
+<div class="modal-header">
+<div class="modal-title"><span>⚙️</span> Configurações</div>
+<button class="modal-close" data-close="modalSettings">✕</button>
+</div>
+<div class="modal-body">
+<div class="settings-section">
+<div class="settings-head">
+<h4><span>🔗</span> Google Fotos (OAuth 2.0)</h4>
+<span class="badge-elite" id="googleClientIdStatusBadge">Não configurado</span>
+</div>
+<div class="google-info-box">
+<strong>Por que preciso de um Client ID?</strong> O Google <u>proíbe</u> apps que peçam e-mail/senha. Cada app usa o próprio <code>OAuth Client ID</code> — <strong>público, gratuito e você cria em 5 minutos</strong>.
+<br><br><strong>Passo a passo:</strong>
+<br>1. <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">console.cloud.google.com</a>
+<br>2. Crie projeto → <strong>APIs e serviços → Biblioteca</strong> → ative <strong>Photos Picker API</strong>
+<br>3. <strong>Tela de permissão OAuth</strong> → tipo <strong>Externo</strong> → adicione seu e-mail como testador
+<br>4. <strong>Credenciais → Criar → ID do cliente OAuth → Aplicativo da Web</strong>
+<br>5. Em <strong>Origens JavaScript autorizadas</strong>, adicione <code>http://localhost</code> e/ou seu domínio
+<br>6. Cole o Client ID abaixo
+</div>
+<input type="text" id="googleClientIdInput" class="clientid-input" placeholder="1234567890-xxxxxxxx.apps.googleusercontent.com">
+<div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+<button class="btn btn-primary btn-sm" id="btnSaveClientId"><span>💾</span> Salvar Client ID</button>
+<button class="btn btn-secondary btn-sm" id="btnTestGoogleAuth"><span>🧪</span> Testar Vinculação</button>
+</div>
+</div>
 
-        <div class="settings-section">
-          <div class="settings-head">
-            <h4><span>🔗</span> Google Fotos (OAuth 2.0)</h4>
-            <span class="badge-elite" id="googleClientIdStatusBadge">Não configurado</span>
-          </div>
-          <div class="google-info-box">
-            <strong>Por que preciso de um Client ID?</strong> O Google <u>proíbe</u> que aplicativos peçam e-mail/senha diretamente (é proteção contra golpes). Cada app usa o próprio <code>OAuth Client ID</code> — <strong>público, gratuito e você mesmo cria em 5 minutos</strong>.
-            <br><br>
-            <strong>Passo a passo:</strong>
-            <br>1. Acesse <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">console.cloud.google.com</a>
-            <br>2. Crie um projeto → <strong>APIs e serviços → Biblioteca</strong> → ative <strong>Photos Picker API</strong>
-            <br>3. <strong>Tela de permissão OAuth</strong> → tipo <strong>Externo</strong> → adicione seu e-mail como testador
-            <br>4. <strong>Credenciais → Criar → ID do cliente OAuth → Aplicativo da Web</strong>
-            <br>5. Em <strong>Origens JavaScript autorizadas</strong>, adicione <code>http://localhost</code> e/ou seu domínio
-            <br>6. Copie o <strong>Client ID</strong> e cole abaixo
-          </div>
-          <input type="text" id="googleClientIdInput" class="clientid-input" placeholder="1234567890-xxxxxxxx.apps.googleusercontent.com">
-          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-            <button class="btn btn-primary btn-sm" id="btnSaveClientId"><span>💾</span> Salvar Client ID</button>
-            <button class="btn btn-secondary btn-sm" id="btnTestGoogleAuth"><span>🧪</span> Testar Vinculação</button>
-          </div>
-        </div>
+<div class="settings-section">
+<div class="settings-head">
+<h4><span>🛡️</span> Armazenamento Permanente</h4>
+<span class="badge-permanent" id="persistBadge">Verificando...</span>
+</div>
+<div class="perm-info-box" id="persistInfo">
+Ao iniciar, o app solicita ao navegador <strong>armazenamento persistente</strong>. Quando concedido, o navegador <strong>não apaga automaticamente</strong> seus dados.
+</div>
+<button class="btn btn-secondary btn-sm" id="btnRequestPersist"><span>🔒</span> Reforçar Armazenamento Permanente</button>
+</div>
 
-        <div class="settings-section">
-          <div class="settings-head">
-            <h4><span>🛡️</span> Armazenamento Permanente</h4>
-            <span class="badge-permanent" id="persistBadge">Verificando...</span>
-          </div>
-          <div class="perm-info-box" id="persistInfo">
-            Ao iniciar, o app solicita ao navegador <strong>armazenamento persistente</strong>. Quando concedido, o navegador <strong>não apaga automaticamente</strong> seus dados por falta de espaço.
-          </div>
-          <button class="btn btn-secondary btn-sm" id="btnRequestPersist"><span>🔒</span> Reforçar Armazenamento Permanente</button>
-        </div>
+<div class="theme-highlight-banner">
+<div>
+<h4 style="font-size:1rem;font-weight:800;margin-bottom:.25rem;">🎨 Mudar Tema</h4>
+<p style="font-size:.78rem;color:var(--text-secondary);">40 temas exclusivos com Boot IA Estilista.</p>
+</div>
+<button class="btn btn-primary" id="btnOpenThemesModal"><span>🎨</span> Ver os 40 Temas</button>
+</div>
 
-        <div class="theme-highlight-banner">
-          <div>
-            <h4 style="font-size:1rem;font-weight:800;margin-bottom:0.25rem;">🎨 Mudar Tema do Aplicativo</h4>
-            <p style="font-size:0.78rem;color:var(--text-secondary);">40 temas exclusivos com Boot IA Estilista.</p>
-          </div>
-          <button class="btn btn-primary" id="btnOpenThemesModal"><span>🎨</span> Ver os 40 Temas</button>
-        </div>
+<div class="settings-section">
+<div class="settings-head">
+<h4><span>💾</span> Armazenamento & Limite</h4>
+<span class="badge-elite" id="settingsCurrentCapacity">250 GB</span>
+</div>
+<div class="quota-presets" id="quotaPresets">
+<button class="preset-chip" data-val="50" data-unit="GB">50 GB</button>
+<button class="preset-chip" data-val="100" data-unit="GB">100 GB</button>
+<button class="preset-chip active" data-val="250" data-unit="GB">250 GB</button>
+<button class="preset-chip" data-val="500" data-unit="GB">500 GB</button>
+<button class="preset-chip" data-val="1" data-unit="TB">1 TB</button>
+<button class="preset-chip" data-val="2" data-unit="TB">2 TB</button>
+<button class="preset-chip" data-val="5" data-unit="TB">5 TB</button>
+<button class="preset-chip" data-val="10" data-unit="TB">10 TB</button>
+<button class="preset-chip" data-val="50" data-unit="TB">50 TB</button>
+<button class="preset-chip" data-val="999" data-unit="TB">999 TB</button>
+</div>
+<div class="custom-quota-form">
+<input type="number" id="customQuotaInput" min="1" max="999999" value="250">
+<select id="customQuotaUnit">
+<option value="GB">GB</option>
+<option value="TB">TB</option>
+</select>
+<button class="btn btn-primary btn-sm" id="btnSaveCustomQuota"><span>💾</span> Salvar</button>
+</div>
+</div>
 
-        <div class="settings-section">
-          <div class="settings-head">
-            <h4><span>💾</span> Armazenamento & Limite</h4>
-            <span class="badge-elite" id="settingsCurrentCapacity">250 GB</span>
-          </div>
-          <div class="quota-presets" id="quotaPresets">
-            <button class="preset-chip" data-val="50" data-unit="GB">50 GB</button>
-            <button class="preset-chip" data-val="100" data-unit="GB">100 GB</button>
-            <button class="preset-chip active" data-val="250" data-unit="GB">250 GB</button>
-            <button class="preset-chip" data-val="500" data-unit="GB">500 GB</button>
-            <button class="preset-chip" data-val="1" data-unit="TB">1 TB</button>
-            <button class="preset-chip" data-val="2" data-unit="TB">2 TB</button>
-            <button class="preset-chip" data-val="5" data-unit="TB">5 TB</button>
-            <button class="preset-chip" data-val="10" data-unit="TB">10 TB</button>
-            <button class="preset-chip" data-val="50" data-unit="TB">50 TB</button>
-            <button class="preset-chip" data-val="999" data-unit="TB">999 TB</button>
-          </div>
-          <div class="custom-quota-form">
-            <input type="number" id="customQuotaInput" min="1" max="999999" value="250">
-            <select id="customQuotaUnit">
-              <option value="GB">GB</option>
-              <option value="TB">TB</option>
-            </select>
-            <button class="btn btn-primary btn-sm" id="btnSaveCustomQuota"><span>💾</span> Salvar</button>
-          </div>
-        </div>
+<div class="settings-section">
+<div class="settings-head">
+<h4><span>⚡</span> Robô Titânio IA Plus</h4>
+<span class="badge-elite">100% Funcional</span>
+</div>
+<p style="font-size:.78rem;color:var(--text-secondary);">Otimizador neural com Canvas 4K, fallback WebP→JPEG e detecção de duplicados por hash.</p>
+<button class="btn btn-robot btn-sm" id="btnOpenRobotFromSettings"><span>⚡</span> Iniciar Robô IA</button>
+</div>
 
-        <div class="settings-section">
-          <div class="settings-head">
-            <h4><span>⚡</span> Robô Titânio IA Plus</h4>
-            <span class="badge-elite">100% Funcional</span>
-          </div>
-          <p style="font-size:0.78rem;color:var(--text-secondary);">Otimizador neural com Canvas 4K, fallback WebP→JPEG e detecção de duplicados por hash.</p>
-          <button class="btn btn-robot btn-sm" id="btnOpenRobotFromSettings"><span>⚡</span> Iniciar Robô IA</button>
-        </div>
+<div class="settings-section">
+<div class="settings-head"><h4><span>🛡️</span> Backup & Limpeza</h4></div>
+<div style="display:flex;gap:.65rem;flex-wrap:wrap;">
+<button class="btn btn-secondary btn-sm" id="btnExportAllZip"><span>📦</span> Baixar Tudo em ZIP</button>
+<button class="btn btn-danger btn-sm" id="btnClearAllVault"><span>🗑️</span> Esvaziar Cofre</button>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-        <div class="settings-section">
-          <div class="settings-head"><h4><span>🛡️</span> Backup & Limpeza</h4></div>
-          <div style="display:flex;gap:0.65rem;flex-wrap:wrap;">
-            <button class="btn btn-secondary btn-sm" id="btnExportAllZip"><span>📦</span> Baixar Tudo em ZIP</button>
-            <button class="btn btn-danger btn-sm" id="btnClearAllVault"><span>🗑️</span> Esvaziar Cofre</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="modal-overlay" id="modalThemes">
+<div class="modal-box modal-box-large">
+<div class="modal-header">
+<div class="modal-title"><span>🎨</span> Seleção de Temas (40 Estilos)</div>
+<button class="modal-close" data-close="modalThemes">✕</button>
+</div>
+<div class="modal-body">
+<div class="theme-bot-hud">
+<div class="theme-bot-left">
+<div class="theme-bot-avatar">🤖</div>
+<div class="theme-bot-speech">
+<h4>Boot Estilista Quântico IA <span class="badge-elite">Ativo</span></h4>
+<p id="themeBotStatus">Aguardando comando. Selecione um dos 40 temas abaixo.</p>
+</div>
+</div>
+<button class="btn btn-sm btn-primary" id="btnBotRandomTheme"><span>🎲</span> Sugerir Tema</button>
+</div>
+<div style="display:flex;gap:.85rem;align-items:center;flex-wrap:wrap;">
+<input type="text" id="themeSearchInput" class="search-input" style="max-width:280px;" placeholder="🔍 Buscar tema...">
+<div class="theme-category-nav" id="themeCategoryNav">
+<button class="theme-cat-btn active" data-cat="all">Todos (40)</button>
+<button class="theme-cat-btn" data-cat="Apple & Titanium">Apple & Titanium</button>
+<button class="theme-cat-btn" data-cat="Elite & Luxo">Elite & Luxo</button>
+<button class="theme-cat-btn" data-cat="Cyber & Futurista">Cyber & Futurista</button>
+<button class="theme-cat-btn" data-cat="Neon & Quântico">Neon & Quântico</button>
+<button class="theme-cat-btn" data-cat="Natureza & Joias">Natureza & Joias</button>
+<button class="theme-cat-btn" data-cat="Amoled & Escuros">Amoled & Escuros</button>
+</div>
+</div>
+<div class="themes-grid-40" id="themesGrid"></div>
+</div>
+</div>
+</div>
 
-  <div class="modal-overlay" id="modalThemes">
-    <div class="modal-box modal-box-large">
-      <div class="modal-header">
-        <div class="modal-title"><span>🎨</span> Seleção de Temas (40 Estilos)</div>
-        <button class="modal-close" data-close="modalThemes" aria-label="Fechar">✕</button>
-      </div>
-      <div class="modal-body">
-        <div class="theme-bot-hud">
-          <div class="theme-bot-left">
-            <div class="theme-bot-avatar">🤖</div>
-            <div class="theme-bot-speech">
-              <h4>Boot Estilista Quântico IA <span class="badge-elite">Ativo</span></h4>
-              <p id="themeBotStatus">Aguardando comando. Selecione um dos 40 temas abaixo.</p>
-            </div>
-          </div>
-          <button class="btn btn-sm btn-primary" id="btnBotRandomTheme"><span>🎲</span> Sugerir Tema</button>
-        </div>
-        <div style="display:flex;gap:0.85rem;align-items:center;flex-wrap:wrap;">
-          <input type="text" id="themeSearchInput" class="search-input" style="max-width:280px;" placeholder="🔍 Buscar tema...">
-          <div class="theme-category-nav" id="themeCategoryNav">
-            <button class="theme-cat-btn active" data-cat="all">Todos (40)</button>
-            <button class="theme-cat-btn" data-cat="Apple & Titanium">Apple & Titanium</button>
-            <button class="theme-cat-btn" data-cat="Elite & Luxo">Elite & Luxo</button>
-            <button class="theme-cat-btn" data-cat="Cyber & Futurista">Cyber & Futurista</button>
-            <button class="theme-cat-btn" data-cat="Neon & Quântico">Neon & Quântico</button>
-            <button class="theme-cat-btn" data-cat="Natureza & Joias">Natureza & Joias</button>
-            <button class="theme-cat-btn" data-cat="Amoled & Escuros">Amoled & Escuros</button>
-          </div>
-        </div>
-        <div class="themes-grid-40" id="themesGrid"></div>
-      </div>
-    </div>
-  </div>
+<div class="modal-overlay" id="modalRobot">
+<div class="modal-box">
+<div class="modal-header">
+<div class="modal-title"><span>⚡</span> Robô Titânio IA Plus</div>
+<button class="modal-close" data-close="modalRobot">✕</button>
+</div>
+<div class="modal-body">
+<div class="robot-hud">
+<div class="robot-avatar">
+<svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+<rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle>
+<path d="M12 7v4"></path><line x1="8" y1="16" x2="8.01" y2="16"></line><line x1="16" y1="16" x2="16.01" y2="16"></line>
+</svg>
+</div>
+<div class="robot-hud-details">
+<h3>Robô Neural Titânio Ativo</h3>
+<p>Pronto para escanear e otimizar itens locais.</p>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr;gap:.65rem;">
+<button class="btn btn-primary" id="btnRobotOptimize"><span>⚡</span> Otimização Canvas 4K</button>
+<button class="btn btn-secondary" id="btnRobotDuplicates"><span>🔍</span> Eliminar Duplicados</button>
+<button class="btn btn-secondary" id="btnRobotDefrag"><span>🧹</span> Desfragmentar Banco</button>
+</div>
+<div>
+<div style="font-size:.75rem;font-weight:700;color:var(--text-tertiary);margin-bottom:.35rem;">TERMINAL DO ROBÔ:</div>
+<div class="robot-terminal" id="robotConsole">[SISTEMA] Robô IA Inicializado.</div>
+</div>
+</div>
+</div>
+</div>
 
-  <div class="modal-overlay" id="modalRobot">
-    <div class="modal-box">
-      <div class="modal-header">
-        <div class="modal-title"><span>⚡</span> Robô Titânio IA Plus</div>
-        <button class="modal-close" data-close="modalRobot" aria-label="Fechar">✕</button>
-      </div>
-      <div class="modal-body">
-        <div class="robot-hud">
-          <div class="robot-avatar">
-            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
-              <rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle>
-              <path d="M12 7v4"></path><line x1="8" y1="16" x2="8.01" y2="16"></line><line x1="16" y1="16" x2="16.01" y2="16"></line>
-            </svg>
-          </div>
-          <div class="robot-hud-details">
-            <h3>Robô Neural Titânio Ativo</h3>
-            <p>Pronto para escanear e otimizar itens locais.</p>
-          </div>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr;gap:0.65rem;">
-          <button class="btn btn-primary" id="btnRobotOptimize"><span>⚡</span> Otimização Canvas 4K</button>
-          <button class="btn btn-secondary" id="btnRobotDuplicates"><span>🔍</span> Eliminar Duplicados</button>
-          <button class="btn btn-secondary" id="btnRobotDefrag"><span>🧹</span> Desfragmentar Banco</button>
-        </div>
-        <div>
-          <div style="font-size:0.75rem;font-weight:700;color:var(--text-tertiary);margin-bottom:0.35rem;">TERMINAL DO ROBÔ:</div>
-          <div class="robot-terminal" id="robotConsole">[SISTEMA] Robô IA Inicializado.</div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="modal-overlay" id="modalLightbox">
+<div class="lightbox-content">
+<div id="lightboxMediaContainer"></div>
+<div style="display:flex;gap:.85rem;align-items:center;">
+<button class="btn btn-secondary btn-sm" id="btnDownloadLightbox">⬇️ Baixar</button>
+<button class="btn btn-secondary btn-sm" data-close="modalLightbox">✕ Fechar</button>
+</div>
+</div>
+</div>
 
-  <div class="modal-overlay" id="modalLightbox">
-    <div class="lightbox-content">
-      <div id="lightboxMediaContainer"></div>
-      <div style="display:flex;gap:0.85rem;align-items:center;">
-        <button class="btn btn-secondary btn-sm" id="btnDownloadLightbox">⬇️ Baixar</button>
-        <button class="btn btn-secondary btn-sm" data-close="modalLightbox">✕ Fechar</button>
-      </div>
-    </div>
-  </div>
+<div class="toast-container" id="toastContainer"></div>
 
-  <div class="toast-container" id="toastContainer"></div>
+<script>
+(function(){
+'use strict';
 
-  <script>
-  (() => {
-    'use strict';
+// ============ TEMAS (40) ============
+var RAW_THEMES=[
+["apple-titanium","Apple Titanium Pro","Apple & Titanium","Titânio espacial escovado com safira executiva.",["#06070a","#121724","#3b82f6","#f59e0b"]],
+["cyberpunk-2077","Cyberpunk Neon 2077","Cyber & Futurista","High-tech com amarelo neon fluorescente e rosa laser.",["#07050d","#18102b","#fcee0a","#ff0055"]],
+["royal-champagne","Royal Champagne Gold","Elite & Luxo","Ônix polido com reflexos de ouro puro 24k.",["#080705","#1c1710","#f59e0b","#fef08a"]],
+["emerald-quantum","Emerald Matrix Quantum","Natureza & Joias","Esmeralda profunda com malha quântica holográfica.",["#040a07","#0e2017","#10b981","#34d399"]],
+["sapphire-midnight","Sapphire Midnight Blue","Natureza & Joias","Azul safira imperial em noite de alta fidelidade.",["#030712","#0f1c38","#2563eb","#60a5fa"]],
+["amethyst-violet","Amethyst Ultra Violet","Neon & Quântico","Púrpura ametista com irradiação laser quântica.",["#090514","#1e103d","#a855f7","#c084fc"]],
+["crimson-ruby","Crimson Ruby Red","Elite & Luxo","Vermelho rubi de alto prestígio sobre ardósia negra.",["#0d0407","#260c14","#e11d48","#fb7185"]],
+["deep-space-void","Deep Space Void OLED","Amoled & Escuros","Preto absoluto puro OLED com iluminação estelar.",["#000000","#0d0e12","#38bdf8","#e2e8f0"]],
+["quantum-cyan","Quantum Cyan Frost","Neon & Quântico","Ciano quântico ultra nítido de laboratório espacial.",["#040a0f","#0d202e","#06b6d4","#67e8f9"]],
+["sunset-vaporwave","Sunset Vaporwave 80s","Cyber & Futurista","Gradientes de pôr do sol digital, coral e magenta.",["#0a0512","#220e38","#f43f5e","#fb923c"]],
+["tokyo-night","Tokyo Cyber Night","Cyber & Futurista","Asfalto chuvoso de Shinjuku com luzes de neon.",["#050811","#0e1a33","#ff6b00","#00d4ff"]],
+["stealth-matte","Stealth Fighter Matte","Amoled & Escuros","Caça invisível militar fosco com acentos âmbar.",["#0a0b0d","#171a1f","#f59e0b","#94a3b8"]],
+["aurora-borealis","Aurora Borealis Arctic","Natureza & Joias","Noite polar com luzes verde-esmeralda e lilás.",["#04090e","#0e1e2f","#10b981","#8b5cf6"]],
+["carbon-fiber","Carbon Fiber Racing","Apple & Titanium","Fibra de carbono aeroespacial com vermelho Brembo.",["#07080a","#16181e","#ef4444","#ffffff"]],
+["gold-vip-24k","Golden Luxury VIP 24K","Elite & Luxo","Mansão de alto padrão com dourado reluzente 24k.",["#060502","#1a150a","#eab308","#ca8a04"]],
+["solana-twilight","Solana Twilight","Neon & Quântico","Gradiente de alta velocidade roxo neon e ciano.",["#090412","#1d0e3a","#14f195","#9945ff"]],
+["bitcoin-satoshi","Bitcoin Satoshi Orange","Cyber & Futurista","Ouro digital descentralizado com laranja cripto.",["#080603","#1c1208","#f7931a","#ffaa33"]],
+["apple-space-gray","Apple Space Gray Classic","Apple & Titanium","Clássico cinza espacial icônico e refinado Apple.",["#0d0e11","#1c1f26","#94a3b8","#e2e8f0"]],
+["cyber-samurai","Cyber Samurai Ronin","Cyber & Futurista","Aço katana com flor de cerejeira rosa neon.",["#090508","#1f0c1a","#ec4899","#38bdf8"]],
+["deep-ocean-abyss","Deep Ocean Abyss","Natureza & Joias","Fossa abissal com organismos bioluminescentes.",["#02080d","#071a2e","#0ea5e9","#2dd4bf"]],
+["mars-horizon","Mars Horizon 2050","Cyber & Futurista","Superfície marciana com poeira carmim.",["#0b0403","#230b08","#ea580c","#f97316"]],
+["diamond-platinum","Diamond Platinum","Elite & Luxo","Brilho cristalino de diamante sobre platina.",["#08090d","#171c29","#e0f2fe","#93c5fd"]],
+["cyber-yellow-2088","Cyberpunk Yellow 2088","Neon & Quântico","Alta visibilidade em preto fosco com amarelo atômico.",["#080805","#1c1c0b","#facc15","#eab308"]],
+["synthwave-80s","Synthwave Retro Neon","Cyber & Futurista","Grade de horizonte retrô dos anos 80.",["#07040d","#1a0b30","#d946ef","#06b6d4"]],
+["rose-gold-exec","Rose Gold Executive","Elite & Luxo","Metal nobre ouro rosa sobre couro aveludado escuro.",["#0a0507","#200d16","#fb7185","#f43f5e"]],
+["holographic-prism","Holographic Prismatic","Neon & Quântico","Refração prismática iridescente sobre vidro negro.",["#05060b","#111626","#38bdf8","#ec4899"]],
+["monolith-minimal","Monolith Minimalist","Amoled & Escuros","Pureza minimalista com contraste cirúrgico.",["#000000","#0d0d0d","#ffffff","#a3a3a3"]],
+["obsidian-lava","Obsidian Lava Forge","Elite & Luxo","Rocha vulcânica vítrea com magma incandescente.",["#0a0502","#1e0b05","#ff4500","#ff8c00"]],
+["toxic-hazard","Neon Toxic Hazard","Neon & Quântico","Ficção científica química com verde biohazard.",["#050803","#0f1c09","#22c55e","#84cc16"]],
+["nebula-galaxy","Nebula Galaxy Prime","Amoled & Escuros","Espaço sideral profundo com poeira cósmica.",["#04030a","#120b24","#6366f1","#a855f7"]],
+["nordic-glacier","Nordic Glacier Ice","Natureza & Joias","Geleiras escandinavas com branco cristalino.",["#03070d","#0b1b2d","#38bdf8","#e0f2fe"]],
+["desert-bronze","Desert Mirage Bronze","Elite & Luxo","Bronze esculpido e dunas douradas em noite estrelada.",["#090604","#1d140c","#d97706","#b45309"]],
+["iron-man-reactor","Iron Man Arc Reactor","Cyber & Futurista","Armadura Mark titânio com reator arc azul e dourado.",["#0a0304","#22080a","#00d4ff","#eab308"]],
+["dark-matter","Quantum Dark Matter","Amoled & Escuros","Gravitação quântica e matéria escura cósmica.",["#020105","#0c0618","#7c3aed","#4c1d95"]],
+["british-racing","British Racing Emerald","Elite & Luxo","Verde clássico lendário de corrida com ouro.",["#020805","#091910","#059669","#d97706"]],
+["ghost-recon","Cyber Ghost Recon","Apple & Titanium","Camuflagem digital tática cinza com azul espectral.",["#06080a","#121720","#00f0ff","#64748b"]],
+["royal-monaco","Royal Monaco Yacht","Elite & Luxo","Azul marinho aristocrático da Riviera com dourado.",["#03060f","#0d1a38","#3b82f6","#f59e0b"]],
+["solar-eclipse","Eclipse Solar Corona","Amoled & Escuros","Sombra lunar profunda com coroa de fogo solar.",["#030202","#120c09","#f97316","#fbbf24"]],
+["cyber-glitch","Cyber Glitch Lavender","Neon & Quântico","Efeito glitch com lavanda eletrônica e ciano.",["#080410","#1a0d33","#818cf8","#38bdf8"]],
+["hyperion-ai","Hyperion Futuristic AI","Cyber & Futurista","Laboratório sci-fi hiper-avançado com prata e azul.",["#05070d","#10182b","#38bdf8","#0284c7"]]
+];
 
-    // ============ TEMAS (40) ============
-    const RAW_THEMES = [
-      ["apple-titanium","Apple Titanium Pro","Apple & Titanium","Titânio espacial escovado com safira executiva.",["#06070a","#121724","#3b82f6","#f59e0b"]],
-      ["cyberpunk-2077","Cyberpunk Neon 2077","Cyber & Futurista","High-tech com amarelo neon fluorescente e rosa laser.",["#07050d","#18102b","#fcee0a","#ff0055"]],
-      ["royal-champagne","Royal Champagne Gold","Elite & Luxo","Ônix polido com reflexos de ouro puro 24k.",["#080705","#1c1710","#f59e0b","#fef08a"]],
-      ["emerald-quantum","Emerald Matrix Quantum","Natureza & Joias","Esmeralda profunda com malha quântica holográfica.",["#040a07","#0e2017","#10b981","#34d399"]],
-      ["sapphire-midnight","Sapphire Midnight Blue","Natureza & Joias","Azul safira imperial em noite de alta fidelidade.",["#030712","#0f1c38","#2563eb","#60a5fa"]],
-      ["amethyst-violet","Amethyst Ultra Violet","Neon & Quântico","Púrpura ametista com irradiação laser quântica.",["#090514","#1e103d","#a855f7","#c084fc"]],
-      ["crimson-ruby","Crimson Ruby Red","Elite & Luxo","Vermelho rubi de alto prestígio sobre ardósia negra.",["#0d0407","#260c14","#e11d48","#fb7185"]],
-      ["deep-space-void","Deep Space Void OLED","Amoled & Escuros","Preto absoluto puro OLED com iluminação estelar.",["#000000","#0d0e12","#38bdf8","#e2e8f0"]],
-      ["quantum-cyan","Quantum Cyan Frost","Neon & Quântico","Ciano quântico ultra nítido de laboratório espacial.",["#040a0f","#0d202e","#06b6d4","#67e8f9"]],
-      ["sunset-vaporwave","Sunset Vaporwave 80s","Cyber & Futurista","Gradientes de pôr do sol digital, coral e magenta.",["#0a0512","#220e38","#f43f5e","#fb923c"]],
-      ["tokyo-night","Tokyo Cyber Night","Cyber & Futurista","Asfalto chuvoso de Shinjuku com luzes de neon.",["#050811","#0e1a33","#ff6b00","#00d4ff"]],
-      ["stealth-matte","Stealth Fighter Matte","Amoled & Escuros","Caça invisível militar fosco com acentos âmbar.",["#0a0b0d","#171a1f","#f59e0b","#94a3b8"]],
-      ["aurora-borealis","Aurora Borealis Arctic","Natureza & Joias","Noite polar com luzes verde-esmeralda e lilás.",["#04090e","#0e1e2f","#10b981","#8b5cf6"]],
-      ["carbon-fiber","Carbon Fiber Racing","Apple & Titanium","Fibra de carbono aeroespacial com vermelho Brembo.",["#07080a","#16181e","#ef4444","#ffffff"]],
-      ["gold-vip-24k","Golden Luxury VIP 24K","Elite & Luxo","Mansão de alto padrão com dourado reluzente 24k.",["#060502","#1a150a","#eab308","#ca8a04"]],
-      ["solana-twilight","Solana Twilight","Neon & Quântico","Gradiente de alta velocidade roxo neon e ciano.",["#090412","#1d0e3a","#14f195","#9945ff"]],
-      ["bitcoin-satoshi","Bitcoin Satoshi Orange","Cyber & Futurista","Ouro digital descentralizado com laranja cripto.",["#080603","#1c1208","#f7931a","#ffaa33"]],
-      ["apple-space-gray","Apple Space Gray Classic","Apple & Titanium","Clássico cinza espacial icônico e refinado Apple.",["#0d0e11","#1c1f26","#94a3b8","#e2e8f0"]],
-      ["cyber-samurai","Cyber Samurai Ronin","Cyber & Futurista","Aço katana com flor de cerejeira rosa neon.",["#090508","#1f0c1a","#ec4899","#38bdf8"]],
-      ["deep-ocean-abyss","Deep Ocean Abyss","Natureza & Joias","Fossa abissal com organismos bioluminescentes.",["#02080d","#071a2e","#0ea5e9","#2dd4bf"]],
-      ["mars-horizon","Mars Horizon 2050","Cyber & Futurista","Superfície marciana com poeira carmim.",["#0b0403","#230b08","#ea580c","#f97316"]],
-      ["diamond-platinum","Diamond Platinum","Elite & Luxo","Brilho cristalino de diamante sobre platina.",["#08090d","#171c29","#e0f2fe","#93c5fd"]],
-      ["cyber-yellow-2088","Cyberpunk Yellow 2088","Neon & Quântico","Alta visibilidade em preto fosco com amarelo atômico.",["#080805","#1c1c0b","#facc15","#eab308"]],
-      ["synthwave-80s","Synthwave Retro Neon","Cyber & Futurista","Grade de horizonte retrô dos anos 80.",["#07040d","#1a0b30","#d946ef","#06b6d4"]],
-      ["rose-gold-exec","Rose Gold Executive","Elite & Luxo","Metal nobre ouro rosa sobre couro aveludado escuro.",["#0a0507","#200d16","#fb7185","#f43f5e"]],
-      ["holographic-prism","Holographic Prismatic","Neon & Quântico","Refração prismática iridescente sobre vidro negro.",["#05060b","#111626","#38bdf8","#ec4899"]],
-      ["monolith-minimal","Monolith Minimalist","Amoled & Escuros","Pureza minimalista com contraste cirúrgico.",["#000000","#0d0d0d","#ffffff","#a3a3a3"]],
-      ["obsidian-lava","Obsidian Lava Forge","Elite & Luxo","Rocha vulcânica vítrea com magma incandescente.",["#0a0502","#1e0b05","#ff4500","#ff8c00"]],
-      ["toxic-hazard","Neon Toxic Hazard","Neon & Quântico","Ficção científica química com verde biohazard.",["#050803","#0f1c09","#22c55e","#84cc16"]],
-      ["nebula-galaxy","Nebula Galaxy Prime","Amoled & Escuros","Espaço sideral profundo com poeira cósmica.",["#04030a","#120b24","#6366f1","#a855f7"]],
-      ["nordic-glacier","Nordic Glacier Ice","Natureza & Joias","Geleiras escandinavas com branco cristalino.",["#03070d","#0b1b2d","#38bdf8","#e0f2fe"]],
-      ["desert-bronze","Desert Mirage Bronze","Elite & Luxo","Bronze esculpido e dunas douradas em noite estrelada.",["#090604","#1d140c","#d97706","#b45309"]],
-      ["iron-man-reactor","Iron Man Arc Reactor","Cyber & Futurista","Armadura Mark titânio com reator arc azul e dourado.",["#0a0304","#22080a","#00d4ff","#eab308"]],
-      ["dark-matter","Quantum Dark Matter","Amoled & Escuros","Gravitação quântica e matéria escura cósmica.",["#020105","#0c0618","#7c3aed","#4c1d95"]],
-      ["british-racing","British Racing Emerald","Elite & Luxo","Verde clássico lendário de corrida com ouro.",["#020805","#091910","#059669","#d97706"]],
-      ["ghost-recon","Cyber Ghost Recon","Apple & Titanium","Camuflagem digital tática cinza com azul espectral.",["#06080a","#121720","#00f0ff","#64748b"]],
-      ["royal-monaco","Royal Monaco Yacht","Elite & Luxo","Azul marinho aristocrático da Riviera com dourado.",["#03060f","#0d1a38","#3b82f6","#f59e0b"]],
-      ["solar-eclipse","Eclipse Solar Corona","Amoled & Escuros","Sombra lunar profunda com coroa de fogo solar.",["#030202","#120c09","#f97316","#fbbf24"]],
-      ["cyber-glitch","Cyber Glitch Lavender","Neon & Quântico","Efeito glitch com lavanda eletrônica e ciano.",["#080410","#1a0d33","#818cf8","#38bdf8"]],
-      ["hyperion-ai","Hyperion Futuristic AI","Cyber & Futurista","Laboratório sci-fi hiper-avançado com prata e azul.",["#05070d","#10182b","#38bdf8","#0284c7"]]
-    ];
+function hexToRgba(hex,a){
+  var c=hex.replace('#','');
+  if(c.length===3)c=c.split('').map(function(x){return x+x}).join('');
+  var n=parseInt(c,16);
+  return 'rgba('+((n>>16)&255)+','+((n>>8)&255)+','+(n&255)+','+a+')';
+}
+function buildThemeVars(c){
+  return {
+    '--bg-base':c[0],'--bg-surface':hexToRgba(c[1],.7),
+    '--bg-surface-elevated':c[1],'--bg-card':hexToRgba(c[1],.82),
+    '--border-subtle':hexToRgba(c[2],.16),'--border-medium':hexToRgba(c[2],.35),
+    '--border-focus':c[2],'--text-primary':'#f8fafc','--text-secondary':'#cbd5e1',
+    '--text-tertiary':'#94a3b8','--text-accent':c[2],'--accent-primary':c[2],
+    '--accent-secondary':c[3],'--accent-glow':hexToRgba(c[2],.4),
+    '--radial-1':hexToRgba(c[2],.12),'--radial-2':hexToRgba(c[3],.08)
+  };
+}
+var THEMES=RAW_THEMES.map(function(t){
+  return {id:t[0],name:t[1],category:t[2],desc:t[3],colors:t[4],vars:buildThemeVars(t[4])};
+});
 
-    // ============ UTILITÁRIOS ============
-    function hexToRgba(hex, a) {
-      let c = hex.replace('#','');
-      if (c.length === 3) c = c.split('').map(x => x+x).join('');
-      const n = parseInt(c, 16);
-      return `rgba(${(n>>16)&255},${(n>>8)&255},${n&255},${a})`;
-    }
+function escapeHtml(s){
+  return String(s==null?'':s).replace(/[&<>"']/g,function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+  });
+}
+function quickHash(str){
+  if(!str)return 'empty';
+  var h1=0x811c9dc5,h2=0x1000193;
+  var step=Math.max(1,Math.floor(str.length/4096));
+  for(var i=0;i<str.length;i+=step){
+    var c=str.charCodeAt(i);
+    h1=Math.imul(h1^c,16777619);
+    h2=Math.imul(h2+c,2246822519);
+  }
+  return ((h1>>>0).toString(16))+'_'+((h2>>>0).toString(16))+'_'+str.length.toString(16);
+}
+function loadScript(src){
+  return new Promise(function(res,rej){
+    if([].slice.call(document.scripts).some(function(s){return s.src===src}))return res();
+    var s=document.createElement('script');
+    s.src=src;s.async=true;s.defer=true;
+    s.onload=function(){res()};
+    s.onerror=function(){rej(new Error('Falha ao carregar '+src))};
+    document.head.appendChild(s);
+  });
+}
 
-    function buildThemeVars(c) {
-      return {
-        '--bg-base': c[0], '--bg-surface': hexToRgba(c[1], 0.7),
-        '--bg-surface-elevated': c[1], '--bg-card': hexToRgba(c[1], 0.82),
-        '--border-subtle': hexToRgba(c[2], 0.16),
-        '--border-medium': hexToRgba(c[2], 0.35), '--border-focus': c[2],
-        '--text-primary': '#f8fafc', '--text-secondary': '#cbd5e1',
-        '--text-tertiary': '#94a3b8', '--text-accent': c[2],
-        '--accent-primary': c[2], '--accent-secondary': c[3],
-        '--accent-glow': hexToRgba(c[2], 0.4), '--radial-1': hexToRgba(c[2], 0.12),
-        '--radial-2': hexToRgba(c[3], 0.08)
-      };
-    }
+// ============ CONSTANTES ============
+var KEY_THEME='mangedora_active_theme_v7';
+var KEY_QUOTA_VAL='mangedora_quota_val_v7';
+var KEY_QUOTA_UNIT='mangedora_quota_unit_v7';
+var KEY_SAVINGS='mangedora_saved_bytes_v7';
+var KEY_GOOGLE_CLIENT_ID='mangedora_google_client_id_v1';
+var DB_NAME='mangedora_vault_db_v7';
+var PAGE_SIZE=60;
+var GOOGLE_SCOPE='https://www.googleapis.com/auth/photospicker.mediaitems.readonly';
+var GOOGLE_GIS_SRC='https://accounts.google.com/gsi/client';
+var GOOGLE_PICKER_SESSIONS_URL='https://photospicker.googleapis.com/v1/sessions';
+var GOOGLE_PICKER_MEDIA_URL='https://photospicker.googleapis.com/v1/mediaItems';
 
-    const THEMES = RAW_THEMES.map(t => ({
-      id: t[0], name: t[1], category: t[2], desc: t[3], colors: t[4], vars: buildThemeVars(t[4])
-    }));
+var appState={
+  items:[],filter:'all',search:'',sort:'newest',
+  activeThemeId:localStorage.getItem(KEY_THEME)||'apple-titanium',
+  quotaVal:parseInt(localStorage.getItem(KEY_QUOTA_VAL)||'250',10),
+  quotaUnit:localStorage.getItem(KEY_QUOTA_UNIT)||'GB',
+  savedBytes:parseInt(localStorage.getItem(KEY_SAVINGS)||'0',10),
+  activeLightboxItem:null,
+  visibleCount:PAGE_SIZE,
+  persistentGranted:false,
+  googleLinked:false,
+  googleLinking:false,
+  googleEmail:null
+};
+var googleAccessToken=null;
+var googleTokenExpiresAt=0;
+var googleTokenClient=null;
+var db=null;
 
-    const escapeHtml = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({
-      '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
-    }[c]));
-
-    function quickHash(str) {
-      if (!str) return 'empty';
-      let h1 = 0x811c9dc5, h2 = 0x1000193;
-      const step = Math.max(1, Math.floor(str.length / 4096));
-      for (let i = 0; i < str.length; i += step) {
-        const c = str.charCodeAt(i);
-        h1 = Math.imul(h1 ^ c, 16777619);
-        h2 = Math.imul(h2 + c, 2246822519);
+// ============ INDEXEDDB ============
+function initDB(){
+  return new Promise(function(res,rej){
+    var req=indexedDB.open(DB_NAME,1);
+    req.onupgradeneeded=function(e){
+      var d=e.target.result;
+      if(!d.objectStoreNames.contains('vault_items')){
+        var s=d.createObjectStore('vault_items',{keyPath:'id'});
+        s.createIndex('type','type',{unique:false});
+        s.createIndex('date','date',{unique:false});
       }
-      return ((h1 >>> 0).toString(16) + '_' + (h2 >>> 0).toString(16) + '_' + str.length.toString(16));
-    }
-
-    function loadScript(src) {
-      return new Promise((res, rej) => {
-        if ([...document.scripts].some(s => s.src === src)) return res();
-        const s = document.createElement('script');
-        s.src = src; s.async = true; s.defer = true;
-        s.onload = () => res();
-        s.onerror = () => rej(new Error('Falha ao carregar ' + src));
-        document.head.appendChild(s);
-      });
-    }
-
-    // ============ CONSTANTES ============
-    const KEY_THEME = 'mangedora_active_theme_v7';
-    const KEY_QUOTA_VAL = 'mangedora_quota_val_v7';
-    const KEY_QUOTA_UNIT = 'mangedora_quota_unit_v7';
-    const KEY_SAVINGS = 'mangedora_saved_bytes_v7';
-    const KEY_GOOGLE_CLIENT_ID = 'mangedora_google_client_id_v1';
-    const DB_NAME = 'mangedora_vault_db_v7';
-    const PAGE_SIZE = 60;
-
-    const GOOGLE_SCOPE = 'https://www.googleapis.com/auth/photospicker.mediaitems.readonly';
-    const GOOGLE_GIS_SRC = 'https://accounts.google.com/gsi/client';
-    const GOOGLE_PICKER_SESSIONS_URL = 'https://photospicker.googleapis.com/v1/sessions';
-    const GOOGLE_PICKER_MEDIA_URL = 'https://photospicker.googleapis.com/v1/mediaItems';
-
-    const appState = {
-      items: [], filter: 'all', search: '', sort: 'newest',
-      activeThemeId: localStorage.getItem(KEY_THEME) || 'apple-titanium',
-      quotaVal: parseInt(localStorage.getItem(KEY_QUOTA_VAL) || '250', 10),
-      quotaUnit: localStorage.getItem(KEY_QUOTA_UNIT) || 'GB',
-      savedBytes: parseInt(localStorage.getItem(KEY_SAVINGS) || '0', 10),
-      activeLightboxItem: null,
-      visibleCount: PAGE_SIZE,
-      persistentGranted: false,
-      googleLinked: false,
-      googleLinking: false,
-      googleEmail: null
     };
+    req.onsuccess=function(e){db=e.target.result;res(db)};
+    req.onerror=function(e){rej(e.target.error)};
+  });
+}
+function dbGetAll(){
+  return new Promise(function(res,rej){
+    var req=db.transaction('vault_items','readonly').objectStore('vault_items').getAll();
+    req.onsuccess=function(){res(req.result||[])};
+    req.onerror=function(){rej(req.error)};
+  });
+}
+function dbPut(item){
+  return new Promise(function(res,rej){
+    var req=db.transaction('vault_items','readwrite').objectStore('vault_items').put(item);
+    req.onsuccess=function(){res()};
+    req.onerror=function(){rej(req.error)};
+  });
+}
+function dbDelete(id){
+  return new Promise(function(res,rej){
+    var req=db.transaction('vault_items','readwrite').objectStore('vault_items').delete(id);
+    req.onsuccess=function(){res()};
+    req.onerror=function(){rej(req.error)};
+  });
+}
+function dbClear(){
+  return new Promise(function(res,rej){
+    var req=db.transaction('vault_items','readwrite').objectStore('vault_items').clear();
+    req.onsuccess=function(){res()};
+    req.onerror=function(){rej(req.error)};
+  });
+}
 
-    let googleAccessToken = null;
-    let googleTokenExpiresAt = 0;
-    let googleTokenClient = null;
-    let db = null;
-
-    // ============ INDEXEDDB ============
-    function initDB() {
-      return new Promise((res, rej) => {
-        const req = indexedDB.open(DB_NAME, 1);
-        req.onupgradeneeded = e => {
-          const d = e.target.result;
-          if (!d.objectStoreNames.contains('vault_items')) {
-            const s = d.createObjectStore('vault_items', { keyPath: 'id' });
-            s.createIndex('type', 'type', { unique: false });
-            s.createIndex('date', 'date', { unique: false });
-          }
-        };
-        req.onsuccess = e => { db = e.target.result; res(db); };
-        req.onerror = e => rej(e.target.error);
-      });
+// ============ PERSISTÊNCIA ============
+function requestPersistentStorage(silent){
+  silent=silent||false;
+  if(!navigator.storage||!navigator.storage.persist){
+    updatePersistBadge(false,'Não suportado');
+    return Promise.resolve(false);
+  }
+  var checkPersisted=Promise.resolve(false);
+  if(navigator.storage.persisted)checkPersisted=navigator.storage.persisted();
+  return checkPersisted.then(function(granted){
+    if(granted)return true;
+    return navigator.storage.persist();
+  }).then(function(granted){
+    appState.persistentGranted=granted;
+    updatePersistBadge(granted);
+    if(!silent){
+      if(granted)toast('🛡️ Armazenamento permanente concedido!','🔒');
+      else toast('⚠️ Navegador não concedeu persistência.','⚠️');
     }
-    const dbGetAll = () => new Promise((res, rej) => {
-      const req = db.transaction('vault_items', 'readonly').objectStore('vault_items').getAll();
-      req.onsuccess = () => res(req.result || []);
-      req.onerror = () => rej(req.error);
+    return granted;
+  }).catch(function(){
+    updatePersistBadge(false,'Erro');
+    return false;
+  });
+}
+function updatePersistBadge(granted,fallbackText){
+  var badge=document.getElementById('persistBadge');
+  var info=document.getElementById('persistInfo');
+  var teleText=document.getElementById('telemetryPersistText');
+  if(!badge)return;
+  if(fallbackText){
+    badge.textContent=fallbackText;
+    badge.style.color='#f59e0b';badge.style.borderColor='#f59e0b';badge.style.background='rgba(245,158,11,0.15)';
+  }else if(granted){
+    badge.textContent='🛡️ Ativo';
+    badge.style.color='#10b981';badge.style.borderColor='#10b981';badge.style.background='rgba(16,185,129,0.15)';
+    if(info)info.innerHTML='✅ <strong>Armazenamento persistente concedido!</strong> O navegador <strong>não vai apagar automaticamente</strong> seus dados. Suas fotos permanecem no cofre mesmo que você apague a original do celular.';
+    if(teleText)teleText.textContent='IndexedDB Persistente • Blindado';
+  }else{
+    badge.textContent='⚠️ Limitado';
+    badge.style.color='#f59e0b';badge.style.borderColor='#f59e0b';badge.style.background='rgba(245,158,11,0.15)';
+    if(teleText)teleText.textContent='IndexedDB Local • Não persistente';
+  }
+}
+
+// ============ ÁUDIO ============
+var audioCtx=null;
+function playSciFiBeep(type){
+  type=type||'click';
+  try{
+    if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+    if(audioCtx.state==='suspended')audioCtx.resume();
+    var osc=audioCtx.createOscillator(),g=audioCtx.createGain();
+    osc.connect(g);g.connect(audioCtx.destination);
+    var now=audioCtx.currentTime;
+    if(type==='theme-morph'){
+      osc.type='sawtooth';
+      osc.frequency.setValueAtTime(320,now);
+      osc.frequency.exponentialRampToValueAtTime(880,now+0.18);
+      g.gain.setValueAtTime(0.08,now);g.gain.linearRampToValueAtTime(0.01,now+0.18);
+      osc.start(now);osc.stop(now+0.18);
+    }else{
+      osc.frequency.setValueAtTime(type==='click'?700:950,now);
+      osc.frequency.exponentialRampToValueAtTime(type==='click'?350:1200,now+0.1);
+      g.gain.setValueAtTime(0.06,now);g.gain.linearRampToValueAtTime(0.01,now+0.1);
+      osc.start(now);osc.stop(now+0.1);
+    }
+  }catch(e){}
+}
+
+// ============ TOAST ============
+function toast(msg,icon){
+  icon=icon||'✨';
+  var c=document.getElementById('toastContainer');
+  var el=document.createElement('div');
+  el.className='toast-msg';
+  el.innerHTML='<span>'+escapeHtml(icon)+'</span><span>'+msg+'</span>';
+  c.appendChild(el);
+  setTimeout(function(){
+    el.classList.add('hide');
+    setTimeout(function(){el.remove()},280);
+  },3500);
+}
+
+function formatBytes(bytes){
+  if(!bytes)return '0 B';
+  var k=1024,s=['B','KB','MB','GB','TB'];
+  var i=Math.floor(Math.log(bytes)/Math.log(k));
+  return (bytes/Math.pow(k,i)).toFixed(1)+' '+s[i];
+}
+function formatDate(ts){
+  return new Date(ts).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'});
+}
+
+// ============ TEMAS ============
+function applyThemeWithBot(themeId,notify){
+  notify=notify!==false;
+  var theme=THEMES.find(function(t){return t.id===themeId})||THEMES[0];
+  appState.activeThemeId=theme.id;
+  localStorage.setItem(KEY_THEME,theme.id);
+  var root=document.documentElement;
+  Object.keys(theme.vars).forEach(function(k){root.style.setProperty(k,theme.vars[k])});
+  document.querySelectorAll('.theme-item-card').forEach(function(c){
+    c.classList.toggle('current-active',c.dataset.id===theme.id);
+  });
+  var botStatus=document.getElementById('themeBotStatus');
+  if(botStatus)botStatus.textContent='⚡ Reconfigurando espectro para "'+theme.name+'" ('+theme.category+')...';
+  playSciFiBeep('theme-morph');
+  if(notify)toast('Boot IA: Tema "'+escapeHtml(theme.name)+'" ativado!','🎨');
+}
+function botSuggestRandomTheme(){
+  var available=THEMES.filter(function(t){return t.id!==appState.activeThemeId});
+  var random=available[Math.floor(Math.random()*available.length)]||THEMES[0];
+  applyThemeWithBot(random.id,true);
+  var card=document.querySelector('.theme-item-card[data-id="'+random.id+'"]');
+  if(card)card.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function renderThemesGrid(filterCat,searchQuery){
+  filterCat=filterCat||'all';
+  searchQuery=searchQuery||'';
+  var grid=document.getElementById('themesGrid');
+  grid.innerHTML='';
+  var q=searchQuery.trim().toLowerCase();
+  var list=THEMES.filter(function(t){
+    var mCat=filterCat==='all'||t.category===filterCat;
+    var mQ=!q||t.name.toLowerCase().indexOf(q)>=0||t.desc.toLowerCase().indexOf(q)>=0||t.category.toLowerCase().indexOf(q)>=0;
+    return mCat&&mQ;
+  });
+  if(!list.length){
+    grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--text-tertiary);">Nenhum tema encontrado.</div>';
+    return;
+  }
+  list.forEach(function(t){
+    var card=document.createElement('div');
+    var isActive=t.id===appState.activeThemeId;
+    card.className='theme-item-card'+(isActive?' current-active':'');
+    card.dataset.id=t.id;
+    var swatches=t.colors.map(function(c){return '<span class="palette-circle" style="background:'+escapeHtml(c)+'"></span>'}).join('');
+    card.innerHTML='<div class="theme-active-tag">ATIVO</div>'+
+      '<div class="theme-card-top"><span class="theme-card-title">'+escapeHtml(t.name)+'</span><span class="theme-card-cat">'+escapeHtml(t.category)+'</span></div>'+
+      '<p class="theme-card-desc">'+escapeHtml(t.desc)+'</p>'+
+      '<div class="palette-row">'+swatches+'</div>';
+    card.addEventListener('click',function(){applyThemeWithBot(t.id,true)});
+    grid.appendChild(card);
+  });
+}
+
+// ============ QUOTA ============
+function getQuotaBytes(){
+  var v=appState.quotaVal,u=appState.quotaUnit;
+  return v*(u==='TB'?1099511627776:1073741824);
+}
+function saveQuota(val,unit){
+  appState.quotaVal=parseInt(val,10)||250;
+  appState.quotaUnit=unit==='TB'?'TB':'GB';
+  localStorage.setItem(KEY_QUOTA_VAL,appState.quotaVal.toString());
+  localStorage.setItem(KEY_QUOTA_UNIT,appState.quotaUnit);
+  document.getElementById('settingsCurrentCapacity').textContent=appState.quotaVal+' '+appState.quotaUnit;
+  document.getElementById('customQuotaInput').value=appState.quotaVal;
+  document.getElementById('customQuotaUnit').value=appState.quotaUnit;
+  document.querySelectorAll('#quotaPresets .preset-chip').forEach(function(b){
+    b.classList.toggle('active',parseInt(b.dataset.val,10)===appState.quotaVal&&b.dataset.unit===appState.quotaUnit);
+  });
+  updateTelemetry();
+  toast('Capacidade ajustada para '+appState.quotaVal+' '+appState.quotaUnit+'!','💾');
+}
+
+// ============ TELEMETRIA ============
+function updateTelemetry(){
+  var items=appState.items;
+  var totalBytes=items.reduce(function(acc,i){return acc+(i.size||0)},0);
+  var quotaBytes=getQuotaBytes();
+  var pct=Math.min(100,((totalBytes/quotaBytes)*100)).toFixed(2);
+  document.getElementById('headerStorageText').textContent=formatBytes(totalBytes)+' / '+appState.quotaVal+' '+appState.quotaUnit;
+  document.getElementById('headerStorageFill').style.width=Math.max(2,pct)+'%';
+  document.getElementById('telemetryCount').textContent=items.length;
+  var imgs=items.filter(function(i){return i.type.indexOf('image/')===0}).length;
+  var vids=items.filter(function(i){return i.type.indexOf('video/')===0}).length;
+  var favs=items.filter(function(i){return i.isFav}).length;
+  var opts=items.filter(function(i){return i.optimized}).length;
+  document.getElementById('telemetryBreakdown').textContent=imgs+' fotos • '+vids+' vídeos • '+favs+' favs';
+  document.getElementById('telemetryUsage').textContent=formatBytes(totalBytes);
+  document.getElementById('telemetryLimitText').textContent='Limite: '+appState.quotaVal+' '+appState.quotaUnit+' ('+pct+'%)';
+  document.getElementById('telemetrySavings').textContent=formatBytes(appState.savedBytes);
+  document.getElementById('countAll').textContent=items.length;
+  document.getElementById('countImg').textContent=imgs;
+  document.getElementById('countVid').textContent=vids;
+  document.getElementById('countFav').textContent=favs;
+  document.getElementById('countOpt').textContent=opts;
+}
+
+// ============ GRID ============
+function getFilteredList(){
+  var list=appState.items.slice();
+  if(appState.filter==='image')list=list.filter(function(i){return i.type.indexOf('image/')===0});
+  else if(appState.filter==='video')list=list.filter(function(i){return i.type.indexOf('video/')===0});
+  else if(appState.filter==='fav')list=list.filter(function(i){return i.isFav});
+  else if(appState.filter==='optimized')list=list.filter(function(i){return i.optimized});
+  if(appState.search){
+    var q=appState.search.toLowerCase();
+    list=list.filter(function(i){return i.name.toLowerCase().indexOf(q)>=0});
+  }
+  if(appState.sort==='newest')list.sort(function(a,b){return b.date-a.date});
+  else if(appState.sort==='oldest')list.sort(function(a,b){return a.date-b.date});
+  else if(appState.sort==='size-desc')list.sort(function(a,b){return b.size-a.size});
+  else if(appState.sort==='name')list.sort(function(a,b){return a.name.localeCompare(b.name)});
+  return list;
+}
+function renderMediaGrid(){
+  var grid=document.getElementById('mediaGrid');
+  grid.innerHTML='';
+  var fullList=getFilteredList();
+  if(!fullList.length){
+    grid.innerHTML='<div class="empty-vault">'+
+      '<div class="empty-icon">🛡️</div>'+
+      '<h3>Seu Cofre está Vazio</h3>'+
+      '<p style="color:var(--text-secondary);max-width:520px;">Vincule sua conta Google Fotos, use <strong>📸 Enviar da Galeria</strong>, cole com <strong>Ctrl+V</strong> ou arraste arquivos. Tudo fica <strong>armazenado permanentemente</strong>.</p>'+
+      '<button class="btn btn-primary" id="btnEmptyAdd"><span>➕</span> Carregar Primeiros Arquivos</button>'+
+      '</div>';
+    return;
+  }
+  var list=fullList.slice(0,appState.visibleCount);
+  list.forEach(function(item){
+    var card=document.createElement('div');
+    card.className='media-card';
+    var safeName=escapeHtml(item.name);
+    var mediaEl;
+    if(item.type.indexOf('image/')===0)mediaEl='<img src="'+item.dataUrl+'" alt="'+safeName+'" loading="lazy">';
+    else if(item.type.indexOf('video/')===0)mediaEl='<video src="'+item.dataUrl+'" preload="metadata"></video>';
+    else mediaEl='<div style="font-size:2.5rem;color:var(--accent-primary)">📄</div>';
+    var badgeText=item.optimized?'⚡ Otimizado IA':(item.type.indexOf('image/')===0?'📷 Foto':'🎬 Vídeo');
+    var googleBadge=item.source==='google'?'<span class="media-src-google">G Fotos</span>':'';
+    card.innerHTML='<div class="media-thumb-wrap" data-id="'+escapeHtml(item.id)+'">'+mediaEl+
+      '<span class="media-badge">'+badgeText+'</span>'+
+      '<span class="media-perm-shield">🔒 Permanente</span>'+googleBadge+
+      '<button class="media-fav-btn'+(item.isFav?' active':'')+'">★</button></div>'+
+      '<div class="media-info"><div class="media-title" title="'+safeName+'">'+safeName+'</div>'+
+      '<div class="media-meta"><span>'+formatBytes(item.size)+'</span><span>'+formatDate(item.date)+'</span></div>'+
+      '<div class="media-actions">'+
+      '<button class="btn-action-icon btn-view-item">👁️ Ver</button>'+
+      '<button class="btn-action-icon btn-dl-item">⬇️ Baixar</button>'+
+      '<button class="btn-action-icon btn-delete-icon btn-del-item">🗑️</button>'+
+      '</div></div>';
+    card.querySelector('.media-thumb-wrap').addEventListener('click',function(e){
+      if(e.target.closest('.media-fav-btn'))return;
+      openLightbox(item);
     });
-    const dbPut = item => new Promise((res, rej) => {
-      const req = db.transaction('vault_items', 'readwrite').objectStore('vault_items').put(item);
-      req.onsuccess = () => res();
-      req.onerror = () => rej(req.error);
-    });
-    const dbDelete = id => new Promise((res, rej) => {
-      const req = db.transaction('vault_items', 'readwrite').objectStore('vault_items').delete(id);
-      req.onsuccess = () => res();
-      req.onerror = () => rej(req.error);
-    });
-    const dbClear = () => new Promise((res, rej) => {
-      const req = db.transaction('vault_items', 'readwrite').objectStore('vault_items').clear();
-      req.onsuccess = () => res();
-      req.onerror = () => rej(req.error);
-    });
-
-    // ============ PERSISTÊNCIA ============
-    async function requestPersistentStorage(silent = false) {
-      if (!navigator.storage || !navigator.storage.persist) {
-        updatePersistBadge(false, 'Não suportado');
-        return false;
-      }
-      try {
-        let granted = false;
-        if (navigator.storage.persisted) granted = await navigator.storage.persisted();
-        if (!granted) granted = await navigator.storage.persist();
-        appState.persistentGranted = granted;
-        updatePersistBadge(granted);
-        if (!silent) {
-          if (granted) toast('🛡️ Armazenamento permanente concedido!', '🔒');
-          else toast('⚠️ Navegador não concedeu persistência.', '⚠️');
-        }
-        return granted;
-      } catch (e) { updatePersistBadge(false, 'Erro'); return false; }
-    }
-
-    function updatePersistBadge(granted, fallbackText) {
-      const badge = document.getElementById('persistBadge');
-      const info = document.getElementById('persistInfo');
-      const teleText = document.getElementById('telemetryPersistText');
-      if (!badge) return;
-      if (fallbackText) {
-        badge.textContent = fallbackText;
-        badge.style.color = '#f59e0b'; badge.style.borderColor = '#f59e0b'; badge.style.background = 'rgba(245,158,11,0.15)';
-      } else if (granted) {
-        badge.textContent = '🛡️ Ativo';
-        badge.style.color = '#10b981'; badge.style.borderColor = '#10b981'; badge.style.background = 'rgba(16,185,129,0.15)';
-        if (info) info.innerHTML = '✅ <strong>Armazenamento persistente concedido!</strong> O navegador <strong>não vai apagar automaticamente</strong> seus dados. Suas fotos permanecem no cofre mesmo que você apague a original do celular.';
-        if (teleText) teleText.textContent = 'IndexedDB Persistente • Blindado';
-      } else {
-        badge.textContent = '⚠️ Limitado';
-        badge.style.color = '#f59e0b'; badge.style.borderColor = '#f59e0b'; badge.style.background = 'rgba(245,158,11,0.15)';
-        if (teleText) teleText.textContent = 'IndexedDB Local • Não persistente';
-      }
-    }
-
-    // ============ ÁUDIO ============
-    let audioCtx = null;
-    function playSciFiBeep(type = 'click') {
-      try {
-        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        if (audioCtx.state === 'suspended') audioCtx.resume();
-        const osc = audioCtx.createOscillator(), g = audioCtx.createGain();
-        osc.connect(g); g.connect(audioCtx.destination);
-        const now = audioCtx.currentTime;
-        if (type === 'theme-morph') {
-          osc.type = 'sawtooth';
-          osc.frequency.setValueAtTime(320, now);
-          osc.frequency.exponentialRampToValueAtTime(880, now + 0.18);
-          g.gain.setValueAtTime(0.08, now); g.gain.linearRampToValueAtTime(0.01, now + 0.18);
-          osc.start(now); osc.stop(now + 0.18);
-        } else {
-          osc.frequency.setValueAtTime(type === 'click' ? 700 : 950, now);
-          osc.frequency.exponentialRampToValueAtTime(type === 'click' ? 350 : 1200, now + 0.1);
-          g.gain.setValueAtTime(0.06, now); g.gain.linearRampToValueAtTime(0.01, now + 0.1);
-          osc.start(now); osc.stop(now + 0.1);
-        }
-      } catch(e) {}
-    }
-
-    function toast(msg, icon = '✨') {
-      const c = document.getElementById('toastContainer');
-      const el = document.createElement('div');
-      el.className = 'toast-msg';
-      el.innerHTML = `<span>${escapeHtml(icon)}</span><span>${msg}</span>`;
-      c.appendChild(el);
-      setTimeout(() => {
-        el.classList.add('hide');
-        setTimeout(() => el.remove(), 280);
-      }, 3500);
-    }
-
-    function formatBytes(bytes) {
-      if (!bytes) return '0 B';
-      const k = 1024, s = ['B','KB','MB','GB','TB'];
-      const i = Math.floor(Math.log(bytes) / Math.log(k));
-      return (bytes / Math.pow(k, i)).toFixed(1) + ' ' + s[i];
-    }
-    function formatDate(ts) {
-      return new Date(ts).toLocaleDateString('pt-BR', { day:'2-digit', month:'2-digit', year:'numeric' });
-    }
-
-    // ============ TEMAS ============
-    function applyThemeWithBot(themeId, notify = true) {
-      const theme = THEMES.find(t => t.id === themeId) || THEMES[0];
-      appState.activeThemeId = theme.id;
-      localStorage.setItem(KEY_THEME, theme.id);
-      const root = document.documentElement;
-      for (const [k, v] of Object.entries(theme.vars)) root.style.setProperty(k, v);
-      document.querySelectorAll('.theme-item-card').forEach(c => {
-        c.classList.toggle('current-active', c.dataset.id === theme.id);
-      });
-      const botStatus = document.getElementById('themeBotStatus');
-      if (botStatus) {
-        botStatus.textContent = `⚡ Reconfigurando espectro para "${theme.name}" (${theme.category})...`;
-      }
-      playSciFiBeep('theme-morph');
-      if (notify) toast(`Boot IA: Tema "${escapeHtml(theme.name)}" ativado!`, '🎨');
-    }
-    function botSuggestRandomTheme() {
-      const available = THEMES.filter(t => t.id !== appState.activeThemeId);
-      const random = available[Math.floor(Math.random() * available.length)] || THEMES[0];
-      applyThemeWithBot(random.id, true);
-      const card = document.querySelector(`.theme-item-card[data-id="${random.id}"]`);
-      if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-    function renderThemesGrid(filterCat = 'all', searchQuery = '') {
-      const grid = document.getElementById('themesGrid');
-      grid.innerHTML = '';
-      const q = searchQuery.trim().toLowerCase();
-      const list = THEMES.filter(t => {
-        const mCat = filterCat === 'all' || t.category === filterCat;
-        const mQ = !q || t.name.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q) || t.category.toLowerCase().includes(q);
-        return mCat && mQ;
-      });
-      if (!list.length) {
-        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--text-tertiary);">Nenhum tema encontrado.</div>';
-        return;
-      }
-      list.forEach(t => {
-        const card = document.createElement('div');
-        const isActive = t.id === appState.activeThemeId;
-        card.className = `theme-item-card ${isActive ? 'current-active' : ''}`;
-        card.dataset.id = t.id;
-        const swatches = t.colors.map(c => `<span class="palette-circle" style="background:${escapeHtml(c)}"></span>`).join('');
-        card.innerHTML = `
-          <div class="theme-active-tag">ATIVO</div>
-          <div class="theme-card-top"><span class="theme-card-title">${escapeHtml(t.name)}</span><span class="theme-card-cat">${escapeHtml(t.category)}</span></div>
-          <p class="theme-card-desc">${escapeHtml(t.desc)}</p>
-          <div class="palette-row">${swatches}</div>
-        `;
-        card.addEventListener('click', () => applyThemeWithBot(t.id, true));
-        grid.appendChild(card);
-      });
-    }
-
-    // ============ QUOTA ============
-    function getQuotaBytes() {
-      const v = appState.quotaVal, u = appState.quotaUnit;
-      return v * (u === 'TB' ? 1099511627776 : 1073741824);
-    }
-    function saveQuota(val, unit) {
-      appState.quotaVal = parseInt(val, 10) || 250;
-      appState.quotaUnit = unit === 'TB' ? 'TB' : 'GB';
-      localStorage.setItem(KEY_QUOTA_VAL, appState.quotaVal.toString());
-      localStorage.setItem(KEY_QUOTA_UNIT, appState.quotaUnit);
-      document.getElementById('settingsCurrentCapacity').textContent = `${appState.quotaVal} ${appState.quotaUnit}`;
-      document.getElementById('customQuotaInput').value = appState.quotaVal;
-      document.getElementById('customQuotaUnit').value = appState.quotaUnit;
-      document.querySelectorAll('#quotaPresets .preset-chip').forEach(b => {
-        b.classList.toggle('active', parseInt(b.dataset.val, 10) === appState.quotaVal && b.dataset.unit === appState.quotaUnit);
-      });
+    card.querySelector('.media-fav-btn').addEventListener('click',function(e){
+      e.stopPropagation();
+      item.isFav=!item.isFav;
+      dbPut(item).catch(function(){});
       updateTelemetry();
-      toast(`Capacidade ajustada para ${appState.quotaVal} ${appState.quotaUnit}!`, '💾');
-    }
-
-    // ============ TELEMETRIA ============
-    function updateTelemetry() {
-      const items = appState.items;
-      const totalBytes = items.reduce((acc, i) => acc + (i.size || 0), 0);
-      const quotaBytes = getQuotaBytes();
-      const pct = Math.min(100, ((totalBytes / quotaBytes) * 100)).toFixed(2);
-
-      document.getElementById('headerStorageText').textContent = `${formatBytes(totalBytes)} / ${appState.quotaVal} ${appState.quotaUnit}`;
-      document.getElementById('headerStorageFill').style.width = `${Math.max(2, pct)}%`;
-      document.getElementById('telemetryCount').textContent = items.length;
-      const imgs = items.filter(i => i.type.startsWith('image/')).length;
-      const vids = items.filter(i => i.type.startsWith('video/')).length;
-      const favs = items.filter(i => i.isFav).length;
-      const opts = items.filter(i => i.optimized).length;
-
-      document.getElementById('telemetryBreakdown').textContent = `${imgs} fotos • ${vids} vídeos • ${favs} favs`;
-      document.getElementById('telemetryUsage').textContent = formatBytes(totalBytes);
-      document.getElementById('telemetryLimitText').textContent = `Limite: ${appState.quotaVal} ${appState.quotaUnit} (${pct}%)`;
-      document.getElementById('telemetrySavings').textContent = formatBytes(appState.savedBytes);
-
-      document.getElementById('countAll').textContent = items.length;
-      document.getElementById('countImg').textContent = imgs;
-      document.getElementById('countVid').textContent = vids;
-      document.getElementById('countFav').textContent = favs;
-      document.getElementById('countOpt').textContent = opts;
-    }
-
-    // ============ GRID ============
-    function getFilteredList() {
-      let list = [...appState.items];
-      if (appState.filter === 'image') list = list.filter(i => i.type.startsWith('image/'));
-      else if (appState.filter === 'video') list = list.filter(i => i.type.startsWith('video/'));
-      else if (appState.filter === 'fav') list = list.filter(i => i.isFav);
-      else if (appState.filter === 'optimized') list = list.filter(i => i.optimized);
-
-      if (appState.search) {
-        const q = appState.search.toLowerCase();
-        list = list.filter(i => i.name.toLowerCase().includes(q));
-      }
-      if (appState.sort === 'newest') list.sort((a,b) => b.date - a.date);
-      else if (appState.sort === 'oldest') list.sort((a,b) => a.date - b.date);
-      else if (appState.sort === 'size-desc') list.sort((a,b) => b.size - a.size);
-      else if (appState.sort === 'name') list.sort((a,b) => a.name.localeCompare(b.name));
-      return list;
-    }
-
-    function renderMediaGrid() {
-      const grid = document.getElementById('mediaGrid');
-      grid.innerHTML = '';
-      const fullList = getFilteredList();
-
-      if (!fullList.length) {
-        grid.innerHTML = `
-          <div class="empty-vault">
-            <div class="empty-icon">🛡️</div>
-            <h3>Nenhum arquivo encontrado</h3>
-            <p style="color:var(--text-secondary);">Vincule sua conta Google Fotos ou envie arquivos para começar.</p>
-          </div>
-        `;
-        return;
-      }
-
-      const list = fullList.slice(0, appState.visibleCount);
-      list.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'media-card';
-        const safeName = escapeHtml(item.name);
-        const mediaEl = item.type.startsWith('image/')
-          ? `<img src="${item.dataUrl}" alt="${safeName}" loading="lazy">`
-          : (item.type.startsWith('video/') ? `<video src="${item.dataUrl}" preload="metadata"></video>` : '<div style="font-size:2.5rem;color:var(--accent-primary)">📄</div>');
-        const badgeText = item.optimized ? '⚡ Otimizado IA' : (item.type.startsWith('image/') ? '📷 Foto' : '🎬 Vídeo');
-        const googleBadge = item.source === 'google' ? '<span class="media-src-google">G Fotos</span>' : '';
-
-        card.innerHTML = `
-          <div class="media-thumb-wrap" data-id="${escapeHtml(item.id)}">
-            ${mediaEl}
-            <span class="media-badge">${badgeText}</span>
-            <span class="media-perm-shield" title="Armazenada permanentemente no IndexedDB">🔒 Permanente</span>
-            ${googleBadge}
-            <button class="media-fav-btn ${item.isFav ? 'active' : ''}" title="Favoritar" aria-label="Favoritar">★</button>
-          </div>
-          <div class="media-info">
-            <div class="media-title" title="${safeName}">${safeName}</div>
-            <div class="media-meta"><span>${formatBytes(item.size)}</span><span>${formatDate(item.date)}</span></div>
-            <div class="media-actions">
-              <button class="btn-action-icon btn-view-item" aria-label="Ver">👁️ Ver</button>
-              <button class="btn-action-icon btn-dl-item" aria-label="Baixar">⬇️ Baixar</button>
-              <button class="btn-action-icon btn-delete-icon btn-del-item" aria-label="Remover">🗑️</button>
-            </div>
-          </div>
-        `;
-
-        card.querySelector('.media-thumb-wrap').addEventListener('click', e => {
-          if (e.target.closest('.media-fav-btn')) return;
-          openLightbox(item);
-        });
-        card.querySelector('.media-fav-btn').addEventListener('click', async e => {
-          e.stopPropagation();
-          item.isFav = !item.isFav;
-          try { await dbPut(item); } catch(err) {}
+      renderMediaGrid();
+      playSciFiBeep('click');
+    });
+    card.querySelector('.btn-view-item').addEventListener('click',function(){openLightbox(item)});
+    card.querySelector('.btn-dl-item').addEventListener('click',function(){downloadItem(item)});
+    card.querySelector('.btn-del-item').addEventListener('click',function(){
+      if(confirm('Remover "'+item.name+'" do cofre?')){
+        dbDelete(item.id).catch(function(){}).then(function(){
+          appState.items=appState.items.filter(function(i){return i.id!==item.id});
           updateTelemetry();
           renderMediaGrid();
+          toast('Arquivo removido do cofre.','🗑️');
           playSciFiBeep('click');
         });
-        card.querySelector('.btn-view-item').addEventListener('click', () => openLightbox(item));
-        card.querySelector('.btn-dl-item').addEventListener('click', () => downloadItem(item));
-        card.querySelector('.btn-del-item').addEventListener('click', async () => {
-          if (confirm(`Remover "${item.name}" do cofre? (Você pode baixar antes se quiser uma cópia.)`)) {
-            try { await dbDelete(item.id); } catch(err) {}
-            appState.items = appState.items.filter(i => i.id !== item.id);
-            updateTelemetry();
-            renderMediaGrid();
-            toast('Arquivo removido do cofre.', '🗑️');
-            playSciFiBeep('click');
-          }
-        });
-        grid.appendChild(card);
-      });
-
-      if (fullList.length > appState.visibleCount) {
-        const wrap = document.createElement('div');
-        wrap.className = 'load-more-wrap';
-        const btn = document.createElement('button');
-        btn.className = 'btn btn-secondary';
-        btn.innerHTML = `<span>⬇️</span> Carregar mais (${fullList.length - appState.visibleCount} restantes)`;
-        btn.addEventListener('click', () => {
-          appState.visibleCount += PAGE_SIZE;
-          renderMediaGrid();
-        });
-        wrap.appendChild(btn);
-        grid.appendChild(wrap);
       }
-    }
-
-    // ============ LIGHTBOX ============
-    function openLightbox(item) {
-      appState.activeLightboxItem = item;
-      const c = document.getElementById('lightboxMediaContainer');
-      const safeName = escapeHtml(item.name);
-      c.innerHTML = item.type.startsWith('image/')
-        ? `<img src="${item.dataUrl}" class="lightbox-media" alt="${safeName}">`
-        : `<video src="${item.dataUrl}" class="lightbox-media" controls autoplay></video>`;
-      openModal('modalLightbox');
-      playSciFiBeep('click');
-    }
-    function downloadItem(item) {
-      const a = document.createElement('a');
-      a.href = item.dataUrl; a.download = item.name; a.click();
-      toast(`Baixando "${escapeHtml(item.name)}"...`, '⬇️');
-    }
-
-    // ============ INGESTÃO ============
-    const readFileAsDataURL = f => new Promise((res, rej) => {
-      const r = new FileReader(); r.onload = () => res(r.result); r.onerror = () => rej(r.error); r.readAsDataURL(f);
     });
+    grid.appendChild(card);
+  });
+  if(fullList.length>appState.visibleCount){
+    var wrap=document.createElement('div');
+    wrap.className='load-more-wrap';
+    var btn=document.createElement('button');
+    btn.className='btn btn-secondary';
+    btn.innerHTML='<span>⬇️</span> Carregar mais ('+(fullList.length-appState.visibleCount)+' restantes)';
+    btn.addEventListener('click',function(){
+      appState.visibleCount+=PAGE_SIZE;
+      renderMediaGrid();
+    });
+    wrap.appendChild(btn);
+    grid.appendChild(wrap);
+  }
+}
 
-    async function handleIncomingFiles(fileList, sourceLabel = '', sourceTag = null) {
-      if (!fileList || !fileList.length) return { added: 0, quotaError: false };
-      let added = 0, quotaError = false;
-      for (const file of Array.from(fileList)) {
-        try {
-          const dataUrl = await readFileAsDataURL(file);
-          const hash = quickHash(dataUrl);
-          const item = {
-            id: 'item_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
-            name: file.name || ('midia_' + Date.now()),
-            type: file.type || 'image/jpeg',
-            size: file.size,
-            date: Date.now(),
-            isFav: false,
-            optimized: false,
-            permanent: true,
-            hash: hash,
-            source: sourceTag || 'local',
-            dataUrl: dataUrl
-          };
-          try {
-            await dbPut(item);
-          } catch (err) {
-            if (err && (err.name === 'QuotaExceededError' || /quota/i.test(err.message || ''))) {
-              quotaError = true;
-              break;
-            }
-            throw err;
-          }
+// ============ LIGHTBOX ============
+function openLightbox(item){
+  appState.activeLightboxItem=item;
+  var c=document.getElementById('lightboxMediaContainer');
+  var safeName=escapeHtml(item.name);
+  if(item.type.indexOf('image/')===0)c.innerHTML='<img src="'+item.dataUrl+'" class="lightbox-media" alt="'+safeName+'">';
+  else c.innerHTML='<video src="'+item.dataUrl+'" class="lightbox-media" controls autoplay></video>';
+  openModal('modalLightbox');
+  playSciFiBeep('click');
+}
+function downloadItem(item){
+  var a=document.createElement('a');
+  a.href=item.dataUrl;a.download=item.name;a.click();
+  toast('Baixando "'+escapeHtml(item.name)+'"...','⬇️');
+}
+
+// ============ INGESTÃO ============
+function readFileAsDataURL(f){
+  return new Promise(function(res,rej){
+    var r=new FileReader();
+    r.onload=function(){res(r.result)};
+    r.onerror=function(){rej(r.error)};
+    r.readAsDataURL(f);
+  });
+}
+function handleIncomingFiles(fileList,sourceLabel,sourceTag){
+  sourceLabel=sourceLabel||'';
+  sourceTag=sourceTag||null;
+  if(!fileList||!fileList.length)return Promise.resolve({added:0,quotaError:false});
+  var added=0,quotaError=false;
+  var files=Array.prototype.slice.call(fileList);
+  var chain=Promise.resolve();
+  files.forEach(function(file){
+    chain=chain.then(function(){
+      return readFileAsDataURL(file).then(function(dataUrl){
+        var hash=quickHash(dataUrl);
+        var item={
+          id:'item_'+Date.now()+'_'+Math.random().toString(36).substr(2,6),
+          name:file.name||('midia_'+Date.now()),
+          type:file.type||'image/jpeg',
+          size:file.size,
+          date:Date.now(),
+          isFav:false,
+          optimized:false,
+          permanent:true,
+          hash:hash,
+          source:sourceTag||'local',
+          dataUrl:dataUrl
+        };
+        return dbPut(item).then(function(){
           appState.items.push(item);
           added++;
-        } catch(e) { console.warn('Falha ao processar arquivo', file && file.name, e); }
-      }
-      if (added > 0) {
-        try { appState.items = await dbGetAll(); } catch(e) {}
+        }).catch(function(err){
+          if(err&&(err.name==='QuotaExceededError'||/quota/i.test(err.message||''))){
+            quotaError=true;
+          }else{
+            console.warn('Falha ao gravar',err);
+          }
+        });
+      }).catch(function(e){
+        console.warn('Falha ao processar arquivo',file&&file.name,e);
+      });
+    });
+  });
+  return chain.then(function(){
+    if(added>0){
+      return dbGetAll().then(function(all){
+        appState.items=all;
+      }).catch(function(){}).then(function(){
         updateTelemetry();
         renderMediaGrid();
         playSciFiBeep('success');
-        const prefix = sourceLabel ? `${escapeHtml(sourceLabel)}: ` : '';
-        toast(`${prefix}${added} mídia(s) blindadas permanentemente!`, '🔒');
-      }
-      if (quotaError) toast('⚠️ Cofre cheio! Libere espaço no Robô IA.', '⚠️');
-      return { added, quotaError };
+        var prefix=sourceLabel?escapeHtml(sourceLabel)+': ':'';
+        toast(prefix+added+' mídia(s) blindadas permanentemente!','🔒');
+      });
     }
+  }).then(function(){
+    if(quotaError)toast('⚠️ Cofre cheio! Libere espaço no Robô IA.','⚠️');
+    return {added:added,quotaError:quotaError};
+  });
+}
 
-    // ============ ROBÔ IA ============
-    function appendRobotLog(msg) {
-      const c = document.getElementById('robotConsole');
-      const t = new Date().toLocaleTimeString('pt-BR');
-      const l = document.createElement('div');
-      l.textContent = `[${t}] ${msg}`;
-      c.appendChild(l);
-      c.scrollTop = c.scrollHeight;
-    }
-    async function robotRunOptimization() {
-      const unoptimized = appState.items.filter(i => i.type.startsWith('image/') && !i.optimized);
-      if (!unoptimized.length) {
-        appendRobotLog('⚡ Diagnóstico: Todas as imagens já estão com compressão neural máxima.');
-        toast('Todas as fotos já estão otimizadas!', '✨');
-        return;
-      }
-      appendRobotLog(`Iniciando compressão neural Canvas 4K em ${unoptimized.length} imagem(ns)...`);
-      let count = 0, sessionSaved = 0;
-      for (const item of unoptimized) {
-        try {
-          const img = new Image();
-          await new Promise((res, rej) => { img.onload = res; img.onerror = rej; img.src = item.dataUrl; });
-          const canvas = document.createElement('canvas');
-          let w = img.naturalWidth || img.width, h = img.naturalHeight || img.height;
-          const MAX = 2560;
-          if (w > MAX || h > MAX) {
-            if (w > h) { h = Math.round((h * MAX) / w); w = MAX; }
-            else { w = Math.round((w * MAX) / h); h = MAX; }
+// ============ ROBÔ IA ============
+function appendRobotLog(msg){
+  var c=document.getElementById('robotConsole');
+  var t=new Date().toLocaleTimeString('pt-BR');
+  var l=document.createElement('div');
+  l.textContent='['+t+'] '+msg;
+  c.appendChild(l);
+  c.scrollTop=c.scrollHeight;
+}
+function robotRunOptimization(){
+  var unoptimized=appState.items.filter(function(i){return i.type.indexOf('image/')===0&&!i.optimized});
+  if(!unoptimized.length){
+    appendRobotLog('⚡ Todas as imagens já estão otimizadas.');
+    toast('Todas as fotos já estão otimizadas!','✨');
+    return;
+  }
+  appendRobotLog('Iniciando compressão Canvas 4K em '+unoptimized.length+' imagem(ns)...');
+  var count=0,sessionSaved=0;
+  var chain=Promise.resolve();
+  unoptimized.forEach(function(item){
+    chain=chain.then(function(){
+      return new Promise(function(resolve){
+        var img=new Image();
+        img.onload=function(){
+          try{
+            var canvas=document.createElement('canvas');
+            var w=img.naturalWidth||img.width,h=img.naturalHeight||img.height;
+            var MAX=2560;
+            if(w>MAX||h>MAX){
+              if(w>h){h=Math.round((h*MAX)/w);w=MAX}
+              else{w=Math.round((w*MAX)/h);h=MAX}
+            }
+            canvas.width=w;canvas.height=h;
+            canvas.getContext('2d').drawImage(img,0,0,w,h);
+            var compressed=canvas.toDataURL('image/webp',0.82);
+            if(compressed.indexOf('data:image/webp')!==0){
+              appendRobotLog('ℹ️ WebP indisponível, usando JPEG em "'+item.name+'"');
+              compressed=canvas.toDataURL('image/jpeg',0.85);
+            }
+            var newSize=Math.round((compressed.length*3)/4);
+            if(newSize<item.size){
+              var diff=item.size-newSize;
+              sessionSaved+=diff;
+              item.size=newSize;item.dataUrl=compressed;item.optimized=true;
+              item.hash=quickHash(compressed);
+              dbPut(item).then(function(){
+                count++;
+                appendRobotLog('✔️ "'+item.name+'": Reduzido em '+formatBytes(diff));
+                resolve();
+              }).catch(function(){resolve()});
+            }else{
+              item.optimized=true;
+              dbPut(item).then(function(){
+                appendRobotLog('ℹ️ "'+item.name+'": Já era ideal.');
+                resolve();
+              }).catch(function(){resolve()});
+            }
+          }catch(e){
+            appendRobotLog('❌ Erro em "'+item.name+'": '+e.message);
+            resolve();
           }
-          canvas.width = w; canvas.height = h;
-          canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-          let compressed = canvas.toDataURL('image/webp', 0.82);
-          if (!compressed.startsWith('data:image/webp')) {
-            appendRobotLog(`ℹ️ WebP indisponível, usando JPEG em "${item.name}"`);
-            compressed = canvas.toDataURL('image/jpeg', 0.85);
-          }
-          const newSize = Math.round((compressed.length * 3) / 4);
-          if (newSize < item.size) {
-            const diff = item.size - newSize;
-            sessionSaved += diff;
-            item.size = newSize; item.dataUrl = compressed; item.optimized = true;
-            item.hash = quickHash(compressed);
-            await dbPut(item);
-            count++;
-            appendRobotLog(`✔️ "${item.name}": Reduzido em ${formatBytes(diff)}`);
-          } else {
-            item.optimized = true;
-            await dbPut(item);
-            appendRobotLog(`ℹ️ "${item.name}": Já era ideal.`);
-          }
-        } catch(e) { appendRobotLog(`❌ Erro em "${item.name}": ${e.message}`); }
-      }
-      appState.savedBytes += sessionSaved;
-      localStorage.setItem(KEY_SAVINGS, appState.savedBytes.toString());
+        };
+        img.onerror=function(){
+          appendRobotLog('❌ Falha ao carregar "'+item.name+'"');
+          resolve();
+        };
+        img.src=item.dataUrl;
+      });
+    });
+  });
+  chain.then(function(){
+    appState.savedBytes+=sessionSaved;
+    localStorage.setItem(KEY_SAVINGS,appState.savedBytes.toString());
+    updateTelemetry();
+    renderMediaGrid();
+    playSciFiBeep('success');
+    appendRobotLog('🎉 Concluído! '+count+' imagens otimizadas. Economia: '+formatBytes(sessionSaved)+'.');
+    toast('Robô economizou '+formatBytes(sessionSaved)+'!','⚡');
+  });
+}
+function robotScanDuplicates(){
+  appendRobotLog('🔍 Escaneando duplicados por hash...');
+  var map={},dups=[];
+  appState.items.forEach(function(item){
+    var hash=item.hash;
+    if(!hash){hash=quickHash(item.dataUrl||'');item.hash=hash;dbPut(item).catch(function(){})}
+    if(map[hash])dups.push({orig:map[hash],dup:item});
+    else map[hash]=item;
+  });
+  if(!dups.length){
+    appendRobotLog('✔️ Nenhuma mídia duplicada.');
+    toast('Nenhuma foto duplicada encontrada.','🛡️');
+    return;
+  }
+  appendRobotLog('⚠️ Encontradas '+dups.length+' mídias duplicadas.');
+  if(confirm('O Robô IA detectou '+dups.length+' arquivo(s) duplicado(s). Remover cópias?')){
+    var freed=0;
+    var chain=Promise.resolve();
+    dups.forEach(function(p){
+      chain=chain.then(function(){
+        return dbDelete(p.dup.id).catch(function(){}).then(function(){
+          appState.items=appState.items.filter(function(i){return i.id!==p.dup.id});
+          freed+=p.dup.size;
+          appendRobotLog('🗑️ Removido: "'+p.dup.name+'" ('+formatBytes(p.dup.size)+')');
+        });
+      });
+    });
+    chain.then(function(){
       updateTelemetry();
       renderMediaGrid();
       playSciFiBeep('success');
-      appendRobotLog(`🎉 Concluído! ${count} imagens otimizadas. Economia: ${formatBytes(sessionSaved)}.`);
-      toast(`Robô economizou ${formatBytes(sessionSaved)}!`, '⚡');
+      appendRobotLog('🎉 Limpeza finalizada! '+formatBytes(freed)+' recuperados.');
+      toast('Liberados '+formatBytes(freed)+'!','🧹');
+    });
+  }
+}
+function robotDefragDatabase(){
+  appendRobotLog('🧹 Desfragmentando índices...');
+  dbGetAll().then(function(all){
+    appState.items=all;
+    updateTelemetry();
+    renderMediaGrid();
+    appendRobotLog('✔️ Recalibrados '+all.length+' registros. Integridade 100%.');
+    playSciFiBeep('success');
+    toast('Banco de dados desfragmentado!','🧹');
+  }).catch(function(e){
+    appendRobotLog('❌ Falha: '+e.message);
+  });
+}
+
+// ============ GOOGLE FOTOS ============
+function updateGoogleLinkUI(linked){
+  var pill=document.getElementById('googleStatusPill');
+  var btnLink=document.getElementById('btnLinkGoogle');
+  var btnPick=document.getElementById('btnPickGooglePhotos');
+  var btnUnlink=document.getElementById('btnUnlinkGoogle');
+  var badge=document.getElementById('googleClientIdStatusBadge');
+  var clientId=localStorage.getItem(KEY_GOOGLE_CLIENT_ID);
+  if(badge){
+    if(clientId){
+      badge.textContent='✅ Configurado';
+      badge.style.color='#10b981';badge.style.borderColor='#10b981';badge.style.background='rgba(16,185,129,0.15)';
+    }else{
+      badge.textContent='Não configurado';
+      badge.style.color='';badge.style.borderColor='';badge.style.background='';
     }
-    async function robotScanDuplicates() {
-      appendRobotLog('🔍 Escaneando duplicados por hash de conteúdo...');
-      const map = new Map(), dups = [];
-      for (const item of appState.items) {
-        let hash = item.hash;
-        if (!hash) { hash = quickHash(item.dataUrl || ''); item.hash = hash; try { await dbPut(item); } catch(e) {} }
-        if (map.has(hash)) dups.push({ orig: map.get(hash), dup: item });
-        else map.set(hash, item);
-      }
-      if (!dups.length) {
-        appendRobotLog('✔️ Nenhuma mídia duplicada encontrada.');
-        toast('Nenhuma foto duplicada encontrada.', '🛡️');
-        return;
-      }
-      appendRobotLog(`⚠️ Encontradas ${dups.length} mídias duplicadas.`);
-      if (confirm(`O Robô IA detectou ${dups.length} arquivo(s) duplicado(s). Remover cópias?`)) {
-        let freed = 0;
-        for (const p of dups) {
-          try { await dbDelete(p.dup.id); } catch(e) {}
-          appState.items = appState.items.filter(i => i.id !== p.dup.id);
-          freed += p.dup.size;
-          appendRobotLog(`🗑️ Removido: "${p.dup.name}" (${formatBytes(p.dup.size)})`);
-        }
-        updateTelemetry();
-        renderMediaGrid();
-        playSciFiBeep('success');
-        appendRobotLog(`🎉 Limpeza finalizada! ${formatBytes(freed)} recuperados.`);
-        toast(`Liberados ${formatBytes(freed)}!`, '🧹');
-      }
+  }
+  if(!pill||!btnLink||!btnPick||!btnUnlink)return;
+  appState.googleLinked=linked;
+  if(appState.googleLinking){
+    pill.className='google-status-pill loading';
+    pill.innerHTML='⏳ Vinculando...';
+  }else if(linked){
+    pill.className='google-status-pill on';
+    pill.innerHTML='✅ Vinculado'+(appState.googleEmail?' • '+escapeHtml(appState.googleEmail):'');
+  }else{
+    pill.className='google-status-pill off';
+    pill.innerHTML='🔌 Não vinculado';
+  }
+  btnPick.disabled=!linked;
+  btnUnlink.disabled=!linked;
+  btnLink.disabled=linked;
+}
+function initGoogleAuth(){
+  var clientId=localStorage.getItem(KEY_GOOGLE_CLIENT_ID);
+  if(!clientId)return Promise.resolve(false);
+  return loadScript(GOOGLE_GIS_SRC).then(function(){
+    if(!window.google||!window.google.accounts||!window.google.accounts.oauth2){
+      throw new Error('GIS não disponível');
     }
-    async function robotDefragDatabase() {
-      appendRobotLog('🧹 Desfragmentando e recalculando índices...');
-      try {
-        const all = await dbGetAll();
-        appState.items = all;
-        updateTelemetry();
-        renderMediaGrid();
-        appendRobotLog(`✔️ Recalibrados ${all.length} registros. Integridade 100%.`);
-        playSciFiBeep('success');
-        toast('Banco de dados desfragmentado!', '🧹');
-      } catch(e) { appendRobotLog(`❌ Falha: ${e.message}`); }
-    }
-
-    // ==================================================
-    // GOOGLE FOTOS — OAuth 2.0 + Picker API
-    // ==================================================
-    function updateGoogleLinkUI(linked) {
-      const pill = document.getElementById('googleStatusPill');
-      const btnLink = document.getElementById('btnLinkGoogle');
-      const btnPick = document.getElementById('btnPickGooglePhotos');
-      const btnUnlink = document.getElementById('btnUnlinkGoogle');
-      const badge = document.getElementById('googleClientIdStatusBadge');
-      const clientId = localStorage.getItem(KEY_GOOGLE_CLIENT_ID);
-
-      if (badge) {
-        if (clientId) {
-          badge.textContent = '✅ Configurado';
-          badge.style.color = '#10b981';
-          badge.style.borderColor = '#10b981';
-          badge.style.background = 'rgba(16,185,129,0.15)';
-        } else {
-          badge.textContent = 'Não configurado';
-          badge.style.color = ''; badge.style.borderColor = ''; badge.style.background = '';
-        }
-      }
-
-      if (!pill || !btnLink || !btnPick || !btnUnlink) return;
-
-      appState.googleLinked = linked;
-      if (appState.googleLinking) {
-        pill.className = 'google-status-pill loading';
-        pill.innerHTML = '⏳ Vinculando...';
-      } else if (linked) {
-        pill.className = 'google-status-pill on';
-        pill.innerHTML = '✅ Vinculado' + (appState.googleEmail ? ` • ${escapeHtml(appState.googleEmail)}` : '');
-      } else {
-        pill.className = 'google-status-pill off';
-        pill.innerHTML = '🔌 Não vinculado';
-      }
-      btnPick.disabled = !linked;
-      btnUnlink.disabled = !linked;
-      btnLink.disabled = linked;
-    }
-
-    async function initGoogleAuth() {
-      const clientId = localStorage.getItem(KEY_GOOGLE_CLIENT_ID);
-      if (!clientId) return false;
-      try {
-        await loadScript(GOOGLE_GIS_SRC);
-        if (!window.google || !window.google.accounts || !window.google.accounts.oauth2) {
-          throw new Error('Google Identity Services não disponível');
-        }
-        googleTokenClient = window.google.accounts.oauth2.initTokenClient({
-          client_id: clientId,
-          scope: GOOGLE_SCOPE,
-          callback: (resp) => {
-            appState.googleLinking = false;
-            if (resp.error) {
-              toast('Erro ao vincular: ' + resp.error, '❌');
-              updateGoogleLinkUI(false);
-              return;
-            }
-            googleAccessToken = resp.access_token;
-            googleTokenExpiresAt = Date.now() + (resp.expires_in * 1000) - 30000;
-            fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
-              headers: { Authorization: 'Bearer ' + googleAccessToken }
-            }).then(r => r.ok ? r.json() : null).then(u => {
-              if (u && u.email) { appState.googleEmail = u.email; updateGoogleLinkUI(true); }
-            }).catch(() => {});
-            updateGoogleLinkUI(true);
-            playSciFiBeep('success');
-            toast('✅ Conta Google vinculada com sucesso!', '🔗');
-          }
-        });
-        return true;
-      } catch(e) {
-        console.warn(e);
-        appState.googleLinking = false;
-        updateGoogleLinkUI(false);
-        return false;
-      }
-    }
-
-    function linkGoogleAccount() {
-      const clientId = localStorage.getItem(KEY_GOOGLE_CLIENT_ID);
-      if (!clientId) {
-        toast('⚠️ Configure primeiro o Google Client ID nas Configurações.', '⚠️');
-        openModal('modalSettings');
-        return;
-      }
-      appState.googleLinking = true;
-      updateGoogleLinkUI(false);
-      if (!googleTokenClient) {
-        initGoogleAuth().then(ok => {
-          if (ok && googleTokenClient) {
-            googleTokenClient.requestAccessToken({ prompt: 'consent' });
-          } else {
-            appState.googleLinking = false;
-            updateGoogleLinkUI(false);
-            toast('Falha ao inicializar o Google. Verifique sua conexão.', '❌');
-          }
-        });
-        return;
-      }
-      googleTokenClient.requestAccessToken({ prompt: 'consent' });
-    }
-
-    function unlinkGoogleAccount() {
-      if (!googleAccessToken) return;
-      try {
-        if (window.google && window.google.accounts && window.google.accounts.oauth2) {
-          window.google.accounts.oauth2.revoke(googleAccessToken, () => {});
-        }
-      } catch(e) {}
-      googleAccessToken = null;
-      googleTokenExpiresAt = 0;
-      appState.googleEmail = null;
-      updateGoogleLinkUI(false);
-      toast('Conta Google desvinculada.', '🔌');
-    }
-
-    function ensureFreshGoogleToken() {
-      if (!googleAccessToken) return false;
-      if (Date.now() >= googleTokenExpiresAt) {
-        toast('Sessão Google expirou. Vinculando novamente...', '⏳');
-        if (googleTokenClient) googleTokenClient.requestAccessToken({ prompt: '' });
-        return false;
-      }
-      return true;
-    }
-
-    async function pickGooglePhotos() {
-      if (!ensureFreshGoogleToken()) {
-        toast('Vincule sua conta Google primeiro.', '⚠️');
-        return;
-      }
-      try {
-        toast('Criando sessão do Google Photos Picker...', '📸');
-        const sessionRes = await fetch(GOOGLE_PICKER_SESSIONS_URL, {
-          method: 'POST',
-          headers: {
-            'Authorization': 'Bearer ' + googleAccessToken,
-            'Content-Type': 'application/json'
-          },
-          body: '{}'
-        });
-        if (!sessionRes.ok) {
-          const errTxt = await sessionRes.text();
-          console.error('Erro criar sessão:', sessionRes.status, errTxt);
-          throw new Error('Não foi possível criar a sessão (HTTP ' + sessionRes.status + ').');
-        }
-        const session = await sessionRes.json();
-        const sessionId = session.id;
-        const pickerUri = session.pickerUri;
-
-        const popup = window.open(pickerUri, 'GooglePhotosPicker', 'width=1100,height=750,scrollbars=yes,resizable=yes');
-        if (!popup) {
-          toast('⚠️ Pop-up bloqueado! Permita pop-ups deste site.', '⚠️');
+    googleTokenClient=window.google.accounts.oauth2.initTokenClient({
+      client_id:clientId,
+      scope:GOOGLE_SCOPE,
+      callback:function(resp){
+        appState.googleLinking=false;
+        if(resp.error){
+          toast('Erro ao vincular: '+resp.error,'❌');
+          updateGoogleLinkUI(false);
           return;
         }
-        toast('Selecione as fotos na janela do Google e confirme.', '📸');
-
-        let done = false;
-        const started = Date.now();
-        while (!done && Date.now() - started < 5 * 60 * 1000) {
-          await new Promise(r => setTimeout(r, 2500));
-          try {
-            const pollRes = await fetch(`${GOOGLE_PICKER_SESSIONS_URL}/${sessionId}`, {
-              headers: { 'Authorization': 'Bearer ' + googleAccessToken }
+        googleAccessToken=resp.access_token;
+        googleTokenExpiresAt=Date.now()+(resp.expires_in*1000)-30000;
+        fetch('https://www.googleapis.com/oauth2/v3/userinfo',{
+          headers:{Authorization:'Bearer '+googleAccessToken}
+        }).then(function(r){return r.ok?r.json():null}).then(function(u){
+          if(u&&u.email){appState.googleEmail=u.email;updateGoogleLinkUI(true)}
+        }).catch(function(){});
+        updateGoogleLinkUI(true);
+        playSciFiBeep('success');
+        toast('✅ Conta Google vinculada com sucesso!','🔗');
+      }
+    });
+    return true;
+  }).catch(function(e){
+    console.warn(e);
+    appState.googleLinking=false;
+    updateGoogleLinkUI(false);
+    return false;
+  });
+}
+function linkGoogleAccount(){
+  var clientId=localStorage.getItem(KEY_GOOGLE_CLIENT_ID);
+  if(!clientId){
+    toast('⚠️ Configure primeiro o Google Client ID nas Configurações.','⚠️');
+    openModal('modalSettings');
+    return;
+  }
+  appState.googleLinking=true;
+  updateGoogleLinkUI(false);
+  if(!googleTokenClient){
+    initGoogleAuth().then(function(ok){
+      if(ok&&googleTokenClient){
+        googleTokenClient.requestAccessToken({prompt:'consent'});
+      }else{
+        appState.googleLinking=false;
+        updateGoogleLinkUI(false);
+        toast('Falha ao inicializar o Google. Verifique sua conexão.','❌');
+      }
+    });
+    return;
+  }
+  googleTokenClient.requestAccessToken({prompt:'consent'});
+}
+function unlinkGoogleAccount(){
+  if(!googleAccessToken)return;
+  try{
+    if(window.google&&window.google.accounts&&window.google.accounts.oauth2){
+      window.google.accounts.oauth2.revoke(googleAccessToken,function(){});
+    }
+  }catch(e){}
+  googleAccessToken=null;
+  googleTokenExpiresAt=0;
+  appState.googleEmail=null;
+  updateGoogleLinkUI(false);
+  toast('Conta Google desvinculada.','🔌');
+}
+function ensureFreshGoogleToken(){
+  if(!googleAccessToken)return false;
+  if(Date.now()>=googleTokenExpiresAt){
+    toast('Sessão Google expirou. Vinculando novamente...','⏳');
+    if(googleTokenClient)googleTokenClient.requestAccessToken({prompt:''});
+    return false;
+  }
+  return true;
+}
+function pickGooglePhotos(){
+  if(!ensureFreshGoogleToken()){
+    toast('Vincule sua conta Google primeiro.','⚠️');
+    return;
+  }
+  toast('Criando sessão do Google Photos Picker...','📸');
+  fetch(GOOGLE_PICKER_SESSIONS_URL,{
+    method:'POST',
+    headers:{'Authorization':'Bearer '+googleAccessToken,'Content-Type':'application/json'},
+    body:'{}'
+  }).then(function(sessionRes){
+    if(!sessionRes.ok){
+      return sessionRes.text().then(function(txt){
+        console.error('Erro criar sessão:',sessionRes.status,txt);
+        throw new Error('Não foi possível criar a sessão (HTTP '+sessionRes.status+').');
+      });
+    }
+    return sessionRes.json();
+  }).then(function(session){
+    var sessionId=session.id;
+    var pickerUri=session.pickerUri;
+    var popup=window.open(pickerUri,'GooglePhotosPicker','width=1100,height=750,scrollbars=yes,resizable=yes');
+    if(!popup){
+      toast('⚠️ Pop-up bloqueado! Permita pop-ups deste site.','⚠️');
+      return Promise.reject(new Error('popup_blocked'));
+    }
+    toast('Selecione as fotos na janela do Google e confirme.','📸');
+    var done=false;
+    var started=Date.now();
+    var checkPoll=function(){
+      if(done)return Promise.resolve(true);
+      if(Date.now()-started>5*60*1000)return Promise.resolve(false);
+      return new Promise(function(r){setTimeout(r,2500)}).then(function(){
+        return fetch(GOOGLE_PICKER_SESSIONS_URL+'/'+sessionId,{
+          headers:{Authorization:'Bearer '+googleAccessToken}
+        }).then(function(r){return r.ok?r.json():null}).then(function(pollData){
+          if(pollData&&pollData.mediaItemsSet){done=true;return true}
+          if(popup.closed){
+            return new Promise(function(r){setTimeout(r,800)}).then(function(){
+              return fetch(GOOGLE_PICKER_SESSIONS_URL+'/'+sessionId,{
+                headers:{Authorization:'Bearer '+googleAccessToken}
+              }).then(function(r){return r.json()}).then(function(finalData){
+                if(finalData&&finalData.mediaItemsSet){done=true;return true}
+                return false;
+              }).catch(function(){return false});
             });
-            if (!pollRes.ok) break;
-            const pollData = await pollRes.json();
-            if (pollData.mediaItemsSet) {
-              done = true;
-              break;
-            }
-          } catch(e) { console.warn('poll err', e); }
-          if (popup.closed) {
-            await new Promise(r => setTimeout(r, 800));
-            try {
-              const finalRes = await fetch(`${GOOGLE_PICKER_SESSIONS_URL}/${sessionId}`, {
-                headers: { 'Authorization': 'Bearer ' + googleAccessToken }
+          }
+          return checkPoll();
+        }).catch(function(){return checkPoll()});
+      });
+    };
+    return checkPoll().then(function(wasDone){
+      if(!wasDone){
+        toast('Nenhuma foto selecionada (ou tempo esgotado).','ℹ️');
+        return null;
+      }
+      toast('Buscando lista de fotos selecionadas...','📋');
+      var mediaItems=[];
+      var fetchPage=function(pageToken){
+        var url=new URL(GOOGLE_PICKER_MEDIA_URL);
+        url.searchParams.set('sessionId',sessionId);
+        url.searchParams.set('pageSize','100');
+        if(pageToken)url.searchParams.set('pageToken',pageToken);
+        return fetch(url.toString(),{
+          headers:{Authorization:'Bearer '+googleAccessToken}
+        }).then(function(listRes){
+          if(!listRes.ok){
+            return listRes.text().then(function(txt){
+              console.error('Erro lista media:',listRes.status,txt);
+              return null;
+            });
+          }
+          return listRes.json();
+        }).then(function(listData){
+          if(!listData)return;
+          if(listData.mediaItems)mediaItems.push.apply(mediaItems,listData.mediaItems);
+          if(listData.nextPageToken)return fetchPage(listData.nextPageToken);
+        });
+      };
+      return fetchPage('').then(function(){
+        if(!mediaItems.length){
+          toast('Nenhuma foto retornada pelo Google.','ℹ️');
+          return null;
+        }
+        toast('Baixando '+mediaItems.length+' foto(s)...','⬇️');
+        var files=[];
+        var chain=Promise.resolve();
+        mediaItems.forEach(function(mi){
+          chain=chain.then(function(){
+            var isVideo=mi.type==='VIDEO';
+            var baseUrl=(mi.mediaFile&&mi.mediaFile.baseUrl)||'';
+            if(!baseUrl)return;
+            var downloadUrl=baseUrl+(isVideo?'=dv':'=d');
+            return fetch(downloadUrl).then(function(resp){
+              if(!resp.ok)return;
+              return resp.blob().then(function(blob){
+                var fname=(mi.mediaFile&&mi.mediaFile.filename)||('google_'+mi.id);
+                var ftype=(mi.mediaFile&&mi.mediaFile.mimeType)||(isVideo?'video/mp4':'image/jpeg');
+                files.push(new File([blob],fname,{type:ftype}));
               });
-              const finalData = await finalRes.json();
-              if (finalData.mediaItemsSet) { done = true; }
-              else break;
-            } catch(e) { break; }
-          }
-        }
-
-        if (!done) {
-          toast('Nenhuma foto selecionada (ou tempo esgotado).', 'ℹ️');
-          return;
-        }
-
-        toast('Buscando lista de fotos selecionadas...', '📋');
-        const mediaItems = [];
-        let pageToken = '';
-        do {
-          const url = new URL(GOOGLE_PICKER_MEDIA_URL);
-          url.searchParams.set('sessionId', sessionId);
-          url.searchParams.set('pageSize', '100');
-          if (pageToken) url.searchParams.set('pageToken', pageToken);
-          const listRes = await fetch(url.toString(), {
-            headers: { 'Authorization': 'Bearer ' + googleAccessToken }
+            }).catch(function(e){console.warn('Falha ao baixar',mi.id,e)});
           });
-          if (!listRes.ok) {
-            const txt = await listRes.text();
-            console.error('Erro lista media:', listRes.status, txt);
-            break;
+        });
+        return chain.then(function(){
+          if(!files.length){
+            toast('Não foi possível baixar as fotos. Tente novamente.','❌');
+            return null;
           }
-          const listData = await listRes.json();
-          if (listData.mediaItems) mediaItems.push(...listData.mediaItems);
-          pageToken = listData.nextPageToken || '';
-        } while (pageToken);
-
-        if (!mediaItems.length) {
-          toast('Nenhuma foto retornada pelo Google.', 'ℹ️');
-          return;
-        }
-
-        toast(`Baixando ${mediaItems.length} foto(s)...`, '⬇️');
-        const files = [];
-        for (const mi of mediaItems) {
-          try {
-            const isVideo = (mi.type === 'VIDEO');
-            const baseUrl = (mi.mediaFile && mi.mediaFile.baseUrl) || '';
-            if (!baseUrl) continue;
-            const downloadUrl = baseUrl + (isVideo ? '=dv' : '=d');
-            const resp = await fetch(downloadUrl);
-            if (!resp.ok) continue;
-            const blob = await resp.blob();
-            const fname = (mi.mediaFile && mi.mediaFile.filename) || ('google_' + mi.id);
-            const ftype = (mi.mediaFile && mi.mediaFile.mimeType) || (isVideo ? 'video/mp4' : 'image/jpeg');
-            files.push(new File([blob], fname, { type: ftype }));
-          } catch(e) { console.warn('Falha ao baixar', mi.id, e); }
-        }
-
-        if (!files.length) {
-          toast('Não foi possível baixar as fotos. Tente novamente.', '❌');
-          return;
-        }
-        await handleIncomingFiles(files, 'Google Fotos', 'google');
-
-        try {
-          await fetch(`${GOOGLE_PICKER_SESSIONS_URL}/${sessionId}`, {
-            method: 'DELETE',
-            headers: { 'Authorization': 'Bearer ' + googleAccessToken }
+          return handleIncomingFiles(files,'Google Fotos','google').then(function(){
+            return fetch(GOOGLE_PICKER_SESSIONS_URL+'/'+sessionId,{
+              method:'DELETE',
+              headers:{Authorization:'Bearer '+googleAccessToken}
+            }).catch(function(){});
           });
-        } catch(e) {}
-      } catch(e) {
-        console.error(e);
-        toast('Erro ao buscar fotos: ' + e.message, '❌');
-      }
-    }
-
-    // ==================================================
-    // MODAIS
-    // ==================================================
-    window.openModal = id => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.classList.add('open');
-        document.body.style.overflow = 'hidden';
-        playSciFiBeep('click');
-      }
-    };
-    window.closeModal = id => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.classList.remove('open');
-        if (!document.querySelector('.modal-overlay.open')) document.body.style.overflow = '';
-      }
-    };
-
-    // ==================================================
-    // INIT
-    // ==================================================
-    async function initApp() {
-      try {
-        await initDB();
-        appState.items = await dbGetAll();
-      } catch(e) { console.error('DB init error', e); }
-
-      const savedClientId = localStorage.getItem(KEY_GOOGLE_CLIENT_ID) || '';
-      document.getElementById('googleClientIdInput').value = savedClientId;
-
-      applyThemeWithBot(appState.activeThemeId, false);
-      renderThemesGrid('all', '');
-
-      document.getElementById('settingsCurrentCapacity').textContent = `${appState.quotaVal} ${appState.quotaUnit}`;
-      document.getElementById('customQuotaInput').value = appState.quotaVal;
-      document.getElementById('customQuotaUnit').value = appState.quotaUnit;
-      document.querySelectorAll('#quotaPresets .preset-chip').forEach(b => {
-        b.classList.toggle('active', parseInt(b.dataset.val, 10) === appState.quotaVal && b.dataset.unit === appState.quotaUnit);
+        });
       });
+    });
+  }).catch(function(e){
+    if(e&&e.message==='popup_blocked')return;
+    console.error(e);
+    toast('Erro ao buscar fotos: '+e.message,'❌');
+  });
+}
 
-      updateTelemetry();
-      renderMediaGrid();
+// ============ MODAIS ============
+function openModal(id){
+  var el=document.getElementById(id);
+  if(el){
+    el.classList.add('open');
+    document.body.style.overflow='hidden';
+    playSciFiBeep('click');
+  }
+}
+function closeModal(id){
+  var el=document.getElementById(id);
+  if(el){
+    el.classList.remove('open');
+    if(!document.querySelector('.modal-overlay.open'))document.body.style.overflow='';
+  }
+}
+
+// ============ INIT ============
+function initApp(){
+  return initDB().then(function(){
+    return dbGetAll();
+  }).then(function(all){
+    appState.items=all;
+  }).catch(function(e){console.error('DB init error',e)}).then(function(){
+    var savedClientId=localStorage.getItem(KEY_GOOGLE_CLIENT_ID)||'';
+    document.getElementById('googleClientIdInput').value=savedClientId;
+    applyThemeWithBot(appState.activeThemeId,false);
+    renderThemesGrid('all','');
+    document.getElementById('settingsCurrentCapacity').textContent=appState.quotaVal+' '+appState.quotaUnit;
+    document.getElementById('customQuotaInput').value=appState.quotaVal;
+    document.getElementById('customQuotaUnit').value=appState.quotaUnit;
+    document.querySelectorAll('#quotaPresets .preset-chip').forEach(function(b){
+      b.classList.toggle('active',parseInt(b.dataset.val,10)===appState.quotaVal&&b.dataset.unit===appState.quotaUnit);
+    });
+    updateTelemetry();
+    renderMediaGrid();
+    updateGoogleLinkUI(false);
+    requestPersistentStorage(true);
+    if(savedClientId)initGoogleAuth();
+
+    // --- BOTÕES DO TOPO ---
+    document.getElementById('btnTopChangeThemeManual').addEventListener('click',function(){openModal('modalThemes')});
+    document.getElementById('btnQuickNextTheme').addEventListener('click',function(){
+      var currentIndex=THEMES.findIndex(function(t){return t.id===appState.activeThemeId});
+      var nextIndex=(currentIndex+1)%THEMES.length;
+      applyThemeWithBot(THEMES[nextIndex].id,true);
+    });
+    document.getElementById('btnOpenSettings').addEventListener('click',function(){openModal('modalSettings')});
+    document.getElementById('quickStorageBtn').addEventListener('click',function(){openModal('modalSettings')});
+    document.getElementById('btnOpenThemesModal').addEventListener('click',function(){
+      closeModal('modalSettings');openModal('modalThemes');
+    });
+    document.getElementById('btnOpenRobot').addEventListener('click',function(){openModal('modalRobot')});
+    document.getElementById('btnOpenRobotFromSettings').addEventListener('click',function(){
+      closeModal('modalSettings');openModal('modalRobot');
+    });
+    document.getElementById('btnRequestPersist').addEventListener('click',function(){requestPersistentStorage(false)});
+
+    // --- GOOGLE ---
+    document.getElementById('btnLinkGoogle').addEventListener('click',linkGoogleAccount);
+    document.getElementById('btnUnlinkGoogle').addEventListener('click',unlinkGoogleAccount);
+    document.getElementById('btnPickGooglePhotos').addEventListener('click',pickGooglePhotos);
+    document.getElementById('btnSaveClientId').addEventListener('click',function(){
+      var val=document.getElementById('googleClientIdInput').value.trim();
+      if(!val||val.indexOf('.apps.googleusercontent.com')<0){
+        toast('⚠️ Client ID inválido. Deve terminar em .apps.googleusercontent.com','⚠️');
+        return;
+      }
+      localStorage.setItem(KEY_GOOGLE_CLIENT_ID,val);
+      googleTokenClient=null;
+      toast('✅ Client ID salvo com sucesso!','💾');
       updateGoogleLinkUI(false);
-      await requestPersistentStorage(true);
+      initGoogleAuth();
+    });
+    document.getElementById('btnTestGoogleAuth').addEventListener('click',function(){
+      var val=document.getElementById('googleClientIdInput').value.trim();
+      if(!val){toast('⚠️ Cole o Client ID primeiro.','⚠️');return;}
+      localStorage.setItem(KEY_GOOGLE_CLIENT_ID,val);
+      googleTokenClient=null;
+      updateGoogleLinkUI(false);
+      initGoogleAuth().then(function(ok){
+        if(ok){toast('Testando vinculação...','🧪');linkGoogleAccount();}
+        else toast('Falha ao inicializar. Verifique sua conexão.','❌');
+      });
+    });
 
-      if (savedClientId) initGoogleAuth();
+    // --- TEMAS ---
+    document.getElementById('btnBotRandomTheme').addEventListener('click',botSuggestRandomTheme);
+    document.getElementById('themeSearchInput').addEventListener('input',function(e){
+      var activeCatBtn=document.querySelector('#themeCategoryNav .theme-cat-btn.active');
+      var activeCat=activeCatBtn?activeCatBtn.dataset.cat:'all';
+      renderThemesGrid(activeCat,e.target.value);
+    });
+    document.querySelectorAll('#themeCategoryNav .theme-cat-btn').forEach(function(b){
+      b.addEventListener('click',function(){
+        document.querySelectorAll('#themeCategoryNav .theme-cat-btn').forEach(function(btn){btn.classList.remove('active')});
+        b.classList.add('active');
+        renderThemesGrid(b.dataset.cat,document.getElementById('themeSearchInput').value);
+      });
+    });
 
-      // --- BOTÕES DO TOPO ---
-      document.getElementById('btnTopChangeThemeManual').addEventListener('click', () => openModal('modalThemes'));
-      document.getElementById('btnQuickNextTheme').addEventListener('click', () => {
-        const currentIndex = THEMES.findIndex(t => t.id === appState.activeThemeId);
-        const nextIndex = (currentIndex + 1) % THEMES.length;
-        applyThemeWithBot(THEMES[nextIndex].id, true);
-      });
-      document.getElementById('btnOpenSettings').addEventListener('click', () => openModal('modalSettings'));
-      document.getElementById('quickStorageBtn').addEventListener('click', () => openModal('modalSettings'));
-      document.getElementById('btnOpenThemesModal').addEventListener('click', () => {
-        closeModal('modalSettings'); openModal('modalThemes');
-      });
-      document.getElementById('btnOpenRobot').addEventListener('click', () => openModal('modalRobot'));
-      document.getElementById('btnOpenRobotFromSettings').addEventListener('click', () => {
-        closeModal('modalSettings'); openModal('modalRobot');
-      });
-      document.getElementById('btnRequestPersist').addEventListener('click', () => requestPersistentStorage(false));
+    // --- UPLOAD (delegação de eventos para o botão "Carregar Primeiros Arquivos") ---
+    var fileInput=document.getElementById('fileInput');
+    document.getElementById('btnUploadTrigger').addEventListener('click',function(){fileInput.click()});
+    document.getElementById('mediaGrid').addEventListener('click',function(e){
+      if(e.target.closest('#btnEmptyAdd'))fileInput.click();
+    });
+    fileInput.addEventListener('change',function(e){
+      handleIncomingFiles(e.target.files);
+      e.target.value='';
+    });
 
-      // --- GOOGLE FOTOS ---
-      document.getElementById('btnLinkGoogle').addEventListener('click', linkGoogleAccount);
-      document.getElementById('btnUnlinkGoogle').addEventListener('click', unlinkGoogleAccount);
-      document.getElementById('btnPickGooglePhotos').addEventListener('click', pickGooglePhotos);
-      document.getElementById('btnSaveClientId').addEventListener('click', () => {
-        const val = document.getElementById('googleClientIdInput').value.trim();
-        if (!val || !val.includes('.apps.googleusercontent.com')) {
-          toast('⚠️ Client ID inválido. Deve terminar em .apps.googleusercontent.com', '⚠️');
-          return;
-        }
-        localStorage.setItem(KEY_GOOGLE_CLIENT_ID, val);
-        googleTokenClient = null;
-        toast('✅ Client ID salvo com sucesso!', '💾');
-        updateGoogleLinkUI(false);
-        initGoogleAuth();
-      });
-      document.getElementById('btnTestGoogleAuth').addEventListener('click', () => {
-        const val = document.getElementById('googleClientIdInput').value.trim();
-        if (!val) {
-          toast('⚠️ Cole o Client ID primeiro.', '⚠️');
-          return;
-        }
-        localStorage.setItem(KEY_GOOGLE_CLIENT_ID, val);
-        googleTokenClient = null;
-        updateGoogleLinkUI(false);
-        initGoogleAuth().then(ok => {
-          if (ok) {
-            toast('Testando vinculação...', '🧪');
-            linkGoogleAccount();
-          } else {
-            toast('Falha ao inicializar. Verifique sua conexão.', '❌');
+    // --- ENVIO DIRETO DA GALERIA ---
+    var photoPicker=document.getElementById('photoPickerInput');
+    document.getElementById('btnSendPhotoDirect').addEventListener('click',function(){
+      photoPicker.click();
+      toast('Escolha uma foto da galeria.','📸');
+    });
+    photoPicker.addEventListener('change',function(e){
+      handleIncomingFiles(e.target.files,'Envio Direto');
+      e.target.value='';
+    });
+
+    // --- GOOGLE FOTOS WEB ---
+    document.getElementById('btnLaunchGooglePhotos').addEventListener('click',function(){
+      window.open('https://photos.google.com','_blank','noopener');
+      toast('Google Fotos aberto! Baixe/copie e use "Enviar da Galeria" ou Ctrl+V.','🚀');
+    });
+
+    // --- ZIP IMPORT ---
+    var zipFileInput=document.getElementById('zipFileInput');
+    document.getElementById('btnImportTakeoutZip').addEventListener('click',function(){zipFileInput.click()});
+    zipFileInput.addEventListener('change',function(e){
+      var file=e.target.files[0];
+      if(!file)return;
+      toast('Extraindo e blindando pacote ZIP...','📦');
+      JSZip.loadAsync(file).then(function(zip){
+        var blobs=[];
+        var chain=Promise.resolve();
+        Object.keys(zip.files).forEach(function(fn){
+          var fe=zip.files[fn];
+          if(fe.dir)return;
+          var ext=fn.split('.').pop().toLowerCase();
+          if(['jpg','jpeg','png','webp','gif','mp4','mov','pdf'].indexOf(ext)>=0){
+            chain=chain.then(function(){
+              return fe.async('blob').then(function(blob){
+                blobs.push({blob:blob,name:fn.split('/').pop()||fn});
+              });
+            });
           }
         });
-      });
-
-      // --- TEMAS ---
-      document.getElementById('btnBotRandomTheme').addEventListener('click', botSuggestRandomTheme);
-      document.getElementById('themeSearchInput').addEventListener('input', e => {
-        const activeCat = document.querySelector('#themeCategoryNav .theme-cat-btn.active')?.dataset.cat || 'all';
-        renderThemesGrid(activeCat, e.target.value);
-      });
-      document.querySelectorAll('#themeCategoryNav .theme-cat-btn').forEach(b => {
-        b.addEventListener('click', () => {
-          document.querySelectorAll('#themeCategoryNav .theme-cat-btn').forEach(btn => btn.classList.remove('active'));
-          b.classList.add('active');
-          renderThemesGrid(b.dataset.cat, document.getElementById('themeSearchInput').value);
+        return chain.then(function(){
+          var files=blobs.map(function(b){return new File([b.blob],b.name,{type:b.blob.type||'image/jpeg'})});
+          return handleIncomingFiles(files,'ZIP');
         });
+      }).catch(function(err){
+        console.error(err);
+        toast('Erro ao ler arquivo ZIP.','❌');
       });
+      e.target.value='';
+    });
 
-      // --- UPLOAD ---
-      const fileInput = document.getElementById('fileInput');
-      document.getElementById('btnUploadTrigger').addEventListener('click', () => fileInput.click());
-      document.getElementById('btnEmptyAdd').addEventListener('click', () => fileInput.click());
-      fileInput.addEventListener('change', e => {
-        handleIncomingFiles(e.target.files);
-        e.target.value = '';
+    // --- ZIP EXPORT ---
+    document.getElementById('btnExportAllZip').addEventListener('click',function(){
+      if(!appState.items.length){alert('O cofre está vazio!');return}
+      toast('Gerando arquivo ZIP blindado...','📦');
+      var zip=new JSZip();
+      appState.items.forEach(function(item,idx){
+        var base64=item.dataUrl.split(',')[1];
+        var safeName=String(item.name).replace(/[\\/:*?"<>|]/g,'_');
+        zip.file(('0000'+(idx+1)).slice(-4)+'_'+safeName,base64,{base64:true});
       });
-
-      // --- ENVIO DIRETO DA GALERIA ---
-      const photoPicker = document.getElementById('photoPickerInput');
-      document.getElementById('btnSendPhotoDirect').addEventListener('click', () => {
-        photoPicker.click();
-        toast('Escolha uma foto da galeria.', '📸');
-      });
-      photoPicker.addEventListener('change', async e => {
-        await handleIncomingFiles(e.target.files, 'Envio Direto');
-        e.target.value = '';
-      });
-
-      // --- GOOGLE FOTOS WEB ---
-      document.getElementById('btnLaunchGooglePhotos').addEventListener('click', () => {
-        window.open('https://photos.google.com', '_blank', 'noopener');
-        toast('Google Fotos aberto! Baixe/copie e use "Enviar da Galeria" ou Ctrl+V.', '🚀');
-      });
-
-      // --- ZIP IMPORT ---
-      const zipFileInput = document.getElementById('zipFileInput');
-      document.getElementById('btnImportTakeoutZip').addEventListener('click', () => zipFileInput.click());
-      zipFileInput.addEventListener('change', async e => {
-        const file = e.target.files[0];
-        if (!file) return;
-        toast('Extraindo e blindando pacote ZIP...', '📦');
-        try {
-          const zip = await JSZip.loadAsync(file);
-          const blobs = [];
-          for (const [fn, fe] of Object.entries(zip.files)) {
-            if (fe.dir) continue;
-            const ext = fn.split('.').pop().toLowerCase();
-            if (['jpg','jpeg','png','webp','gif','mp4','mov','pdf'].includes(ext)) {
-              const blob = await fe.async('blob');
-              blob._zipName = fn.split('/').pop() || fn;
-              blobs.push(blob);
-            }
-          }
-          const files = blobs.map(b => new File([b], b._zipName, { type: b.type || 'image/jpeg' }));
-          await handleIncomingFiles(files, 'ZIP');
-        } catch(err) {
-          console.error(err);
-          toast('Erro ao ler arquivo ZIP.', '❌');
-        }
-        e.target.value = '';
-      });
-
-      // --- ZIP EXPORT ---
-      document.getElementById('btnExportAllZip').addEventListener('click', async () => {
-        if (!appState.items.length) return alert('O cofre está vazio!');
-        toast('Gerando arquivo ZIP blindado...', '📦');
-        const zip = new JSZip();
-        appState.items.forEach((item, idx) => {
-          const base64 = item.dataUrl.split(',')[1];
-          const safeName = String(item.name).replace(/[\\/:*?"<>|]/g, '_');
-          zip.file(`${String(idx + 1).padStart(4,'0')}_${safeName}`, base64, { base64: true });
-        });
-        const content = await zip.generateAsync({ type: 'blob' });
-        const a = document.createElement('a');
-        a.href = URL.createObjectURL(content);
-        a.download = `MANGEDORA_APPLE_BACKUP_${Date.now()}.zip`;
+      zip.generateAsync({type:'blob'}).then(function(content){
+        var a=document.createElement('a');
+        a.href=URL.createObjectURL(content);
+        a.download='MANGEDORA_APPLE_BACKUP_'+Date.now()+'.zip';
         a.click();
-        setTimeout(() => URL.revokeObjectURL(a.href), 5000);
-        toast('Backup exportado com sucesso!', '🛡️');
+        setTimeout(function(){URL.revokeObjectURL(a.href)},5000);
+        toast('Backup exportado com sucesso!','🛡️');
       });
+    });
 
-      // --- LIMPAR TUDO ---
-      document.getElementById('btnClearAllVault').addEventListener('click', async () => {
-        if (confirm('Deseja apagar todas as mídias do cofre local permanentemente?') && confirm('Confirmação final: ação irreversível.')) {
-          try { await dbClear(); } catch(e) {}
-          appState.items = [];
+    // --- LIMPAR TUDO ---
+    document.getElementById('btnClearAllVault').addEventListener('click',function(){
+      if(confirm('Deseja apagar todas as mídias do cofre local permanentemente?')&&confirm('Confirmação final: ação irreversível.')){
+        dbClear().catch(function(){}).then(function(){
+          appState.items=[];
           updateTelemetry();
           renderMediaGrid();
-          toast('Cofre esvaziado.', '🗑️');
-        }
-      });
-
-      // --- QUOTA ---
-      document.querySelectorAll('#quotaPresets .preset-chip').forEach(b => {
-        b.addEventListener('click', () => saveQuota(b.dataset.val, b.dataset.unit));
-      });
-      document.getElementById('btnSaveCustomQuota').addEventListener('click', () => {
-        saveQuota(document.getElementById('customQuotaInput').value, document.getElementById('customQuotaUnit').value);
-      });
-
-      // --- ROBÔ ---
-      document.getElementById('btnRobotOptimize').addEventListener('click', robotRunOptimization);
-      document.getElementById('btnRobotDuplicates').addEventListener('click', robotScanDuplicates);
-      document.getElementById('btnRobotDefrag').addEventListener('click', robotDefragDatabase);
-
-      // --- LIGHTBOX ---
-      document.getElementById('btnDownloadLightbox').addEventListener('click', () => {
-        if (appState.activeLightboxItem) downloadItem(appState.activeLightboxItem);
-      });
-
-      // --- FILTROS / BUSCA / SORT ---
-      document.querySelectorAll('.filter-tabs .filter-btn').forEach(b => {
-        b.addEventListener('click', () => {
-          document.querySelectorAll('.filter-tabs .filter-btn').forEach(btn => btn.classList.remove('active'));
-          b.classList.add('active');
-          appState.filter = b.dataset.filter;
-          appState.visibleCount = PAGE_SIZE;
-          renderMediaGrid();
+          toast('Cofre esvaziado.','🗑️');
         });
-      });
-      document.getElementById('searchInput').addEventListener('input', e => {
-        appState.search = e.target.value;
-        appState.visibleCount = PAGE_SIZE;
+      }
+    });
+
+    // --- QUOTA ---
+    document.querySelectorAll('#quotaPresets .preset-chip').forEach(function(b){
+      b.addEventListener('click',function(){saveQuota(b.dataset.val,b.dataset.unit)});
+    });
+    document.getElementById('btnSaveCustomQuota').addEventListener('click',function(){
+      saveQuota(document.getElementById('customQuotaInput').value,document.getElementById('customQuotaUnit').value);
+    });
+
+    // --- ROBÔ ---
+    document.getElementById('btnRobotOptimize').addEventListener('click',robotRunOptimization);
+    document.getElementById('btnRobotDuplicates').addEventListener('click',robotScanDuplicates);
+    document.getElementById('btnRobotDefrag').addEventListener('click',robotDefragDatabase);
+
+    // --- LIGHTBOX ---
+    document.getElementById('btnDownloadLightbox').addEventListener('click',function(){
+      if(appState.activeLightboxItem)downloadItem(appState.activeLightboxItem);
+    });
+
+    // --- FILTROS / BUSCA / SORT ---
+    document.querySelectorAll('.filter-tabs .filter-btn').forEach(function(b){
+      b.addEventListener('click',function(){
+        document.querySelectorAll('.filter-tabs .filter-btn').forEach(function(btn){btn.classList.remove('active')});
+        b.classList.add('active');
+        appState.filter=b.dataset.filter;
+        appState.visibleCount=PAGE_SIZE;
         renderMediaGrid();
       });
-      document.getElementById('sortSelect').addEventListener('change', e => {
-        appState.sort = e.target.value;
-        appState.visibleCount = PAGE_SIZE;
-        renderMediaGrid();
-      });
+    });
+    document.getElementById('searchInput').addEventListener('input',function(e){
+      appState.search=e.target.value;
+      appState.visibleCount=PAGE_SIZE;
+      renderMediaGrid();
+    });
+    document.getElementById('sortSelect').addEventListener('change',function(e){
+      appState.sort=e.target.value;
+      appState.visibleCount=PAGE_SIZE;
+      renderMediaGrid();
+    });
 
-      // --- PASTE ---
-      window.addEventListener('paste', async e => {
-        const items = (e.clipboardData || e.originalEvent.clipboardData).items;
-        const files = [];
-        for (const it of items) {
-          if (it.kind === 'file') {
-            const f = it.getAsFile();
-            if (f) files.push(f);
-          }
+    // --- PASTE ---
+    window.addEventListener('paste',function(e){
+      var items=(e.clipboardData||e.originalEvent.clipboardData).items;
+      var files=[];
+      for(var i=0;i<items.length;i++){
+        if(items[i].kind==='file'){
+          var f=items[i].getAsFile();
+          if(f)files.push(f);
         }
-        if (files.length) {
-          toast('Foto recebida da área de transferência!', '📋');
-          await handleIncomingFiles(files, 'Colar');
-        }
-      });
+      }
+      if(files.length){
+        toast('Foto recebida da área de transferência!','📋');
+        handleIncomingFiles(files,'Colar');
+      }
+    });
 
-      // --- DRAG & DROP ---
-      window.addEventListener('dragover', e => e.preventDefault());
-      window.addEventListener('drop', async e => {
-        e.preventDefault();
-        if (e.dataTransfer && e.dataTransfer.files.length) {
-          await handleIncomingFiles(e.dataTransfer.files, 'Arrastar');
-        }
-      });
+    // --- DRAG & DROP ---
+    window.addEventListener('dragover',function(e){e.preventDefault()});
+    window.addEventListener('drop',function(e){
+      e.preventDefault();
+      if(e.dataTransfer&&e.dataTransfer.files.length){
+        handleIncomingFiles(e.dataTransfer.files,'Arrastar');
+      }
+    });
 
-      // --- FECHAR MODAIS ---
-      document.querySelectorAll('.modal-overlay').forEach(o => {
-        o.addEventListener('click', e => {
-          if (e.target === o) {
-            o.classList.remove('open');
-            if (!document.querySelector('.modal-overlay.open')) document.body.style.overflow = '';
-          }
-        });
-      });
-      document.querySelectorAll('[data-close]').forEach(btn => {
-        btn.addEventListener('click', () => closeModal(btn.dataset.close));
-      });
-      document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') {
-          document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
-          document.body.style.overflow = '';
+    // --- FECHAR MODAIS ---
+    document.querySelectorAll('.modal-overlay').forEach(function(o){
+      o.addEventListener('click',function(e){
+        if(e.target===o){
+          o.classList.remove('open');
+          if(!document.querySelector('.modal-overlay.open'))document.body.style.overflow='';
         }
       });
-    }
+    });
+    document.querySelectorAll('[data-close]').forEach(function(btn){
+      btn.addEventListener('click',function(){closeModal(btn.dataset.close)});
+    });
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape'){
+        document.querySelectorAll('.modal-overlay.open').forEach(function(m){m.classList.remove('open')});
+        document.body.style.overflow='';
+      }
+    });
+  });
+}
 
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initApp);
-    else initApp();
-  })();
-  </script>
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initApp);
+else initApp();
+})();
+</script>
 </body>
 </html>
