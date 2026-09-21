@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <meta name="description" content="MANGEDORA APPLE PRO ELITE • Cofre Blindado com Robô IA, 40 Temas Exclusivos, Boot Estilista IA, Ajuste GB/TB e Google Fotos Direto.">
+  <meta name="description" content="MANGEDORA APPLE PRO ELITE • Cofre Blindado Permanente com Robô IA, 40 Temas Exclusivos, Boot Estilista IA, Ajuste GB/TB e envio direto da galeria/Google Fotos.">
   <meta name="theme-color" content="#06070a">
-  <title>MANGEDORA APPLE • Elite Pro Vault, Bot de Temas & Robô IA 4K</title>
+  <title>MANGEDORA APPLE • Elite Pro Vault Permanente, Bot de Temas & Robô IA 4K</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%2306070a' stroke='%233b82f6' stroke-width='2'/><path d='M16 6l9 5v6c0 5.5-4 9.5-9 11-5-1.5-9-5.5-9-11v-6l9-5z' fill='%23121724' stroke='%233b82f6' stroke-width='1.5'/><circle cx='16' cy='16' r='3.5' fill='%23f59e0b'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,6 +53,10 @@
       font-size: 0.65rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 0.2rem 0.5rem;
       border-radius: 999px; background: rgba(59,130,246,0.15); border: 1px solid var(--accent-primary); color: var(--text-accent); -webkit-text-fill-color: var(--text-accent);
     }
+    .badge-permanent {
+      font-size: 0.6rem; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; padding: 0.15rem 0.4rem;
+      border-radius: 999px; background: rgba(16,185,129,0.15); border: 1px solid #10b981; color: #10b981;
+    }
     .header-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 0.65rem; }
     .storage-pill {
       display: flex; align-items: center; gap: 0.65rem; background: rgba(255,255,255,0.04); border: 1px solid var(--border-subtle);
@@ -78,6 +82,11 @@
     .btn-settings:hover { background: rgba(255,255,255,0.12); border-color: var(--accent-primary); transform: translateY(-2px); }
     .btn-gf { background: rgba(234,67,53,0.14); border: 1px solid rgba(234,67,53,0.45); color: #ff8a80; }
     .btn-gf:hover { background: rgba(234,67,53,0.25); border-color: #ff5252; transform: translateY(-2px); }
+    .btn-send-vault {
+      background: linear-gradient(135deg, #10b981, #059669); border: 1px solid #10b981; color: #fff;
+      box-shadow: 0 4px 16px rgba(16,185,129,0.35);
+    }
+    .btn-send-vault:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(16,185,129,0.55); }
     .btn-secondary { background: rgba(255,255,255,0.06); border-color: var(--border-subtle); color: var(--text-secondary); }
     .btn-secondary:hover { background: rgba(255,255,255,0.1); color: var(--text-primary); }
     .btn-sm { padding: 0.4rem 0.8rem; font-size: 0.78rem; border-radius: var(--radius-sm); }
@@ -93,15 +102,15 @@
     .card-val { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; color: var(--text-primary); }
     .card-subtext { font-size: 0.75rem; color: var(--text-tertiary); }
     .gf-banner {
-      background: linear-gradient(135deg, rgba(234,67,53,0.09), rgba(66,133,244,0.09)); border: 1px solid rgba(234,67,53,0.25);
+      background: linear-gradient(135deg, rgba(16,185,129,0.09), rgba(66,133,244,0.09)); border: 1px solid rgba(16,185,129,0.3);
       border-radius: var(--radius-lg); padding: 1.2rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;
     }
-    .gf-info { display: flex; align-items: center; gap: 1rem; }
+    .gf-info { display: flex; align-items: center; gap: 1rem; flex: 1 1 340px; }
     .gf-badge-icon {
       width: 46px; height: 46px; border-radius: var(--radius-md); background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.1);
     }
     .gf-texts h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem; }
-    .gf-texts p { font-size: 0.8rem; color: var(--text-secondary); }
+    .gf-texts p { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.45; }
     .gf-buttons { display: flex; align-items: center; flex-wrap: wrap; gap: 0.6rem; }
     .toolbar {
       background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
@@ -140,6 +149,10 @@
       position: absolute; top: 8px; left: 8px; font-size: 0.65rem; font-weight: 700; padding: 0.2rem 0.45rem;
       border-radius: 5px; background: rgba(0,0,0,0.7); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.15); color: #fff; text-transform: uppercase;
     }
+    .media-perm-shield {
+      position: absolute; bottom: 8px; left: 8px; font-size: 0.62rem; font-weight: 800; padding: 0.2rem 0.45rem;
+      border-radius: 5px; background: rgba(16,185,129,0.85); backdrop-filter: blur(6px); color: #fff; letter-spacing: 0.5px; display: flex; align-items: center; gap: 0.25rem;
+    }
     .media-fav-btn {
       position: absolute; top: 8px; right: 8px; width: 30px; height: 30px; border-radius: 50%;
       background: rgba(0,0,0,0.65); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.15); color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition);
@@ -163,6 +176,7 @@
       width: 64px; height: 64px; border-radius: 50%; background: rgba(59,130,246,0.1); border: 1px solid var(--accent-primary);
       display: flex; align-items: center; justify-content: center; color: var(--accent-primary); font-size: 1.8rem;
     }
+    .load-more-wrap { grid-column: 1/-1; display: flex; justify-content: center; margin-top: 1rem; }
     .modal-overlay {
       position: fixed; inset: 0; background: rgba(0,0,0,0.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
       z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 1.25rem; opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
@@ -210,8 +224,6 @@
       background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
       padding: 0.55rem 0.85rem; color: #fff; font-size: 0.88rem; outline: none; cursor: pointer;
     }
-
-    /* BOT ESTILISTA IA HUD */
     .theme-bot-hud {
       background: linear-gradient(135deg, rgba(245,158,11,0.12), rgba(59,130,246,0.14));
       border: 1px solid var(--accent-primary); border-radius: var(--radius-lg); padding: 1rem 1.25rem;
@@ -228,7 +240,6 @@
     }
     .theme-bot-speech h4 { font-size: 0.95rem; font-weight: 800; display: flex; align-items: center; gap: 0.4rem; }
     .theme-bot-speech p { font-size: 0.78rem; color: var(--text-accent); font-family: var(--font-mono); }
-
     .theme-category-nav { display: flex; align-items: center; gap: 0.45rem; overflow-x: auto; padding-bottom: 0.4rem; }
     .theme-cat-btn {
       padding: 0.35rem 0.75rem; border-radius: 999px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle);
@@ -276,10 +287,18 @@
       background: var(--bg-surface-elevated); border: 1px solid var(--accent-primary); border-radius: var(--radius-md);
       padding: 0.75rem 1.15rem; color: #fff; font-size: 0.82rem; font-weight: 600; box-shadow: 0 6px 25px rgba(0,0,0,0.6);
       animation: slideToast 0.25s forwards ease-out; pointer-events: auto; display: flex; align-items: center; gap: 0.5rem;
+      transition: opacity 0.25s ease, transform 0.25s ease;
     }
+    .toast-msg.hide { opacity: 0; transform: translateX(30px); }
     @keyframes slideToast { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
     .lightbox-content { max-width: 90vw; max-height: 90vh; display: flex; flex-direction: column; align-items: center; gap: 0.85rem; }
     .lightbox-media { max-width: 100%; max-height: 75vh; border-radius: var(--radius-lg); box-shadow: 0 10px 40px rgba(0,0,0,0.8); }
+    .perm-info-box {
+      background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(59,130,246,0.08));
+      border: 1px solid rgba(16,185,129,0.4); border-radius: var(--radius-md);
+      padding: 0.85rem 1rem; font-size: 0.78rem; color: var(--text-secondary); line-height: 1.5;
+    }
+    .perm-info-box strong { color: #10b981; }
     @media (max-width: 768px) {
       .app-header { flex-direction: column; align-items: flex-start; }
       .header-actions { width: 100%; justify-content: space-between; }
@@ -297,30 +316,25 @@
         </div>
         <div class="brand-info">
           <h1>MANGEDORA APPLE <span class="badge-elite">PRO ELITE</span></h1>
-          <p style="font-size:0.75rem;color:var(--text-tertiary);">Cofre Blindado Quântico • Google Fotos Direto • 40 Temas & Bot Estilista IA</p>
+          <p style="font-size:0.75rem;color:var(--text-tertiary);">Cofre Blindado Permanente • Envio Direto da Galeria • 40 Temas & Bot Estilista IA</p>
         </div>
       </div>
       <div class="header-actions">
-        <!-- BOTÃO NO TOPO PARA MUDAR O TEMA MANUALMENTE (40 TEMAS) -->
         <div style="display:inline-flex;align-items:center;gap:0.35rem;">
-          <button class="btn btn-theme-header" id="btnTopChangeThemeManual" title="Abrir painel com 40 temas e Boot Estilista IA">
+          <button class="btn btn-theme-header" id="btnTopChangeThemeManual" aria-label="Abrir painel de temas" title="Abrir painel com 40 temas e Boot Estilista IA">
             <span>🎨</span> Mudar Tema Manualmente
           </button>
-          <button class="btn btn-secondary btn-sm" id="btnQuickNextTheme" title="Avançar para o próximo tema manualmente com 1 clique" style="padding:0.6rem 0.65rem;border-color:var(--accent-secondary);color:var(--accent-secondary);">
+          <button class="btn btn-secondary btn-sm" id="btnQuickNextTheme" aria-label="Próximo tema" title="Avançar para o próximo tema manualmente" style="padding:0.6rem 0.65rem;border-color:var(--accent-secondary);color:var(--accent-secondary);">
             <span>⏭️</span>
           </button>
         </div>
-        <!-- MEDIDOR DE CAPACIDADE -->
         <div class="storage-pill" id="quickStorageBtn" title="Clique para ajustar GB / Terabytes nas Configurações">
           <span>💾</span>
           <span id="headerStorageText">0 MB / 250 GB</span>
           <div class="storage-mini-bar"><div class="storage-mini-fill" id="headerStorageFill"></div></div>
         </div>
-        <!-- BOTÃO ROBÔ IA PLUS -->
-        <button class="btn btn-robot" id="btnOpenRobot"><span>⚡</span> Robô IA Plus</button>
-        <!-- BOTÃO CONFIGURAÇÕES -->
-        <button class="btn btn-settings" id="btnOpenSettings"><span>⚙️</span> Configurações</button>
-        <!-- BOTÃO UPLOAD -->
+        <button class="btn btn-robot" id="btnOpenRobot" aria-label="Robô IA Plus"><span>⚡</span> Robô IA Plus</button>
+        <button class="btn btn-settings" id="btnOpenSettings" aria-label="Configurações"><span>⚙️</span> Configurações</button>
         <button class="btn btn-primary" id="btnUploadTrigger"><span>➕</span> Adicionar Mídia</button>
         <input type="file" id="fileInput" multiple accept="image/*,video/*,application/pdf" style="display:none;">
       </div>
@@ -344,8 +358,8 @@
       </div>
       <div class="telemetry-card">
         <div class="card-top"><span class="card-label">Blindagem & Status</span><div class="card-icon">🛡️</div></div>
-        <div class="card-val" style="font-size:1.3rem;color:#38bdf8;">100% OFFLINE</div>
-        <div class="card-subtext">IndexedDB Local Blindado</div>
+        <div class="card-val" id="telemetryShieldStatus" style="font-size:1.3rem;color:#38bdf8;">100% OFFLINE</div>
+        <div class="card-subtext" id="telemetryPersistText">IndexedDB Local Blindado</div>
       </div>
     </section>
 
@@ -355,12 +369,16 @@
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="#4285f4"/></svg>
         </div>
         <div class="gf-texts">
-          <h3>Conexão Direta Google Fotos (Sem API / Sem Chave Token)</h3>
-          <p>Abra seu Google Fotos com 1 clique, copie qualquer foto (Ctrl+C) e cole aqui com Ctrl+V ou importe pacotes ZIP.</p>
+          <h3>📸 Enviar Foto Direto para o Cofre (Google Fotos / Galeria)</h3>
+          <p>Toque em <strong>“Enviar Foto Direto para o Cofre”</strong> para escolher da sua galeria (no Android/iOS aparece o Google Fotos como fonte). A foto é <strong>copiada e blindada permanentemente</strong> no IndexedDB — mesmo que você apague a original do celular depois, ela continua no cofre. Você também pode colar com Ctrl+V.</p>
         </div>
       </div>
       <div class="gf-buttons">
-        <button class="btn btn-gf" id="btnLaunchGooglePhotos"><span>🚀</span> Abrir Google Fotos Direto</button>
+        <button class="btn btn-send-vault" id="btnSendPhotoDirect" aria-label="Enviar foto direto para o cofre">
+          <span>📸</span> Enviar Foto Direto para o Cofre
+        </button>
+        <input type="file" id="photoPickerInput" multiple accept="image/*,video/*" style="display:none;">
+        <button class="btn btn-gf" id="btnLaunchGooglePhotos"><span>🚀</span> Abrir Google Fotos</button>
         <button class="btn btn-secondary" id="btnImportTakeoutZip"><span>📦</span> Importar Backup (.ZIP)</button>
         <input type="file" id="zipFileInput" accept=".zip" style="display:none;">
       </div>
@@ -387,20 +405,19 @@
 
     <main class="media-grid" id="mediaGrid">
       <div class="empty-vault">
-        <div class="empty-icon">📁</div>
+        <div class="empty-icon">🛡️</div>
         <h3>Seu Cofre está Vazio e Pronto para Blindagem</h3>
-        <p style="color:var(--text-secondary);max-width:480px;">Adicione fotos e vídeos pelo botão acima, cole com Ctrl+V ou arraste arquivos para cá.</p>
-        <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()"><span>➕</span> Carregar Primeiros Arquivos</button>
+        <p style="color:var(--text-secondary);max-width:520px;">Adicione fotos e vídeos pelo botão <strong>📸 Enviar Foto Direto para o Cofre</strong>, pelo botão <strong>➕ Adicionar Mídia</strong>, cole com <strong>Ctrl+V</strong> ou arraste arquivos para cá. Tudo fica <strong>armazenado permanentemente</strong> — apagar do celular não afeta o cofre.</p>
+        <button class="btn btn-primary" id="btnEmptyAdd"><span>➕</span> Carregar Primeiros Arquivos</button>
       </div>
     </main>
   </div>
 
-  <!-- MODAL: SETTINGS (CONFIGURAÇÕES) -->
   <div class="modal-overlay" id="modalSettings">
     <div class="modal-box">
       <div class="modal-header">
         <div class="modal-title"><span>⚙️</span> Configurações do Aplicativo</div>
-        <button class="modal-close" onclick="closeModal('modalSettings')">✕</button>
+        <button class="modal-close" data-close="modalSettings" aria-label="Fechar">✕</button>
       </div>
       <div class="modal-body">
         <div class="theme-highlight-banner">
@@ -443,12 +460,23 @@
 
         <div class="settings-section">
           <div class="settings-head">
+            <h4><span>🛡️</span> Armazenamento Permanente</h4>
+            <span class="badge-permanent" id="persistBadge">Verificando...</span>
+          </div>
+          <div class="perm-info-box" id="persistInfo">
+            Ao iniciar, o app solicita ao navegador <strong>armazenamento persistente</strong>. Quando concedido, o navegador <strong>não apaga automaticamente</strong> seus dados por falta de espaço, mantendo as fotos blindadas permanentemente mesmo que você apague a original do celular.
+          </div>
+          <button class="btn btn-secondary btn-sm" id="btnRequestPersist"><span>🔒</span> Reforçar Armazenamento Permanente</button>
+        </div>
+
+        <div class="settings-section">
+          <div class="settings-head">
             <h4><span>⚡</span> Robô Titânio IA Plus</h4>
             <span class="badge-elite">100% Funcional</span>
           </div>
-          <p style="font-size:0.78rem;color:var(--text-secondary);">Otimizador neural para redução de fotos em IndexedDB com Canvas 4K e eliminação de duplicados.</p>
+          <p style="font-size:0.78rem;color:var(--text-secondary);">Otimizador neural para redução de fotos em IndexedDB com Canvas 4K, fallback WebP→JPEG e eliminação de duplicados por hash.</p>
           <div>
-            <button class="btn btn-robot btn-sm" onclick="closeModal('modalSettings');openModal('modalRobot');"><span>⚡</span> Iniciar Painel do Robô IA</button>
+            <button class="btn btn-robot btn-sm" id="btnOpenRobotFromSettings"><span>⚡</span> Iniciar Painel do Robô IA</button>
           </div>
         </div>
 
@@ -463,16 +491,13 @@
     </div>
   </div>
 
-  <!-- MODAL: 40 THEMES COM BOOT RESPONSÁVEL PELAS MUDANÇAS -->
   <div class="modal-overlay" id="modalThemes">
     <div class="modal-box modal-box-large">
       <div class="modal-header">
         <div class="modal-title"><span>🎨</span> Seleção de Temas (40 Estilos Exclusivos)</div>
-        <button class="modal-close" onclick="closeModal('modalThemes')">✕</button>
+        <button class="modal-close" data-close="modalThemes" aria-label="Fechar">✕</button>
       </div>
       <div class="modal-body">
-        
-        <!-- BOOT RESPONSÁVEL PELAS MUDANÇAS DE TEMA -->
         <div class="theme-bot-hud">
           <div class="theme-bot-left">
             <div class="theme-bot-avatar">🤖</div>
@@ -503,12 +528,11 @@
     </div>
   </div>
 
-  <!-- MODAL: ROBOT IA PLUS -->
   <div class="modal-overlay" id="modalRobot">
     <div class="modal-box">
       <div class="modal-header">
         <div class="modal-title"><span>⚡</span> Robô Titânio IA Plus • Gestão Neural de Espaço</div>
-        <button class="modal-close" onclick="closeModal('modalRobot')">✕</button>
+        <button class="modal-close" data-close="modalRobot" aria-label="Fechar">✕</button>
       </div>
       <div class="modal-body">
         <div class="robot-hud">
@@ -536,13 +560,12 @@
     </div>
   </div>
 
-  <!-- MODAL: LIGHTBOX -->
   <div class="modal-overlay" id="modalLightbox">
     <div class="lightbox-content">
       <div id="lightboxMediaContainer"></div>
       <div style="display:flex;gap:0.85rem;align-items:center;">
         <button class="btn btn-secondary btn-sm" id="btnDownloadLightbox">⬇️ Baixar</button>
-        <button class="btn btn-secondary btn-sm" onclick="closeModal('modalLightbox')">✕ Fechar</button>
+        <button class="btn btn-secondary btn-sm" data-close="modalLightbox">✕ Fechar</button>
       </div>
     </div>
   </div>
@@ -552,8 +575,11 @@
   <script>
   (() => {
     'use strict';
-    const RAW_THEMES = [["apple-titanium","Apple Titanium Pro","Apple & Titanium","Titânio espacial escovado com safira executiva.",["#06070a","#121724","#3b82f6","#f59e0b"]],["cyberpunk-2077","Cyberpunk Neon 2077","Cyber & Futurista","High-tech com amarelo neon fluorescente e rosa laser.",["#07050d","#18102b","#fcee0a","#ff0055"]],["royal-champagne","Royal Champagne Gold","Elite & Luxo","Ônix polido com reflexos de ouro puro 24k.",["#080705","#1c1710","#f59e0b","#fef08a"]],["emerald-quantum","Emerald Matrix Quantum","Natureza & Joias","Esmeralda profunda com malha quântica holográfica.",["#040a07","#0e2017","#10b981","#34d399"]],["sapphire-midnight","Sapphire Midnight Blue","Natureza & Joias","Azul safira imperial em noite de alta fidelidade.",["#030712","#0f1c38","#2563eb","#60a5fa"]],["amethyst-violet","Amethyst Ultra Violet","Neon & Quântico","Púrpura ametista com irradiação laser quântica.",["#090514","#1e103d","#a855f7","#c084fc"]],["crimson-ruby","Crimson Ruby Red","Elite & Luxo","Vermelho rubi de alto prestígio sobre ardósia negra.",["#0d0407","#260c14","#e11d48","#fb7185"]],["deep-space-void","Deep Space Void OLED","Amoled & Escuros","Preto absoluto puro OLED com iluminação estelar.",["#000000","#0d0e12","#38bdf8","#e2e8f0"]],["quantum-cyan","Quantum Cyan Frost","Neon & Quântico","Ciano quântico ultra nítido de laboratório espacial.",["#040a0f","#0d202e","#06b6d4","#67e8f9"]],["sunset-vaporwave","Sunset Vaporwave 80s","Cyber & Futurista","Gradientes de pôr do sol digital, coral e magenta.",["#0a0512","#220e38","#f43f5e","#fb923c"]],["tokyo-night","Tokyo Cyber Night","Cyber & Futurista","Asfalto chuvoso de Shinjuku com luzes de neon laranja e ciano.",["#050811","#0e1a33","#ff6b00","#00d4ff"]],["stealth-matte","Stealth Fighter Matte","Amoled & Escuros","Caça invisível militar fosco com acentos âmbar.",["#0a0b0d","#171a1f","#f59e0b","#94a3b8"]],["aurora-borealis","Aurora Borealis Arctic","Natureza & Joias","Noite polar com luzes verde-esmeralda e lilás.",["#04090e","#0e1e2f","#10b981","#8b5cf6"]],["carbon-fiber","Carbon Fiber Racing","Apple & Titanium","Fibra de carbono aeroespacial com vermelho Brembo.",["#07080a","#16181e","#ef4444","#ffffff"]],["gold-vip-24k","Golden Luxury VIP 24K","Elite & Luxo","Mansão de alto padrão com dourado reluzente 24k.",["#060502","#1a150a","#eab308","#ca8a04"]],["solana-twilight","Solana Twilight","Neon & Quântico","Gradiente de alta velocidade roxo neon e ciano Solana.",["#090412","#1d0e3a","#14f195","#9945ff"]],["bitcoin-satoshi","Bitcoin Satoshi Orange","Cyber & Futurista","Ouro digital descentralizado com laranja cripto vibrante.",["#080603","#1c1208","#f7931a","#ffaa33"]],["apple-space-gray","Apple Space Gray Classic","Apple & Titanium","Clássico cinza espacial icônico e refinado Apple.",["#0d0e11","#1c1f26","#94a3b8","#e2e8f0"]],["cyber-samurai","Cyber Samurai Ronin","Cyber & Futurista","Aço katana com flor de cerejeira rosa neon e ciano laser.",["#090508","#1f0c1a","#ec4899","#38bdf8"]],["deep-ocean-abyss","Deep Ocean Abyss","Natureza & Joias","Fossa abissal com organismos bioluminescentes ciano.",["#02080d","#071a2e","#0ea5e9","#2dd4bf"]],["mars-horizon","Mars Horizon 2050","Cyber & Futurista","Superfície marciana com poeira carmim e cobre aeroespacial.",["#0b0403","#230b08","#ea580c","#f97316"]],["diamond-platinum","Diamond Platinum","Elite & Luxo","Brilho cristalino de diamante sobre platina espelhada.",["#08090d","#171c29","#e0f2fe","#93c5fd"]],["cyber-yellow-2088","Cyberpunk Yellow 2088","Neon & Quântico","Alta visibilidade em preto fosco com amarelo atômico.",["#080805","#1c1c0b","#facc15","#eab308"]],["synthwave-80s","Synthwave Retro Neon","Cyber & Futurista","Grade de horizonte retrô dos anos 80 em magenta e ciano.",["#07040d","#1a0b30","#d946ef","#06b6d4"]],["rose-gold-exec","Rose Gold Executive","Elite & Luxo","Metal nobre ouro rosa sobre couro aveludado escuro.",["#0a0507","#200d16","#fb7185","#f43f5e"]],["holographic-prism","Holographic Prismatic","Neon & Quântico","Refração prismática iridescente sobre vidro negro.",["#05060b","#111626","#38bdf8","#ec4899"]],["monolith-minimal","Monolith Minimalist","Amoled & Escuros","Pureza minimalista com contraste cirúrgico branco e ônix.",["#000000","#0d0d0d","#ffffff","#a3a3a3"]],["obsidian-lava","Obsidian Lava Forge","Elite & Luxo","Rocha vulcânica vítrea com magma incandescente.",["#0a0502","#1e0b05","#ff4500","#ff8c00"]],["toxic-hazard","Neon Toxic Hazard","Neon & Quântico","Ficção científica química com verde biohazard fluorescente.",["#050803","#0f1c09","#22c55e","#84cc16"]],["nebula-galaxy","Nebula Galaxy Prime","Amoled & Escuros","Espaço sideral profundo com poeira cósmica violeta e índigo.",["#04030a","#120b24","#6366f1","#a855f7"]],["nordic-glacier","Nordic Glacier Ice","Natureza & Joias","Geleiras escandinavas com branco cristalino e azul celeste.",["#03070d","#0b1b2d","#38bdf8","#e0f2fe"]],["desert-bronze","Desert Mirage Bronze","Elite & Luxo","Bronze esculpido e dunas douradas em noite estrelada.",["#090604","#1d140c","#d97706","#b45309"]],["iron-man-reactor","Iron Man Arc Reactor","Cyber & Futurista","Armadura Mark titânio com reator arc azul e dourado.",["#0a0304","#22080a","#00d4ff","#eab308"]],["dark-matter","Quantum Dark Matter","Amoled & Escuros","Gravitação quântica e matéria escura cósmica com violeta.",["#020105","#0c0618","#7c3aed","#4c1d95"]],["british-racing","British Racing Emerald","Elite & Luxo","Verde clássico lendário de corrida com ouro e âmbar nobre.",["#020805","#091910","#059669","#d97706"]],["ghost-recon","Cyber Ghost Recon","Apple & Titanium","Camuflagem digital tática cinza com azul espectral neon.",["#06080a","#121720","#00f0ff","#64748b"]],["royal-monaco","Royal Monaco Yacht","Elite & Luxo","Azul marinho aristocrático da Riviera com dourado e pérola.",["#03060f","#0d1a38","#3b82f6","#f59e0b"]],["solar-eclipse","Eclipse Solar Corona","Amoled & Escuros","Sombra lunar profunda com coroa de fogo solar brilhante.",["#030202","#120c09","#f97316","#fbbf24"]],["cyber-glitch","Cyber Glitch Lavender","Neon & Quântico","Efeito glitch com lavanda eletrônica e ciano pulsante.",["#080410","#1a0d33","#818cf8","#38bdf8"]],["hyperion-ai","Hyperion Futuristic AI","Cyber & Futurista","Laboratório sci-fi hiper-avançado com prata e azul laser.",["#05070d","#10182b","#38bdf8","#0284c7"]]];
 
+    // ============ TEMAS (40) ============
+    const RAW_THEMES = [["apple-titanium","Apple Titanium Pro","Apple & Titanium","Titânio espacial escovado com safira executiva.",["#06070a","#121724","#3b82f6","#f59e0b"]],["cyberpunk-2077","Cyberpunk Neon 2077","Cyber & Futurista","High-tech com amarelo neon fluorescente e rosa laser.",["#07050d","#18102b","#fcee0a","#ff0055"]],["royal-champagne","Royal Champagne Gold","Elite & Luxo","Ônix polido com reflexos de ouro puro 24k.",["#080705","#1c1710","#f59e0b","#fef08a"]],["emerald-quantum","Emerald Matrix Quantum","Natureza & Joias","Esmeralda profunda com malha quântica holográfica.",["#040a07","#0e2017","#10b981","#34d399"]],["sapphire-midnight","Sapphire Midnight Blue","Natureza & Joias","Azul safira imperial em noite de alta fidelidade.",["#030712","#0f1c38","#2563eb","#60a5fa"]],["amethyst-violet","Amethyst Ultra Violet","Neon & Quântico","Púrpura ametista com irradiação laser quântica.",["#090514","#1e103d","#a855f7","#c084fc"]],["crimson-ruby","Crimson Ruby Red","Elite & Luxo","Vermelho rubi de alto prestígio sobre ardósia negra.",["#0d0407","#260c14","#e11d48","#fb7185"]],["deep-space-void","Deep Space Void OLED","Amoled & Escuros","Preto absoluto puro OLED com iluminação estelar.",["#000000","#0d0e12","#38bdf8","#e2e8f0"]],["quantum-cyan","Quantum Cyan Frost","Neon & Quântico","Ciano quântico ultra nítido de laboratório espacial.",["#040a0f","#0d202e","#06b6d4","#67e8f9"]],["sunset-vaporwave","Sunset Vaporwave 80s","Cyber & Futurista","Gradientes de pôr do sol digital, coral e magenta.",["#0a0512","#220e38","#f43f5e","#fb923c"]],["tokyo-night","Tokyo Cyber Night","Cyber & Futurista","Asfalto chuvoso de Shinjuku com luzes de neon laranja e ciano.",["#050811","#0e1a33","#ff6b00","#00d4ff"]],["stealth-matte","Stealth Fighter Matte","Amoled & Escuros","Caça invisível militar fosco com acentos âmbar.",["#0a0b0d","#171a1f","#f59e0b","#94a3b8"]],["aurora-borealis","Aurora Borealis Arctic","Natureza & Joias","Noite polar com luzes verde-esmeralda e lilás.",["#04090e","#0e1e2f","#10b981","#8b5cf6"]],["carbon-fiber","Carbon Fiber Racing","Apple & Titanium","Fibra de carbono aeroespacial com vermelho Brembo.",["#07080a","#16181e","#ef4444","#ffffff"]],["gold-vip-24k","Golden Luxury VIP 24K","Elite & Luxo","Mansão de alto padrão com dourado reluzente 24k.",["#060502","#1a150a","#eab308","#ca8a04"]],["solana-twilight","Solana Twilight","Neon & Quântico","Gradiente de alta velocidade roxo neon e ciano Solana.",["#090412","#1d0e3a","#14f195","#9945ff"]],["bitcoin-satoshi","Bitcoin Satoshi Orange","Cyber & Futurista","Ouro digital descentralizado com laranja cripto vibrante.",["#080603","#1c1208","#f7931a","#ffaa33"]],["apple-space-gray","Apple Space Gray Classic","Apple & Titanium","Clássico cinza espacial icônico e refinado Apple.",["#0d0e11","#1c1f26","#94a3b8","#e2e8f0"]],["cyber-samurai","Cyber Samurai Ronin","Cyber & Futurista","Aço katana com flor de cerejeira rosa neon e ciano laser.",["#090508","#1f0c1a","#ec4899","#38bdf8"]],["deep-ocean-abyss","Deep Ocean Abyss","Natureza & Joias","Fossa abissal com organismos bioluminescentes ciano.",["#02080d","#071a2e","#0ea5e9","#2dd4bf"]],["mars-horizon","Mars Horizon 2050","Cyber & Futurista","Superfície marciana com poeira carmim e cobre aeroespacial.",["#0b0403","#230b08","#ea580c","#f97316"]],["diamond-platinum","Diamond Platinum","Elite & Luxo","Brilho cristalino de diamante sobre platina espelhada.",["#08090d","#171c29","#e0f2fe","#93c5fd"]],["cyber-yellow-2088","Cyberpunk Yellow 2088","Neon & Quântico","Alta visibilidade em preto fosco com amarelo atômico.",["#080805","#1c1c0b","#facc15","#eab308"]],["synthwave-80s","Synthwave Retro Neon","Cyber & Futurista","Grade de horizonte retrô dos anos 80 em magenta e ciano.",["#07040d","#1a0b30","#d946ef","#06b6d4"]],["rose-gold-exec","Rose Gold Executive","Elite & Luxo","Metal nobre ouro rosa sobre couro aveludado escuro.",["#0a0507","#200d16","#fb7185","#f43f5e"]],["holographic-prism","Holographic Prismatic","Neon & Quântico","Refração prismática iridescente sobre vidro negro.",["#05060b","#111626","#38bdf8","#ec4899"]],["monulolith-minimal","Monolith Minimal(hist","Amoled & Esc1uros","Pureza minimalista com cont ^raste cirúrgico bran cco e ônix.",,["#000000","#0d0d0d","#ffffff","#a3a3a3"]],["obsidian-lava","Obsidian Lava Forge","Elite & Luxo","Rocha vulcânica vítrea com magma incandescente.",["#0a0502","#1e0b05","#ff4500","#ff8c00"]],["toxic-hazard","Neon Toxic Hazard","Neon & Quântico","Ficção científica química com verde biohazard fluorescente.",["#050803","#0f1c09","#22c55e","#84cc16"]],["nebula-galaxy","Nebula Galaxy Prime","Amoled & Escuros","Espaço sideral profundo com poeira cósmica violeta e índigo.",["#04030a","#120b24","#6366f1","#a855f7"]],["nordic-glacier","Nordic Glacier Ice","Natureza & Joias","Geleiras escandinavas com branco cristalino e azul celeste.",["#03070d","#0b1b2d","#38bdf8","#e0f2fe"]],["desert-bronze","Desert Mirage Bronze","Elite & Luxo","Bronze esculpido e dunas douradas em noite estrelada.",["#090604","#1d140c","#d97706","#b45309"]],["iron-man-reactor","Iron Man Arc Reactor","Cyber & Futurista","Armadura Mark titânio com reator arc azul e dourado.",["#0a0304","#22080a","#00d4ff","#eab308"]],["dark-matter","Quantum Dark Matter","Amoled & Escuros","Gravitação quântica e matéria escura cósmica com violeta.",["#020105","#0c0618","#7c3aed","#4c1d95"]],["british-racing","British Racing Emerald","Elite & Luxo","Verde clássico lendário de corrida com ouro e âmbar nobre.",["#020805","#091910","#059669","#d97706"]],["ghost-recon","Cyber Ghost Recon","Apple & Titanium","Camuflagem digital tática cinza com azul espectral neon.",["#06080a","#121720","#00f0ff","#64748b"]],["royal-monaco","Royal Monaco Yacht","Elite & Luxo","Azul marinho aristocrático da Riviera com dourado e pérola.",["#03060f","#0d1a38","#3b82f6","#f59e0b"]],["solar-eclipse","Eclipse Solar Corona","Amoled & Escuros","Sombra lunar profunda com coroa de fogo solar brilhante.",["#030202","#120c09","#f97316","#fbbf24"]],["cyber-glitch","Cyber Glitch Lavender","Neon & Quântico","Efeito glitch com lavanda eletrônica e ciano pulsante.",["#080410","#1a0d33","#818cf8","#38bdf8"]],["hyperion-ai","Hyperion Futuristic AI","Cyber & Futurista","Laboratório sci-fi hiper-avançado com prata e azul laser.",["#05070d","#10182b","#38bdf8","#0284c7"]]];
+
+    // ============ UTILITÁRIOS ============
     function hexToRgba(hex, a) {
       let c = hex.replace('#','');
       if (c.length === 3) c = c.split('').map(x => x+x).join('');
@@ -565,7 +591,7 @@
       return {
         '--bg-base': c[0], '--bg-surface': hexToRgba(c[1], 0.7),
         '--bg-surface-elevated': c[1], '--bg-card': hexToRgba(c[1], 0.82),
-        '--bg-card-hover': hexToRgba(c[1], 0.95), '--border-subtle': hexToRgba(c[2], 0.16),
+        '--border-subtle': hexToRgba(c[2], 0.16),
         '--border-medium': hexToRgba(c[2], 0.35), '--border-focus': c[2],
         '--text-primary': '#f8fafc', '--text-secondary': '#cbd5e1',
         '--text-tertiary': '#94a3b8', '--text-accent': c[2],
@@ -579,10 +605,31 @@
       id: t[0], name: t[1], category: t[2], desc: t[3], colors: t[4], vars: buildThemeVars(t[4])
     }));
 
-    const KEY_THEME = 'mangedora_active_theme_v5';
-    const KEY_QUOTA_VAL = 'mangedora_quota_val_v5';
-    const KEY_QUOTA_UNIT = 'mangedora_quota_unit_v5';
-    const KEY_SAVINGS = 'mangedora_saved_bytes_v5';
+    // Sanitização HTML (anti-XSS)
+    const escapeHtml = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({
+      '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+    }[c]));
+
+    // Hash rápido para detecção de duplicados (FNV-1a duplo com amostragem)
+    function quickHash(str) {
+      if (!str) return 'empty';
+      let h1 = 0x811c9dc5, h2 = 0x1000193;
+      const step = Math.max(1, Math.floor(str.length / 4096));
+      for (let i = 0; i < str.length; i += step) {
+        const c = str.charCodeAt(i);
+        h1 = Math.im 16777619);
+        h2 = Math.imul(h2 + c, 2246822519);
+      }
+      return ((h1 >>> 0).toString(16) + '_' + (h2 >>> 0).toString(16) + '_' + str.length.toString(16));
+    }
+
+    // ============ CONSTANTES ============
+    const KEY_THEME = 'mangedora_active_theme_v6';
+    const KEY_QUOTA_VAL = 'mangedora_quota_val_v6';
+    const KEY_QUOTA_UNIT = 'mangedora_quota_unit_v6';
+    const KEY_SAVINGS = 'mangedora_saved_bytes_v6';
+    const DB_NAME = 'mangedora_vault_db_v6';
+    const PAGE_SIZE = 60;
 
     const appState = {
       items: [], filter: 'all', search: '', sort: 'newest',
@@ -590,12 +637,14 @@
       quotaVal: parseInt(localStorage.getItem(KEY_QUOTA_VAL) || '250', 10),
       quotaUnit: localStorage.getItem(KEY_QUOTA_UNIT) || 'GB',
       savedBytes: parseInt(localStorage.getItem(KEY_SAVINGS) || '0', 10),
-      activeLightboxItem: null
+      activeLightboxItem: null,
+      visibleCount: PAGE_SIZE,
+      persistentGranted: false
     };
 
-    const DB_NAME = 'mangedora_vault_db_v5';
     let db = null;
 
+    // ============ INDEXEDDB ============
     function initDB() {
       return new Promise((res, rej) => {
         const req = indexedDB.open(DB_NAME, 1);
@@ -636,6 +685,61 @@
       req.onerror = () => rej(req.error);
     });
 
+    // ============ ARMAZENAMENTO PERSISTENTE ============
+    async function requestPersistentStorage(silent = false) {
+      if (!navigator.storage || !navigator.storage.persist) {
+        updatePersistBadge(false, 'Não suportado');
+        return false;
+      }
+      try {
+        // Consulta se já está persistente
+        let granted = false;
+        if (navigator.storage.persisted) {
+          granted = await navigator.storage.persisted();
+        }
+        if (!granted) {
+          granted = await navigator.storage.persist();
+        }
+        appState.persistentGranted = granted;
+        updatePersistBadge(granted);
+        if (!silent) {
+          if (granted) toast('🛡️ Armazenamento permanente concedido! Suas fotos estão blindadas.', '🔒');
+          else toast('⚠️ Navegador não concedeu persistência. Use o botão "Reforçar" ou instale como app.', '⚠️');
+        }
+        return granted;
+      } catch (e) {
+        updatePersistBadge(false, 'Erro');
+        return false;
+      }
+    }
+
+    function updatePersistBadge(granted, fallbackText) {
+      const badge = document.getElementById('persistBadge');
+      const info = document.getElementById('persistInfo');
+      const teleText = document.getElementById('telemetryPersistText');
+      if (!badge) return;
+      if (fallbackText) {
+        badge.textContent = fallbackText;
+        badge.style.color = '#f59e0b';
+        badge.style.borderColor = '#f59e0b';
+        badge.style.background = 'rgba(245,158,11,0.15)';
+      } else if (granted) {
+        badge.textContent = '🛡️ Ativo';
+        badge.style.color = '#10b981';
+        badge.style.borderColor = '#10b981';
+        badge.style.background = 'rgba(16,185,129,0.15)';
+        if (info) info.innerHTML = '✅ <strong>Armazenamento persistente concedido!</strong> O navegador <strong>não vai apagar automaticamente</strong> seus dados. Suas fotos permanecem no cofre mesmo que você apague a original do celular.';
+        if (teleText) teleText.textContent = 'IndexedDB Persistente • Blindado';
+      } else {
+        badge.textContent = '⚠️ Limitado';
+        badge.style.color = '#f59e0b';
+        badge.style.borderColor = '#f59e0b';
+        badge.style.background = 'rgba(245,158,11,0.15)';
+        if (teleText) teleText.textContent = 'IndexedDB Local • Não persistente';
+      }
+    }
+
+    // ============ ÁUDIO ============
     let audioCtx = null;
     function playSciFiBeep(type = 'click') {
       try {
@@ -659,46 +763,46 @@
       } catch(e) {}
     }
 
+    // ============ TOAST ============
     function toast(msg, icon = '✨') {
       const c = document.getElementById('toastContainer');
       const el = document.createElement('div');
       el.className = 'toast-msg';
-      el.innerHTML = `<span>${icon}</span><span>${msg}</span>`;
+      el.innerHTML = `<span>${escapeHtml(icon)}</span><span>${msg}</span>`;
       c.appendChild(el);
-      setTimeout(() => { el.style.opacity = '0'; setTimeout(() => el.remove(), 250); }, 3000);
+      setTimeout(() => {
+        el.classList.add('hide');
+        setTimeout(() => el.remove(), 280);
+      }, 3000);
     }
 
+    // ============ FORMATADORES ============
     function formatBytes(bytes) {
       if (!bytes) return '0 B';
       const k = 1024, s = ['B','KB','MB','GB','TB'];
       const i = Math.floor(Math.log(bytes) / Math.log(k));
       return (bytes / Math.pow(k, i)).toFixed(1) + ' ' + s[i];
     }
-
     function formatDate(ts) {
       return new Date(ts).toLocaleDateString('pt-BR', { day:'2-digit', month:'2-digit', year:'numeric' });
     }
 
-    /* BOOT RESPONSÁVEL PELAS MUDANÇAS DE TEMA */
+    // ============ TEMAS ============
     function applyThemeWithBot(themeId, notify = true) {
       const theme = THEMES.find(t => t.id === themeId) || THEMES[0];
       appState.activeThemeId = theme.id;
       localStorage.setItem(KEY_THEME, theme.id);
       const root = document.documentElement;
       for (const [k, v] of Object.entries(theme.vars)) root.style.setProperty(k, v);
-      
       document.querySelectorAll('.theme-item-card').forEach(c => {
         c.classList.toggle('current-active', c.dataset.id === theme.id);
       });
-
-      // Atualiza fala do Boot Estilista IA
       const botStatus = document.getElementById('themeBotStatus');
       if (botStatus) {
         botStatus.textContent = `⚡ Reconfigurando espectro para "${theme.name}" (${theme.category})... Paleta quântica sincronizada!`;
       }
-
       playSciFiBeep('theme-morph');
-      if (notify) toast(`Boot IA: Tema "${theme.name}" ativado!`, '🎨');
+      if (notify) toast(`Boot IA: Tema "${escapeHtml(theme.name)}" ativado!`, '🎨');
     }
 
     function botSuggestRandomTheme() {
@@ -727,11 +831,11 @@
         const isActive = t.id === appState.activeThemeId;
         card.className = `theme-item-card ${isActive ? 'current-active' : ''}`;
         card.dataset.id = t.id;
-        const swatches = t.colors.map(c => `<span class="palette-circle" style="background:${c}"></span>`).join('');
+        const swatches = t.colors.map(c => `<span class="palette-circle" style="background:${escapeHtml(c)}"></span>`).join('');
         card.innerHTML = `
           <div class="theme-active-tag">ATIVO</div>
-          <div class="theme-card-top"><span class="theme-card-title">${t.name}</span><span class="theme-card-cat">${t.category}</span></div>
-          <p class="theme-card-desc">${t.desc}</p>
+          <div class="theme-card-top"><span class="theme-card-title">${escapeHtml(t.name)}</span><span class="theme-card-cat">${escapeHtml(t.category)}</span></div>
+          <p class="theme-card-desc">${escapeHtml(t.desc)}</p>
           <div class="palette-row">${swatches}</div>
         `;
         card.addEventListener('click', () => applyThemeWithBot(t.id, true));
@@ -739,6 +843,7 @@
       });
     }
 
+    // ============ QUOTA ============
     function getQuotaBytes() {
       const v = appState.quotaVal, u = appState.quotaUnit;
       return v * (u === 'TB' ? 1099511627776 : 1073741824);
@@ -759,6 +864,7 @@
       toast(`Capacidade ajustada para ${appState.quotaVal} ${appState.quotaUnit}!`, '💾');
     }
 
+    // ============ TELEMETRIA ============
     function updateTelemetry() {
       const items = appState.items;
       const totalBytes = items.reduce((acc, i) => acc + (i.size || 0), 0);
@@ -785,11 +891,9 @@
       document.getElementById('countOpt').textContent = opts;
     }
 
-    function renderMediaGrid() {
-      const grid = document.getElementById('mediaGrid');
-      grid.innerHTML = '';
+    // ============ RENDER GRID ============
+    function getFilteredList() {
       let list = [...appState.items];
-
       if (appState.filter === 'image') list = list.filter(i => i.type.startsWith('image/'));
       else if (appState.filter === 'video') list = list.filter(i => i.type.startsWith('video/'));
       else if (appState.filter === 'fav') list = list.filter(i => i.isFav);
@@ -804,52 +908,63 @@
       else if (appState.sort === 'oldest') list.sort((a,b) => a.date - b.date);
       else if (appState.sort === 'size-desc') list.sort((a,b) => b.size - a.size);
       else if (appState.sort === 'name') list.sort((a,b) => a.name.localeCompare(b.name));
+      return list;
+    }
 
-      if (!list.length) {
+    function renderMediaGrid() {
+      const grid = document.getElementById('mediaGrid');
+      grid.innerHTML = '';
+      const fullList = getFilteredList();
+
+      if (!fullList.length) {
         grid.innerHTML = `
           <div class="empty-vault">
-            <div class="empty-icon">📁</div>
+            <div class="empty-icon">🛡️</div>
             <h3>Nenhum arquivo encontrado</h3>
-            <p style="color:var(--text-secondary);">Adicione novas fotos, limpe a busca ou mude a aba acima.</p>
+            <p style="color:var(--text-secondary);">Adicione novas fotos pelo botão <strong>📸 Enviar Foto Direto para o Cofre</strong> ou ajuste os filtros.</p>
           </div>
         `;
         return;
       }
 
+      const list = fullList.slice(0, appState.visibleCount);
+
       list.forEach(item => {
         const card = document.createElement('div');
         card.className = 'media-card';
-        const mediaEl = item.type.startsWith('image/') 
-          ? `<img src="${item.dataUrl}" alt="${item.name}" loading="lazy">`
+        const safeName = escapeHtml(item.name);
+        const safeType = escapeHtml(item.type);
+        const mediaEl = item.type.startsWith('image/')
+          ? `<img src="${item.dataUrl}" alt="${safeName}" loading="lazy">`
           : (item.type.startsWith('video/') ? `<video src="${item.dataUrl}" preload="metadata"></video>` : '<div style="font-size:2.5rem;color:var(--accent-primary)">📄</div>');
         const badgeText = item.optimized ? '⚡ Otimizado IA' : (item.type.startsWith('image/') ? '📷 Foto' : '🎬 Vídeo');
 
         card.innerHTML = `
-          <div class="media-thumb-wrap" data-id="${item.id}">
+          <div class="media-thumb-wrap" data-id="${escapeHtml(item.id)}">
             ${mediaEl}
             <span class="media-badge">${badgeText}</span>
-            <button class="media-fav-btn ${item.isFav ? 'active' : ''}" title="Favoritar">★</button>
+            <span class="media-perm-shield" title="Armazenada permanentemente no IndexedDB">🔒 Permanente</span>
+            <button class="media-fav-btn ${item.isFav ? 'active' : ''}" title="Favoritar" aria-label="Favoritar">★</button>
           </div>
           <div class="media-info">
-            <div class="media-title" title="${item.name}">${item.name}</div>
+            <div class="media-title" title="${safeName}">${safeName}</div>
             <div class="media-meta"><span>${formatBytes(item.size)}</span><span>${formatDate(item.date)}</span></div>
             <div class="media-actions">
-              <button class="btn-action-icon btn-view-item">👁️ Ver</button>
-              <button class="btn-action-icon btn-dl-item">⬇️ Baixar</button>
-              <button class="btn-action-icon btn-delete-icon btn-del-item">🗑️</button>
+              <button class="btn-action-icon btn-view-item" aria-label="Ver">👁️ Ver</button>
+              <button class="btn-action-icon btn-dl-item" aria-label="Baixar">⬇️ Baixar</button>
+              <button class="btn-action-icon btn-delete-icon btn-del-item" aria-label="Remover">🗑️</button>
             </div>
           </div>
         `;
 
-        const thumb = card.querySelector('.media-thumb-wrap');
-        thumb.addEventListener('click', e => {
+        card.querySelector('.media-thumb-wrap').addEventListener('click', e => {
           if (e.target.closest('.media-fav-btn')) return;
           openLightbox(item);
         });
         card.querySelector('.media-fav-btn').addEventListener('click', async e => {
           e.stopPropagation();
           item.isFav = !item.isFav;
-          await dbPut(item);
+          try { await dbPut(item); } catch(err) {}
           updateTelemetry();
           renderMediaGrid();
           playSciFiBeep('click');
@@ -857,24 +972,40 @@
         card.querySelector('.btn-view-item').addEventListener('click', () => openLightbox(item));
         card.querySelector('.btn-dl-item').addEventListener('click', () => downloadItem(item));
         card.querySelector('.btn-del-item').addEventListener('click', async () => {
-          if (confirm(`Remover "${item.name}" do cofre?`)) {
-            await dbDelete(item.id);
+          if (confirm(`Remover "${item.name}" do cofre? (Você pode baixar antes se quiser uma cópia.)`)) {
+            try { await dbDelete(item.id); } catch(err) {}
             appState.items = appState.items.filter(i => i.id !== item.id);
             updateTelemetry();
             renderMediaGrid();
-            toast('Arquivo removido.', '🗑️');
+            toast('Arquivo removido do cofre.', '🗑️');
             playSciFiBeep('click');
           }
         });
         grid.appendChild(card);
       });
+
+      if (fullList.length > appState.visibleCount) {
+        const wrap = document.createElement('div');
+        wrap.className = 'load-more-wrap';
+        const btn = document.createElement('button');
+        btn.className = 'btn btn-secondary';
+        btn.innerHTML = `<span>⬇️</span> Carregar mais (${fullList.length - appState.visibleCount} restantes)`;
+        btn.addEventListener('click', () => {
+          appState.visibleCount += PAGE_SIZE;
+          renderMediaGrid();
+        });
+        wrap.appendChild(btn);
+        grid.appendChild(wrap);
+      }
     }
 
+    // ============ LIGHTBOX ============
     function openLightbox(item) {
       appState.activeLightboxItem = item;
       const c = document.getElementById('lightboxMediaContainer');
+      const safeName = escapeHtml(item.name);
       c.innerHTML = item.type.startsWith('image/')
-        ? `<img src="${item.dataUrl}" class="lightbox-media" alt="${item.name}">`
+        ? `<img src="${item.dataUrl}" class="lightbox-media" alt="${safeName}">`
         : `<video src="${item.dataUrl}" class="lightbox-media" controls autoplay></video>`;
       openModal('modalLightbox');
       playSciFiBeep('click');
@@ -883,37 +1014,63 @@
     function downloadItem(item) {
       const a = document.createElement('a');
       a.href = item.dataUrl; a.download = item.name; a.click();
-      toast(`Baixando "${item.name}"...`, '⬇️');
+      toast(`Baixando "${escapeHtml(item.name)}"...`, '⬇️');
     }
 
-    async function handleIncomingFiles(fileList) {
-      if (!fileList || !fileList.length) return;
-      let added = 0;
-      for (const file of Array.from(fileList)) {
-        try {
-          const dataUrl = await readFileAsDataURL(file);
-          const item = {
-            id: 'item_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
-            name: file.name, type: file.type || 'image/jpeg', size: file.size,
-            date: Date.now(), isFav: false, optimized: false, dataUrl: dataUrl
-          };
-          await dbPut(item);
-          appState.items.push(item);
-          added++;
-        } catch(e) {}
-      }
-      if (added > 0) {
-        updateTelemetry();
-        renderMediaGrid();
-        playSciFiBeep('success');
-        toast(`${added} mídia(s) blindadas com sucesso!`, '🛡️');
-      }
-    }
-
+    // ============ INGESTÃO DE ARQUIVOS ============
     const readFileAsDataURL = f => new Promise((res, rej) => {
       const r = new FileReader(); r.onload = () => res(r.result); r.onerror = () => rej(r.error); r.readAsDataURL(f);
     });
 
+    async function handleIncomingFiles(fileList, sourceLabel = '') {
+      if (!fileList || !fileList.length) return;
+      let added = 0, quotaError = false;
+      for (const file of Array.from(fileList)) {
+        try {
+          const dataUrl = await readFileAsDataURL(file);
+          const hash = quickHash(dataUrl);
+          const item = {
+            id: 'item_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
+            name: file.name || ('midia_' + Date.now()),
+            type: file.type || 'image/jpeg',
+            size: file.size,
+            date: Date.now(),
+            isFav: false,
+            optimized: false,
+            permanent: true,
+            hash: hash,
+            dataUrl: dataUrl
+          };
+          try {
+            await dbPut(item);
+          } catch (err) {
+            if (err && (err.name === 'QuotaExceededError' || /quota/i.test(err.message || ''))) {
+              quotaError = true;
+              break;
+            }
+            throw err;
+          }
+          appState.items.push(item);
+          added++;
+        } catch(e) {
+          console.warn('Falha ao processar arquivo', file && file.name, e);
+        }
+      }
+      if (added > 0) {
+        // Recarrega do DB para garantir consistência
+        try { appState.items = await dbGetAll(); } catch(e) {}
+        updateTelemetry();
+        renderMediaGrid();
+        playSciFiBeep('success');
+        const prefix = sourceLabel ? `${escapeHtml(sourceLabel)}: ` : '';
+        toast(`${prefix}${added} mídia(s) blindadas permanentemente!`, '🔒');
+      }
+      if (quotaError) {
+        toast('⚠️ Cofre cheio! Libere espaço no Robô IA antes de adicionar mais mídias.', '⚠️');
+      }
+    }
+
+    // ============ ROBÔ IA ============
     function appendRobotLog(msg) {
       const c = document.getElementById('robotConsole');
       const t = new Date().toLocaleTimeString('pt-BR');
@@ -945,8 +1102,16 @@
             else { w = Math.round((w * MAX) / h); h = MAX; }
           }
           canvas.width = w; canvas.height = h;
-          canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-          const compressed = canvas.toDataURL('image/webp', 0.80);
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, w, h);
+
+          // WebP com fallback para JPEG
+          let compressed = canvas.toDataURL('image/webp', 0.82);
+          if (!compressed.startsWith('data:image/webp')) {
+            appendRobotLog(`ℹ️ WebP indisponível, usando JPEG em "${item.name}"`);
+            compressed = canvas.toDataURL('image/jpeg', 0.85);
+          }
+
           const newSize = Math.round((compressed.length * 3) / 4);
 
           if (newSize < item.size) {
@@ -955,6 +1120,7 @@
             item.size = newSize;
             item.dataUrl = compressed;
             item.optimized = true;
+            item.hash = quickHash(compressed);
             await dbPut(item);
             count++;
             appendRobotLog(`✔️ "${item.name}": Reduzido em ${formatBytes(diff)} (Novo: ${formatBytes(newSize)})`);
@@ -977,12 +1143,17 @@
     }
 
     async function robotScanDuplicates() {
-      appendRobotLog('🔍 Escaneando mídias duplicadas por assinatura de tamanho e tipo...');
+      appendRobotLog('🔍 Escaneando duplicados por hash de conteúdo...');
       const map = new Map(), dups = [];
       for (const item of appState.items) {
-        const k = `${item.size}_${item.type}`;
-        if (map.has(k)) dups.push({ orig: map.get(k), dup: item });
-        else map.set(k, item);
+        let hash = item.hash;
+        if (!hash) {
+          hash = quickHash(item.dataUrl || '');
+          item.hash = hash;
+          try { await dbPut(item); } catch(e) {}
+        }
+        if (map.has(hash)) dups.push({ orig: map.get(hash), dup: item });
+        else map.set(hash, item);
       }
       if (!dups.length) {
         appendRobotLog('✔️ Nenhuma mídia duplicada encontrada.');
@@ -993,7 +1164,7 @@
       if (confirm(`O Robô IA detectou ${dups.length} arquivo(s) duplicado(s). Deseja remover as cópias redundantes?`)) {
         let freed = 0;
         for (const p of dups) {
-          await dbDelete(p.dup.id);
+          try { await dbDelete(p.dup.id); } catch(e) {}
           appState.items = appState.items.filter(i => i.id !== p.dup.id);
           freed += p.dup.size;
           appendRobotLog(`🗑️ Cópia removida: "${p.dup.name}" (${formatBytes(p.dup.size)} liberados)`);
@@ -1008,29 +1179,47 @@
 
     async function robotDefragDatabase() {
       appendRobotLog('🧹 Desfragmentando e recalculando índices IndexedDB...');
-      const all = await dbGetAll();
-      appState.items = all;
-      updateTelemetry();
-      renderMediaGrid();
-      appendRobotLog(`✔️ Recalibrados ${all.length} registros ativos. Integridade 100%.`);
-      playSciFiBeep('success');
-      toast('Banco de dados desfragmentado!', '🧹');
+      try {
+        const all = await dbGetAll();
+        appState.items = all;
+        updateTelemetry();
+        renderMediaGrid();
+        appendRobotLog(`✔️ Recalibrados ${all.length} registros ativos. Integridade 100%.`);
+        playSciFiBeep('success');
+        toast('Banco de dados desfragmentado!', '🧹');
+      } catch(e) {
+        appendRobotLog(`❌ Falha: ${e.message}`);
+      }
     }
 
+    // ============ MODAIS ============
     window.openModal = id => {
       const el = document.getElementById(id);
-      if (el) { el.classList.add('open'); playSciFiBeep('click'); }
+      if (el) {
+        el.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        playSciFiBeep('click');
+      }
     };
     window.closeModal = id => {
       const el = document.getElementById(id);
-      if (el) el.classList.remove('open');
+      if (el) {
+        el.classList.remove('open');
+        // Só libera scroll se não houver outro modal aberto
+        if (!document.querySelector('.modal-overlay.open')) {
+          document.body.style.overflow = '';
+        }
+      }
     };
 
+    // ============ INIT ============
     async function initApp() {
       try {
         await initDB();
         appState.items = await dbGetAll();
-      } catch(e) {}
+      } catch(e) {
+        console.error('DB init error', e);
+      }
 
       applyThemeWithBot(appState.activeThemeId, false);
       renderThemesGrid('all', '');
@@ -1046,112 +1235,33 @@
       updateTelemetry();
       renderMediaGrid();
 
-      // BOTÃO NO TOPO PARA MUDAR O TEMA MANUALMENTE
-      const btnManualTheme = document.getElementById('btnTopChangeThemeManual');
-      if (btnManualTheme) btnManualTheme.addEventListener('click', () => openModal('modalThemes'));
+      // Persistência
+      await requestPersistentStorage(true);
 
-      // BOTÃO DE AVANÇO RÁPIDO MANUAL DO TEMA NO TOPO
-      const btnQuickNext = document.getElementById('btnQuickNextTheme');
-      if (btnQuickNext) {
-        btnQuickNext.addEventListener('click', () => {
-          const currentIndex = THEMES.findIndex(t => t.id === appState.activeThemeId);
-          const nextIndex = (currentIndex + 1) % THEMES.length;
-          applyThemeWithBot(THEMES[nextIndex].id, true);
-        });
-      }
-
-      // BOTÕES DE CONFIGURAÇÕES E MODAIS
+      // --- BOTÕES DO TOPO ---
+      document.getElementById('btnTopChangeThemeManual').addEventListener('click', () => openModal('modalThemes'));
+      document.getElementById('btnQuickNextTheme').addEventListener('click', () => {
+        const currentIndex = THEMES.findIndex(t => t.id === appState.activeThemeId);
+        const nextIndex = (currentIndex + 1) % THEMES.length;
+        applyThemeWithBot(THEMES[nextIndex].id, true);
+      });
       document.getElementById('btnOpenSettings').addEventListener('click', () => openModal('modalSettings'));
       document.getElementById('quickStorageBtn').addEventListener('click', () => openModal('modalSettings'));
       document.getElementById('btnOpenThemesModal').addEventListener('click', () => {
         closeModal('modalSettings'); openModal('modalThemes');
       });
       document.getElementById('btnOpenRobot').addEventListener('click', () => openModal('modalRobot'));
+      document.getElementById('btnOpenRobotFromSettings').addEventListener('click', () => {
+        closeModal('modalSettings'); openModal('modalRobot');
+      });
+      document.getElementById('btnRequestPersist').addEventListener('click', () => requestPersistentStorage(false));
 
-      // BOOT DE TEMAS - SUGESTÃO INTELIGENTE
+      // --- TEMAS ---
       document.getElementById('btnBotRandomTheme').addEventListener('click', botSuggestRandomTheme);
-
-      const fileInput = document.getElementById('fileInput');
-      document.getElementById('btnUploadTrigger').addEventListener('click', () => fileInput.click());
-      fileInput.addEventListener('change', e => handleIncomingFiles(e.target.files));
-
-      document.getElementById('btnLaunchGooglePhotos').addEventListener('click', () => {
-        window.open('https://photos.google.com', '_blank');
-        toast('Google Fotos aberto! Copie fotos (Ctrl+C) e cole aqui com Ctrl+V.', '🚀');
-      });
-
-      const zipFileInput = document.getElementById('zipFileInput');
-      document.getElementById('btnImportTakeoutZip').addEventListener('click', () => zipFileInput.click());
-      zipFileInput.addEventListener('change', async e => {
-        const file = e.target.files[0];
-        if (!file) return;
-        toast('Extraindo e blindando pacote ZIP...', '📦');
-        try {
-          const zip = await JSZip.loadAsync(file);
-          let count = 0;
-          for (const [fn, fe] of Object.entries(zip.files)) {
-            if (fe.dir) continue;
-            const ext = fn.split('.').pop().toLowerCase();
-            if (['jpg','jpeg','png','webp','gif','mp4','mov','pdf'].includes(ext)) {
-              const blob = await fe.async('blob');
-              const dataUrl = await readFileAsDataURL(blob);
-              const item = {
-                id: 'zip_' + Date.now() + '_' + Math.random().toString(36).substr(2,6),
-                name: fn.split('/').pop(), type: blob.type || 'image/jpeg', size: blob.size,
-                date: Date.now(), isFav: false, optimized: false, dataUrl: dataUrl
-              };
-              await dbPut(item);
-              appState.items.push(item);
-              count++;
-            }
-          }
-          updateTelemetry();
-          renderMediaGrid();
-          toast(`${count} arquivo(s) extraídos do ZIP!`, '🎉');
-        } catch(err) {
-          toast('Erro ao ler arquivo ZIP.', '❌');
-        }
-      });
-
-      document.getElementById('btnExportAllZip').addEventListener('click', async () => {
-        if (!appState.items.length) return alert('O cofre está vazio!');
-        toast('Gerando arquivo ZIP blindado...', '📦');
-        const zip = new JSZip();
-        for (const item of appState.items) {
-          const base64 = item.dataUrl.split(',')[1];
-          zip.file(item.name, base64, { base64: true });
-        }
-        const content = await zip.generateAsync({ type: 'blob' });
-        const a = document.createElement('a');
-        a.href = URL.createObjectURL(content);
-        a.download = `MANGEDORA_APPLE_BACKUP_${Date.now()}.zip`;
-        a.click();
-        toast('Backup exportado com sucesso!', '🛡️');
-      });
-
-      document.getElementById('btnClearAllVault').addEventListener('click', async () => {
-        if (confirm('Deseja apagar todas as mídias do cofre local permanentemente?') && confirm('Confirmação final: ação irreversível.')) {
-          await dbClear();
-          appState.items = [];
-          updateTelemetry();
-          renderMediaGrid();
-          toast('Cofre esvaziado.', '🗑️');
-        }
-      });
-
-      document.querySelectorAll('#quotaPresets .preset-chip').forEach(b => {
-        b.addEventListener('click', () => saveQuota(b.dataset.val, b.dataset.unit));
-      });
-
-      document.getElementById('btnSaveCustomQuota').addEventListener('click', () => {
-        saveQuota(document.getElementById('customQuotaInput').value, document.getElementById('customQuotaUnit').value);
-      });
-
       document.getElementById('themeSearchInput').addEventListener('input', e => {
         const activeCat = document.querySelector('#themeCategoryNav .theme-cat-btn.active')?.dataset.cat || 'all';
         renderThemesGrid(activeCat, e.target.value);
       });
-
       document.querySelectorAll('#themeCategoryNav .theme-cat-btn').forEach(b => {
         b.addEventListener('click', () => {
           document.querySelectorAll('#themeCategoryNav .theme-cat-btn').forEach(btn => btn.classList.remove('active'));
@@ -1160,30 +1270,131 @@
         });
       });
 
+      // --- UPLOAD / ADIÇÃO ---
+      const fileInput = document.getElementById('fileInput');
+      document.getElementById('btnUploadTrigger').addEventListener('click', () => fileInput.click());
+      document.getElementById('btnEmptyAdd').addEventListener('click', () => fileInput.click());
+      fileInput.addEventListener('change', e => {
+        handleIncomingFiles(e.target.files);
+        e.target.value = ''; // permite re-selecionar o mesmo arquivo
+      });
+
+      // --- ENVIO DIRETO DA GALERIA / GOOGLE FOTOS ---
+      const photoPicker = document.getElementById('photoPickerInput');
+      document.getElementById('btnSendPhotoDirect').addEventListener('click', () => {
+        photoPicker.click();
+        toast('Escolha uma foto da sua galeria (Google Fotos disponível como fonte no celular).', '📸');
+      });
+      photoPicker.addEventListener('change', async e => {
+        await handleIncomingFiles(e.target.files, 'Envio Direto');
+        e.target.value = '';
+      });
+
+      // --- GOOGLE FOTOS WEB ---
+      document.getElementById('btnLaunchGooglePhotos').addEventListener('click', () => {
+        window.open('https://photos.google.com', '_blank', 'noopener');
+        toast('Google Fotos aberto! Baixe/copie fotos e use "Enviar Foto Direto para o Cofre" ou Ctrl+V.', '🚀');
+      });
+
+      // --- ZIP IMPORT ---
+      const zipFileInput = document.getElementById('zipFileInput');
+      document.getElementById('btnImportTakeoutZip').addEventListener('click', () => zipFileInput.click());
+      zipFileInput.addEventListener('change', async e => {
+        const file = e.target.files[0];
+        if (!file) return;
+        toast('Extraindo e blindando pacote ZIP...', '📦');
+        try {
+          const zip = await JSZip.loadAsync(file);
+          const blobs = [];
+          for (const [fn, fe] of Object.entries(zip.files)) {
+            if (fe.dir) continue;
+            const ext = fn.split('.').pop().toLowerCase();
+            if (['jpg','jpeg','png','webp','gif','mp4','mov','pdf'].includes(ext)) {
+              const blob = await fe.async('blob');
+              blob._zipName = fn.split('/').pop() || fn;
+              blobs.push(blob);
+            }
+          }
+          // Reutiliza handleIncomingFiles via File objects
+          const files = blobs.map(b => new File([b], b._zipName, { type: b.type || 'image/jpeg' }));
+          await handleIncomingFiles(files, 'ZIP');
+        } catch(err) {
+          console.error(err);
+          toast('Erro ao ler arquivo ZIP.', '❌');
+        }
+        e.target.value = '';
+      });
+
+      // --- ZIP EXPORT ---
+      document.getElementById('btnExportAllZip').addEventListener('click', async () => {
+        if (!appState.items.length) return alert('O cofre está vazio!');
+        toast('Gerando arquivo ZIP blindado...', '📦');
+        const zip = new JSZip();
+        appState.items.forEach((item, idx) => {
+          const base64 = item.dataUrl.split(',')[1];
+          const safeName = String(item.name).replace(/[\\/:*?"<>|]/g, '_');
+          zip.file(`${String(idx + 1).padStart(4,'0')}_${safeName}`, base64, { base64: true });
+        });
+        const content = await zip.generateAsync({ type: 'blob' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(content);
+        a.download = `MANGEDORA_APPLE_BACKUP_${Date.now()}.zip`;
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+        toast('Backup exportado com sucesso!', '🛡️');
+      });
+
+      // --- LIMPAR TUDO ---
+      document.getElementById('btnClearAllVault').addEventListener('click', async () => {
+        if (confirm('Deseja apagar todas as mídias do cofre local permanentemente?') && confirm('Confirmação final: ação irreversível.')) {
+          try { await dbClear(); } catch(e) {}
+          appState.items = [];
+          updateTelemetry();
+          renderMediaGrid();
+          toast('Cofre esvaziado.', '🗑️');
+        }
+      });
+
+      // --- QUOTA ---
+      document.querySelectorAll('#quotaPresets .preset-chip').forEach(b => {
+        b.addEventListener('click', () => saveQuota(b.dataset.val, b.dataset.unit));
+      });
+      document.getElementById('btnSaveCustomQuota').addEventListener('click', () => {
+        saveQuota(document.getElementById('customQuotaInput').value, document.getElementById('customQuotaUnit').value);
+      });
+
+      // --- ROBÔ ---
       document.getElementById('btnRobotOptimize').addEventListener('click', robotRunOptimization);
       document.getElementById('btnRobotDuplicates').addEventListener('click', robotScanDuplicates);
       document.getElementById('btnRobotDefrag').addEventListener('click', robotDefragDatabase);
+
+      // --- LIGHTBOX ---
       document.getElementById('btnDownloadLightbox').addEventListener('click', () => {
         if (appState.activeLightboxItem) downloadItem(appState.activeLightboxItem);
       });
 
+      // --- FILTROS / BUSCA / SORT ---
       document.querySelectorAll('.filter-tabs .filter-btn').forEach(b => {
         b.addEventListener('click', () => {
           document.querySelectorAll('.filter-tabs .filter-btn').forEach(btn => btn.classList.remove('active'));
           b.classList.add('active');
           appState.filter = b.dataset.filter;
+          appState.visibleCount = PAGE_SIZE;
           renderMediaGrid();
         });
       });
-
       document.getElementById('searchInput').addEventListener('input', e => {
-        appState.search = e.target.value; renderMediaGrid();
+        appState.search = e.target.value;
+        appState.visibleCount = PAGE_SIZE;
+        renderMediaGrid();
       });
-
       document.getElementById('sortSelect').addEventListener('change', e => {
-        appState.sort = e.target.value; renderMediaGrid();
+        appState.sort = e.target.value;
+        appState.visibleCount = PAGE_SIZE;
+        renderMediaGrid();
       });
 
+      // --- PASTE ---
       window.addEventListener('paste', async e => {
         const items = (e.clipboardData || e.originalEvent.clipboardData).items;
         const files = [];
@@ -1195,21 +1406,36 @@
         }
         if (files.length) {
           toast('Foto recebida da área de transferência!', '📋');
-          await handleIncomingFiles(files);
+          await handleIncomingFiles(files, 'Colar');
         }
       });
 
+      // --- DRAG & DROP ---
       window.addEventListener('dragover', e => e.preventDefault());
       window.addEventListener('drop', async e => {
         e.preventDefault();
         if (e.dataTransfer && e.dataTransfer.files.length) {
-          toast('Arquivos recebidos!', '📥');
-          await handleIncomingFiles(e.dataTransfer.files);
+          await handleIncomingFiles(e.dataTransfer.files, 'Arrastar');
         }
       });
 
+      // --- FECHAR MODAIS (overlay click, X, ESC) ---
       document.querySelectorAll('.modal-overlay').forEach(o => {
-        o.addEventListener('click', e => { if (e.target === o) o.classList.remove('open'); });
+        o.addEventListener('click', e => {
+          if (e.target === o) {
+            o.classList.remove('open');
+            if (!document.querySelector('.modal-overlay.open')) document.body.style.overflow = '';
+          }
+        });
+      });
+      document.querySelectorAll('[data-close]').forEach(btn => {
+        btn.addEventListener('click', () => closeModal(btn.dataset.close));
+      });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+          document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+          document.body.style.overflow = '';
+        }
       });
     }
 
