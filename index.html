@@ -456,7 +456,6 @@ Ao iniciar, o app solicita ao navegador <strong>armazenamento persistente</stron
 (function(){
 'use strict';
 
-// ============ TEMAS (40) ============
 var RAW_THEMES=[
 ["apple-titanium","Apple Titanium Pro","Apple & Titanium","Titânio espacial escovado com safira executiva.",["#06070a","#121724","#3b82f6","#f59e0b"]],
 ["cyberpunk-2077","Cyberpunk Neon 2077","Cyber & Futurista","High-tech com amarelo neon fluorescente e rosa laser.",["#07050d","#18102b","#fcee0a","#ff0055"]],
@@ -500,55 +499,14 @@ var RAW_THEMES=[
 ["hyperion-ai","Hyperion Futuristic AI","Cyber & Futurista","Laboratório sci-fi hiper-avançado com prata e azul.",["#05070d","#10182b","#38bdf8","#0284c7"]]
 ];
 
-function hexToRgba(hex,a){
-  var c=hex.replace('#','');
-  if(c.length===3)c=c.split('').map(function(x){return x+x}).join('');
-  var n=parseInt(c,16);
-  return 'rgba('+((n>>16)&255)+','+((n>>8)&255)+','+(n&255)+','+a+')';
-}
-function buildThemeVars(c){
-  return {
-    '--bg-base':c[0],'--bg-surface':hexToRgba(c[1],.7),
-    '--bg-surface-elevated':c[1],'--bg-card':hexToRgba(c[1],.82),
-    '--border-subtle':hexToRgba(c[2],.16),'--border-medium':hexToRgba(c[2],.35),
-    '--border-focus':c[2],'--text-primary':'#f8fafc','--text-secondary':'#cbd5e1',
-    '--text-tertiary':'#94a3b8','--text-accent':c[2],'--accent-primary':c[2],
-    '--accent-secondary':c[3],'--accent-glow':hexToRgba(c[2],.4),
-    '--radial-1':hexToRgba(c[2],.12),'--radial-2':hexToRgba(c[3],.08)
-  };
-}
-var THEMES=RAW_THEMES.map(function(t){
-  return {id:t[0],name:t[1],category:t[2],desc:t[3],colors:t[4],vars:buildThemeVars(t[4])};
-});
+function hexToRgba(hex,a){var c=hex.replace('#','');if(c.length===3)c=c.split('').map(function(x){return x+x}).join('');var n=parseInt(c,16);return 'rgba('+((n>>16)&255)+','+((n>>8)&255)+','+(n&255)+','+a+')'}
+function buildThemeVars(c){return {'--bg-base':c[0],'--bg-surface':hexToRgba(c[1],.7),'--bg-surface-elevated':c[1],'--bg-card':hexToRgba(c[1],.82),'--border-subtle':hexToRgba(c[2],.16),'--border-medium':hexToRgba(c[2],.35),'--border-focus':c[2],'--text-primary':'#f8fafc','--text-secondary':'#cbd5e1','--text-tertiary':'#94a3b8','--text-accent':c[2],'--accent-primary':c[2],'--accent-secondary':c[3],'--accent-glow':hexToRgba(c[2],.4),'--radial-1':hexToRgba(c[2],.12),'--radial-2':hexToRgba(c[3],.08)}}
+var THEMES=RAW_THEMES.map(function(t){return {id:t[0],name:t[1],category:t[2],desc:t[3],colors:t[4],vars:buildThemeVars(t[4])}});
 
-function escapeHtml(s){
-  return String(s==null?'':s).replace(/[&<>"']/g,function(c){
-    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
-  });
-}
-function quickHash(str){
-  if(!str)return 'empty';
-  var h1=0x811c9dc5,h2=0x1000193;
-  var step=Math.max(1,Math.floor(str.length/4096));
-  for(var i=0;i<str.length;i+=step){
-    var c=str.charCodeAt(i);
-    h1=Math.imul(h1^c,16777619);
-    h2=Math.imul(h2+c,2246822519);
-  }
-  return ((h1>>>0).toString(16))+'_'+((h2>>>0).toString(16))+'_'+str.length.toString(16);
-}
-function loadScript(src){
-  return new Promise(function(res,rej){
-    if([].slice.call(document.scripts).some(function(s){return s.src===src}))return res();
-    var s=document.createElement('script');
-    s.src=src;s.async=true;s.defer=true;
-    s.onload=function(){res()};
-    s.onerror=function(){rej(new Error('Falha ao carregar '+src))};
-    document.head.appendChild(s);
-  });
-}
+function escapeHtml(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function quickHash(str){if(!str)return 'empty';var h1=0x811c9dc5,h2=0x1000193;var step=Math.max(1,Math.floor(str.length/4096));for(var i=0;i<str.length;i+=step){var c=str.charCodeAt(i);h1=Math.imul(h1^c,16777619);h2=Math.imul(h2+c,2246822519)}return ((h1>>>0).toString(16))+'_'+((h2>>>0).toString(16))+'_'+str.length.toString(16)}
+function loadScript(src){return new Promise(function(res,rej){if([].slice.call(document.scripts).some(function(s){return s.src===src}))return res();var s=document.createElement('script');s.src=src;s.async=true;s.defer=true;s.onload=function(){res()};s.onerror=function(){rej(new Error('Falha ao carregar '+src))};document.head.appendChild(s)})}
 
-// ============ CONSTANTES ============
 var KEY_THEME='mangedora_active_theme_v7';
 var KEY_QUOTA_VAL='mangedora_quota_val_v7';
 var KEY_QUOTA_UNIT='mangedora_quota_unit_v7';
@@ -561,1086 +519,107 @@ var GOOGLE_GIS_SRC='https://accounts.google.com/gsi/client';
 var GOOGLE_PICKER_SESSIONS_URL='https://photospicker.googleapis.com/v1/sessions';
 var GOOGLE_PICKER_MEDIA_URL='https://photospicker.googleapis.com/v1/mediaItems';
 
-var appState={
-  items:[],filter:'all',search:'',sort:'newest',
-  activeThemeId:localStorage.getItem(KEY_THEME)||'apple-titanium',
-  quotaVal:parseInt(localStorage.getItem(KEY_QUOTA_VAL)||'250',10),
-  quotaUnit:localStorage.getItem(KEY_QUOTA_UNIT)||'GB',
-  savedBytes:parseInt(localStorage.getItem(KEY_SAVINGS)||'0',10),
-  activeLightboxItem:null,
-  visibleCount:PAGE_SIZE,
-  persistentGranted:false,
-  googleLinked:false,
-  googleLinking:false,
-  googleEmail:null
-};
-var googleAccessToken=null;
-var googleTokenExpiresAt=0;
-var googleTokenClient=null;
-var db=null;
+var appState={items:[],filter:'all',search:'',sort:'newest',activeThemeId:localStorage.getItem(KEY_THEME)||'apple-titanium',quotaVal:parseInt(localStorage.getItem(KEY_QUOTA_VAL)||'250',10),quotaUnit:localStorage.getItem(KEY_QUOTA_UNIT)||'GB',savedBytes:parseInt(localStorage.getItem(KEY_SAVINGS)||'0',10),activeLightboxItem:null,visibleCount:PAGE_SIZE,persistentGranted:false,googleLinked:false,googleLinking:false,googleEmail:null};
+var googleAccessToken=null;var googleTokenExpiresAt=0;var googleTokenClient=null;var db=null;
 
-// ============ INDEXEDDB ============
-function initDB(){
-  return new Promise(function(res,rej){
-    var req=indexedDB.open(DB_NAME,1);
-    req.onupgradeneeded=function(e){
-      var d=e.target.result;
-      if(!d.objectStoreNames.contains('vault_items')){
-        var s=d.createObjectStore('vault_items',{keyPath:'id'});
-        s.createIndex('type','type',{unique:false});
-        s.createIndex('date','date',{unique:false});
-      }
-    };
-    req.onsuccess=function(e){db=e.target.result;res(db)};
-    req.onerror=function(e){rej(e.target.error)};
-  });
-}
-function dbGetAll(){
-  return new Promise(function(res,rej){
-    var req=db.transaction('vault_items','readonly').objectStore('vault_items').getAll();
-    req.onsuccess=function(){res(req.result||[])};
-    req.onerror=function(){rej(req.error)};
-  });
-}
-function dbPut(item){
-  return new Promise(function(res,rej){
-    var req=db.transaction('vault_items','readwrite').objectStore('vault_items').put(item);
-    req.onsuccess=function(){res()};
-    req.onerror=function(){rej(req.error)};
-  });
-}
-function dbDelete(id){
-  return new Promise(function(res,rej){
-    var req=db.transaction('vault_items','readwrite').objectStore('vault_items').delete(id);
-    req.onsuccess=function(){res()};
-    req.onerror=function(){rej(req.error)};
-  });
-}
-function dbClear(){
-  return new Promise(function(res,rej){
-    var req=db.transaction('vault_items','readwrite').objectStore('vault_items').clear();
-    req.onsuccess=function(){res()};
-    req.onerror=function(){rej(req.error)};
-  });
-}
+function initDB(){return new Promise(function(res,rej){var req=indexedDB.open(DB_NAME,1);req.onupgradeneeded=function(e){var d=e.target.result;if(!d.objectStoreNames.contains('vault_items')){var s=d.createObjectStore('vault_items',{keyPath:'id'});s.createIndex('type','type',{unique:false});s.createIndex('date','date',{unique:false})}};req.onsuccess=function(e){db=e.target.result;res(db)};req.onerror=function(e){rej(e.target.error)}})}
+function dbGetAll(){return new Promise(function(res,rej){var req=db.transaction('vault_items','readonly').objectStore('vault_items').getAll();req.onsuccess=function(){res(req.result||[])};req.onerror=function(){rej(req.error)}})}
+function dbPut(item){return new Promise(function(res,rej){var req=db.transaction('vault_items','readwrite').objectStore('vault_items').put(item);req.onsuccess=function(){res()};req.onerror=function(){rej(req.error)}})}
+function dbDelete(id){return new Promise(function(res,rej){var req=db.transaction('vault_items','readwrite').objectStore('vault_items').delete(id);req.onsuccess=function(){res()};req.onerror=function(){rej(req.error)}})}
+function dbClear(){return new Promise(function(res,rej){var req=db.transaction('vault_items','readwrite').objectStore('vault_items').clear();req.onsuccess=function(){res()};req.onerror=function(){rej(req.error)}})}
 
-// ============ PERSISTÊNCIA ============
-function requestPersistentStorage(silent){
-  silent=silent||false;
-  if(!navigator.storage||!navigator.storage.persist){
-    updatePersistBadge(false,'Não suportado');
-    return Promise.resolve(false);
-  }
-  var checkPersisted=Promise.resolve(false);
-  if(navigator.storage.persisted)checkPersisted=navigator.storage.persisted();
-  return checkPersisted.then(function(granted){
-    if(granted)return true;
-    return navigator.storage.persist();
-  }).then(function(granted){
-    appState.persistentGranted=granted;
-    updatePersistBadge(granted);
-    if(!silent){
-      if(granted)toast('🛡️ Armazenamento permanente concedido!','🔒');
-      else toast('⚠️ Navegador não concedeu persistência.','⚠️');
-    }
-    return granted;
-  }).catch(function(){
-    updatePersistBadge(false,'Erro');
-    return false;
-  });
-}
-function updatePersistBadge(granted,fallbackText){
-  var badge=document.getElementById('persistBadge');
-  var info=document.getElementById('persistInfo');
-  var teleText=document.getElementById('telemetryPersistText');
-  if(!badge)return;
-  if(fallbackText){
-    badge.textContent=fallbackText;
-    badge.style.color='#f59e0b';badge.style.borderColor='#f59e0b';badge.style.background='rgba(245,158,11,0.15)';
-  }else if(granted){
-    badge.textContent='🛡️ Ativo';
-    badge.style.color='#10b981';badge.style.borderColor='#10b981';badge.style.background='rgba(16,185,129,0.15)';
-    if(info)info.innerHTML='✅ <strong>Armazenamento persistente concedido!</strong> O navegador <strong>não vai apagar automaticamente</strong> seus dados. Suas fotos permanecem no cofre mesmo que você apague a original do celular.';
-    if(teleText)teleText.textContent='IndexedDB Persistente • Blindado';
-  }else{
-    badge.textContent='⚠️ Limitado';
-    badge.style.color='#f59e0b';badge.style.borderColor='#f59e0b';badge.style.background='rgba(245,158,11,0.15)';
-    if(teleText)teleText.textContent='IndexedDB Local • Não persistente';
-  }
-}
+function requestPersistentStorage(silent){silent=silent||false;if(!navigator.storage||!navigator.storage.persist){updatePersistBadge(false,'Não suportado');return Promise.resolve(false)}var checkPersisted=Promise.resolve(false);if(navigator.storage.persisted)checkPersisted=navigator.storage.persisted();return checkPersisted.then(function(granted){if(granted)return true;return navigator.storage.persist()}).then(function(granted){appState.persistentGranted=granted;updatePersistBadge(granted);if(!silent){if(granted)toast('🛡️ Armazenamento permanente concedido!','🔒');else toast('⚠️ Navegador não concedeu persistência.','⚠️')}return granted}).catch(function(){updatePersistBadge(false,'Erro');return false})}
+function updatePersistBadge(granted,fallbackText){var badge=document.getElementById('persistBadge');var info=document.getElementById('persistInfo');var teleText=document.getElementById('telemetryPersistText');if(!badge)return;if(fallbackText){badge.textContent=fallbackText;badge.style.color='#f59e0b';badge.style.borderColor='#f59e0b';badge.style.background='rgba(245,158,11,0.15)'}else if(granted){badge.textContent='🛡️ Ativo';badge.style.color='#10b981';badge.style.borderColor='#10b981';badge.style.background='rgba(16,185,129,0.15)';if(info)info.innerHTML='✅ <strong>Armazenamento persistente concedido!</strong> O navegador <strong>não vai apagar automaticamente</strong> seus dados. Suas fotos permanecem no cofre mesmo que você apague a original do celular.';if(teleText)teleText.textContent='IndexedDB Persistente • Blindado'}else{badge.textContent='⚠️ Limitado';badge.style.color='#f59e0b';badge.style.borderColor='#f59e0b';badge.style.background='rgba(245,158,11,0.15)';if(teleText)teleText.textContent='IndexedDB Local • Não persistente'}}
 
-// ============ ÁUDIO ============
 var audioCtx=null;
-function playSciFiBeep(type){
-  type=type||'click';
-  try{
-    if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();
-    if(audioCtx.state==='suspended')audioCtx.resume();
-    var osc=audioCtx.createOscillator(),g=audioCtx.createGain();
-    osc.connect(g);g.connect(audioCtx.destination);
-    var now=audioCtx.currentTime;
-    if(type==='theme-morph'){
-      osc.type='sawtooth';
-      osc.frequency.setValueAtTime(320,now);
-      osc.frequency.exponentialRampToValueAtTime(880,now+0.18);
-      g.gain.setValueAtTime(0.08,now);g.gain.linearRampToValueAtTime(0.01,now+0.18);
-      osc.start(now);osc.stop(now+0.18);
-    }else{
-      osc.frequency.setValueAtTime(type==='click'?700:950,now);
-      osc.frequency.exponentialRampToValueAtTime(type==='click'?350:1200,now+0.1);
-      g.gain.setValueAtTime(0.06,now);g.gain.linearRampToValueAtTime(0.01,now+0.1);
-      osc.start(now);osc.stop(now+0.1);
-    }
-  }catch(e){}
-}
+function playSciFiBeep(type){type=type||'click';try{if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();var osc=audioCtx.createOscillator(),g=audioCtx.createGain();osc.connect(g);g.connect(audioCtx.destination);var now=audioCtx.currentTime;if(type==='theme-morph'){osc.type='sawtooth';osc.frequency.setValueAtTime(320,now);osc.frequency.exponentialRampToValueAtTime(880,now+0.18);g.gain.setValueAtTime(0.08,now);g.gain.linearRampToValueAtTime(0.01,now+0.18);osc.start(now);osc.stop(now+0.18)}else{osc.frequency.setValueAtTime(type==='click'?700:950,now);osc.frequency.exponentialRampToValueAtTime(type==='click'?350:1200,now+0.1);g.gain.setValueAtTime(0.06,now);g.gain.linearRampToValueAtTime(0.01,now+0.1);osc.start(now);osc.stop(now+0.1)}}catch(e){}}
 
-// ============ TOAST ============
-function toast(msg,icon){
-  icon=icon||'✨';
-  var c=document.getElementById('toastContainer');
-  var el=document.createElement('div');
-  el.className='toast-msg';
-  el.innerHTML='<span>'+escapeHtml(icon)+'</span><span>'+msg+'</span>';
-  c.appendChild(el);
-  setTimeout(function(){
-    el.classList.add('hide');
-    setTimeout(function(){el.remove()},280);
-  },3500);
-}
+function toast(msg,icon){icon=icon||'✨';var c=document.getElementById('toastContainer');var el=document.createElement('div');el.className='toast-msg';el.innerHTML='<span>'+escapeHtml(icon)+'</span><span>'+msg+'</span>';c.appendChild(el);setTimeout(function(){el.classList.add('hide');setTimeout(function(){el.remove()},280)},3500)}
+function formatBytes(bytes){if(!bytes)return '0 B';var k=1024,s=['B','KB','MB','GB','TB'];var i=Math.floor(Math.log(bytes)/Math.log(k));return (bytes/Math.pow(k,i)).toFixed(1)+' '+s[i]}
+function formatDate(ts){return new Date(ts).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'})}
 
-function formatBytes(bytes){
-  if(!bytes)return '0 B';
-  var k=1024,s=['B','KB','MB','GB','TB'];
-  var i=Math.floor(Math.log(bytes)/Math.log(k));
-  return (bytes/Math.pow(k,i)).toFixed(1)+' '+s[i];
-}
-function formatDate(ts){
-  return new Date(ts).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'});
-}
+function applyThemeWithBot(themeId,notify){notify=notify!==false;var theme=THEMES.find(function(t){return t.id===themeId})||THEMES[0];appState.activeThemeId=theme.id;localStorage.setItem(KEY_THEME,theme.id);var root=document.documentElement;Object.keys(theme.vars).forEach(function(k){root.style.setProperty(k,theme.vars[k])});document.querySelectorAll('.theme-item-card').forEach(function(c){c.classList.toggle('current-active',c.dataset.id===theme.id)});var botStatus=document.getElementById('themeBotStatus');if(botStatus)botStatus.textContent='⚡ Reconfigurando espectro para "'+theme.name+'" ('+theme.category+')...';playSciFiBeep('theme-morph');if(notify)toast('Boot IA: Tema "'+escapeHtml(theme.name)+'" ativado!','🎨')}
+function botSuggestRandomTheme(){var available=THEMES.filter(function(t){return t.id!==appState.activeThemeId});var random=available[Math.floor(Math.random()*available.length)]||THEMES[0];applyThemeWithBot(random.id,true);var card=document.querySelector('.theme-item-card[data-id="'+random.id+'"]');if(card)card.scrollIntoView({behavior:'smooth',block:'center'})}
+function renderThemesGrid(filterCat,searchQuery){filterCat=filterCat||'all';searchQuery=searchQuery||'';var grid=document.getElementById('themesGrid');grid.innerHTML='';var q=searchQuery.trim().toLowerCase();var list=THEMES.filter(function(t){var mCat=filterCat==='all'||t.category===filterCat;var mQ=!q||t.name.toLowerCase().indexOf(q)>=0||t.desc.toLowerCase().indexOf(q)>=0||t.category.toLowerCase().indexOf(q)>=0;return mCat&&mQ});if(!list.length){grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--text-tertiary);">Nenhum tema encontrado.</div>';return}list.forEach(function(t){var card=document.createElement('div');var isActive=t.id===appState.activeThemeId;card.className='theme-item-card'+(isActive?' current-active':'');card.dataset.id=t.id;var swatches=t.colors.map(function(c){return '<span class="palette-circle" style="background:'+escapeHtml(c)+'"></span>'}).join('');card.innerHTML='<div class="theme-active-tag">ATIVO</div><div class="theme-card-top"><span class="theme-card-title">'+escapeHtml(t.name)+'</span><span class="theme-card-cat">'+escapeHtml(t.category)+'</span></div><p class="theme-card-desc">'+escapeHtml(t.desc)+'</p><div class="palette-row">'+swatches+'</div>';card.addEventListener('click',function(){applyThemeWithBot(t.id,true)});grid.appendChild(card)})}
 
-// ============ TEMAS ============
-function applyThemeWithBot(themeId,notify){
-  notify=notify!==false;
-  var theme=THEMES.find(function(t){return t.id===themeId})||THEMES[0];
-  appState.activeThemeId=theme.id;
-  localStorage.setItem(KEY_THEME,theme.id);
-  var root=document.documentElement;
-  Object.keys(theme.vars).forEach(function(k){root.style.setProperty(k,theme.vars[k])});
-  document.querySelectorAll('.theme-item-card').forEach(function(c){
-    c.classList.toggle('current-active',c.dataset.id===theme.id);
-  });
-  var botStatus=document.getElementById('themeBotStatus');
-  if(botStatus)botStatus.textContent='⚡ Reconfigurando espectro para "'+theme.name+'" ('+theme.category+')...';
-  playSciFiBeep('theme-morph');
-  if(notify)toast('Boot IA: Tema "'+escapeHtml(theme.name)+'" ativado!','🎨');
-}
-function botSuggestRandomTheme(){
-  var available=THEMES.filter(function(t){return t.id!==appState.activeThemeId});
-  var random=available[Math.floor(Math.random()*available.length)]||THEMES[0];
-  applyThemeWithBot(random.id,true);
-  var card=document.querySelector('.theme-item-card[data-id="'+random.id+'"]');
-  if(card)card.scrollIntoView({behavior:'smooth',block:'center'});
-}
-function renderThemesGrid(filterCat,searchQuery){
-  filterCat=filterCat||'all';
-  searchQuery=searchQuery||'';
-  var grid=document.getElementById('themesGrid');
-  grid.innerHTML='';
-  var q=searchQuery.trim().toLowerCase();
-  var list=THEMES.filter(function(t){
-    var mCat=filterCat==='all'||t.category===filterCat;
-    var mQ=!q||t.name.toLowerCase().indexOf(q)>=0||t.desc.toLowerCase().indexOf(q)>=0||t.category.toLowerCase().indexOf(q)>=0;
-    return mCat&&mQ;
-  });
-  if(!list.length){
-    grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--text-tertiary);">Nenhum tema encontrado.</div>';
-    return;
-  }
-  list.forEach(function(t){
-    var card=document.createElement('div');
-    var isActive=t.id===appState.activeThemeId;
-    card.className='theme-item-card'+(isActive?' current-active':'');
-    card.dataset.id=t.id;
-    var swatches=t.colors.map(function(c){return '<span class="palette-circle" style="background:'+escapeHtml(c)+'"></span>'}).join('');
-    card.innerHTML='<div class="theme-active-tag">ATIVO</div>'+
-      '<div class="theme-card-top"><span class="theme-card-title">'+escapeHtml(t.name)+'</span><span class="theme-card-cat">'+escapeHtml(t.category)+'</span></div>'+
-      '<p class="theme-card-desc">'+escapeHtml(t.desc)+'</p>'+
-      '<div class="palette-row">'+swatches+'</div>';
-    card.addEventListener('click',function(){applyThemeWithBot(t.id,true)});
-    grid.appendChild(card);
-  });
-}
+function getQuotaBytes(){var v=appState.quotaVal,u=appState.quotaUnit;return v*(u==='TB'?1099511627776:1073741824)}
+function saveQuota(val,unit){appState.quotaVal=parseInt(val,10)||250;appState.quotaUnit=unit==='TB'?'TB':'GB';localStorage.setItem(KEY_QUOTA_VAL,appState.quotaVal.toString());localStorage.setItem(KEY_QUOTA_UNIT,appState.quotaUnit);document.getElementById('settingsCurrentCapacity').textContent=appState.quotaVal+' '+appState.quotaUnit;document.getElementById('customQuotaInput').value=appState.quotaVal;document.getElementById('customQuotaUnit').value=appState.quotaUnit;document.querySelectorAll('#quotaPresets .preset-chip').forEach(function(b){b.classList.toggle('active',parseInt(b.dataset.val,10)===appState.quotaVal&&b.dataset.unit===appState.quotaUnit)});updateTelemetry();toast('Capacidade ajustada para '+appState.quotaVal+' '+appState.quotaUnit+'!','💾')}
 
-// ============ QUOTA ============
-function getQuotaBytes(){
-  var v=appState.quotaVal,u=appState.quotaUnit;
-  return v*(u==='TB'?1099511627776:1073741824);
-}
-function saveQuota(val,unit){
-  appState.quotaVal=parseInt(val,10)||250;
-  appState.quotaUnit=unit==='TB'?'TB':'GB';
-  localStorage.setItem(KEY_QUOTA_VAL,appState.quotaVal.toString());
-  localStorage.setItem(KEY_QUOTA_UNIT,appState.quotaUnit);
-  document.getElementById('settingsCurrentCapacity').textContent=appState.quotaVal+' '+appState.quotaUnit;
-  document.getElementById('customQuotaInput').value=appState.quotaVal;
-  document.getElementById('customQuotaUnit').value=appState.quotaUnit;
-  document.querySelectorAll('#quotaPresets .preset-chip').forEach(function(b){
-    b.classList.toggle('active',parseInt(b.dataset.val,10)===appState.quotaVal&&b.dataset.unit===appState.quotaUnit);
-  });
-  updateTelemetry();
-  toast('Capacidade ajustada para '+appState.quotaVal+' '+appState.quotaUnit+'!','💾');
-}
+function updateTelemetry(){var items=appState.items;var totalBytes=items.reduce(function(acc,i){return acc+(i.size||0)},0);var quotaBytes=getQuotaBytes();var pct=Math.min(100,((totalBytes/quotaBytes)*100)).toFixed(2);document.getElementById('headerStorageText').textContent=formatBytes(totalBytes)+' / '+appState.quotaVal+' '+appState.quotaUnit;document.getElementById('headerStorageFill').style.width=Math.max(2,pct)+'%';document.getElementById('telemetryCount').textContent=items.length;var imgs=items.filter(function(i){return i.type.indexOf('image/')===0}).length;var vids=items.filter(function(i){return i.type.indexOf('video/')===0}).length;var favs=items.filter(function(i){return i.isFav}).length;var opts=items.filter(function(i){return i.optimized}).length;document.getElementById('telemetryBreakdown').textContent=imgs+' fotos • '+vids+' vídeos • '+favs+' favs';document.getElementById('telemetryUsage').textContent=formatBytes(totalBytes);document.getElementById('telemetryLimitText').textContent='Limite: '+appState.quotaVal+' '+appState.quotaUnit+' ('+pct+'%)';document.getElementById('telemetrySavings').textContent=formatBytes(appState.savedBytes);document.getElementById('countAll').textContent=items.length;document.getElementById('countImg').textContent=imgs;document.getElementById('countVid').textContent=vids;document.getElementById('countFav').textContent=favs;document.getElementById('countOpt').textContent=opts}
 
-// ============ TELEMETRIA ============
-function updateTelemetry(){
-  var items=appState.items;
-  var totalBytes=items.reduce(function(acc,i){return acc+(i.size||0)},0);
-  var quotaBytes=getQuotaBytes();
-  var pct=Math.min(100,((totalBytes/quotaBytes)*100)).toFixed(2);
-  document.getElementById('headerStorageText').textContent=formatBytes(totalBytes)+' / '+appState.quotaVal+' '+appState.quotaUnit;
-  document.getElementById('headerStorageFill').style.width=Math.max(2,pct)+'%';
-  document.getElementById('telemetryCount').textContent=items.length;
-  var imgs=items.filter(function(i){return i.type.indexOf('image/')===0}).length;
-  var vids=items.filter(function(i){return i.type.indexOf('video/')===0}).length;
-  var favs=items.filter(function(i){return i.isFav}).length;
-  var opts=items.filter(function(i){return i.optimized}).length;
-  document.getElementById('telemetryBreakdown').textContent=imgs+' fotos • '+vids+' vídeos • '+favs+' favs';
-  document.getElementById('telemetryUsage').textContent=formatBytes(totalBytes);
-  document.getElementById('telemetryLimitText').textContent='Limite: '+appState.quotaVal+' '+appState.quotaUnit+' ('+pct+'%)';
-  document.getElementById('telemetrySavings').textContent=formatBytes(appState.savedBytes);
-  document.getElementById('countAll').textContent=items.length;
-  document.getElementById('countImg').textContent=imgs;
-  document.getElementById('countVid').textContent=vids;
-  document.getElementById('countFav').textContent=favs;
-  document.getElementById('countOpt').textContent=opts;
-}
+function getFilteredList(){var list=appState.items.slice();if(appState.filter==='image')list=list.filter(function(i){return i.type.indexOf('image/')===0});else if(appState.filter==='video')list=list.filter(function(i){return i.type.indexOf('video/')===0});else if(appState.filter==='fav')list=list.filter(function(i){return i.isFav});else if(appState.filter==='optimized')list=list.filter(function(i){return i.optimized});if(appState.search){var q=appState.search.toLowerCase();list=list.filter(function(i){return i.name.toLowerCase().indexOf(q)>=0})}if(appState.sort==='newest')list.sort(function(a,b){return b.date-a.date});else if(appState.sort==='oldest')list.sort(function(a,b){return a.date-b.date});else if(appState.sort==='size-desc')list.sort(function(a,b){return b.size-a.size});else if(appState.sort==='name')list.sort(function(a,b){return a.name.localeCompare(b.name)});return list}
 
-// ============ GRID ============
-function getFilteredList(){
-  var list=appState.items.slice();
-  if(appState.filter==='image')list=list.filter(function(i){return i.type.indexOf('image/')===0});
-  else if(appState.filter==='video')list=list.filter(function(i){return i.type.indexOf('video/')===0});
-  else if(appState.filter==='fav')list=list.filter(function(i){return i.isFav});
-  else if(appState.filter==='optimized')list=list.filter(function(i){return i.optimized});
-  if(appState.search){
-    var q=appState.search.toLowerCase();
-    list=list.filter(function(i){return i.name.toLowerCase().indexOf(q)>=0});
-  }
-  if(appState.sort==='newest')list.sort(function(a,b){return b.date-a.date});
-  else if(appState.sort==='oldest')list.sort(function(a,b){return a.date-b.date});
-  else if(appState.sort==='size-desc')list.sort(function(a,b){return b.size-a.size});
-  else if(appState.sort==='name')list.sort(function(a,b){return a.name.localeCompare(b.name)});
-  return list;
-}
-function renderMediaGrid(){
-  var grid=document.getElementById('mediaGrid');
-  grid.innerHTML='';
-  var fullList=getFilteredList();
-  if(!fullList.length){
-    grid.innerHTML='<div class="empty-vault">'+
-      '<div class="empty-icon">🛡️</div>'+
-      '<h3>Seu Cofre está Vazio</h3>'+
-      '<p style="color:var(--text-secondary);max-width:520px;">Vincule sua conta Google Fotos, use <strong>📸 Enviar da Galeria</strong>, cole com <strong>Ctrl+V</strong> ou arraste arquivos. Tudo fica <strong>armazenado permanentemente</strong>.</p>'+
-      '<button class="btn btn-primary" id="btnEmptyAdd"><span>➕</span> Carregar Primeiros Arquivos</button>'+
-      '</div>';
-    return;
-  }
-  var list=fullList.slice(0,appState.visibleCount);
-  list.forEach(function(item){
-    var card=document.createElement('div');
-    card.className='media-card';
-    var safeName=escapeHtml(item.name);
-    var mediaEl;
-    if(item.type.indexOf('image/')===0)mediaEl='<img src="'+item.dataUrl+'" alt="'+safeName+'" loading="lazy">';
-    else if(item.type.indexOf('video/')===0)mediaEl='<video src="'+item.dataUrl+'" preload="metadata"></video>';
-    else mediaEl='<div style="font-size:2.5rem;color:var(--accent-primary)">📄</div>';
-    var badgeText=item.optimized?'⚡ Otimizado IA':(item.type.indexOf('image/')===0?'📷 Foto':'🎬 Vídeo');
-    var googleBadge=item.source==='google'?'<span class="media-src-google">G Fotos</span>':'';
-    card.innerHTML='<div class="media-thumb-wrap" data-id="'+escapeHtml(item.id)+'">'+mediaEl+
-      '<span class="media-badge">'+badgeText+'</span>'+
-      '<span class="media-perm-shield">🔒 Permanente</span>'+googleBadge+
-      '<button class="media-fav-btn'+(item.isFav?' active':'')+'">★</button></div>'+
-      '<div class="media-info"><div class="media-title" title="'+safeName+'">'+safeName+'</div>'+
-      '<div class="media-meta"><span>'+formatBytes(item.size)+'</span><span>'+formatDate(item.date)+'</span></div>'+
-      '<div class="media-actions">'+
-      '<button class="btn-action-icon btn-view-item">👁️ Ver</button>'+
-      '<button class="btn-action-icon btn-dl-item">⬇️ Baixar</button>'+
-      '<button class="btn-action-icon btn-delete-icon btn-del-item">🗑️</button>'+
-      '</div></div>';
-    card.querySelector('.media-thumb-wrap').addEventListener('click',function(e){
-      if(e.target.closest('.media-fav-btn'))return;
-      openLightbox(item);
-    });
-    card.querySelector('.media-fav-btn').addEventListener('click',function(e){
-      e.stopPropagation();
-      item.isFav=!item.isFav;
-      dbPut(item).catch(function(){});
-      updateTelemetry();
-      renderMediaGrid();
-      playSciFiBeep('click');
-    });
-    card.querySelector('.btn-view-item').addEventListener('click',function(){openLightbox(item)});
-    card.querySelector('.btn-dl-item').addEventListener('click',function(){downloadItem(item)});
-    card.querySelector('.btn-del-item').addEventListener('click',function(){
-      if(confirm('Remover "'+item.name+'" do cofre?')){
-        dbDelete(item.id).catch(function(){}).then(function(){
-          appState.items=appState.items.filter(function(i){return i.id!==item.id});
-          updateTelemetry();
-          renderMediaGrid();
-          toast('Arquivo removido do cofre.','🗑️');
-          playSciFiBeep('click');
-        });
-      }
-    });
-    grid.appendChild(card);
-  });
-  if(fullList.length>appState.visibleCount){
-    var wrap=document.createElement('div');
-    wrap.className='load-more-wrap';
-    var btn=document.createElement('button');
-    btn.className='btn btn-secondary';
-    btn.innerHTML='<span>⬇️</span> Carregar mais ('+(fullList.length-appState.visibleCount)+' restantes)';
-    btn.addEventListener('click',function(){
-      appState.visibleCount+=PAGE_SIZE;
-      renderMediaGrid();
-    });
-    wrap.appendChild(btn);
-    grid.appendChild(wrap);
-  }
-}
+function renderMediaGrid(){var grid=document.getElementById('mediaGrid');grid.innerHTML='';var fullList=getFilteredList();if(!fullList.length){grid.innerHTML='<div class="empty-vault"><div class="empty-icon">🛡️</div><h3>Seu Cofre está Vazio</h3><p style="color:var(--text-secondary);max-width:520px;">Vincule sua conta Google Fotos, use <strong>📸 Enviar da Galeria</strong>, cole com <strong>Ctrl+V</strong> ou arraste arquivos. Tudo fica <strong>armazenado permanentemente</strong>.</p><button class="btn btn-primary" id="btnEmptyAdd"><span>➕</span> Carregar Primeiros Arquivos</button></div>';return}var list=fullList.slice(0,appState.visibleCount);list.forEach(function(item){var card=document.createElement('div');card.className='media-card';var safeName=escapeHtml(item.name);var mediaEl;if(item.type.indexOf('image/')===0)mediaEl='<img src="'+item.dataUrl+'" alt="'+safeName+'" loading="lazy">';else if(item.type.indexOf('video/')===0)mediaEl='<video src="'+item.dataUrl+'" preload="metadata"></video>';else mediaEl='<div style="font-size:2.5rem;color:var(--accent-primary)">📄</div>';var badgeText=item.optimized?'⚡ Otimizado IA':(item.type.indexOf('image/')===0?'📷 Foto':'🎬 Vídeo');var googleBadge=item.source==='google'?'<span class="media-src-google">G Fotos</span>':'';card.innerHTML='<div class="media-thumb-wrap" data-id="'+escapeHtml(item.id)+'">'+mediaEl+'<span class="media-badge">'+badgeText+'</span><span class="media-perm-shield">🔒 Permanente</span>'+googleBadge+'<button class="media-fav-btn'+(item.isFav?' active':'')+'">★</button></div><div class="media-info"><div class="media-title" title="'+safeName+'">'+safeName+'</div><div class="media-meta"><span>'+formatBytes(item.size)+'</span><span>'+formatDate(item.date)+'</span></div><div class="media-actions"><button class="btn-action-icon btn-view-item">👁️ Ver</button><button class="btn-action-icon btn-dl-item">⬇️ Baixar</button><button class="btn-action-icon btn-delete-icon btn-del-item">🗑️</button></div></div>';card.querySelector('.media-thumb-wrap').addEventListener('click',function(e){if(e.target.closest('.media-fav-btn'))return;openLightbox(item)});card.querySelector('.media-fav-btn').addEventListener('click',function(e){e.stopPropagation();item.isFav=!item.isFav;dbPut(item).catch(function(){});updateTelemetry();renderMediaGrid();playSciFiBeep('click')});card.querySelector('.btn-view-item').addEventListener('click',function(){openLightbox(item)});card.querySelector('.btn-dl-item').addEventListener('click',function(){downloadItem(item)});card.querySelector('.btn-del-item').addEventListener('click',function(){if(confirm('Remover "'+item.name+'" do cofre?')){dbDelete(item.id).catch(function(){}).then(function(){appState.items=appState.items.filter(function(i){return i.id!==item.id});updateTelemetry();renderMediaGrid();toast('Arquivo removido do cofre.','🗑️');playSciFiBeep('click')})}});grid.appendChild(card)});if(fullList.length>appState.visibleCount){var wrap=document.createElement('div');wrap.className='load-more-wrap';var btn=document.createElement('button');btn.className='btn btn-secondary';btn.innerHTML='<span>⬇️</span> Carregar mais ('+(fullList.length-appState.visibleCount)+' restantes)';btn.addEventListener('click',function(){appState.visibleCount+=PAGE_SIZE;renderMediaGrid()});wrap.appendChild(btn);grid.appendChild(wrap)}}
 
-// ============ LIGHTBOX ============
-function openLightbox(item){
-  appState.activeLightboxItem=item;
-  var c=document.getElementById('lightboxMediaContainer');
-  var safeName=escapeHtml(item.name);
-  if(item.type.indexOf('image/')===0)c.innerHTML='<img src="'+item.dataUrl+'" class="lightbox-media" alt="'+safeName+'">';
-  else c.innerHTML='<video src="'+item.dataUrl+'" class="lightbox-media" controls autoplay></video>';
-  openModal('modalLightbox');
-  playSciFiBeep('click');
-}
-function downloadItem(item){
-  var a=document.createElement('a');
-  a.href=item.dataUrl;a.download=item.name;a.click();
-  toast('Baixando "'+escapeHtml(item.name)+'"...','⬇️');
-}
+function openLightbox(item){appState.activeLightboxItem=item;var c=document.getElementById('lightboxMediaContainer');var safeName=escapeHtml(item.name);if(item.type.indexOf('image/')===0)c.innerHTML='<img src="'+item.dataUrl+'" class="lightbox-media" alt="'+safeName+'">';else c.innerHTML='<video src="'+item.dataUrl+'" class="lightbox-media" controls autoplay></video>';openModal('modalLightbox');playSciFiBeep('click')}
+function downloadItem(item){var a=document.createElement('a');a.href=item.dataUrl;a.download=item.name;a.click();');toast('Baixando "'+escapeHtml(item.name)+'"return...','⬇️')}
 
-// ============ INGESTÃO ============
-function readFileAsDataURL(f){
-  return new Promise(function(res,rej){
-    var r=new FileReader();
-    r.onload=function(){res(r.result)};
-    r.onerror=function(){rej(r.error)};
-    r.readAsDataURL(f);
-  });
-}
-function handleIncomingFiles(fileList,sourceLabel,sourceTag){
-  sourceLabel=sourceLabel||'';
-  sourceTag=sourceTag||null;
-  if(!fileList||!fileList.length)return Promise.resolve({added:0,quotaError:false});
-  var added=0,quotaError=false;
-  var files=Array.prototype.slice.call(fileList);
-  var chain=Promise.resolve();
-  files.forEach(function(file){
-    chain=chain.then(function(){
-      return readFileAsDataURL(file).then(function(dataUrl){
-        var hash=quickHash(dataUrl);
-        var item={
-          id:'item_'+Date.now()+'_'+Math.random().toString(36).substr(2,6),
-          name:file.name||('midia_'+Date.now()),
-          type:file.type||'image/jpeg',
-          size:file.size,
-          date:Date.now(),
-          isFav:false,
-          optimized:false,
-          permanent:true,
-          hash:hash,
-          source:sourceTag||'local',
-          dataUrl:dataUrl
-        };
-        return dbPut(item).then(function(){
-          appState.items.push(item);
-          added++;
-        }).catch(function(err){
-          if(err&&(err.name==='QuotaExceededError'||/quota/i.test(err.message||''))){
-            quotaError=true;
-          }else{
-            console.warn('Falha ao gravar',err);
-          }
-        });
-      }).catch(function(e){
-        console.warn('Falha ao processar arquivo',file&&file.name,e);
-      });
-    });
-  });
-  return chain.then(function(){
-    if(added>0){
-      return dbGetAll().then(function(all){
-        appState.items=all;
-      }).catch(function(){}).then(function(){
-        updateTelemetry();
-        renderMediaGrid();
-        playSciFiBeep('success');
-        var prefix=sourceLabel?escapeHtml(sourceLabel)+': ':'';
-        toast(prefix+added+' mídia(s) blindadas permanentemente!','🔒');
-      });
-    }
-  }).then(function(){
-    if(quotaError)toast('⚠️ Cofre cheio! Libere espaço no Robô IA.','⚠️');
-    return {added:added,quotaError:quotaError};
-  });
-}
+function readFileAsData {URL(f){addedreturn new Promise(function(res,rej:){var r=new FileReader();r.onloadadded=function(){res(r.result)};r.onerror=function(){rej(r.error)};r.readAsDataURL(f)})}
+function handleIncomingFiles(fileList,sourceLabel,sourceTag){sourceLabel=sourceLabel||'';sourceTag=sourceTag||null;if(!fileList||!fileList.length)return Promise.resolve({added:0,quotaError:false});var added=0,quotaError=false;var files=Array.prototype.slice.call(fileList);var chain=Promise.resolve();files.forEach(function(file){chain=chain.then(function(){return readFileAsDataURL(file).then(function(dataUrl){var hash=quickHash(dataUrl);var item={id:'item_'+Date.now()+'_'+Math.random().toString(36).substr(2,6),name:file.name||('midia_'+Date.now()),type:file.type||'image/jpeg',size:file.size,date:Date.now(),isFav:false,optimized:false,permanent:true,hash:hash,source:sourceTag||'local',dataUrl:dataUrl};return dbPut(item).then(function(){appState.items.push(item);added++}).catch(function(err){if(err&&(err.name==='QuotaExceededError'||/quota/i.test(err.message||''))){quotaError=true}else{console.warn('Falha ao gravar',err)}})}).catch(function(e){console.warn('Falha ao processar arquivo',file&&file.name,e)})})});return chain.then(function(){if(added>0){return dbGetAll().then(function(all){appState.items=all}).catch(function(){}).then(function(){updateTelemetry();renderMediaGrid();playSciFiBeep('success');var prefix=sourceLabel?escapeHtml(sourceLabel)+': ':'';toast(prefix+added+' mídia(s) blindadas permanentemente!','🔒')})}}).then(function(){if(quotaError)toast('⚠️ Cofre cheio! Libere espaço no Robô IA.','⚠️,quotaError:quotaError}})}
 
-// ============ ROBÔ IA ============
-function appendRobotLog(msg){
-  var c=document.getElementById('robotConsole');
-  var t=new Date().toLocaleTimeString('pt-BR');
-  var l=document.createElement('div');
-  l.textContent='['+t+'] '+msg;
-  c.appendChild(l);
-  c.scrollTop=c.scrollHeight;
-}
-function robotRunOptimization(){
-  var unoptimized=appState.items.filter(function(i){return i.type.indexOf('image/')===0&&!i.optimized});
-  if(!unoptimized.length){
-    appendRobotLog('⚡ Todas as imagens já estão otimizadas.');
-    toast('Todas as fotos já estão otimizadas!','✨');
-    return;
-  }
-  appendRobotLog('Iniciando compressão Canvas 4K em '+unoptimized.length+' imagem(ns)...');
-  var count=0,sessionSaved=0;
-  var chain=Promise.resolve();
-  unoptimized.forEach(function(item){
-    chain=chain.then(function(){
-      return new Promise(function(resolve){
-        var img=new Image();
-        img.onload=function(){
-          try{
-            var canvas=document.createElement('canvas');
-            var w=img.naturalWidth||img.width,h=img.naturalHeight||img.height;
-            var MAX=2560;
-            if(w>MAX||h>MAX){
-              if(w>h){h=Math.round((h*MAX)/w);w=MAX}
-              else{w=Math.round((w*MAX)/h);h=MAX}
-            }
-            canvas.width=w;canvas.height=h;
-            canvas.getContext('2d').drawImage(img,0,0,w,h);
-            var compressed=canvas.toDataURL('image/webp',0.82);
-            if(compressed.indexOf('data:image/webp')!==0){
-              appendRobotLog('ℹ️ WebP indisponível, usando JPEG em "'+item.name+'"');
-              compressed=canvas.toDataURL('image/jpeg',0.85);
-            }
-            var newSize=Math.round((compressed.length*3)/4);
-            if(newSize<item.size){
-              var diff=item.size-newSize;
-              sessionSaved+=diff;
-              item.size=newSize;item.dataUrl=compressed;item.optimized=true;
-              item.hash=quickHash(compressed);
-              dbPut(item).then(function(){
-                count++;
-                appendRobotLog('✔️ "'+item.name+'": Reduzido em '+formatBytes(diff));
-                resolve();
-              }).catch(function(){resolve()});
-            }else{
-              item.optimized=true;
-              dbPut(item).then(function(){
-                appendRobotLog('ℹ️ "'+item.name+'": Já era ideal.');
-                resolve();
-              }).catch(function(){resolve()});
-            }
-          }catch(e){
-            appendRobotLog('❌ Erro em "'+item.name+'": '+e.message);
-            resolve();
-          }
-        };
-        img.onerror=function(){
-          appendRobotLog('❌ Falha ao carregar "'+item.name+'"');
-          resolve();
-        };
-        img.src=item.dataUrl;
-      });
-    });
-  });
-  chain.then(function(){
-    appState.savedBytes+=sessionSaved;
-    localStorage.setItem(KEY_SAVINGS,appState.savedBytes.toString());
-    updateTelemetry();
-    renderMediaGrid();
-    playSciFiBeep('success');
-    appendRobotLog('🎉 Concluído! '+count+' imagens otimizadas. Economia: '+formatBytes(sessionSaved)+'.');
-    toast('Robô economizou '+formatBytes(sessionSaved)+'!','⚡');
-  });
-}
-function robotScanDuplicates(){
-  appendRobotLog('🔍 Escaneando duplicados por hash...');
-  var map={},dups=[];
-  appState.items.forEach(function(item){
-    var hash=item.hash;
-    if(!hash){hash=quickHash(item.dataUrl||'');item.hash=hash;dbPut(item).catch(function(){})}
-    if(map[hash])dups.push({orig:map[hash],dup:item});
-    else map[hash]=item;
-  });
-  if(!dups.length){
-    appendRobotLog('✔️ Nenhuma mídia duplicada.');
-    toast('Nenhuma foto duplicada encontrada.','🛡️');
-    return;
-  }
-  appendRobotLog('⚠️ Encontradas '+dups.length+' mídias duplicadas.');
-  if(confirm('O Robô IA detectou '+dups.length+' arquivo(s) duplicado(s). Remover cópias?')){
-    var freed=0;
-    var chain=Promise.resolve();
-    dups.forEach(function(p){
-      chain=chain.then(function(){
-        return dbDelete(p.dup.id).catch(function(){}).then(function(){
-          appState.items=appState.items.filter(function(i){return i.id!==p.dup.id});
-          freed+=p.dup.size;
-          appendRobotLog('🗑️ Removido: "'+p.dup.name+'" ('+formatBytes(p.dup.size)+')');
-        });
-      });
-    });
-    chain.then(function(){
-      updateTelemetry();
-      renderMediaGrid();
-      playSciFiBeep('success');
-      appendRobotLog('🎉 Limpeza finalizada! '+formatBytes(freed)+' recuperados.');
-      toast('Liberados '+formatBytes(freed)+'!','🧹');
-    });
-  }
-}
-function robotDefragDatabase(){
-  appendRobotLog('🧹 Desfragmentando índices...');
-  dbGetAll().then(function(all){
-    appState.items=all;
-    updateTelemetry();
-    renderMediaGrid();
-    appendRobotLog('✔️ Recalibrados '+all.length+' registros. Integridade 100%.');
-    playSciFiBeep('success');
-    toast('Banco de dados desfragmentado!','🧹');
-  }).catch(function(e){
-    appendRobotLog('❌ Falha: '+e.message);
-  });
-}
+function appendRobotLog(msg){var c=document.getElementById('robotConsole');var t=new Date().toLocaleTimeString('pt-BR');var l=document.createElement('div');l.textContent='['+t+'] '+msg;c.appendChild(l);c.scrollTop=c.scrollHeight}
+function robotRunOptimization(){var unoptimized=appState.items.filter(function(i){return i.type.indexOf('image/')===0&&!i.optimized});if(!unoptimized.length){appendRobotLog('⚡ Todas as imagens já estão otimizadas.');toast('Todas as fotos já estão otimizadas!','✨');return}appendRobotLog('Iniciando compressão Canvas 4K em '+unoptimized.length+' imagem(ns)...');var count=0,sessionSaved=0;var chain=Promise.resolve();unoptimized.forEach(function(item){chain=chain.then(function(){return new Promise(function(resolve){var img=new Image();img.onload=function(){try{var canvas=document.createElement('canvas');var w=img.naturalWidth||img.width,h=img.naturalHeight||img.height;var MAX=2560;if(w>MAX||h>MAX){if(w>h){h=Math.round((h*MAX)/w);w=MAX}else{w=Math.round((w*MAX)/h);h=MAX}}canvas.width=w;canvas.height=h;canvas.getContext('2d').drawImage(img,0,0,w,h);var compressed=canvas.toDataURL('image/webp',0.82);if(compressed.indexOf('data:image/webp')!==0){appendRobotLog('ℹ️ WebP indisponível, usando JPEG em "'+item.name+'"');compressed=canvas.toDataURL('image/jpeg',0.85)}var newSize=Math.round((compressed.length*3)/4);if(newSize<item.size){var diff=item.size-newSize;sessionSaved+=diff;item.size=newSize;item.dataUrl=compressed;item.optimized=true;item.hash=quickHash(compressed);dbPut(item).then(function(){count++;appendRobotLog('✔️ "'+item.name+'": Reduzido em '+formatBytes(diff));resolve()}).catch(function(){resolve()})}else{item.optimized=true;dbPut(item).then(function(){appendRobotLog('ℹ️ "'+item.name+'": Já era ideal.');resolve()}).catch(function(){resolve()})}}catch(e){appendRobotLog('❌ Erro em "'+item.name+'": '+e.message);resolve()}};img.onerror=function(){appendRobotLog('❌ Falha ao carregar "'+item.name+'"');resolve()};img.src=item.dataUrl})})});chain.then(function(){appState.savedBytes+=sessionSaved;localStorage.setItem(KEY_SAVINGS,appState.savedBytes.toString());updateTelemetry();renderMediaGrid();playSciFiBeep('success');appendRobotLog('🎉 Concluído! '+count+' imagens otimizadas. Economia: '+formatBytes(sessionSaved)+'.');toast('Robô economizou '+formatBytes(sessionSaved)+'!','⚡')})}
+function robotScanDuplicates(){appendRobotLog('🔍 Escaneando duplicados por hash...');var map={},dups=[];appState.items.forEach(function(item){var hash=item.hash;if(!hash){hash=quickHash(item.dataUrl||'');item.hash=hash;dbPut(item).catch(function(){})}if(map[hash])dups.push({orig:map[hash],dup:item});else map[hash]=item});if(!dups.length){appendRobotLog('✔️ Nenhuma mídia duplicada.');toast('Nenhuma foto duplicada encontrada.','🛡️');return}appendRobotLog('⚠️ Encontradas '+dups.length+' mídias duplicadas.');if(confirm('O Robô IA detectou '+dups.length+' arquivo(s) duplicado(s). Remover cópias?')){var freed=0;var chain=Promise.resolve();dups.forEach(function(p){chain=chain.then(function(){return dbDelete(p.dup.id).catch(function(){}).then(function(){appState.items=appState.items.filter(function(i){return i.id!==p.dup.id});freed+=p.dup.size;appendRobotLog('🗑️ Removido: "'+p.dup.name+'" ('+formatBytes(p.dup.size)+')')})})});chain.then(function(){updateTelemetry();renderMediaGrid();playSciFiBeep('success');appendRobotLog('🎉 Limpeza finalizada! '+formatBytes(freed)+' recuperados.');toast('Liberados '+formatBytes(freed)+'!','🧹')})}}
+function robotDefragDatabase(){appendRobotLog('🧹 Desfragmentando índices...');dbGetAll().then(function(all){appState.items=all;updateTelemetry();renderMediaGrid();appendRobotLog('✔️ Recalibrados '+all.length+' registros. Integridade 100%.');playSciFiBeep('success');toast('Banco de dados desfragmentado!','🧹')}).catch(function(e){appendRobotLog('❌ Falha: '+e.message)})}
 
-// ============ GOOGLE FOTOS ============
-function updateGoogleLinkUI(linked){
-  var pill=document.getElementById('googleStatusPill');
-  var btnLink=document.getElementById('btnLinkGoogle');
-  var btnPick=document.getElementById('btnPickGooglePhotos');
-  var btnUnlink=document.getElementById('btnUnlinkGoogle');
-  var badge=document.getElementById('googleClientIdStatusBadge');
-  var clientId=localStorage.getItem(KEY_GOOGLE_CLIENT_ID);
-  if(badge){
-    if(clientId){
-      badge.textContent='✅ Configurado';
-      badge.style.color='#10b981';badge.style.borderColor='#10b981';badge.style.background='rgba(16,185,129,0.15)';
-    }else{
-      badge.textContent='Não configurado';
-      badge.style.color='';badge.style.borderColor='';badge.style.background='';
-    }
-  }
-  if(!pill||!btnLink||!btnPick||!btnUnlink)return;
-  appState.googleLinked=linked;
-  if(appState.googleLinking){
-    pill.className='google-status-pill loading';
-    pill.innerHTML='⏳ Vinculando...';
-  }else if(linked){
-    pill.className='google-status-pill on';
-    pill.innerHTML='✅ Vinculado'+(appState.googleEmail?' • '+escapeHtml(appState.googleEmail):'');
-  }else{
-    pill.className='google-status-pill off';
-    pill.innerHTML='🔌 Não vinculado';
-  }
-  btnPick.disabled=!linked;
-  btnUnlink.disabled=!linked;
-  btnLink.disabled=linked;
-}
-function initGoogleAuth(){
-  var clientId=localStorage.getItem(KEY_GOOGLE_CLIENT_ID);
-  if(!clientId)return Promise.resolve(false);
-  return loadScript(GOOGLE_GIS_SRC).then(function(){
-    if(!window.google||!window.google.accounts||!window.google.accounts.oauth2){
-      throw new Error('GIS não disponível');
-    }
-    googleTokenClient=window.google.accounts.oauth2.initTokenClient({
-      client_id:clientId,
-      scope:GOOGLE_SCOPE,
-      callback:function(resp){
-        appState.googleLinking=false;
-        if(resp.error){
-          toast('Erro ao vincular: '+resp.error,'❌');
-          updateGoogleLinkUI(false);
-          return;
-        }
-        googleAccessToken=resp.access_token;
-        googleTokenExpiresAt=Date.now()+(resp.expires_in*1000)-30000;
-        fetch('https://www.googleapis.com/oauth2/v3/userinfo',{
-          headers:{Authorization:'Bearer '+googleAccessToken}
-        }).then(function(r){return r.ok?r.json():null}).then(function(u){
-          if(u&&u.email){appState.googleEmail=u.email;updateGoogleLinkUI(true)}
-        }).catch(function(){});
-        updateGoogleLinkUI(true);
-        playSciFiBeep('success');
-        toast('✅ Conta Google vinculada com sucesso!','🔗');
-      }
-    });
-    return true;
-  }).catch(function(e){
-    console.warn(e);
-    appState.googleLinking=false;
-    updateGoogleLinkUI(false);
-    return false;
-  });
-}
-function linkGoogleAccount(){
-  var clientId=localStorage.getItem(KEY_GOOGLE_CLIENT_ID);
-  if(!clientId){
-    toast('⚠️ Configure primeiro o Google Client ID nas Configurações.','⚠️');
-    openModal('modalSettings');
-    return;
-  }
-  appState.googleLinking=true;
-  updateGoogleLinkUI(false);
-  if(!googleTokenClient){
-    initGoogleAuth().then(function(ok){
-      if(ok&&googleTokenClient){
-        googleTokenClient.requestAccessToken({prompt:'consent'});
-      }else{
-        appState.googleLinking=false;
-        updateGoogleLinkUI(false);
-        toast('Falha ao inicializar o Google. Verifique sua conexão.','❌');
-      }
-    });
-    return;
-  }
-  googleTokenClient.requestAccessToken({prompt:'consent'});
-}
-function unlinkGoogleAccount(){
-  if(!googleAccessToken)return;
-  try{
-    if(window.google&&window.google.accounts&&window.google.accounts.oauth2){
-      window.google.accounts.oauth2.revoke(googleAccessToken,function(){});
-    }
-  }catch(e){}
-  googleAccessToken=null;
-  googleTokenExpiresAt=0;
-  appState.googleEmail=null;
-  updateGoogleLinkUI(false);
-  toast('Conta Google desvinculada.','🔌');
-}
-function ensureFreshGoogleToken(){
-  if(!googleAccessToken)return false;
-  if(Date.now()>=googleTokenExpiresAt){
-    toast('Sessão Google expirou. Vinculando novamente...','⏳');
-    if(googleTokenClient)googleTokenClient.requestAccessToken({prompt:''});
-    return false;
-  }
-  return true;
-}
-function pickGooglePhotos(){
-  if(!ensureFreshGoogleToken()){
-    toast('Vincule sua conta Google primeiro.','⚠️');
-    return;
-  }
-  toast('Criando sessão do Google Photos Picker...','📸');
-  fetch(GOOGLE_PICKER_SESSIONS_URL,{
-    method:'POST',
-    headers:{'Authorization':'Bearer '+googleAccessToken,'Content-Type':'application/json'},
-    body:'{}'
-  }).then(function(sessionRes){
-    if(!sessionRes.ok){
-      return sessionRes.text().then(function(txt){
-        console.error('Erro criar sessão:',sessionRes.status,txt);
-        throw new Error('Não foi possível criar a sessão (HTTP '+sessionRes.status+').');
-      });
-    }
-    return sessionRes.json();
-  }).then(function(session){
-    var sessionId=session.id;
-    var pickerUri=session.pickerUri;
-    var popup=window.open(pickerUri,'GooglePhotosPicker','width=1100,height=750,scrollbars=yes,resizable=yes');
-    if(!popup){
-      toast('⚠️ Pop-up bloqueado! Permita pop-ups deste site.','⚠️');
-      return Promise.reject(new Error('popup_blocked'));
-    }
-    toast('Selecione as fotos na janela do Google e confirme.','📸');
-    var done=false;
-    var started=Date.now();
-    var checkPoll=function(){
-      if(done)return Promise.resolve(true);
-      if(Date.now()-started>5*60*1000)return Promise.resolve(false);
-      return new Promise(function(r){setTimeout(r,2500)}).then(function(){
-        return fetch(GOOGLE_PICKER_SESSIONS_URL+'/'+sessionId,{
-          headers:{Authorization:'Bearer '+googleAccessToken}
-        }).then(function(r){return r.ok?r.json():null}).then(function(pollData){
-          if(pollData&&pollData.mediaItemsSet){done=true;return true}
-          if(popup.closed){
-            return new Promise(function(r){setTimeout(r,800)}).then(function(){
-              return fetch(GOOGLE_PICKER_SESSIONS_URL+'/'+sessionId,{
-                headers:{Authorization:'Bearer '+googleAccessToken}
-              }).then(function(r){return r.json()}).then(function(finalData){
-                if(finalData&&finalData.mediaItemsSet){done=true;return true}
-                return false;
-              }).catch(function(){return false});
-            });
-          }
-          return checkPoll();
-        }).catch(function(){return checkPoll()});
-      });
-    };
-    return checkPoll().then(function(wasDone){
-      if(!wasDone){
-        toast('Nenhuma foto selecionada (ou tempo esgotado).','ℹ️');
-        return null;
-      }
-      toast('Buscando lista de fotos selecionadas...','📋');
-      var mediaItems=[];
-      var fetchPage=function(pageToken){
-        var url=new URL(GOOGLE_PICKER_MEDIA_URL);
-        url.searchParams.set('sessionId',sessionId);
-        url.searchParams.set('pageSize','100');
-        if(pageToken)url.searchParams.set('pageToken',pageToken);
-        return fetch(url.toString(),{
-          headers:{Authorization:'Bearer '+googleAccessToken}
-        }).then(function(listRes){
-          if(!listRes.ok){
-            return listRes.text().then(function(txt){
-              console.error('Erro lista media:',listRes.status,txt);
-              return null;
-            });
-          }
-          return listRes.json();
-        }).then(function(listData){
-          if(!listData)return;
-          if(listData.mediaItems)mediaItems.push.apply(mediaItems,listData.mediaItems);
-          if(listData.nextPageToken)return fetchPage(listData.nextPageToken);
-        });
-      };
-      return fetchPage('').then(function(){
-        if(!mediaItems.length){
-          toast('Nenhuma foto retornada pelo Google.','ℹ️');
-          return null;
-        }
-        toast('Baixando '+mediaItems.length+' foto(s)...','⬇️');
-        var files=[];
-        var chain=Promise.resolve();
-        mediaItems.forEach(function(mi){
-          chain=chain.then(function(){
-            var isVideo=mi.type==='VIDEO';
-            var baseUrl=(mi.mediaFile&&mi.mediaFile.baseUrl)||'';
-            if(!baseUrl)return;
-            var downloadUrl=baseUrl+(isVideo?'=dv':'=d');
-            return fetch(downloadUrl).then(function(resp){
-              if(!resp.ok)return;
-              return resp.blob().then(function(blob){
-                var fname=(mi.mediaFile&&mi.mediaFile.filename)||('google_'+mi.id);
-                var ftype=(mi.mediaFile&&mi.mediaFile.mimeType)||(isVideo?'video/mp4':'image/jpeg');
-                files.push(new File([blob],fname,{type:ftype}));
-              });
-            }).catch(function(e){console.warn('Falha ao baixar',mi.id,e)});
-          });
-        });
-        return chain.then(function(){
-          if(!files.length){
-            toast('Não foi possível baixar as fotos. Tente novamente.','❌');
-            return null;
-          }
-          return handleIncomingFiles(files,'Google Fotos','google').then(function(){
-            return fetch(GOOGLE_PICKER_SESSIONS_URL+'/'+sessionId,{
-              method:'DELETE',
-              headers:{Authorization:'Bearer '+googleAccessToken}
-            }).catch(function(){});
-          });
-        });
-      });
-    });
-  }).catch(function(e){
-    if(e&&e.message==='popup_blocked')return;
-    console.error(e);
-    toast('Erro ao buscar fotos: '+e.message,'❌');
-  });
-}
+function updateGoogleLinkUI(linked){var pill=document.getElementById('googleStatusPill');var btnLink=document.getElementById('btnLinkGoogle');var btnPick=document.getElementById('btnPickGooglePhotos');var btnUnlink=document.getElementById('btnUnlinkGoogle');var badge=document.getElementById('googleClientIdStatusBadge');var clientId=localStorage.getItem(KEY_GOOGLE_CLIENT_ID);if(badge){if(clientId){badge.textContent='✅ Configurado';badge.style.color='#10b981';badge.style.borderColor='#10b981';badge.style.background='rgba(16,185,129,0.15)'}else{badge.textContent='Não configurado';badge.style.color='';badge.style.borderColor='';badge.style.background=''}}if(!pill||!btnLink||!btnPick||!btnUnlink)return;appState.googleLinked=linked;if(appState.googleLinking){pill.className='google-status-pill loading';pill.innerHTML='⏳ Vinculando...'}else if(linked){pill.className='google-status-pill on';pill.innerHTML='✅ Vinculado'+(appState.googleEmail?' • '+escapeHtml(appState.googleEmail):'')}else{pill.className='google-status-pill off';pill.innerHTML='🔌 Não vinculado'}btnPick.disabled=!linked;btnUnlink.disabled=!linked;btnLink.disabled=linked}
+function initGoogleAuth(){var clientId=localStorage.getItem(KEY_GOOGLE_CLIENT_ID);if(!clientId)return Promise.resolve(false);return loadScript(GOOGLE_GIS_SRC).then(function(){if(!window.google||!window.google.accounts||!window.google.accounts.oauth2){throw new Error('GIS não disponível')}googleTokenClient=window.google.accounts.oauth2.initTokenClient({client_id:clientId,scope:GOOGLE_SCOPE,callback:function(resp){appState.googleLinking=false;if(resp.error){toast('Erro ao vincular: '+resp.error,'❌');updateGoogleLinkUI(false);return}googleAccessToken=resp.access_token;googleTokenExpiresAt=Date.now()+(resp.expires_in*1000)-30000;fetch('https://www.googleapis.com/oauth2/v3/userinfo',{headers:{Authorization:'Bearer '+googleAccessToken}}).then(function(r){return r.ok?r.json():null}).then(function(u){if(u&&u.email){appState.googleEmail=u.email;updateGoogleLinkUI(true)}}).catch(function(){});updateGoogleLinkUI(true);playSciFiBeep('success');toast('✅ Conta Google vinculada com sucesso!','🔗')}});return true}).catch(function(e){console.warn(e);appState.googleLinking=false;updateGoogleLinkUI(false);return false})}
+function linkGoogleAccount(){var clientId=localStorage.getItem(KEY_GOOGLE_CLIENT_ID);if(!clientId){toast('⚠️ Configure primeiro o Google Client ID nas Configurações.','⚠️');openModal('modalSettings');return}appState.googleLinking=true;updateGoogleLinkUI(false);if(!googleTokenClient){initGoogleAuth().then(function(ok){if(ok&&googleTokenClient){googleTokenClient.requestAccessToken({prompt:'consent'})}else{appState.googleLinking=false;updateGoogleLinkUI(false);toast('Falha ao inicializar o Google. Verifique sua conexão.','❌')}});return}googleTokenClient.requestAccessToken({prompt:'consent'})}
+function unlinkGoogleAccount(){if(!googleAccessToken)return;try{if(window.google&&window.google.accounts&&window.google.accounts.oauth2){window.google.accounts.oauth2.revoke(googleAccessToken,function(){})}}catch(e){}googleAccessToken=null;googleTokenExpiresAt=0;appState.googleEmail=null;updateGoogleLinkUI(false);toast('Conta Google desvinculada.','🔌')}
+function ensureFreshGoogleToken(){if(!googleAccessToken)return false;if(Date.now()>=googleTokenExpiresAt){toast('Sessão Google expirou. Vinculando novamente...','⏳');if(googleTokenClient)googleTokenClient.requestAccessToken({prompt:''});return false}return true}
 
-// ============ MODAIS ============
-function openModal(id){
-  var el=document.getElementById(id);
-  if(el){
-    el.classList.add('open');
-    document.body.style.overflow='hidden';
-    playSciFiBeep('click');
-  }
-}
-function closeModal(id){
-  var el=document.getElementById(id);
-  if(el){
-    el.classList.remove('open');
-    if(!document.querySelector('.modal-overlay.open'))document.body.style.overflow='';
-  }
-}
+function pickGooglePhotos(){if(!ensureFreshGoogleToken()){toast('Vincule sua conta Google primeiro.','⚠️');return}toast('Criando sessão do Google Photos Picker...','📸');fetch(GOOGLE_PICKER_SESSIONS_URL,{method:'POST',headers:{'Authorization':'Bearer '+googleAccessToken,'Content-Type':'application/json'},body:'{}'}).then(function(sessionRes){if(!sessionRes.ok){return sessionRes.text().then(function(txt){console.error('Erro criar sessão:',sessionRes.status,txt);throw new Error('Não foi possível criar a sessão (HTTP '+sessionRes.status+').')})}return sessionRes.json()}).then(function(session){var sessionId=session.id;var pickerUri=session.pickerUri;var popup=window.open(pickerUri,'GooglePhotosPicker','width=1100,height=750,scrollbars=yes,resizable=yes');if(!popup){toast('⚠️ Pop-up bloqueado! Permita pop-ups deste site.','⚠️');return Promise.reject(new Error('popup_blocked'))}toast('Selecione as fotos na janela do Google e confirme.','📸');var done=false;var started=Date.now();var checkPoll=function(){if(done)return Promise.resolve(true);if(Date.now()-started>5*60*1000)return Promise.resolve(false);return new Promise(function(r){setTimeout(r,2500)}).then(function(){return fetch(GOOGLE_PICKER_SESSIONS_URL+'/'+sessionId,{headers:{Authorization:'Bearer '+googleAccessToken}}).then(function(r){return r.ok?r.json():null}).then(function(pollData){if(pollData&&pollData.mediaItemsSet){done=true;return true}if(popup.closed){return new Promise(function(r){setTimeout(r,800)}).then(function(){return fetch(GOOGLE_PICKER_SESSIONS_URL+'/'+sessionId,{headers:{Authorization:'Bearer '+googleAccessToken}}).then(function(r){return r.json()}).then(function(finalData){if(finalData&&finalData.mediaItemsSet){done=true;return true}return false}).catch(function(){return false})})}return checkPoll()}).catch(function(){return checkPoll()})})};return checkPoll().then(function(wasDone){if(!wasDone){toast('Nenhuma foto selecionada (ou tempo esgotado).','ℹ️');return null}toast('Buscando lista de fotos selecionadas...','📋');var mediaItems=[];var fetchPage=function(pageToken){var url=new URL(GOOGLE_PICKER_MEDIA_URL);url.searchParams.set('sessionId',sessionId);url.searchParams.set('pageSize','100');if(pageToken)url.searchParams.set('pageToken',pageToken);return fetch(url.toString(),{headers:{Authorization:'Bearer '+googleAccessToken}}).then(function(listRes){if(!listRes.ok){return listRes.text().then(function(txt){console.error('Erro lista media:',listRes.status,txt);return null})}return listRes.json()}).then(function(listData){if(!listData)return;if(listData.mediaItems)mediaItems.push.apply(mediaItems,listData.mediaItems);if(listData.nextPageToken)return fetchPage(listData.nextPageToken)})};return fetchPage('').then(function(){if(!mediaItems.length){toast('Nenhuma foto retornada pelo Google.','ℹ️');return null}toast('Baixando '+mediaItems.length+' foto(s)...','⬇️');var files=[];var chain=Promise.resolve();mediaItems.forEach(function(mi){chain=chain.then(function(){var isVideo=mi.type==='VIDEO';var baseUrl=(mi.mediaFile&&mi.mediaFile.baseUrl)||'';if(!baseUrl)return;var downloadUrl=baseUrl+(isVideo?'=dv':'=d');return fetch(downloadUrl).then(function(resp){if(!resp.ok)return;return resp.blob().then(function(blob){var fname=(mi.mediaFile&&mi.mediaFile.filename)||('google_'+mi.id);var ftype=(mi.mediaFile&&mi.mediaFile.mimeType)||(isVideo?'video/mp4':'image/jpeg');files.push(new File([blob],fname,{type:ftype}))})}).catch(function(e){console.warn('Falha ao baixar',mi.id,e)})})});return chain.then(function(){if(!files.length){toast('Não foi possível baixar as fotos. Tente novamente.','❌');return null}return handleIncomingFiles(files,'Google Fotos','google').then(function(){return fetch(GOOGLE_PICKER_SESSIONS_URL+'/'+sessionId,{method:'DELETE',headers:{Authorization:'Bearer '+googleAccessToken}}).catch(function(){})})})})})}).catch(function(e){if(e&&e.message==='popup_blocked')return;console.error(e);toast('Erro ao buscar fotos: '+e.message,'❌')})}
 
-// ============ INIT ============
-function initApp(){
-  return initDB().then(function(){
-    return dbGetAll();
-  }).then(function(all){
-    appState.items=all;
-  }).catch(function(e){console.error('DB init error',e)}).then(function(){
-    var savedClientId=localStorage.getItem(KEY_GOOGLE_CLIENT_ID)||'';
-    document.getElementById('googleClientIdInput').value=savedClientId;
-    applyThemeWithBot(appState.activeThemeId,false);
-    renderThemesGrid('all','');
-    document.getElementById('settingsCurrentCapacity').textContent=appState.quotaVal+' '+appState.quotaUnit;
-    document.getElementById('customQuotaInput').value=appState.quotaVal;
-    document.getElementById('customQuotaUnit').value=appState.quotaUnit;
-    document.querySelectorAll('#quotaPresets .preset-chip').forEach(function(b){
-      b.classList.toggle('active',parseInt(b.dataset.val,10)===appState.quotaVal&&b.dataset.unit===appState.quotaUnit);
-    });
-    updateTelemetry();
-    renderMediaGrid();
-    updateGoogleLinkUI(false);
-    requestPersistentStorage(true);
-    if(savedClientId)initGoogleAuth();
+function openModal(id){var el=document.getElementById(id);if(el){el.classList.add('open');document.body.style.overflow='hidden';playSciFiBeep('click')}}
+function closeModal(id){var el=document.getElementById(id);if(el){el.classList.remove('open');if(!document.querySelector('.modal-overlay.open'))document.body.style.overflow=''}}
 
-    // --- BOTÕES DO TOPO ---
-    document.getElementById('btnTopChangeThemeManual').addEventListener('click',function(){openModal('modalThemes')});
-    document.getElementById('btnQuickNextTheme').addEventListener('click',function(){
-      var currentIndex=THEMES.findIndex(function(t){return t.id===appState.activeThemeId});
-      var nextIndex=(currentIndex+1)%THEMES.length;
-      applyThemeWithBot(THEMES[nextIndex].id,true);
-    });
-    document.getElementById('btnOpenSettings').addEventListener('click',function(){openModal('modalSettings')});
-    document.getElementById('quickStorageBtn').addEventListener('click',function(){openModal('modalSettings')});
-    document.getElementById('btnOpenThemesModal').addEventListener('click',function(){
-      closeModal('modalSettings');openModal('modalThemes');
-    });
-    document.getElementById('btnOpenRobot').addEventListener('click',function(){openModal('modalRobot')});
-    document.getElementById('btnOpenRobotFromSettings').addEventListener('click',function(){
-      closeModal('modalSettings');openModal('modalRobot');
-    });
-    document.getElementById('btnRequestPersist').addEventListener('click',function(){requestPersistentStorage(false)});
+function initApp(){return initDB().then(function(){return dbGetAll()}).then(function(all){appState.items=all}).catch(function(e){console.error('DB init error',e)}).then(function(){var savedClientId=localStorage.getItem(KEY_GOOGLE_CLIENT_ID)||'';document.getElementById('googleClientIdInput').value=savedClientId;applyThemeWithBot(appState.activeThemeId,false);renderThemesGrid('all','');document.getElementById('settingsCurrentCapacity').textContent=appState.quotaVal+' '+appState.quotaUnit;document.getElementById('customQuotaInput').value=appState.quotaVal;document.getElementById('customQuotaUnit').value=appState.quotaUnit;document.querySelectorAll('#quotaPresets .preset-chip').forEach(function(b){b.classList.toggle('active',parseInt(b.dataset.val,10)===appState.quotaVal&&b.dataset.unit===appState.quotaUnit)});updateTelemetry();renderMediaGrid();updateGoogleLinkUI(false);requestPersistentStorage(true);if(savedClientId)initGoogleAuth();
+document.getElementById('btnTopChangeThemeManual').addEventListener('click',function(){openModal('modalThemes')});
+document.getElementById('btnQuickNextTheme').addEventListener('click',function(){var currentIndex=THEMES.findIndex(function(t){return t.id===appState.activeThemeId});var nextIndex=(currentIndex+1)%THEMES.length;applyThemeWithBot(THEMES[nextIndex].id,true)});
+document.getElementById('btnOpenSettings').addEventListener('click',function(){openModal('modalSettings')});
+document.getElementById('quickStorageBtn').addEventListener('click',function(){openModal('modalSettings')});
+document.getElementById('btnOpenThemesModal').addEventListener('click',function(){closeModal('modalSettings');openModal('modalThemes')});
+document.getElementById('btnOpenRobot').addEventListener('click',function(){openModal('modalRobot')});
+document.getElementById('btnOpenRobotFromSettings').addEventListener('click',function(){closeModal('modalSettings');openModal('modalRobot')});
+document.getElementById('btnRequestPersist').addEventListener('click',function(){requestPersistentStorage(false)});
+document.getElementById('btnLinkGoogle').addEventListener('click',linkGoogleAccount);
+document.getElementById('btnUnlinkGoogle').addEventListener('click',unlinkGoogleAccount);
+document.getElementById('btnPickGooglePhotos').addEventListener('click',pickGooglePhotos);
+document.getElementById('btnSaveClientId').addEventListener('click',function(){var val=document.getElementById('googleClientIdInput').value.trim();if(!val||val.indexOf('.apps.googleusercontent.com')<0){toast('⚠️ Client ID inválido. Deve terminar em .apps.googleusercontent.com','⚠️');return}localStorage.setItem(KEY_GOOGLE_CLIENT_ID,val);googleTokenClient=null;toast('✅ Client ID salvo com sucesso!','💾');updateGoogleLinkUI(false);initGoogleAuth()});
+document.getElementById('btnTestGoogleAuth').addEventListener('click',function(){var val=document.getElementById('googleClientIdInput').value.trim();if(!val){toast('⚠️ Cole o Client ID primeiro.','⚠️');return}localStorage.setItem(KEY_GOOGLE_CLIENT_ID,val);googleTokenClient=null;updateGoogleLinkUI(false);initGoogleAuth().then(function(ok){if(ok){toast('Testando vinculação...','🧪');linkGoogleAccount()}else toast('Falha ao inicializar. Verifique sua conexão.','❌')})});
+document.getElementById('btnBotRandomTheme').addEventListener('click',botSuggestRandomTheme);
+document.getElementById('themeSearchInput').addEventListener('input',function(e){var activeCatBtn=document.querySelector('#themeCategoryNav .theme-cat-btn.active');var activeCat=activeCatBtn?activeCatBtn.dataset.cat:'all';renderThemesGrid(activeCat,e.target.value)});
+document.querySelectorAll('#themeCategoryNav .theme-cat-btn').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#themeCategoryNav .theme-cat-btn').forEach(function(btn){btn.classList.remove('active')});b.classList.add('active');renderThemesGrid(b.dataset.cat,document.getElementById('themeSearchInput').value)})});
+var fileInput=document.getElementById('fileInput');
+document.getElementById('btnUploadTrigger').addEventListener('click',function(){fileInput.click()});
+document.getElementById('mediaGrid').addEventListener('click',function(e){if(e.target.closest('#btnEmptyAdd'))fileInput.click()});
+fileInput.addEventListener('change',function(e){handleIncomingFiles(e.target.files);e.target.value=''});
+var photoPicker=document.getElementById('photoPickerInput');
+document.getElementById('btnSendPhotoDirect').addEventListener('click',function(){photoPicker.click();toast('Escolha uma foto da galeria.','📸')});
+photoPicker.addEventListener('change',function(e){handleIncomingFiles(e.target.files,'Envio Direto');e.target.value=''});
+document.getElementById('btnLaunchGooglePhotos').addEventListener('click',function(){window.open('https://photos.google.com','_blank','noopener');toast('Google Fotos aberto! Baixe/copie e use "Enviar da Galeria" ou Ctrl+V.','🚀')});
+var zipFileInput=document.getElementById('zipFileInput');
+document.getElementById('btnImportTakeoutZip').addEventListener('click',function(){zipFileInput.click()});
+zipFileInput.addEventListener('change',function(e){var file=e.target.files[0];if(!file)return;toast('Extraindo e blindando pacote ZIP...','📦');JSZip.loadAsync(file).then(function(zip){var blobs=[];var chain=Promise.resolve();Object.keys(zip.files).forEach(function(fn){var fe=zip.files[fn];if(fe.dir)return;var ext=fn.split('.').pop().toLowerCase();if(['jpg','jpeg','png','webp','gif','mp4','mov','pdf'].indexOf(ext)>=0){chain=chain.then(function(){return fe.async('blob').then(function(blob){blobs.push({blob:blob,name:fn.split('/').pop()||fn})})})}});return chain.then(function(){var files=blobs.map(function(b){return new File([b.blob],b.name,{type:b.blob.type||'image/jpeg'})});return handleIncomingFiles(files,'ZIP')})}).catch(function(err){console.error(err);toast('Erro ao ler arquivo ZIP.','❌')});e.target.value=''});
+document.getElementById('btnExportAllZip').addEventListener('click',function(){if(!appState.items.length){alert('O cofre está vazio!');return}toast('Gerando arquivo ZIP blindado...','📦');var zip=new JSZip();appState.items.forEach(function(item,idx){var base64=item.dataUrl.split(',')[1];var safeName=String(item.name).replace(/[\\/:*?"<>|]/g,'_');zip.file(('0000'+(idx+1)).slice(-4)+'_'+safeName,base64,{base64:true})});zip.generateAsync({type:'blob'}).then(function(content){var a=document.createElement('a');a.href=URL.createObjectURL(content);a.download='MANGEDORA_APPLE_BACKUP_'+Date.now()+'.zip';a.click();setTimeout(function(){URL.revokeObjectURL(a.href)},5000);toast('Backup exportado com sucesso!','🛡️')})});
+document.getElementById('btnClearAllVault').addEventListener('click',function(){if(confirm('Deseja apagar todas as mídias do cofre local permanentemente?')&&confirm('Confirmação final: ação irreversível.')){dbClear().catch(function(){}).then(function(){appState.items=[];updateTelemetry();renderMediaGrid();toast('Cofre esvaziado.','🗑️')})}});
+document.querySelectorAll('#quotaPresets .preset-chip').forEach(function(b){b.addEventListener('click',function(){saveQuota(b.dataset.val,b.dataset.unit)})});
+document.getElementById('btnSaveCustomQuota').addEventListener('click',function(){saveQuota(document.getElementById('customQuotaInput').value,document.getElementById('customQuotaUnit').value)});
+document.getElementById('btnRobotOptimize').addEventListener('click',robotRunOptimization);
+document.getElementById('btnRobotDuplicates').addEventListener('click',robotScanDuplicates);
+document.getElementById('btnRobotDefrag').addEventListener('click',robotDefragDatabase);
+document.getElementById('btnDownloadLightbox').addEventListener('click',function(){if(appState.activeLightboxItem)downloadItem(appState.activeLightboxItem)});
+document.querySelectorAll('.filter-tabs .filter-btn').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.filter-tabs .filter-btn').forEach(function(btn){btn.classList.remove('active')});b.classList.add('active');appState.filter=b.dataset.filter;appState.visibleCount=PAGE_SIZE;renderMediaGrid()})});
+document.getElementById('searchInput').addEventListener('input',function(e){appState.search=e.target.value;appState.visibleCount=PAGE_SIZE;renderMediaGrid()});
+document.getElementById('sortSelect').addEventListener('change',function(e){appState.sort=e.target.value;appState.visibleCount=PAGE_SIZE;renderMediaGrid()});
+window.addEventListener('paste',function(e){var items=(e.clipboardData||e.originalEvent.clipboardData).items;var files=[];for(var i=0;i<items.length;i++){if(items[i].kind==='file'){var f=items[i].getAsFile();if(f)files.push(f)}}if(files.length){toast('Foto recebida da área de transferência!','📋');handleIncomingFiles(files,'Colar')}});
+window.addEventListener('dragover',function(e){e.preventDefault()});
+window.addEventListener('drop',function(e){e.preventDefault();if(e.dataTransfer&&e.dataTransfer.files.length){handleIncomingFiles(e.dataTransfer.files,'Arrastar')}});
+document.querySelectorAll('.modal-overlay').forEach(function(o){o.addEventListener('click',function(e){if(e.target===o){o.classList.remove('open');if(!document.querySelector('.modal-overlay.open'))document.body.style.overflow=''}})});
+document.querySelectorAll('[data-close]').forEach(function(btn){btn.addEventListener('click',function(){closeModal(btn.dataset.close)})});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.modal-overlay.open').forEach(function(m){m.classList.remove('open')});document.body.style.overflow=''}})})}
 
-    // --- GOOGLE ---
-    document.getElementById('btnLinkGoogle').addEventListener('click',linkGoogleAccount);
-    document.getElementById('btnUnlinkGoogle').addEventListener('click',unlinkGoogleAccount);
-    document.getElementById('btnPickGooglePhotos').addEventListener('click',pickGooglePhotos);
-    document.getElementById('btnSaveClientId').addEventListener('click',function(){
-      var val=document.getElementById('googleClientIdInput').value.trim();
-      if(!val||val.indexOf('.apps.googleusercontent.com')<0){
-        toast('⚠️ Client ID inválido. Deve terminar em .apps.googleusercontent.com','⚠️');
-        return;
-      }
-      localStorage.setItem(KEY_GOOGLE_CLIENT_ID,val);
-      googleTokenClient=null;
-      toast('✅ Client ID salvo com sucesso!','💾');
-      updateGoogleLinkUI(false);
-      initGoogleAuth();
-    });
-    document.getElementById('btnTestGoogleAuth').addEventListener('click',function(){
-      var val=document.getElementById('googleClientIdInput').value.trim();
-      if(!val){toast('⚠️ Cole o Client ID primeiro.','⚠️');return;}
-      localStorage.setItem(KEY_GOOGLE_CLIENT_ID,val);
-      googleTokenClient=null;
-      updateGoogleLinkUI(false);
-      initGoogleAuth().then(function(ok){
-        if(ok){toast('Testando vinculação...','🧪');linkGoogleAccount();}
-        else toast('Falha ao inicializar. Verifique sua conexão.','❌');
-      });
-    });
-
-    // --- TEMAS ---
-    document.getElementById('btnBotRandomTheme').addEventListener('click',botSuggestRandomTheme);
-    document.getElementById('themeSearchInput').addEventListener('input',function(e){
-      var activeCatBtn=document.querySelector('#themeCategoryNav .theme-cat-btn.active');
-      var activeCat=activeCatBtn?activeCatBtn.dataset.cat:'all';
-      renderThemesGrid(activeCat,e.target.value);
-    });
-    document.querySelectorAll('#themeCategoryNav .theme-cat-btn').forEach(function(b){
-      b.addEventListener('click',function(){
-        document.querySelectorAll('#themeCategoryNav .theme-cat-btn').forEach(function(btn){btn.classList.remove('active')});
-        b.classList.add('active');
-        renderThemesGrid(b.dataset.cat,document.getElementById('themeSearchInput').value);
-      });
-    });
-
-    // --- UPLOAD (delegação de eventos para o botão "Carregar Primeiros Arquivos") ---
-    var fileInput=document.getElementById('fileInput');
-    document.getElementById('btnUploadTrigger').addEventListener('click',function(){fileInput.click()});
-    document.getElementById('mediaGrid').addEventListener('click',function(e){
-      if(e.target.closest('#btnEmptyAdd'))fileInput.click();
-    });
-    fileInput.addEventListener('change',function(e){
-      handleIncomingFiles(e.target.files);
-      e.target.value='';
-    });
-
-    // --- ENVIO DIRETO DA GALERIA ---
-    var photoPicker=document.getElementById('photoPickerInput');
-    document.getElementById('btnSendPhotoDirect').addEventListener('click',function(){
-      photoPicker.click();
-      toast('Escolha uma foto da galeria.','📸');
-    });
-    photoPicker.addEventListener('change',function(e){
-      handleIncomingFiles(e.target.files,'Envio Direto');
-      e.target.value='';
-    });
-
-    // --- GOOGLE FOTOS WEB ---
-    document.getElementById('btnLaunchGooglePhotos').addEventListener('click',function(){
-      window.open('https://photos.google.com','_blank','noopener');
-      toast('Google Fotos aberto! Baixe/copie e use "Enviar da Galeria" ou Ctrl+V.','🚀');
-    });
-
-    // --- ZIP IMPORT ---
-    var zipFileInput=document.getElementById('zipFileInput');
-    document.getElementById('btnImportTakeoutZip').addEventListener('click',function(){zipFileInput.click()});
-    zipFileInput.addEventListener('change',function(e){
-      var file=e.target.files[0];
-      if(!file)return;
-      toast('Extraindo e blindando pacote ZIP...','📦');
-      JSZip.loadAsync(file).then(function(zip){
-        var blobs=[];
-        var chain=Promise.resolve();
-        Object.keys(zip.files).forEach(function(fn){
-          var fe=zip.files[fn];
-          if(fe.dir)return;
-          var ext=fn.split('.').pop().toLowerCase();
-          if(['jpg','jpeg','png','webp','gif','mp4','mov','pdf'].indexOf(ext)>=0){
-            chain=chain.then(function(){
-              return fe.async('blob').then(function(blob){
-                blobs.push({blob:blob,name:fn.split('/').pop()||fn});
-              });
-            });
-          }
-        });
-        return chain.then(function(){
-          var files=blobs.map(function(b){return new File([b.blob],b.name,{type:b.blob.type||'image/jpeg'})});
-          return handleIncomingFiles(files,'ZIP');
-        });
-      }).catch(function(err){
-        console.error(err);
-        toast('Erro ao ler arquivo ZIP.','❌');
-      });
-      e.target.value='';
-    });
-
-    // --- ZIP EXPORT ---
-    document.getElementById('btnExportAllZip').addEventListener('click',function(){
-      if(!appState.items.length){alert('O cofre está vazio!');return}
-      toast('Gerando arquivo ZIP blindado...','📦');
-      var zip=new JSZip();
-      appState.items.forEach(function(item,idx){
-        var base64=item.dataUrl.split(',')[1];
-        var safeName=String(item.name).replace(/[\\/:*?"<>|]/g,'_');
-        zip.file(('0000'+(idx+1)).slice(-4)+'_'+safeName,base64,{base64:true});
-      });
-      zip.generateAsync({type:'blob'}).then(function(content){
-        var a=document.createElement('a');
-        a.href=URL.createObjectURL(content);
-        a.download='MANGEDORA_APPLE_BACKUP_'+Date.now()+'.zip';
-        a.click();
-        setTimeout(function(){URL.revokeObjectURL(a.href)},5000);
-        toast('Backup exportado com sucesso!','🛡️');
-      });
-    });
-
-    // --- LIMPAR TUDO ---
-    document.getElementById('btnClearAllVault').addEventListener('click',function(){
-      if(confirm('Deseja apagar todas as mídias do cofre local permanentemente?')&&confirm('Confirmação final: ação irreversível.')){
-        dbClear().catch(function(){}).then(function(){
-          appState.items=[];
-          updateTelemetry();
-          renderMediaGrid();
-          toast('Cofre esvaziado.','🗑️');
-        });
-      }
-    });
-
-    // --- QUOTA ---
-    document.querySelectorAll('#quotaPresets .preset-chip').forEach(function(b){
-      b.addEventListener('click',function(){saveQuota(b.dataset.val,b.dataset.unit)});
-    });
-    document.getElementById('btnSaveCustomQuota').addEventListener('click',function(){
-      saveQuota(document.getElementById('customQuotaInput').value,document.getElementById('customQuotaUnit').value);
-    });
-
-    // --- ROBÔ ---
-    document.getElementById('btnRobotOptimize').addEventListener('click',robotRunOptimization);
-    document.getElementById('btnRobotDuplicates').addEventListener('click',robotScanDuplicates);
-    document.getElementById('btnRobotDefrag').addEventListener('click',robotDefragDatabase);
-
-    // --- LIGHTBOX ---
-    document.getElementById('btnDownloadLightbox').addEventListener('click',function(){
-      if(appState.activeLightboxItem)downloadItem(appState.activeLightboxItem);
-    });
-
-    // --- FILTROS / BUSCA / SORT ---
-    document.querySelectorAll('.filter-tabs .filter-btn').forEach(function(b){
-      b.addEventListener('click',function(){
-        document.querySelectorAll('.filter-tabs .filter-btn').forEach(function(btn){btn.classList.remove('active')});
-        b.classList.add('active');
-        appState.filter=b.dataset.filter;
-        appState.visibleCount=PAGE_SIZE;
-        renderMediaGrid();
-      });
-    });
-    document.getElementById('searchInput').addEventListener('input',function(e){
-      appState.search=e.target.value;
-      appState.visibleCount=PAGE_SIZE;
-      renderMediaGrid();
-    });
-    document.getElementById('sortSelect').addEventListener('change',function(e){
-      appState.sort=e.target.value;
-      appState.visibleCount=PAGE_SIZE;
-      renderMediaGrid();
-    });
-
-    // --- PASTE ---
-    window.addEventListener('paste',function(e){
-      var items=(e.clipboardData||e.originalEvent.clipboardData).items;
-      var files=[];
-      for(var i=0;i<items.length;i++){
-        if(items[i].kind==='file'){
-          var f=items[i].getAsFile();
-          if(f)files.push(f);
-        }
-      }
-      if(files.length){
-        toast('Foto recebida da área de transferência!','📋');
-        handleIncomingFiles(files,'Colar');
-      }
-    });
-
-    // --- DRAG & DROP ---
-    window.addEventListener('dragover',function(e){e.preventDefault()});
-    window.addEventListener('drop',function(e){
-      e.preventDefault();
-      if(e.dataTransfer&&e.dataTransfer.files.length){
-        handleIncomingFiles(e.dataTransfer.files,'Arrastar');
-      }
-    });
-
-    // --- FECHAR MODAIS ---
-    document.querySelectorAll('.modal-overlay').forEach(function(o){
-      o.addEventListener('click',function(e){
-        if(e.target===o){
-          o.classList.remove('open');
-          if(!document.querySelector('.modal-overlay.open'))document.body.style.overflow='';
-        }
-      });
-    });
-    document.querySelectorAll('[data-close]').forEach(function(btn){
-      btn.addEventListener('click',function(){closeModal(btn.dataset.close)});
-    });
-    document.addEventListener('keydown',function(e){
-      if(e.key==='Escape'){
-        document.querySelectorAll('.modal-overlay.open').forEach(function(m){m.classList.remove('open')});
-        document.body.style.overflow='';
-      }
-    });
-  });
-}
-
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initApp);
-else initApp();
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initApp);else initApp();
 })();
 </script>
 </body>
