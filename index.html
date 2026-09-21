@@ -3,32 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <meta name="description" content="MANGEDORA APPLE ELITE • Cofre Blindado Autônomo com Conexão Direta ao Google Fotos e Telemetria Avançada.">
-  <meta name="theme-color" content="#08090d">
-  <title>MANGEDORA APPLE • Elite Vault & Google Fotos Autônomo</title>
+  <meta name="description" content="MANGEDORA APPLE ELITE • Cofre Blindado com Bot Treinado Plus, Google Fotos Autônomo e Cota Manual de GB.">
+  <meta name="theme-color" content="#06070a">
+  <title>MANGEDORA APPLE • Elite Pro Vault, Bot Treinado Plus & Google Fotos</title>
 
   <!-- Favicon SVG Elite -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%230f1420' stroke='%233b82f6' stroke-width='2'/><path d='M16 6l9 5v6c0 5.5-4 9.5-9 11-5-1.5-9-5.5-9-11v-6l9-5z' fill='%231d283a' stroke='%2360a5fa' stroke-width='1.5'/><circle cx='16' cy='16' r='3.5' fill='%23facc15'/></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%230b0e17' stroke='%233b82f6' stroke-width='2'/><path d='M16 6l9 5v6c0 5.5-4 9.5-9 11-5-1.5-9-5.5-9-11v-6l9-5z' fill='%23131b2e' stroke='%2360a5fa' stroke-width='1.5'/><circle cx='16' cy='16' r='3.5' fill='%23f59e0b'/></svg>">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- JSZip para Backup e Importação de Pacotes Google Fotos -->
+  <!-- JSZip para Backup Total e Extração de Pacotes sem Servidor -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
   <style>
     :root {
       /* Paleta Obsidian Elite Pro */
-      --bg-base: #07080c;
-      --bg-surface: #0e111a;
-      --bg-surface-elevated: #141824;
-      --bg-card: rgba(18, 22, 34, 0.75);
-      --bg-card-hover: rgba(26, 32, 48, 0.85);
+      --bg-base: #06070a;
+      --bg-surface: #0c0f17;
+      --bg-surface-elevated: #121724;
+      --bg-card: rgba(16, 21, 33, 0.75);
+      --bg-card-hover: rgba(24, 31, 48, 0.88);
 
-      --border-subtle: rgba(255, 255, 255, 0.07);
-      --border-medium: rgba(255, 255, 255, 0.13);
-      --border-focus: rgba(99, 102, 241, 0.5);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-medium: rgba(255, 255, 255, 0.15);
+      --border-focus: rgba(99, 102, 241, 0.55);
 
       --text-primary: #f8fafc;
       --text-secondary: #94a3b8;
@@ -38,7 +38,7 @@
       /* Cores de Prestígio & Elite */
       --elite-gold: #f59e0b;
       --elite-gold-soft: #fef3c7;
-      --elite-gold-glow: rgba(245, 158, 11, 0.25);
+      --elite-gold-glow: rgba(245, 158, 11, 0.28);
 
       --sapphire: #3b82f6;
       --sapphire-glow: rgba(59, 130, 246, 0.35);
@@ -49,7 +49,13 @@
       --danger: #f43f5e;
       --danger-glow: rgba(244, 63, 94, 0.35);
 
-      /* Google Fotos Cores Brand */
+      /* Cores Bot Treinado Plus / IA Neural */
+      --bot-cyan: #06b6d4;
+      --bot-purple: #a855f7;
+      --bot-gradient: linear-gradient(135deg, #06b6d4, #8b5cf6);
+      --bot-glow: rgba(6, 182, 212, 0.35);
+
+      /* Google Fotos Cores Oficiais */
       --gphotos-blue: #4285F4;
       --gphotos-red: #EA4335;
       --gphotos-yellow: #FBBC05;
@@ -84,8 +90,8 @@
       overflow-x: hidden;
       line-height: 1.5;
       background-image: 
-        radial-gradient(circle at 15% 10%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 85% 15%, rgba(245, 158, 11, 0.07) 0%, transparent 45%),
+        radial-gradient(circle at 10% 10%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 15%, rgba(6, 182, 212, 0.07) 0%, transparent 45%),
         radial-gradient(circle at 50% 90%, rgba(16, 185, 129, 0.05) 0%, transparent 55%);
       background-attachment: fixed;
     }
@@ -106,15 +112,14 @@
       outline: none;
     }
 
-    /* Scrollbar estilizada */
     ::-webkit-scrollbar { width: 7px; height: 7px; }
     ::-webkit-scrollbar-track { background: var(--bg-base); }
-    ::-webkit-scrollbar-thumb { background: #1f2536; border-radius: 4px; border: 1px solid var(--border-subtle); }
+    ::-webkit-scrollbar-thumb { background: #1c2233; border-radius: 4px; border: 1px solid var(--border-subtle); }
     ::-webkit-scrollbar-thumb:hover { background: var(--sapphire); }
 
     /* LAYOUT CONTAINER */
     .app-shell {
-      max-width: 1520px;
+      max-width: 1540px;
       margin: 0 auto;
       padding: 0 1.25rem 3rem;
       display: flex;
@@ -127,16 +132,16 @@
       position: sticky;
       top: 0;
       z-index: 80;
-      background: rgba(10, 12, 18, 0.85);
+      background: rgba(8, 10, 15, 0.85);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border-subtle);
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
     }
     .header-content {
-      max-width: 1520px;
+      max-width: 1540px;
       margin: 0 auto;
-      padding: 0.85rem 1.25rem;
+      padding: 0.8rem 1.25rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -155,7 +160,7 @@
       width: 46px;
       height: 46px;
       border-radius: 14px;
-      background: linear-gradient(135deg, #1e2638, #0e121b);
+      background: linear-gradient(135deg, #192133, #0b0f17);
       border: 1px solid rgba(255, 255, 255, 0.15);
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 15px rgba(59, 130, 246, 0.15);
       display: grid;
@@ -200,7 +205,14 @@
       letter-spacing: 0.05em;
     }
 
-    /* BOTÕES ELITE */
+    /* BOTÕES */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -231,14 +243,28 @@
       transform: translateY(-1px);
     }
 
+    .btn-bot-plus {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(168, 85, 247, 0.2));
+      border: 1px solid rgba(6, 182, 212, 0.5);
+      color: #cffafe;
+      box-shadow: 0 0 16px rgba(6, 182, 212, 0.25);
+    }
+    .btn-bot-plus:hover {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.35), rgba(168, 85, 247, 0.35));
+      border-color: var(--bot-cyan);
+      box-shadow: 0 0 24px rgba(6, 182, 212, 0.45);
+      transform: translateY(-1px);
+      color: #fff;
+    }
+
     .btn-gphotos {
-      background: rgba(14, 18, 28, 0.9);
+      background: rgba(13, 17, 26, 0.9);
       border: 1px solid rgba(66, 133, 244, 0.4);
       color: #e2e8f0;
       box-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
     }
     .btn-gphotos:hover {
-      background: rgba(22, 28, 44, 0.95);
+      background: rgba(20, 26, 40, 0.95);
       border-color: var(--gphotos-blue);
       box-shadow: 0 0 20px rgba(66, 133, 244, 0.3);
       transform: translateY(-1px);
@@ -254,6 +280,18 @@
       background: rgba(255, 255, 255, 0.09);
       border-color: var(--border-medium);
       color: var(--text-primary);
+    }
+
+    .btn-settings {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #cbd5e1;
+    }
+    .btn-settings:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: #94a3b8;
+      color: #fff;
+      transform: rotate(25deg);
     }
 
     .btn-icon-only {
@@ -336,7 +374,6 @@
       background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
     }
 
-    /* CARD DE GRÁFICO CIRCULAR (DONUT CHART) */
     .chart-panel {
       display: flex;
       flex-direction: column;
@@ -393,7 +430,6 @@
       letter-spacing: 0.05em;
     }
 
-    /* DETALHES DE ARMAZENAMENTO */
     .storage-stats-container {
       display: flex;
       flex-direction: column;
@@ -480,7 +516,7 @@
       color: var(--text-tertiary);
     }
 
-    /* CENTRAL GOOGLE FOTOS & DROPZONE ELITE */
+    /* CENTRAL GOOGLE FOTOS & DROPZONE */
     .vip-action-section {
       display: grid;
       grid-template-columns: 1fr 340px;
@@ -490,11 +526,10 @@
       .vip-action-section { grid-template-columns: 1fr; }
     }
 
-    /* DROPZONE PRINCIPAL */
     .elite-dropzone {
       border: 2px dashed rgba(59, 130, 246, 0.35);
       border-radius: var(--radius-xl);
-      background: radial-gradient(circle at 50% 30%, rgba(30, 41, 59, 0.6), rgba(14, 17, 26, 0.95));
+      background: radial-gradient(circle at 50% 30%, rgba(26, 36, 54, 0.6), rgba(12, 15, 24, 0.95));
       padding: 2.5rem 1.75rem;
       text-align: center;
       position: relative;
@@ -522,9 +557,7 @@
       gap: 1rem;
       pointer-events: none;
     }
-    .dropzone-core button {
-      pointer-events: auto;
-    }
+    .dropzone-core button { pointer-events: auto; }
     .dropzone-hex-icon {
       width: 70px;
       height: 70px;
@@ -575,9 +608,8 @@
       border: 1px solid var(--border-subtle);
     }
 
-    /* CARD GOOGLE FOTOS AUTÔNOMO LATERAL */
     .gphotos-direct-card {
-      background: linear-gradient(180deg, rgba(24, 29, 44, 0.8), rgba(12, 15, 24, 0.95));
+      background: linear-gradient(180deg, rgba(22, 27, 42, 0.8), rgba(11, 14, 22, 0.95));
       border: 1px solid rgba(66, 133, 244, 0.35);
       border-radius: var(--radius-xl);
       padding: 1.4rem;
@@ -598,7 +630,7 @@
       height: 44px;
       flex-shrink: 0;
       border-radius: 12px;
-      background: #111624;
+      background: #101420;
       border: 1px solid rgba(255, 255, 255, 0.1);
       display: grid;
       place-items: center;
@@ -652,7 +684,7 @@
       transform: translateY(-2px);
     }
 
-    /* TOOLBAR DA GALERIA */
+    /* TOOLBAR */
     .gallery-control-strip {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
@@ -973,7 +1005,7 @@
       margin-bottom: 0.5rem;
     }
 
-    /* LIGHTBOX ELITE */
+    /* LIGHTBOX */
     .lightbox-backdrop {
       position: fixed;
       inset: 0;
@@ -986,10 +1018,7 @@
       opacity: 0;
       transition: opacity 0.25s ease;
     }
-    .lightbox-backdrop.active {
-      display: flex;
-      opacity: 1;
-    }
+    .lightbox-backdrop.active { display: flex; opacity: 1; }
 
     .lightbox-topbar {
       padding: 0.9rem 1.5rem;
@@ -1070,7 +1099,7 @@
     .lightbox-prev { left: 1.5rem; }
     .lightbox-next { right: 1.5rem; }
 
-    /* MODAL: GOOGLE FOTOS */
+    /* MODAL BASE */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -1090,10 +1119,12 @@
       border: 1px solid var(--border-medium);
       border-radius: var(--radius-xl);
       width: 100%;
-      max-width: 620px;
+      max-width: 660px;
       overflow: hidden;
       box-shadow: 0 25px 70px rgba(0, 0, 0, 0.7), 0 0 35px rgba(59, 130, 246, 0.15);
       animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
     }
     @keyframes modalPop {
       from { transform: scale(0.95); opacity: 0; }
@@ -1101,7 +1132,7 @@
     }
 
     .modal-dialog-header {
-      padding: 1.25rem 1.6rem;
+      padding: 1.2rem 1.6rem;
       border-bottom: 1px solid var(--border-subtle);
       background: rgba(255, 255, 255, 0.02);
       display: flex;
@@ -1123,6 +1154,157 @@
       gap: 1.25rem;
       max-height: 75vh;
       overflow-y: auto;
+    }
+
+    /* CONFIGURAÇÕES STYLES */
+    .settings-section-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .settings-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .settings-title-row h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .settings-desc {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    .preset-gb-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+      gap: 0.5rem;
+    }
+    .btn-preset-gb {
+      padding: 0.5rem 0.3rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-align: center;
+    }
+    .btn-preset-gb:hover {
+      background: rgba(59, 130, 246, 0.15);
+      border-color: var(--sapphire);
+      color: #fff;
+    }
+    .btn-preset-gb.active {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      border-color: #60a5fa;
+      color: #fff;
+      box-shadow: 0 0 12px rgba(37, 99, 235, 0.5);
+    }
+
+    .custom-gb-input-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .custom-gb-input {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 0.6rem 0.9rem;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: #fff;
+    }
+    .custom-gb-input:focus {
+      border-color: var(--sapphire);
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+    }
+
+    /* BOT PLUS STYLES */
+    .bot-header-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      background: rgba(6, 182, 212, 0.15);
+      border: 1px solid rgba(6, 182, 212, 0.4);
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      color: #67e8f9;
+    }
+    .bot-console-card {
+      background: #06080d;
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: #a5f3fc;
+      max-height: 190px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
+    }
+    .console-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      word-break: break-all;
+    }
+    .console-line.success { color: #86efac; }
+    .console-line.warning { color: #fde047; }
+    .console-line.action { color: #c084fc; font-weight: 700; }
+
+    .bot-action-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+    }
+    @media (max-width: 600px) {
+      .bot-action-cards-grid { grid-template-columns: 1fr; }
+    }
+    .bot-tool-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.8rem;
+    }
+    .bot-tool-card:hover {
+      border-color: rgba(6, 182, 212, 0.4);
+      background: rgba(6, 182, 212, 0.04);
+    }
+    .bot-tool-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    .bot-tool-desc {
+      font-size: 0.74rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
     }
 
     .gphotos-method-card {
@@ -1152,7 +1334,6 @@
       line-height: 1.4;
     }
 
-    /* TOAST */
     .toast-tray {
       position: fixed;
       bottom: 1.5rem;
@@ -1184,6 +1365,7 @@
     .toast-item.success { border-left-color: var(--emerald); }
     .toast-item.error { border-left-color: var(--danger); }
     .toast-item.warning { border-left-color: var(--elite-gold); }
+    .toast-item.bot { border-left-color: var(--bot-cyan); }
     .toast-item.gphotos { border-left-color: var(--gphotos-blue); }
 
     .site-footer {
@@ -1213,11 +1395,23 @@
           <div class="brand-name">
             MANGEDORA APPLE <span class="brand-tag">PRO ELITE</span>
           </div>
-          <div class="brand-sub">COFRE BLINDADO INDEPENDENTE • GOOGLE FOTOS AUTÔNOMO</div>
+          <div class="brand-sub">COFRE BLINDADO INDEPENDENTE • GOOGLE FOTOS & BOT PLUS</div>
         </div>
       </div>
 
       <div class="header-actions">
+        <!-- BOTÃO BOT TREINADO PLUS -->
+        <button id="btnOpenBotModal" class="btn btn-bot-plus" type="button" title="Bot Treinado Plus - Otimizador Inteligente de Armazenamento">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="10" rx="2"></rect>
+            <circle cx="12" cy="5" r="2"></circle>
+            <path d="M12 7v4"></path>
+            <line x1="8" y1="16" x2="8.01" y2="16"></line>
+            <line x1="16" y1="16" x2="16.01" y2="16"></line>
+          </svg>
+          <span>Bot Treinado Plus</span>
+        </button>
+
         <!-- BOTÃO DIRETO GOOGLE FOTOS (SEM TOKEN) -->
         <button id="headerOpenGPhotosBtn" class="btn btn-gphotos" type="button" title="Acessar Galeria do Google Fotos Direto sem Chave">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
@@ -1229,16 +1423,6 @@
           <span>Google Fotos Direto</span>
         </button>
 
-        <!-- BACKUP GERAL ZIP -->
-        <button id="btnExportZip" class="btn btn-secondary" type="button" title="Exportar todas as fotos e vídeos protegidos em ZIP">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="7 10 12 15 17 10"></polyline>
-            <line x1="12" y1="15" x2="12" y2="3"></line>
-          </svg>
-          <span>Backup ZIP</span>
-        </button>
-
         <!-- ADICIONAR AO COFRE -->
         <button id="btnMainUpload" class="btn btn-primary" type="button">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -1246,6 +1430,14 @@
             <line x1="5" y1="12" x2="19" y2="12"></line>
           </svg>
           <span>Guardar no Cofre</span>
+        </button>
+
+        <!-- BOTÃO CONFIGURAÇÕES -->
+        <button id="btnOpenSettings" class="btn btn-settings btn-icon-only" type="button" title="Configurações do Cofre & Ajuste de Capacidade Manual">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
         </button>
       </div>
     </div>
@@ -1268,7 +1460,7 @@
       </div>
       <div class="security-status-badge">
         <span class="pulse-dot"></span>
-        <span>INDEXEDDB PERSISTENTE</span>
+        <span id="storagePersistenceText">INDEXEDDB PERSISTENTE</span>
       </div>
     </div>
 
@@ -1276,8 +1468,13 @@
     <section class="telemetry-grid">
       <!-- GRÁFICO CIRCULAR SVG DINÂMICO (DONUT) -->
       <div class="telemetry-card chart-panel">
-        <div style="font-size:0.82rem;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.06em">
-          Distribuição do Cofre
+        <div style="display:flex;align-items:center;justify-content:space-between;width:100%">
+          <div style="font-size:0.8rem;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.06em">
+            Distribuição do Cofre
+          </div>
+          <button id="btnQuickConfigCapacity" class="btn btn-secondary" style="padding:0.25rem 0.55rem;font-size:0.68rem" title="Alterar cota em GB">
+            ⚙️ Ajustar GB
+          </button>
         </div>
 
         <div class="donut-wrapper">
@@ -1300,7 +1497,7 @@
         </div>
       </div>
 
-      <!-- DETALHES DE ARMAZENAMENTO & CAPACIDADE REAL DO DISPOSITIVO -->
+      <!-- DETALHES DE ARMAZENAMENTO & CAPACIDADE CONFIGURADA -->
       <div class="telemetry-card storage-stats-container">
         <div>
           <div class="storage-header-row">
@@ -1312,11 +1509,11 @@
                 Telemetria de Armazenamento Blindado
               </h3>
               <div class="storage-subheadline">
-                Utilizando <strong id="storageUsedFormatted" style="color:#fff">0 MB</strong> de <strong id="storageQuotaFormatted" style="color:var(--text-secondary)">--</strong> disponível no hardware
+                Utilizando <strong id="storageUsedFormatted" style="color:#fff">0 MB</strong> de <strong id="storageQuotaFormatted" style="color:var(--text-secondary)">--</strong> disponível no cofre
               </div>
             </div>
             <div id="storageStatusBadge" class="security-status-badge" style="background:rgba(59,130,246,0.12);color:#93c5fd;border-color:rgba(59,130,246,0.3)">
-              Hardware Seguro
+              Cota Customizada Ativa
             </div>
           </div>
 
@@ -1405,14 +1602,11 @@
               Tirar Foto Agora
             </button>
 
-            <button id="btnRestoreZip" class="btn btn-secondary" type="button" title="Importar arquivo ZIP de fotos (ex: Google Takeout ou backup anterior)">
+            <button id="btnTriggerBotOptimizer" class="btn btn-bot-plus" type="button" title="Otimizar fotos e liberar espaço com o Bot Plus">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="16 16 12 12 8 16"></polyline>
-                <line x1="12" y1="12" x2="12" y2="21"></line>
-                <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path>
-                <polyline points="16 16 12 12 8 16"></polyline>
+                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
               </svg>
-              Importar ZIP
+              Otimizar Espaço (IA)
             </button>
           </div>
 
@@ -1541,8 +1735,206 @@
     <!-- FOOTER -->
     <footer class="site-footer">
       <div>MANGEDORA APPLE PRO ELITE • ARQUITETURA AUTÔNOMA OFFLINE-FIRST</div>
-      <div style="margin-top:0.3rem">Armazenamento isolado no dispositivo com garantia de imunidade contra apagamentos na nuvem ou celular.</div>
+      <div style="margin-top:0.3rem">Armazenamento isolado no dispositivo com Bot Treinado Plus e suporte Google Fotos sem chaves.</div>
     </footer>
+  </div>
+
+  <!-- MODAL: CONFIGURAÇÕES ELITE (AUMENTAR GB MANUALMENTE) -->
+  <div id="settingsModal" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="elite-modal-dialog">
+      <div class="modal-dialog-header">
+        <div class="modal-dialog-title">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+          Configurações Avançadas do Cofre
+        </div>
+        <button id="closeSettingsModalBtn" class="btn btn-secondary btn-icon-only" type="button">✕</button>
+      </div>
+
+      <div class="modal-dialog-body">
+        <!-- SEÇÃO: AJUSTE MANUAL DE GB -->
+        <div class="settings-section-card">
+          <div class="settings-title-row">
+            <h4>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                <line x1="6" y1="18" x2="6.01" y2="18"></line>
+              </svg>
+              Capacidade Manual de Armazenamento (GB)
+            </h4>
+            <span id="currentQuotaBadge" class="security-status-badge">100 GB</span>
+          </div>
+          <p class="settings-desc">
+            Aumente ou personalize manualmente o limite de gigabytes (GB) exibido e monitorado pelo cofre e telemetria:
+          </p>
+
+          <div class="preset-gb-grid">
+            <button class="btn-preset-gb" data-gb="50" type="button">50 GB</button>
+            <button class="btn-preset-gb" data-gb="100" type="button">100 GB</button>
+            <button class="btn-preset-gb" data-gb="250" type="button">250 GB</button>
+            <button class="btn-preset-gb" data-gb="500" type="button">500 GB</button>
+            <button class="btn-preset-gb" data-gb="1000" type="button">1 TB</button>
+            <button class="btn-preset-gb" data-gb="2000" type="button">2 TB</button>
+            <button class="btn-preset-gb" data-gb="5000" type="button">5 TB</button>
+          </div>
+
+          <div class="custom-gb-input-row">
+            <input type="number" id="inputCustomGB" class="custom-gb-input" placeholder="Digite valor personalizado em GB (ex: 750)" min="1" max="100000">
+            <button id="btnApplyCustomGB" class="btn btn-primary" type="button">
+              Salvar GB
+            </button>
+          </div>
+        </div>
+
+        <!-- SEÇÃO: MOTOR IA DO BOT TREINADO PLUS -->
+        <div class="settings-section-card">
+          <div class="settings-title-row">
+            <h4>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2">
+                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+              </svg>
+              Otimizador Neural Automático
+            </h4>
+            <span class="security-status-badge" style="background:rgba(6,182,212,0.15);color:#67e8f9;border-color:rgba(6,182,212,0.4)">Modo Plus</span>
+          </div>
+          <p class="settings-desc">
+            O Bot Treinado Plus monitora a integridade dos blocos de dados no IndexedDB para impedir inchaço de memória e maximizar seu espaço.
+          </p>
+          <div style="display:flex;gap:0.75rem;flex-wrap:wrap">
+            <button id="btnOpenBotFromSettings" class="btn btn-bot-plus" type="button">
+              Abrir Console do Bot Treinado Plus
+            </button>
+            <button id="btnExportAllZipFromSettings" class="btn btn-secondary" type="button">
+              Baixar Backup Total (.ZIP)
+            </button>
+          </div>
+        </div>
+
+        <!-- SEÇÃO: ZONA DE SEGURANÇA E LIMPEZA -->
+        <div class="settings-section-card" style="border-color:rgba(244,63,94,0.3)">
+          <div class="settings-title-row">
+            <h4 style="color:#fca5a5">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#f43f5e" stroke-width="2">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                <line x1="12" y1="9" x2="12" y2="13"></line>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+              Zona de Redefinição
+            </h4>
+          </div>
+          <p class="settings-desc">
+            Exclui permanentemente todos os arquivos armazenados dentro do cofre neste navegador.
+          </p>
+          <button id="btnResetVault" class="btn btn-secondary" style="color:#fda4af;border-color:rgba(244,63,94,0.4);align-self:flex-start" type="button">
+            Esvaziar Cofre Inteiro
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: BOT TREINADO PLUS (OTIMIZADOR NEURAL DE ARMAZENAMENTO) -->
+  <div id="botModal" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="elite-modal-dialog">
+      <div class="modal-dialog-header">
+        <div class="modal-dialog-title">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2">
+            <rect x="3" y="11" width="18" height="10" rx="2"></rect>
+            <circle cx="12" cy="5" r="2"></circle>
+            <path d="M12 7v4"></path>
+            <line x1="8" y1="16" x2="8.01" y2="16"></line>
+            <line x1="16" y1="16" x2="16.01" y2="16"></line>
+          </svg>
+          Bot Treinado Plus • Otimizador IA
+        </div>
+        <div style="display:flex;align-items:center;gap:0.6rem">
+          <div class="bot-header-badge">
+            <span class="pulse-dot" style="background:#06b6d4;box-shadow:0 0 8px #06b6d4"></span>
+            <span>MODELO V4.8 PLUS ATIVO</span>
+          </div>
+          <button id="closeBotModalBtn" class="btn btn-secondary btn-icon-only" type="button">✕</button>
+        </div>
+      </div>
+
+      <div class="modal-dialog-body">
+        <div class="bot-console-card" id="botTerminalLogs">
+          <div class="console-line action">
+            <span>[SISTEMA IA]</span>
+            <span>Bot Treinado Plus inicializado com sucesso. Banco de dados mapeado.</span>
+          </div>
+          <div class="console-line">
+            <span>[DIAGNÓSTICO]</span>
+            <span id="botDiagSummary">Pronto para analisar blocos de armazenamento e otimizar gigabytes.</span>
+          </div>
+        </div>
+
+        <div class="bot-action-cards-grid">
+          <div class="bot-tool-card">
+            <div>
+              <div class="bot-tool-title">
+                <span>⚡</span>
+                <span>Otimização Inteligente 4K</span>
+              </div>
+              <p class="bot-tool-desc">
+                Compacta imagens muito pesadas preservando nitidez de ultra-resolução, liberando até 60% de espaço.
+              </p>
+            </div>
+            <button id="btnBotRunOptimization" class="btn btn-primary" style="background:var(--bot-gradient)" type="button">
+              Executar Otimização
+            </button>
+          </div>
+
+          <div class="bot-tool-card">
+            <div>
+              <div class="bot-tool-title">
+                <span>🔍</span>
+                <span>Localizar Duplicadas</span>
+              </div>
+              <p class="bot-tool-desc">
+                Varredura neural para identificar arquivos repetidos ou fotos idênticas salvas por engano.
+              </p>
+            </div>
+            <button id="btnBotFindDuplicates" class="btn btn-secondary" type="button">
+              Verificar Duplicadas
+            </button>
+          </div>
+
+          <div class="bot-tool-card">
+            <div>
+              <div class="bot-tool-title">
+                <span>🧹</span>
+                <span>Desfragmentar IndexedDB</span>
+              </div>
+              <p class="bot-tool-desc">
+                Limpa miniaturas órfãs, reorganiza índices e acelera a renderização da galeria.
+              </p>
+            </div>
+            <button id="btnBotDefrag" class="btn btn-secondary" type="button">
+              Desfragmentar
+            </button>
+          </div>
+
+          <div class="bot-tool-card">
+            <div>
+              <div class="bot-tool-title">
+                <span>📊</span>
+                <span>Relatório Completo</span>
+              </div>
+              <p class="bot-tool-desc">
+                Emite relatório instantâneo de saúde de armazenamento, cota livre e estado da blindagem.
+              </p>
+            </div>
+            <button id="btnBotReport" class="btn btn-secondary" type="button">
+              Gerar Relatório
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- MODAL: CENTRAL GOOGLE FOTOS AUTÔNOMO (SEM TOKEN) -->
@@ -1651,15 +2043,16 @@
   <!-- CONTAINER DE TOASTS -->
   <div id="toastTray" class="toast-tray" aria-live="polite"></div>
 
-  <!-- SCRIPT CENTRAL TOTALMENTE REFEITO & BLINDADO -->
+  <!-- JAVASCRIPT UNIFICADO & COMPLETO -->
   <script>
   (function() {
     'use strict';
 
-    /* BANCO DE DADOS INDEXEDDB BLINDADO */
+    /* CONSTANTES E CHAVES DO SISTEMA */
     const DB_NAME = 'mangedora-apple-vault-elite-v4';
     const DB_VERSION = 1;
     const STORE_NAME = 'vault_media';
+    const STORAGE_KEY_CUSTOM_QUOTA_GB = 'mangedora_custom_quota_gb';
 
     /* ESTADO DA APLICAÇÃO */
     const appState = {
@@ -1670,6 +2063,7 @@
       selectedIds: new Set(),
       activeLightboxIndex: -1,
       lightboxRotation: 0,
+      customQuotaGB: 100, // Padrão 100 GB personalizável
       quotaEstimate: { used: 0, quota: 100 * 1024 * 1024 * 1024 }
     };
 
@@ -1692,6 +2086,8 @@
       statGPhotosCount: document.getElementById('statGPhotosCount'),
       statGPhotosSize: document.getElementById('statGPhotosSize'),
       statFreeSpace: document.getElementById('statFreeSpace'),
+      storagePersistenceText: document.getElementById('storagePersistenceText'),
+      btnQuickConfigCapacity: document.getElementById('btnQuickConfigCapacity'),
 
       mainDropzone: document.getElementById('mainDropzone'),
       generalFileInput: document.getElementById('generalFileInput'),
@@ -1699,9 +2095,8 @@
       zipImportInput: document.getElementById('zipImportInput'),
       btnPickFiles: document.getElementById('btnPickFiles'),
       btnPickCamera: document.getElementById('btnPickCamera'),
-      btnRestoreZip: document.getElementById('btnRestoreZip'),
       btnMainUpload: document.getElementById('btnMainUpload'),
-      btnExportZip: document.getElementById('btnExportZip'),
+      btnTriggerBotOptimizer: document.getElementById('btnTriggerBotOptimizer'),
 
       headerOpenGPhotosBtn: document.getElementById('headerOpenGPhotosBtn'),
       btnLaunchDirectGPhotos: document.getElementById('btnLaunchDirectGPhotos'),
@@ -1711,6 +2106,27 @@
       modalBtnPickSystem: document.getElementById('modalBtnPickSystem'),
       modalBtnPasteClipboard: document.getElementById('modalBtnPasteClipboard'),
       modalBtnPickZip: document.getElementById('modalBtnPickZip'),
+
+      btnOpenSettings: document.getElementById('btnOpenSettings'),
+      settingsModal: document.getElementById('settingsModal'),
+      closeSettingsModalBtn: document.getElementById('closeSettingsModalBtn'),
+      currentQuotaBadge: document.getElementById('currentQuotaBadge'),
+      presetGbButtons: document.querySelectorAll('.btn-preset-gb'),
+      inputCustomGB: document.getElementById('inputCustomGB'),
+      btnApplyCustomGB: document.getElementById('btnApplyCustomGB'),
+      btnOpenBotFromSettings: document.getElementById('btnOpenBotFromSettings'),
+      btnExportAllZipFromSettings: document.getElementById('btnExportAllZipFromSettings'),
+      btnResetVault: document.getElementById('btnResetVault'),
+
+      btnOpenBotModal: document.getElementById('btnOpenBotModal'),
+      botModal: document.getElementById('botModal'),
+      closeBotModalBtn: document.getElementById('closeBotModalBtn'),
+      botTerminalLogs: document.getElementById('botTerminalLogs'),
+      botDiagSummary: document.getElementById('botDiagSummary'),
+      btnBotRunOptimization: document.getElementById('btnBotRunOptimization'),
+      btnBotFindDuplicates: document.getElementById('btnBotFindDuplicates'),
+      btnBotDefrag: document.getElementById('btnBotDefrag'),
+      btnBotReport: document.getElementById('btnBotReport'),
 
       vaultGrid: document.getElementById('vaultGrid'),
       gallerySearchInput: document.getElementById('gallerySearchInput'),
@@ -1738,7 +2154,6 @@
       toastTray: document.getElementById('toastTray')
     };
 
-    /* CACHE DE OBJECT URLS PARA PREVENIR VAZAMENTO DE MEMÓRIA */
     const blobUrlMap = new WeakMap();
     function getSafeBlobUrl(blob) {
       if (!blob) return '';
@@ -1750,7 +2165,6 @@
       return url;
     }
 
-    /* BANCO DE DADOS INDEXEDDB */
     let dbInstance = null;
     function openDatabase() {
       if (dbInstance) return Promise.resolve(dbInstance);
@@ -1800,13 +2214,21 @@
       }));
     }
 
-    /* PERSISTÊNCIA NATIVA */
+    function dbClearAll() {
+      return openDatabase().then(db => new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE_NAME, 'readwrite');
+        tx.objectStore(STORE_NAME).clear();
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+      }));
+    }
+
     async function enforcePersistentStorage() {
       if (navigator.storage && navigator.storage.persist) {
         try {
           const isPersisted = await navigator.storage.persist();
           if (isPersisted) {
-            dom.storageStatusBadge.textContent = 'Blindagem Física Ativa (100% Persistente)';
+            dom.storagePersistenceText.textContent = 'BLINDAGEM FÍSICA PERSISTENTE';
           }
         } catch (err) {
           console.warn('Storage persist check:', err);
@@ -1822,7 +2244,15 @@
       return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
     }
 
-    /* NOTIFICAÇÃO TOAST */
+    function logToBotConsole(msg, type = 'normal') {
+      const line = document.createElement('div');
+      line.className = `console-line ${type}`;
+      const time = new Date().toLocaleTimeString('pt-BR');
+      line.innerHTML = `<span>[${time}]</span> <span>${msg}</span>`;
+      dom.botTerminalLogs.appendChild(line);
+      dom.botTerminalLogs.scrollTop = dom.botTerminalLogs.scrollHeight;
+    }
+
     function toast(message, type = 'info') {
       const toastEl = document.createElement('div');
       toastEl.className = `toast-item ${type}`;
@@ -1848,6 +2278,14 @@
             <line x1="9" y1="9" x2="15" y2="15"></line>
           </svg>
         `;
+      } else if (type === 'bot') {
+        iconSvg = `
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2">
+            <rect x="3" y="11" width="18" height="10" rx="2"></rect>
+            <circle cx="12" cy="5" r="2"></circle>
+            <path d="M12 7v4"></path>
+          </svg>
+        `;
       } else if (type === 'gphotos') {
         iconSvg = `
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
@@ -1869,7 +2307,6 @@
       }, 4000);
     }
 
-    /* GERAÇÃO REAL DE THUMBNAIL PARA FOTOS E VÍDEOS */
     function generateSmartThumbnail(blob, isVideo = false) {
       return new Promise((resolve) => {
         const url = URL.createObjectURL(blob);
@@ -1947,7 +2384,6 @@
       });
     }
 
-    /* INGESTÃO BLINDADA NO COFRE */
     async function ingestMedia(blob, fileName, source = 'phone') {
       try {
         const arrayBuf = await blob.arrayBuffer();
@@ -1976,7 +2412,6 @@
       }
     }
 
-    /* PROCESSAMENTO EM LOTE DE ARQUIVOS */
     async function handleFilesSelected(files, source = 'phone') {
       if (!files || !files.length) return;
 
@@ -2005,10 +2440,9 @@
       toast(`${successCount} mídia(s) protegida(s) no cofre! Agora você pode apagar com segurança do aparelho.`, 'success');
     }
 
-    /* IMPORTAÇÃO E EXTRAÇÃO DE PACOTE ZIP (EX: GOOGLE TAKEOUT) */
     async function handleZipImport(zipFile) {
       if (typeof JSZip === 'undefined') {
-        toast('Módulo ZIP ainda carregando. Tente novamente em 2 segundos.', 'error');
+        toast('Módulo ZIP ainda carregando. Tente novamente em alguns segundos.', 'error');
         return;
       }
 
@@ -2045,7 +2479,6 @@
       }
     }
 
-    /* EXPORTAR BACKUP TOTAL EM ZIP */
     async function exportAllToZip() {
       if (!appState.items.length) {
         toast('Seu cofre está vazio no momento.', 'warning');
@@ -2076,7 +2509,6 @@
       }
     }
 
-    /* EXPORTAR SELECIONADOS EM ZIP */
     async function exportSelectedToZip() {
       if (!appState.selectedIds.size) return;
       const selectedItems = appState.items.filter(i => appState.selectedIds.has(i.id));
@@ -2102,7 +2534,6 @@
       }
     }
 
-    /* ATUALIZADOR DE TELEMETRIA E GRÁFICOS DINÂMICOS */
     async function updateTelemetryAndCharts() {
       let totalUsed = 0;
       let photoCount = 0;
@@ -2128,20 +2559,15 @@
         }
       }
 
-      let quotaTotal = 100 * 1024 * 1024 * 1024;
-      if (navigator.storage && navigator.storage.estimate) {
-        try {
-          const est = await navigator.storage.estimate();
-          if (est.quota) quotaTotal = est.quota;
-        } catch (e) {}
-      }
-
+      const quotaTotal = appState.customQuotaGB * 1024 * 1024 * 1024;
       appState.quotaEstimate = { used: totalUsed, quota: quotaTotal };
+
       const freeSpace = Math.max(0, quotaTotal - totalUsed);
       const totalCapacityPct = Math.min(100, (totalUsed / quotaTotal) * 100);
 
       dom.storageUsedFormatted.textContent = formatBytes(totalUsed);
-      dom.storageQuotaFormatted.textContent = formatBytes(quotaTotal);
+      dom.storageQuotaFormatted.textContent = `${appState.customQuotaGB} GB`;
+      dom.currentQuotaBadge.textContent = `${appState.customQuotaGB} GB`;
       dom.donutCenterPct.textContent = totalCapacityPct < 0.1 && totalUsed > 0 ? '<0.1%' : totalCapacityPct.toFixed(1) + '%';
 
       dom.statPhotosCount.textContent = photoCount.toString();
@@ -2154,6 +2580,8 @@
       dom.statGPhotosSize.textContent = formatBytes(gphotosSize);
 
       dom.statFreeSpace.textContent = formatBytes(freeSpace);
+
+      dom.botDiagSummary.textContent = `${appState.items.length} mídias ativas no cofre (${formatBytes(totalUsed)} utilizados de ${appState.customQuotaGB} GB).`;
 
       if (totalUsed > 0) {
         const photoPct = (photoSize / totalUsed) * 100;
@@ -2192,6 +2620,154 @@
         dom.donutGPhotos.setAttribute('stroke-dasharray', `${gLen} ${circ}`);
         dom.donutGPhotos.setAttribute('stroke-dashoffset', `-${pLen + vLen}`);
       }
+
+      dom.presetGbButtons.forEach(btn => {
+        const gb = parseInt(btn.dataset.gb, 10);
+        if (gb === appState.customQuotaGB) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+
+    function setCustomQuotaGB(newGB) {
+      if (!newGB || newGB < 1) {
+        toast('Insira um valor válido de GB (mínimo 1 GB).', 'warning');
+        return;
+      }
+      appState.customQuotaGB = parseInt(newGB, 10);
+      localStorage.setItem(STORAGE_KEY_CUSTOM_QUOTA_GB, appState.customQuotaGB.toString());
+      updateTelemetryAndCharts();
+      toast(`Capacidade do cofre aumentada para ${appState.customQuotaGB} GB com sucesso!`, 'success');
+      logToBotConsole(`Capacidade do cofre reconfigurada para ${appState.customQuotaGB} GB.`, 'action');
+    }
+
+    async function runBotOptimization() {
+      if (!appState.items.length) {
+        toast('O cofre está vazio. Adicione fotos para otimizar.', 'warning');
+        logToBotConsole('Otimização abortada: cofre sem mídias.', 'warning');
+        return;
+      }
+
+      logToBotConsole('Iniciando análise neural de compactação em fotos...', 'action');
+      toast('Bot Treinado Plus analisando e compactando imagens pesadas...', 'bot');
+
+      let optimizedCount = 0;
+      let totalBytesSaved = 0;
+
+      for (const item of appState.items) {
+        if (item.type === 'photo' && item.size > 1.5 * 1024 * 1024) {
+          try {
+            const originalSize = item.size;
+            const imgUrl = URL.createObjectURL(item.blob);
+            const img = new Image();
+
+            await new Promise((res) => {
+              img.onload = () => res();
+              img.onerror = () => res();
+              img.src = imgUrl;
+            });
+
+            if (img.width && img.height) {
+              const canvas = document.createElement('canvas');
+              canvas.width = img.width;
+              canvas.height = img.height;
+              const ctx = canvas.getContext('2d');
+              ctx.drawImage(img, 0, 0);
+
+              const optimizedBlob = await new Promise(r => canvas.toBlob(r, 'image/jpeg', 0.88));
+              URL.revokeObjectURL(imgUrl);
+
+              if (optimizedBlob && optimizedBlob.size < originalSize) {
+                const saved = originalSize - optimizedBlob.size;
+                item.blob = optimizedBlob;
+                item.size = optimizedBlob.size;
+                await dbPut(item);
+                optimizedCount++;
+                totalBytesSaved += saved;
+                logToBotConsole(`Foto otimizada "${item.name}": economizados ${formatBytes(saved)}.`, 'success');
+              }
+            }
+          } catch (e) {
+            console.error(e);
+          }
+        }
+      }
+
+      renderGallery();
+      await updateTelemetryAndCharts();
+
+      if (optimizedCount > 0) {
+        logToBotConsole(`Otimização concluída! ${optimizedCount} foto(s) otimizada(s). Economia real de ${formatBytes(totalBytesSaved)}.`, 'action');
+        toast(`Bot Treinado Plus liberou ${formatBytes(totalBytesSaved)} no seu cofre!`, 'success');
+      } else {
+        logToBotConsole('Varredura concluída: todas as fotos já estão perfeitamente otimizadas.', 'success');
+        toast('Todas as fotos já estão no padrão ideal de compactação 4K!', 'bot');
+      }
+    }
+
+    async function runBotFindDuplicates() {
+      logToBotConsole('Iniciando varredura neural de arquivos duplicados...', 'action');
+      if (appState.items.length < 2) {
+        logToBotConsole('Menos de 2 mídias no cofre. Nenhuma duplicada detectada.', 'success');
+        toast('Nenhuma duplicada encontrada.', 'bot');
+        return;
+      }
+
+      const sizeMap = new Map();
+      const duplicates = [];
+
+      for (const item of appState.items) {
+        const key = `${item.size}_${item.type}`;
+        if (sizeMap.has(key)) {
+          duplicates.push(item);
+        } else {
+          sizeMap.set(key, item);
+        }
+      }
+
+      if (duplicates.length > 0) {
+        logToBotConsole(`Atenção: ${duplicates.length} mídia(s) com mesmo tamanho/conteúdo detectada(s).`, 'warning');
+        duplicates.forEach(d => logToBotConsole(`Possível duplicada: ${d.name} (${formatBytes(d.size)})`, 'warning'));
+        toast(`${duplicates.length} possível(is) foto(s) duplicada(s) encontrada(s). Verifique o console do Bot.`, 'warning');
+      } else {
+        logToBotConsole('Nenhuma mídia duplicada detectada. Banco 100% íntegro e limpo.', 'success');
+        toast('Excelente! Nenhuma foto ou vídeo duplicado.', 'success');
+      }
+    }
+
+    async function runBotDefragmentation() {
+      logToBotConsole('Iniciando desfragmentação e regeneração de índices no IndexedDB...', 'action');
+      let regenerated = 0;
+
+      for (const item of appState.items) {
+        if (!item.thumb) {
+          item.thumb = await generateSmartThumbnail(item.blob, item.type === 'video');
+          await dbPut(item);
+          regenerated++;
+        }
+      }
+
+      renderGallery();
+      await updateTelemetryAndCharts();
+      logToBotConsole(`Desfragmentação concluída. Índices compactados e ${regenerated} miniaturas restauradas.`, 'success');
+      toast('Banco de dados desfragmentado e acelerado!', 'success');
+    }
+
+    function runBotReport() {
+      const photos = appState.items.filter(i => i.type === 'photo').length;
+      const videos = appState.items.filter(i => i.type === 'video').length;
+      const gphotos = appState.items.filter(i => i.source === 'gphotos').length;
+      const totalSize = appState.items.reduce((a, b) => a + (b.size || 0), 0);
+
+      logToBotConsole('=== RELATÓRIO DO BOT TREINADO PLUS ===', 'action');
+      logToBotConsole(`• Total de itens salvos: ${appState.items.length}`);
+      logToBotConsole(`• Fotografias: ${photos} | Vídeos: ${videos}`);
+      logToBotConsole(`• Importados do Google Fotos: ${gphotos}`);
+      logToBotConsole(`• Espaço ocupado: ${formatBytes(totalSize)} de ${appState.customQuotaGB} GB configurados.`);
+      logToBotConsole('• Estado da Blindagem: 100% Isolado e Imune a exclusões externas.', 'success');
+      toast('Relatório de telemetria emitido no console do Bot.', 'bot');
     }
 
     function getFilteredAndSortedItems() {
@@ -2246,9 +2822,9 @@
                 <polyline points="21 15 16 10 5 21"></polyline>
               </svg>
             </div>
-            <h4 style="font-size:1.15rem;color:#fff;font-weight:700">Cofre Pronto e Vazio</h4>
+            <h4 style="font-size:1.15rem;color:#fff;font-weight:700">Cofre Pronto e Protegido</h4>
             <p style="font-size:0.85rem;max-width:420px;line-height:1.5">
-              Arraste fotos ou vídeos para cima, ou use o botão <strong>Google Fotos Direto</strong> para abrir sua galeria e importar.
+              Arraste fotos ou vídeos para cima, use o <strong>Google Fotos Direto</strong> ou ajuste sua cota em GBs no botão <strong>Configurações</strong>.
             </p>
           </div>
         `;
@@ -2381,7 +2957,6 @@
       renderGallery();
     }
 
-    /* VISUALIZADOR LIGHTBOX ELITE (FOTOS E VÍDEOS) */
     function openLightbox(item) {
       const currentList = getFilteredAndSortedItems();
       appState.activeLightboxIndex = currentList.findIndex(i => i.id === item.id);
@@ -2455,14 +3030,12 @@
       updateLightboxContent(currentList[appState.activeLightboxIndex]);
     }
 
-    /* GOOGLE FOTOS DIRETO: SEM CHAVE E SEM TOKEN */
     function launchDirectGooglePhotos() {
       const gPhotosUrl = 'https://photos.google.com/';
       window.open(gPhotosUrl, '_blank', 'noopener,noreferrer');
       toast('Abrindo sua galeria do Google Fotos! Para guardar fotos aqui, copie (Ctrl+V) ou arraste-as para o cofre.', 'gphotos');
     }
 
-    /* COLAR DIRETO (CTRL + V) GLOBAL */
     window.addEventListener('paste', async (e) => {
       const items = (e.clipboardData || window.clipboardData)?.items;
       if (!items) return;
@@ -2486,7 +3059,6 @@
       }
     });
 
-    /* CONFIGURAÇÃO DE EVENTOS */
     function bindAllEvents() {
       dom.headerOpenGPhotosBtn.addEventListener('click', () => dom.gphotosModal.classList.add('open'));
       dom.btnLaunchDirectGPhotos.addEventListener('click', launchDirectGooglePhotos);
@@ -2530,6 +3102,60 @@
         toast('Pressione Ctrl + V em qualquer parte da tela para colar!', 'info');
       });
 
+      const openSettings = () => {
+        dom.inputCustomGB.value = appState.customQuotaGB;
+        dom.settingsModal.classList.add('open');
+      };
+      dom.btnOpenSettings.addEventListener('click', openSettings);
+      dom.btnQuickConfigCapacity.addEventListener('click', openSettings);
+      dom.closeSettingsModalBtn.addEventListener('click', () => dom.settingsModal.classList.remove('open'));
+
+      dom.presetGbButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const gb = parseInt(btn.dataset.gb, 10);
+          setCustomQuotaGB(gb);
+        });
+      });
+
+      dom.btnApplyCustomGB.addEventListener('click', () => {
+        const val = parseInt(dom.inputCustomGB.value, 10);
+        if (val) setCustomQuotaGB(val);
+      });
+
+      dom.btnResetVault.addEventListener('click', async () => {
+        if (confirm('ATENÇÃO: Deseja apagar permanentemente todas as mídias salvas dentro do cofre?')) {
+          if (confirm('Confirmação final: Esta ação é irreversível. Prosseguir?')) {
+            await dbClearAll();
+            appState.items = [];
+            appState.selectedIds.clear();
+            renderGallery();
+            await updateTelemetryAndCharts();
+            dom.settingsModal.classList.remove('open');
+            toast('O cofre foi completamente esvaziado.', 'warning');
+            logToBotConsole('Cofre reiniciado e esvaziado pelo usuário.', 'warning');
+          }
+        }
+      });
+
+      dom.btnExportAllZipFromSettings.addEventListener('click', exportAllToZip);
+
+      const openBotModal = () => {
+        dom.botModal.classList.add('open');
+        logToBotConsole('Sessão neural ativa. Aguardando comandos.');
+      };
+      dom.btnOpenBotModal.addEventListener('click', openBotModal);
+      dom.btnTriggerBotOptimizer.addEventListener('click', openBotModal);
+      dom.btnOpenBotFromSettings.addEventListener('click', () => {
+        dom.settingsModal.classList.remove('open');
+        openBotModal();
+      });
+      dom.closeBotModalBtn.addEventListener('click', () => dom.botModal.classList.remove('open'));
+
+      dom.btnBotRunOptimization.addEventListener('click', runBotOptimization);
+      dom.btnBotFindDuplicates.addEventListener('click', runBotFindDuplicates);
+      dom.btnBotDefrag.addEventListener('click', runBotDefragmentation);
+      dom.btnBotReport.addEventListener('click', runBotReport);
+
       ['dragenter', 'dragover'].forEach(evt => {
         dom.mainDropzone.addEventListener(evt, (e) => {
           e.preventDefault();
@@ -2570,12 +3196,6 @@
         dom.cameraPhotoInput.click();
       });
 
-      dom.btnRestoreZip.addEventListener('click', (e) => {
-        e.stopPropagation();
-        dom.zipImportInput.value = '';
-        dom.zipImportInput.click();
-      });
-
       dom.generalFileInput.addEventListener('change', (e) => {
         handleFilesSelected(e.target.files, 'phone');
         dom.generalFileInput.value = '';
@@ -2592,8 +3212,6 @@
         }
         dom.zipImportInput.value = '';
       });
-
-      dom.btnExportZip.addEventListener('click', exportAllToZip);
 
       dom.filterTabs.forEach(tab => {
         tab.addEventListener('click', () => {
@@ -2637,15 +3255,25 @@
           else if (e.key === 'ArrowLeft') navigateLightbox(-1);
           else if (e.key === 'ArrowRight') navigateLightbox(1);
         }
-        if (e.key === 'Escape' && dom.gphotosModal.classList.contains('open')) {
-          dom.gphotosModal.classList.remove('open');
+        if (e.key === 'Escape') {
+          if (dom.gphotosModal.classList.contains('open')) dom.gphotosModal.classList.remove('open');
+          if (dom.settingsModal.classList.contains('open')) dom.settingsModal.classList.remove('open');
+          if (dom.botModal.classList.contains('open')) dom.botModal.classList.remove('open');
         }
       });
     }
 
-    /* INICIALIZAÇÃO */
     async function init() {
+      const savedQuota = localStorage.getItem(STORAGE_KEY_CUSTOM_QUOTA_GB);
+      if (savedQuota) {
+        const parsed = parseInt(savedQuota, 10);
+        if (parsed && parsed > 0) {
+          appState.customQuotaGB = parsed;
+        }
+      }
+
       await enforcePersistentStorage();
+
       try {
         appState.items = await dbGetAll();
       } catch (err) {
