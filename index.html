@@ -586,7 +586,7 @@ var VOICE_PROFILES=[
   {id:'sonhadora',name:'💭 Sonhadora',tag:'etérea',pitch:1.28,rate:0.80},
   {id:'jovem',name:'🌱 Jovem',tag:'leve e fresca',pitch:1.34,rate:0.94},
   {id:'madura',name:'🍷 Madura',tag:'experiente',pitch:1.08,rate:0.84},
-  {id:'maternal',name:'👩‍👧 Maternal',tag:'acolhedora',pitch:1.18,rate:0.82},
+  {id:'maternal',name:'👩👧 Maternal',tag:'acolhedora',pitch:1.18,rate:0.82},
   {id:'intima',name:'🤍 Íntima',tag:'próxima e pessoal',pitch:1.22,rate:0.80},
   {id:'empolgada',name:'🎉 Empolgada',tag:'entusiasmada',pitch:1.34,rate:0.98},
   {id:'tranquila',name:'🌊 Tranquila',tag:'zen',pitch:1.20,rate:0.84},
@@ -1102,8 +1102,10 @@ function initApp(){
       if(!appState.auraMuted)auraSpeak('Voz ligada, Renato.','flirt');
     });
 
-    var auraInput=document.getElementById('auraInput');OVvar auraSend=document.getElementById('auraSendBtn');
-   P var auraMic=document.getElementById('auraMic)btnOVBtn');var auraHideBtn=Pdocument.getElementById('btnAuraHide');
+    var auraInput=document.getElementById('auraInput');
+    var auraSend=document.getElementById('auraSendBtn');
+    var auraMic=document.getElementById('auraMicBtn');
+    var auraHideBtn=document.getElementById('btnAuraHide');
     var auraPill=document.getElementById('auraRestorePill');
     function doSend(){if(!auraInput)return;var v=auraInput.value.trim();if(!v)return;auraLogUser(v);auraInput.value='';auraProcessUserMessage(v)}
     if(auraSend)auraSend.addEventListener('click',doSend);
@@ -1113,7 +1115,7 @@ function initApp(){
     if(auraPill)auraPill.addEventListener('click',auraShow);
 
     var btnOVP=document.getElementById('btnOpenVoicePicker');
-    if(btn.addEventListener('click',openVoicePicker);
+    if(btnOVP)btnOVP.addEventListener('click',openVoicePicker);
     document.querySelectorAll('#voiceCategories .voice-cat-btn').forEach(function(b){
       b.addEventListener('click',function(){
         document.querySelectorAll('#voiceCategories .voice-cat-btn').forEach(function(x){x.classList.remove('active')});
