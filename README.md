@@ -2,16 +2,16 @@
 
 # 🍎 MANGEDORA APPLE PRO ELITE
 
-### 🎀 AURA IA com Memória • 🤖 BOT PLUS • 👤 Reconhecimento de Rosto • 📸 Google Fotos OAuth 2.0
+### 🎀 AURA IA (40 Perfis de Voz & Memória) • 🤖 BOT PLUS • 👤 Reconhecimento Facial • 🎨 40 Temas
 
-**Cofre blindado permanente para fotos e vídeos, com inteligência artificial assistente.**
-**Funciona 100% offline para uso diário** — a internet só é necessária na primeira configuração e para importar do Google Fotos.
+**Cofre blindado permanente para fotos e vídeos, com inteligência artificial assistente.**  
+**Funciona 100% offline para uso diário** — a internet só é necessária na primeira abertura para carregar fontes e os modelos neurais de rostos.
 
 [![Status](https://img.shields.io/badge/status-pronto-brightgreen?style=for-the-badge)](https://renatosgs.github.io/mangedora-apple/)
-[![Versão](https://img.shields.io/badge/vers%C3%A3o-v8.0-blue?style=for-the-badge)](https://renatosgs.github.io/mangedora-apple/)
+[![Versão](https://img.shields.io/badge/vers%C3%A3o-v9.0-blue?style=for-the-badge)](https://renatosgs.github.io/mangedora-apple/)
 [![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](LICENSE)
-[![AURA](https://img.shields.io/badge/AURA-com%20mem%C3%B3ria-ec4899?style=for-the-badge)](#-aura--assistente-ia)
-[![BOT PLUS](https://img.shields.io/badge/BOT%20PLUS-6%20fun%C3%A7%C3%B5es-06b6d4?style=for-the-badge)](#-bot-plus--organizador-neural)
+[![AURA](https://img.shields.io/badge/AURA-40%20Vozes%20%2B%20Mem%C3%B3ria-ec4899?style=for-the-badge)](#-aura--assistente-ia)
+[![BOT PLUS](https://img.shields.io/badge/BOT%20PLUS-5%20fun%C3%A7%C3%B5es-06b6d4?style=for-the-badge)](#-bot-plus--organizador-neural)
 [![Privacidade](https://img.shields.io/badge/privacidade-100%25%20local-purple?style=for-the-badge)](#)
 
 ### 🔗 [**Abrir o app →**](https://renatosgs.github.io/mangedora-apple/)
@@ -22,328 +22,170 @@
 
 ---
 
-Sem servidor. Sem cadastro obrigatório. Sem rastreamento. Suas mídias ficam guardadas **permanentemente** no seu aparelho via **IndexedDB** — apagar do celular **não** remove do cofre. **A nuvem só entra se você quiser** (importação opcional do Google Fotos).
+Sem servidores externos. Sem cadastro. Sem rastreamento. Suas mídias ficam armazenadas **permanentemente** no seu dispositivo via **IndexedDB** — apagar da galeria do celular **não** apaga do cofre. 
 
 ---
 
 ## ✨ Recursos
 
-### 🎀 AURA — Assistente IA
+### 🎀 AURA — Assistente IA com 40 Perfis de Voz
+Sua assistente pessoal que **conversa por texto e voz**, memoriza interações e executa ações sob comando.
 
-Sua IA pessoal que **conversa por texto e voz**, lembra das conversas e executa ações por comando.
-
-- 🗣️ **Fala com você em português** (voz sensual PT-BR)
-- 💬 **Chat por texto** — digite ou toque em Enter
-- 🎤 **Chat por voz** — reconhecimento de fala PT-BR
-- 🧠 **Memória de 30 dias** — lembra seu nome, humor e últimas conversas
-- ⚡ **Executa ações** — fala "organizar" e ela executa
-- 👁️ **Mostrar/Ocultar** — botão pra esconder + pílula "Chamar AURA"
-- 🎯 **18 intenções diferentes** — cumprimenta, elogia, ajuda, responde contexto
-- 🎨 **Voz selecionável** — escolha entre vozes PT-BR do seu dispositivo
+- 🎤 **40 Perfis de Voz calibrados** — Doce, Sensual, Delicada, Romântica, Confiante, Alegre, Meiga, Elegante, Sussurrante, Hipnótica e muito mais.
+- 🎛️ **Modulação acústica** — Ajustes em tempo real de tom (*pitch*) e cadência (*rate*) para cada perfil.
+- 💬 **Chat por texto** — Digite e envie com Enter ou toque no botão.
+- 🎙️ **Chat por voz** — Reconhecimento nativo em português (SpeechRecognition).
+- 🧠 **Memória de 30 dias** — Grava histórico local (até 50 mensagens), mantendo contexto e lembrando de você.
+- ⚡ **Execução de ações por comando** — Diga ou digite *"organizar"*, *"achar rostos"*, *"limpar"*, *"mudar tema"* e ela executa no app.
+- 👁️ **Controle de presença** — Oculte a AURA quando quiser e restaure tocando na pílula flutuante **💋 Chamar AURA**.
+- 🔊 **Controle de áudio** — Botão rápido para silenciar ou ativar a voz da assistente.
 
 ### 🤖 BOT PLUS — Organizador Neural
+Robô auxiliar com **5 funções de IA** para automação total do cofre:
 
-Robô organizador com **6 funções de IA** pra deixar seu cofre impecável.
+- 📂 **Organizar Tudo** — Ordena cronologicamente e categoriza mídias por ano/mês.
+- 🏷️ **Categorizar IA** — Análise cromática de pixels (brilho, contraste e saturação) classificando em: *Comida, Natureza, Céu/Mar, Documentos, Noturnas, Claras, P&B e Pessoas/Eventos*.
+- 👤 **Reconhecer Rostos** — Processamento neural via **face-api.js** que detecta faces, extrai descritores de 68 pontos e agrupa por similaridade euclidiana.
+- ✏️ **Renomear Inteligente** — Padroniza nomes com timestamp cirúrgico (`MANG_AAAAMMDD_HHMM_0001.ext`).
+- 🧹 **Limpeza Total** — Executa varredura de arquivos duplicados por hash e ativa a compressão 4K em lote.
 
-- 📂 **Organizar Tudo** — separa por tipo, data e tamanho
-- 🏷️ **Categorizar IA** — detecta categoria de cada mídia (Comida, Natureza, Documentos, etc.)
-- 👤 **Reconhecer Rostos** — agrupa fotos por pessoa usando face-api.js
-- ✏️ **Renomear Inteligente** — padroniza nomes com timestamp
-- 📸 **Ordenar do Google** — organiza específico as importadas do Google Fotos
-- 🧹 **Limpeza Total** — remove duplicados + comprime tudo
+### ⚡ Robô Titânio IA (Otimização & Manutenção)
+- **Compressão Canvas 4K Ultra** — Redimensiona preservando proporção (até 2560px) em WebP (82%) com fallback automático para JPEG (85%).
+- **Deduplicação de Mídia** — Algoritmo de hash FNV-1a duplo para identificar e eliminar duplicatas idênticas sem perda de desempenho.
+- **Desfragmentação do Banco** — Reindexação e organização do IndexedDB.
+- **Terminal HUD em tempo real** — Log técnico com carimbo de data/hora para acompanhar cada operação.
+- **Telemetria de Economia** — Exibe o espaço exato recuperado em MB ou GB.
 
 ### 🛡️ Cofre Blindado Permanente
-- **Armazenamento em IndexedDB** com persistência real (`navigator.storage.persist()`)
-- **Funciona offline** após o primeiro carregamento — sem internet, sem servidor
-- Selo **🔒 Permanente** em cada mídia — apagar do celular não afeta o cofre
-- **Filtros**: Todos • Fotos • Vídeos • Favoritos • 👤 Com Rosto • Otimizados IA
-- **Busca** por nome ou categoria, **ordenação** (recentes, antigos, tamanho, nome)
-- **Lightbox** com visualização ampliada e download
-- **Backup completo em ZIP** com 1 clique
+- **Persistência garantida** — Solicitação direta ao navegador via `navigator.storage.persist()`.
+- **Selo 🔒 Permanente** — Mídias salvas com segurança no IndexedDB; apagar da galeria local não afeta o cofre.
+- **Filtros rápidos** — Todos • Fotos • Vídeos • Favoritos (★) • 👤 Rostos • ⚡ Otimizados IA.
+- **Busca dinâmica & Ordenação** — Filtre por nome ou categoria, ordene por mais recentes, mais antigos, maior tamanho ou ordem alfabética.
+- **Lightbox integrado** — Player de vídeo e visualizador em alta definição com download direto.
+- **Backup & Exportação ZIP** — Exporte todo o acervo do cofre em arquivo `.zip` com 1 clique.
 
-### 📸 Múltiplas formas de enviar
-- Upload por **drag & drop**
-- Envio direto da **galeria do celular**
-- **Colar com Ctrl+V** (copie do Google Fotos e cole aqui)
-- Import de **backup ZIP** do Google Takeout
-- **Sincronização com Google Fotos** (Photos Picker API)
-
-### 🔗 Integração Oficial Google Fotos (OAuth 2.0)
-- **Vinculação segura** — você digita e-mail/senha na **janela oficial do Google**, nunca dentro do app
-- **Photos Picker API** — escolha as fotos que quiser importar
-- **Download automático** direto pro cofre
-- **Zero armazenamento de senha** — só um token temporário em memória
-- Selo **G Fotos** em cada mídia importada
-
-### ⚡ Robô Titânio IA Plus
-- **Compressão Canvas 4K** (até 2560px, qualidade 82%)
-- **Fallback WebP → JPEG** para navegadores antigos
-- **Eliminação de duplicados por hash** (FNV-1a duplo)
-- **Desfragmentação** do banco IndexedDB
-- **Terminal de log** em tempo real
-- Exibe **economia total de espaço** em MB/GB
+### 📸 Métodos de Envio & Importação
+- 📸 **Enviar da Galeria** — Seletor direto para fotos e vídeos.
+- 📦 **Importar ZIP (Google Takeout)** — Descompactação e leitura direta de pacotes de fotos do Google Takeout via JSZip.
+- 📋 **Colar com Ctrl+V** — Cole prints ou fotos copiadas da área de transferência.
+- 🖱️ **Drag & Drop** — Arraste e solte múltiplos arquivos na janela.
 
 ### 🎨 40 Temas Exclusivos
-Categorias: **Apple & Titanium** • **Elite & Luxo** • **Cyber & Futurista** • **Neon & Quântico** • **Natureza & Joias** • **Amoled & Escuros**
-
-- **Boot Estilista IA** — sugere temas automaticamente
-- **Busca e filtros** por categoria
-- **Troca rápida** com 1 clique (botão ⏭️ no topo)
-- Temas aplicados em **tempo real** via CSS variables
+Paletas completas organizadas em 6 famílias estilísticas:
+- **Apple & Titanium** • **Elite & Luxo** • **Cyber & Futurista** • **Neon & Quântico** • **Natureza & Joias** • **Amoled & Escuros**
+- **Boot Estilista IA** — Sugestões aleatórias inteligentes de estilo.
+- **Troca Rápida `⏭️`** — Alternância instantânea de tema no cabeçalho.
+- **Motor CSS dinâmico** — Transições suaves aplicadas via variáveis de CSS no `:root`.
 
 ### 💾 Armazenamento Ajustável
-- Ajuste a cota exibida: **50 GB até 999 TB**
-- Presets rápidos + campo personalizado
-- Barra de uso em tempo real
-- Indicador de **persistência concedida** pelo navegador
+- Presets rápidos: **50 GB, 100 GB, 250 GB, 500 GB, 1 TB, 5 TB e 10 TB**.
+- Campo numérico personalizado com seleção de unidade (**GB / TB**).
+- Barras de preenchimento e telemetria em tempo real.
 
 ---
 
-## 🚀 Como usar
+## 🚀 Como Usar
 
-### 🌐 Online (recomendado)
-
-Acesse direto no navegador:
-
+### 🌐 Online (Recomendado)
+Acesse direto pelo GitHub Pages:
 **https://renatosgs.github.io/mangedora-apple/**
 
-> Use **HTTPS** para que a integração com Google Fotos e o microfone funcionem.
+> **Nota:** Para usar os recursos de microfone da AURA, o navegador exige conexão segura via **HTTPS**.
 
-### 💻 Localmente
+### 💻 Uso Local
+1. Baixe o arquivo `index.html`.
+2. Dê um duplo clique para abrir em qualquer navegador moderno.
+3. Não precisa de Node.js, compilação ou instalação de pacotes.
 
-Baixe o `index.html` e abra com dois cliques. Funciona offline, sem instalação. **Nota:** a integração com Google Fotos e a voz **não** funcionam em modo local no iOS/Safari — só em HTTPS.
-
-### 📱 Instalar como app
-
-No **Chrome (Android)** ou **Safari (iOS)**:
-1. Abra o app no navegador
-2. Toque no menu do navegador
-3. Escolha **"Adicionar à tela de início"**
-4. Pronto! Fica com ícone próprio e persistência reforçada.
+### 📱 Instalar como Aplicativo (PWA / Tela de Início)
+- **No Chrome (Android):** Toque nos três pontos `⋮` → **Adicionar à tela inicial** / **Instalar aplicativo**.
+- **No Safari (iOS / iPhone):** Toque no botão Compartilhar `⎋` → **Adicionar à Tela de Início**.
 
 ---
 
-## 🎀 AURA — Como usar
+## 🎀 AURA — Comandos e Como Conversar
 
-### Abrir o chat
+Para abrir o chat, toque no avatar **💋** no canto inferior da tela.
 
-Toque no **avatar 💋** no canto inferior esquerdo da tela.
+### O que você pode falar ou digitar:
 
-### Conversar por texto
-
-Digite no campo na parte de baixo do chat e toque em **➤** (ou pressione Enter).
-
-### Conversar por voz
-
-Toque no **🎤** — o microfone fica vermelho e pulsando. Fale normalmente em português. O app transcreve e responde.
-
-> ⚠️ **Primeira vez**: o Safari vai pedir permissão do microfone. Toque em **"Permitir"**.
-
-### Ocultar AURA
-
-Toque no **👁** no cabeçalho do chat — ela some e aparece uma **pílula rosa "Chamar AURA"** no canto.
-
-### Trazer de volta
-
-Toque na pílula **💋 Chamar AURA**.
-
-### O que ela entende
-
-| Você fala/escreve | Ela faz |
+| Comando / Frase | Ação da AURA |
 |---|---|
-| "Oi", "Olá", "Bom dia" | Cumprimenta |
-| "Quem é você?" | Se apresenta |
-| "Ajuda" / "O que você faz" | Lista funções |
-| "Organizar minhas fotos" | Executa organização |
-| "Achar rostos" | Dispara reconhecimento facial |
-| "Categorizar" | Dispara categorização |
-| "Limpar duplicados" | Dispara limpeza |
-| "Quantas fotos eu tenho?" | Informa total |
-| "Próximo tema" | Muda o tema |
-| "Silêncio" / "Fala" | Liga/desliga voz |
-| "Some" / "Volta" | Oculta/Exibe |
-| "Me chamo João" | Lembra seu nome |
-| "Lembra de mim?" | Recapita conversas |
-| "Você é linda" | Elogia de volta 💋 |
-| "Obrigado" | Responde gentil |
-
-### Memória da AURA
-
-A AURA **lembra das conversas por 30 dias** (máximo 50 interações). Ela:
-
-- Guarda seu nome se você disser "me chamo X"
-- Detecta seu humor pelas últimas mensagens
-- Retoma a conversa de onde parou
-- Adapta o tom se você estiver triste ou feliz
-
-> Para limpar a memória: **⚙️ Configurações → 🧠 Limpar Memória**.
+| *"Oi"*, *"Olá"*, *"Bom dia"* | Cumprimenta e acolhe |
+| *"Quem é você?"* | Se apresenta |
+| *"Ajuda"* / *"O que você faz?"* | Lista suas funções principais |
+| *"Organizar"* / *"Arrumar"* | Executa a organização do BOT PLUS |
+| *"Achar rostos"* / *"Rostos"* | Dispara o reconhecimento facial do face-api.js |
+| *"Categorizar"* | Analisa e separa as mídias por categorias de cor |
+| *"Limpar"* / *"Duplicados"* | Faz a limpeza de duplicatas e otimiza |
+| *"Quantas fotos eu tenho?"* | Faz a contagem de fotos e vídeos no cofre |
+| *"Próximo tema"* / *"Mudar tema"* | Troca o tema visual do aplicativo |
+| *"Silêncio"* / *"Mudo"* | Desativa a síntese de voz |
+| *"Fala"* / *"Liga voz"* | Reativa a voz da assistente |
+| *"Some"* / *"Esconde"* | Minimiza a AURA em forma de pílula |
+| *"Volta"* / *"Aparece"* | Restaura a exibição normal da AURA |
+| *"Você é linda"* / Elogios | Respostas carinhosas personalizadas |
 
 ---
 
-## 🤖 BOT PLUS — Como usar
+## 🌐 Quando Precisa de Internet?
 
-Toque no botão **🤖 BOT PLUS** no topo da tela. Você verá 6 funções:
-
-### 📂 Organizar Tudo
-Reorganiza todas as mídias por tipo, data e tamanho. Aplica ordenação automática.
-
-### 🏷️ Categorizar IA
-Analisa cada imagem e detecta a categoria baseada em cores, brilho e saturação:
-- Comida • Natureza • Céu/Mar • Documentos
-- Noturnas • Claras • P&B • Pessoas/Eventos
-
-### 👤 Reconhecer Rostos
-Usa **face-api.js** pra detectar e agrupar rostos:
-- Detecta cada pessoa em cada foto
-- Cria grupos por similaridade (distância euclidiana)
-- Marca o número de rostos em cada mídia
-- Adiciona filtro "👤 Rosto" na toolbar
-
-> ⚠️ **1ª vez**: baixa ~10MB de modelos de IA do CDN. Precisa de internet.
-
-### ✏️ Renomear Inteligente
-Padroniza nomes das imagens com formato `MANG_AAAAMMDD_HHMM_0001.ext`.
-
-### 📸 Ordenar do Google
-Organiza especificamente as fotos importadas do Google Fotos com prefixo `GF_`.
-
-### 🧹 Limpeza Total
-Remove duplicados por hash **e** roda otimização de compressão de uma vez.
-
----
-
-## 🔗 Como configurar o Google Fotos (opcional)
-
-Para puxar fotos direto do Google Fotos pro cofre, você precisa de um **Client ID OAuth** (gratuito, você cria em ~5 min):
-
-1. Acesse [console.cloud.google.com](https://console.cloud.google.com)
-2. Crie um projeto novo
-3. **APIs e serviços → Biblioteca** → ative **Photos Picker API**
-4. **Tela de permissão OAuth** → tipo **Externo** → adicione seu e-mail como **testador**
-5. **Credenciais → Criar → ID do cliente OAuth → Aplicativo da Web**
-6. Em **Origens JavaScript autorizadas**, adicione:
-   - `https://renatosgs.github.io` (obrigatório para o app online)
-   - `http://localhost` (para testes locais, opcional)
-7. Copie o **Client ID** gerado (termina em `.apps.googleusercontent.com`)
-8. Abra o app → **⚙️ Configurações** → cole o **Client ID** → **💾 Salvar**
-9. Toque em **🔗 Vincular Conta Google** → autorize na janela oficial
-
----
-
-## 🌐 Quando precisa de internet?
-
-| Ação | Precisa de internet? |
+| Operação | Precisa de Internet? |
 |---|:---:|
-| Abrir o app pela primeira vez | ✅ Sim (baixa fontes e JSZip) |
-| Uso diário (ver, organizar, favoritar) | ❌ Não — 100% offline |
-| AURA por **texto** | ❌ Não |
-| AURA por **voz** | ⚠️ Sim (Speech API do navegador) |
-| Adicionar fotos da galeria | ❌ Não |
-| Colar com Ctrl+V / Drag & Drop | ❌ Não |
-| Robô IA (compressão) | ❌ Não |
+| Abrir pela 1ª vez | ✅ Sim (carrega fontes e CDN) |
+| Uso diário (visualizar, baixar, navegar) | ❌ Não — 100% offline |
+| AURA por **texto** | ❌ Não — processamento local |
+| AURA por **voz (microfone)** | ⚠️ Sim (depende do motor de voz do navegador) |
+| AURA por **fala (áudio de saída)** | ❌ Não — usa síntese nativa do sistema |
 | BOT PLUS: Organizar / Renomear / Limpar | ❌ Não |
-| BOT PLUS: **Reconhecer Rostos** (1ª vez) | ✅ Sim (baixa modelos) |
-| BOT PLUS: **Categorizar** | ❌ Não |
-| Trocar tema | ❌ Não |
-| **Importar do Google Fotos** | ✅ Sim (baixa da nuvem) |
-| **Vincular conta Google** | ✅ Sim (OAuth) |
-
-> 💡 **Dica:** instale como app (PWA) para que as fontes fiquem em cache.
+| BOT PLUS: Categorizar | ❌ Não |
+| BOT PLUS: Reconhecer Rostos (1ª vez) | ✅ Sim (baixa os modelos neurais) |
+| BOT PLUS: Reconhecer Rostos (depois de carregado) | ❌ Não |
+| Adicionar mídias da Galeria / Ctrl+V / ZIP | ❌ Não |
+| Robô IA (compressão e deduplicação) | ❌ Não |
 
 ---
 
 ## 🔒 Privacidade & Segurança
 
-| Aspecto | Como funciona |
-|---|---|
-| **Armazenamento** | 100% local (IndexedDB no seu navegador) |
-| **Servidor** | Nenhum — o app roda só no seu aparelho |
-| **Rastreamento** | Nenhum — sem analytics, sem cookies |
-| **Senha do Google** | Nunca digitada dentro do app — só na janela oficial do Google |
-| **Token de acesso** | Só em memória, nunca em `localStorage` |
-| **Memória da AURA** | Só no seu aparelho (localStorage, 30 dias) |
-| **Voz / Microfone** | Processamento local via Web Speech API |
-| **Persistência** | `navigator.storage.persist()` impede limpeza automática |
-| **Backup** | Manual em ZIP (você guarda onde quiser) |
-
-> **⚠️ Importante:** apagar dados do navegador, limpar cache ou trocar de celular apaga o cofre **e** a memória da AURA. **Faça backups periódicos** pelo botão **📦 Baixar Tudo em ZIP** nas Configurações.
+- **Zero servidores intermediários:** Todos os arquivos são convertidos em Data URLs e gravados localmente no IndexedDB da sua máquina.
+- **Sem telemetria externa:** Não há scripts de rastreamento, cookies de terceiros ou coleta de dados.
+- **Persistência controlada:** O botão de persistência solicita proteção contra limpeza automática do navegador (`navigator.storage.persist()`).
+- **Segurança da memória:** A memória da AURA reside exclusivamente no `localStorage` do seu navegador sob a chave `mangedora_aura_mem_v2` e pode ser apagada a qualquer momento nas Configurações.
 
 ---
 
-## 🛠️ Tecnologias
+## 🛠️ Tecnologias Utilizadas
 
-| Tecnologia | Uso |
-|---|---|
-| **HTML5 + CSS3 + JavaScript puro** | Zero build, zero npm |
-| **IndexedDB** | Banco de dados local do navegador |
-| **Canvas API** | Compressão de imagens |
-| **CSS Variables** | Sistema de 40 temas dinâmicos |
-| **JSZip** | Import/export de pacotes ZIP |
-| **face-api.js** | Reconhecimento facial (TinyFaceDetector + FaceRecognition) |
-| **Web Speech API** | Síntese de voz (TTS) e reconhecimento (STT) |
-| **Google Identity Services** | OAuth 2.0 |
-| **Photos Picker API** | Seleção de fotos do Google Fotos |
-| **localStorage** | Persistência de memória e preferências |
-
-Todo o app é **single-file** — não precisa de build, webpack, npm ou qualquer coisa.
+- **HTML5, CSS3 Moderno & JavaScript Vanilla (ES6+)** — Código puro em arquivo único (*single-file*), sem dependência de frameworks ou processos de build.
+- **IndexedDB API** — Banco de dados relacional transacional local para persistência de grandes volumes de mídias.
+- **Canvas 2D API** — Renderização e recompressão de imagens em tempo real para WebP/JPEG.
+- **JSZip (v3.10.1)** — Biblioteca para descompactação de pacotes (como backups do Google Takeout) e exportação de backups gerais.
+- **face-api.js (v0.22.2 / Vladmandic)** — Redes neurais convolucionais (TinyFaceDetector, FaceLandmarks e FaceRecognitionNet) executadas no navegador.
+- **Web Speech API** — `SpeechSynthesis` para fala com pitch/rate customizado e `SpeechRecognition` para captação de voz.
 
 ---
 
-## 📂 Estrutura
-
-```
+## 📂 Estrutura do Repositório
 mangedora-apple/
-├── index.html       # Aplicativo completo (single-file)
-├── README.md        # Este arquivo
-├── screenshot.png   # Print do app (usado no README)
-└── LICENSE          # MIT (opcional)
-```
+├── index.html # Aplicação completa (CSS + HTML + JS integrados)
+├── README.md # Documentação oficial do projeto
+├── screenshot.png # Imagem de demonstração do aplicativo
+└── LICENSE # Licença MIT
 
----
-
-## 📋 Compatibilidade
-
-| Navegador | Suporte |
-|---|:---:|
-| Chrome / Edge | ✅ Completo |
-| Firefox | ✅ Completo |
-| Safari (macOS / iOS 15+) | ✅ Completo |
-| Navegadores antigos | ⚠️ Sem Google Fotos (fallback WebP→JPEG) |
-
-> **AURA por voz:** funciona em Chrome, Edge, Safari e Firefox modernos. Em navegadores antigos, use o **texto**.
-
----
-
-## 🗺️ Roadmap
-
-- [x] Cofre permanente com IndexedDB
-- [x] Robô IA de compressão (Canvas 4K)
-- [x] 40 temas com Boot Estilista IA
-- [x] Integração Google Fotos (OAuth 2.0 + Photos Picker API)
-- [x] Import/Export ZIP (Google Takeout)
-- [x] Persistência real no navegador
-- [x] Compressão com fallback WebP → JPEG
-- [x] **AURA IA** com voz, texto e memória
-- [x] **BOT PLUS** organizador (6 funções)
-- [x] **Reconhecimento facial** (face-api.js)
-- [x] **Categorização automática** de imagens
-- [ ] Modo PWA com Service Worker
-- [ ] Sincronização opcional entre dispositivos
-- [ ] Backup automático para Google Drive
-- [ ] AURA com reconhecimento de voz contínuo (sem tocar no microfone)
-- [ ] Tradução da AURA para inglês e espanhol
-
+code
+Code
 ---
 
 ## 📜 Licença
 
-MIT — use, modifique e distribua livremente.
+Distribuído sob a licença **MIT**. Consulte `LICENSE` para mais detalhes.
 
 ---
 
 <div align="center">
 
-**Feito com ☕, IA e luz vermelha de darkroom.** 🛡️💋
+**MANGEDORA APPLE PRO ELITE • Tecnologia, Privacidade e IA.** 🛡️💋  
 
 [⬆ Voltar ao topo](#-mangedora-apple-pro-elite)
 
